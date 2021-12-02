@@ -10,7 +10,7 @@ import { getDeviceType } from 'library/helpers/get-device-type';
 import { getAPIData, processAPIData } from 'library/helpers/get-api-data';
 import Description from 'container/SinglePage/Description/Description';
 import Amenities from 'container/SinglePage/Amenities/Amenities';
-import AccommodatinPolicies from 'container/SinglePage/AccommodationPolicies/AccommodationPolicies';
+import AccommodationPolicies from 'container/SinglePage/AccommodationPolicies/AccommodationPolicies';
 import Location from 'container/SinglePage/Location/Location';
 import Review from 'container/SinglePage/Review/Review';
 import Reservation from 'container/SinglePage/Reservation/Reservation';
@@ -82,7 +82,7 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
                 ratingCount={ratingCount}
               />
               <Amenities amenities={amenities} />
-              <AccommodatinPolicies amenities={amenities} />
+              <AccommodationPolicies amenities={amenities} />
               <Location location={processedData[0]} />
             </Col>
             <Col xl={8}>

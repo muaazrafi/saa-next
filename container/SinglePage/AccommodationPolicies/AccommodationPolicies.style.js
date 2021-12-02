@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const AccommodationPoliciesWrapper = styled.div`
+const AccommodationPoliciesArea = styled.div`
   padding: 29px 0;
   .location_meta {
     margin-bottom: 29px;
@@ -12,4 +12,4 @@ const AccommodationPoliciesWrapper = styled.div`
   }
 `;
 
-export default AccommodationPoliciesWrapper;
+export default AccommodationPoliciesArea;
