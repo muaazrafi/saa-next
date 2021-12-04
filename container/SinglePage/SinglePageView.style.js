@@ -201,7 +201,7 @@ export const ButtonGroup = styled.div`
 `;
 
 export const PostImage = styled.div`
-  height: 600px;
+  height: 400px;
   position: relative;
 
   @media (max-width: 767px) {

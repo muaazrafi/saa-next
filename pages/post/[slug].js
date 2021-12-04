@@ -1,27 +1,28 @@
-import { useState, useEffect } from 'react';
-import Head from 'next/head';
-import Image from 'next/image';
-import isEmpty from 'lodash/isEmpty';
-import Sticky from 'react-stickynode';
-import { Row, Col, Modal, Button } from 'antd';
-import Container from 'components/UI/Container/Container';
-import Loader from 'components/Loader/Loader';
-import { getDeviceType } from 'library/helpers/get-device-type';
-import { getAPIData, processAPIData } from 'library/helpers/get-api-data';
-import Description from 'container/SinglePage/Description/Description';
-import Amenities from 'container/SinglePage/Amenities/Amenities';
-import Location from 'container/SinglePage/Location/Location';
-import Review from 'container/SinglePage/Review/Review';
-import Reservation from 'container/SinglePage/Reservation/Reservation';
-import BottomReservation from 'container/SinglePage/Reservation/BottomReservation';
-import TopBar from 'container/SinglePage/TopBar/TopBar';
+import { useState, useEffect } from "react";
+import Head from "next/head";
+import Image from "next/image";
+import isEmpty from "lodash/isEmpty";
+import Sticky from "react-stickynode";
+import { Row, Col, Modal, Button } from "antd";
+import Container from "components/UI/Container/Container";
+import Loader from "components/Loader/Loader";
+import { getDeviceType } from "library/helpers/get-device-type";
+import { getAPIData, processAPIData } from "library/helpers/get-api-data";
+import Description from "container/SinglePage/Description/Description";
+import Amenities from "container/SinglePage/Amenities/Amenities";
+import Location from "container/SinglePage/Location/Location";
+import Review from "container/SinglePage/Review/Review";
+import Reservation from "container/SinglePage/Reservation/Reservation";
+import BottomReservation from "container/SinglePage/Reservation/BottomReservation";
+import TopBar from "container/SinglePage/TopBar/TopBar";
 import SinglePageWrapper, {
   PostImage,
-} from 'container/SinglePage/SinglePageView.style';
-import PostImageGallery from 'container/SinglePage/ImageGallery/ImageGallery';
+} from "container/SinglePage/SinglePageView.style";
+import ImageGrid from "container/SinglePage/ImageGrid/ImageGrid";
+import PostImageGallery from "container/SinglePage/ImageGallery/ImageGallery";
 
 export default function SinglePostPage({ processedData, deviceType, query }) {
-  const [href, setHref] = useState('');
+  const [href, setHref] = useState("");
   const [isModalShowing, setIsModalShowing] = useState(false);
   if (isEmpty(processedData)) return <Loader />;
   const {
@@ -37,8 +38,8 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
     author,
   } = processedData[0];
   const pageTitle =
-    query.slug.split('-').join(' ').charAt(0).toUpperCase() +
-    query.slug.split('-').join(' ').slice(1);
+    query.slug.split("-").join(" ").charAt(0).toUpperCase() +
+    query.slug.split("-").join(" ").slice(1);
 
   useEffect(() => {
     const path = window.location.href;
@@ -52,20 +53,23 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
       </Head>
       <SinglePageWrapper>
         <PostImage>
-          <Image
+          <ImageGrid
+            viewMore={
+              <Button
+                type="primary"
+                onClick={() => setIsModalShowing(true)}
+                className="image_gallery_button"
+              >
+                View Photos
+              </Button>
+            }
+          />
+          {/* <Image
             src="/images/single-post-bg.jpg"
             layout="fill"
             objectFit="cover"
             alt="Listing details banner"
-          />
-
-          <Button
-            type="primary"
-            onClick={() => setIsModalShowing(true)}
-            className="image_gallery_button"
-          >
-            View Photos
-          </Button>
+          /> */}
         </PostImage>
 
         <TopBar title={title} shareURL={href} author={author} media={gallery} />
@@ -84,7 +88,7 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
               <Location location={processedData[0]} />
             </Col>
             <Col xl={8}>
-              {deviceType === 'desktop' ? (
+              {deviceType === "desktop" ? (
                 <Sticky
                   innerZ={999}
                   activeClass="isSticky"
@@ -122,7 +126,7 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
         footer={null}
         width="100%"
         maskStyle={{
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          backgroundColor: "rgba(255, 255, 255, 0.95)",
         }}
         wrapClassName="image_gallery_modal"
         closable={false}
@@ -152,8 +156,8 @@ export async function getServerSideProps(context) {
   const { req, query } = context;
   const apiUrl = [
     {
-      endpoint: 'hotel-single',
-      name: 'hotelSingleData',
+      endpoint: "hotel-single",
+      name: "hotelSingleData",
     },
   ];
   const pageData = await getAPIData(apiUrl);
