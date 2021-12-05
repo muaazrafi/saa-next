@@ -22,7 +22,7 @@ const SignIn = () => {
           withLink
           linkTo="/"
           src="/images/logo-alt.svg"
-          title="TripFinder."
+          title="SAA."
         />
         <Title>Welcome Back</Title>
         <TitleInfo>Please log into your account</TitleInfo>

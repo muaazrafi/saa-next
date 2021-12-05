@@ -8,7 +8,7 @@ export default function profilePage(props) {
   return (
     <>
       <Head>
-        <title>Agent | TripFinder.</title>
+        <title>Agent | SAA.</title>
       </Head>
       <AgentDetailsViewPage {...props} />
     </>

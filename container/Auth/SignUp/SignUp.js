@@ -22,9 +22,9 @@ const SignUp = () => {
           withLink
           linkTo="/"
           src="/images/logo-alt.svg"
-          title="TripFinder."
+          title="SAA."
         />
-        <Title>Welcome To TripFinder</Title>
+        <Title>Welcome To SAA</Title>
         <TitleInfo>Please Register for your account</TitleInfo>
         <SignUpForm />
         <Divider>Or Register Up With </Divider>

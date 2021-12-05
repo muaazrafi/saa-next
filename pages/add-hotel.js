@@ -6,7 +6,7 @@ export default function addHotelPage() {
   return (
     <>
       <Head>
-        <title>Add Hotel | TripFinder.</title>
+        <title>Add Hotel | SAA.</title>
       </Head>
       <AddListing />
     </>

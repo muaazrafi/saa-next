@@ -49,7 +49,7 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
   return (
     <>
       <Head>
-        <title>{pageTitle} | TripFinder.</title>
+        <title>{pageTitle} | SAA.</title>
       </Head>
       <SinglePageWrapper>
         <PostImage>
