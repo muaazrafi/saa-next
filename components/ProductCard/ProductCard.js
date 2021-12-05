@@ -60,7 +60,7 @@ export default function ProductCard({
       viewDetailsBtn={
         <Link href={`${link}/[slug]`} as={`${link}/${slug}`} prefetch={false}>
           <a>
-            <FiExternalLink /> View Details
+            <FiExternalLink /> View
           </a>
         </Link>
       }

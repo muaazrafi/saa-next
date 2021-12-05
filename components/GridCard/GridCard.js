@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Row, Col } from "antd";
+import { FaBed, FaBath } from "react-icons/fa";
 import GridCardWrapper, {
   ImageWrapper,
   FavoriteIcon,
@@ -32,12 +34,17 @@ const GridCard = ({
         {title && <TitleArea>{title}</TitleArea>}
         <MetaWrapper className="meta_wrapper">
           {price && <PriceArea className="price">{price}</PriceArea>}
-          <br />
+          <Row>
+            <Col span={2} style={{ paddingTop: '2px' }} ><FaBed size='18px' /></Col>
+            <Col span={5}>4 Beds</Col>
+            <Col span={2} style={{ paddingTop: '2px' }} ><FaBath size='16px' /></Col>
+            <Col span={5}>4 Baths</Col>
+            <Col span={6}></Col>  
+          </Row>
           {/* {rating && <RatingArea className="rating">{rating}</RatingArea>} */}
           {viewDetailsBtn || editBtn ? (
             <ButtonGroup className="button_group">
               {viewDetailsBtn}
-              {editBtn}
             </ButtonGroup>
           ) : null}
         </MetaWrapper>
