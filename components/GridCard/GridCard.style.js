@@ -17,6 +17,7 @@ const GridCardWrapper = styled.div`
         position: absolute;
         top: 5px;
         padding-top: 3px;
+        right: 0px;
       }
     }
   }

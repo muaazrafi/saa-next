@@ -36,12 +36,13 @@ export default function HomePage({
   return (
     <>
       <Head>
-        <title>Listing Template</title>
+        <title>SAA Home Page</title>
       </Head>
-      <SearchArea />
-      <LocationGrid data={locationData} deviceType={deviceType} />
+      {/* <SearchArea /> */}
+      {/* <LocationGrid data={locationData} deviceType={deviceType} />  */}
       <Container fluid={true}>
-        <SectionTitle
+        Home Page Under Progress
+        {/* <SectionTitle
           title={<Heading content="Travelers’ Choice: Top hotels" />}
           link={
             <Link href={LISTING_POSTS_PAGE}>
@@ -70,7 +71,7 @@ export default function HomePage({
           data={luxaryHotelData.slice(0, limit)}
           limit={limit}
           deviceType={deviceType}
-        />
+        /> */}
       </Container>
     </>
   );

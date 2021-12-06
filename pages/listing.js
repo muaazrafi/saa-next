@@ -76,7 +76,7 @@ export default function ListingPage({ processedData, deviceType }) {
   return (
     <ListingWrapper>
       <Head>
-        <title>Listing | A react next listing template</title>
+        <title>SAA Listing</title>
       </Head>
 
       <Sticky top={82} innerZ={999} activeClass="isHeaderSticky">

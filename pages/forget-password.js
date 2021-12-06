@@ -6,7 +6,7 @@ export default function forgetPasswordPage() {
   return (
     <>
       <Head>
-        <title>Forget password | TripFinder.</title>
+        <title>Forget password | SAA.</title>
       </Head>
       <ForgetPassWord />
     </>
