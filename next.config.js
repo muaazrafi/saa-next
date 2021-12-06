@@ -7,7 +7,7 @@ const nextConfig = {
     GOOGLE_API_KEY: 'AIzaSyCmM0r8-DP62TVgH4dDliJko9CMMmGoHKc',
     REACT_APP_GOOGLE_MAP_API_KEY:
       'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCmM0r8-DP62TVgH4dDliJko9CMMmGoHKc&libraries=geometry,drawing,places',
-    SERVER_API: `https://saa-next.vercel.app`,
+    SERVER_API: `http://localhost:3001`,
   },
   images: {
     domains: ['s3.amazonaws.com'],
