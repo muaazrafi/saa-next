@@ -34,9 +34,9 @@ const ProfileMenu = ({ avatar }) => {
         <Menu.Item onClick={closeDropdown} key="0">
           <ActiveLink href={AGENT_PROFILE_PAGE}>View Profile</ActiveLink>
         </Menu.Item>
-        <Menu.Item onClick={closeDropdown} key="1">
+        {/* <Menu.Item onClick={closeDropdown} key="1">
           <ActiveLink href={ADD_HOTEL_PAGE}>Add Hotel</ActiveLink>
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item onClick={closeDropdown} key="2">
           <ActiveLink href={AGENT_ACCOUNT_SETTINGS_PAGE}>
             Account Settings
