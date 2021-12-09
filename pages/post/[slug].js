@@ -88,7 +88,7 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
                 ratingCount={ratingCount}
               />
               <Amenities amenities={amenities} />
-              <AccommodationPolicies amenities={amenities} />
+              <AccommodationPolicies accommodationpolicies={amenities} />
               <Calender/>
               <Location location={processedData[0]} />
             </Col>

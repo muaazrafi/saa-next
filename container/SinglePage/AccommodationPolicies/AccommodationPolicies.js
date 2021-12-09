@@ -13,7 +13,7 @@ const AccommodationPolicies = ({
   detailstyle,
 }) => {
   return (
-    <Element name="AccommodationPolicies" className="AccommodationPolicies">
+    <Element name="accommodationpolicies">
       
       <AccommodationPoliciesArea>
         <Heading as="h2" content="Accommodation Policies" {...titleStyleAP} />

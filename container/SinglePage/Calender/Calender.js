@@ -9,7 +9,7 @@ import { Element } from 'react-scroll';
 
 const Calender = ({ calenderStyle }) => {
   return (
-    <Element name="amenities" className="Amenities">
+    <Element name="calendar">
       <CalenderWrapper>
         <Heading as="h2" content="Availability"  />
       	<Calendar fullscreen={false} {...calenderStyle}/>
