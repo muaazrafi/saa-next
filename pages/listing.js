@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Sticky from 'react-stickynode';
@@ -27,12 +28,14 @@ import ListingWrapper, {
   PostsWrapper,
   ShowMapCheckbox,
 } from 'container/Listing/Listing.style';
+import { fetchApartments } from 'store/apartmentsSlice';
 
 const FilterDrawer = dynamic(() =>
   import('container/Listing/Search/MobileSearchView')
 );
 
 export default function ListingPage({ processedData, deviceType }) {
+  const dispatcher = useDispatch();
   const { state, dispatch } = useContext(SearchContext);
   const statekey = searchStateKeyCheck(state);
   const [posts, setPosts] = useState(
@@ -42,6 +45,7 @@ export default function ListingPage({ processedData, deviceType }) {
   const [showMap, setShowMap] = useState(false);
 
   useEffect(() => {
+    dispatcher(fetchApartments());
     if (statekey === true) {
       const newData = searchedData(processedData);
       setPosts(newData);
