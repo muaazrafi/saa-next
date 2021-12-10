@@ -7,22 +7,25 @@ import { ThemeProvider } from "styled-components";
 import theme from "themes/default.theme";
 import GlobalStyles from "themes/global.style";
 import Layout from "container/Layout/Layout";
-import AuthProvider from "context/AuthProvider";
 import { SearchProvider } from "context/SearchProvider";
+import { store } from "store/store";
+import { Provider } from "react-redux";
 import "antd/dist/antd.css";
 
 function App({ Component, router, pageProps }) {
   const { query } = router;
 
   return (
-    <SearchProvider query={query}>
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <GlobalStyles />
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
-    </SearchProvider>
+    <Provider store={store}>
+      <SearchProvider query={query}>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <GlobalStyles />
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </SearchProvider>
+    </Provider>
   );
 }
 
