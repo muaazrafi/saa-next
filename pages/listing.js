@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Sticky from 'react-stickynode';
@@ -43,16 +43,22 @@ export default function ListingPage({ processedData, deviceType }) {
   );
   const [loading, setLoading] = useState(false);
   const [showMap, setShowMap] = useState(false);
+  const { apartments } = useSelector(state => state.apartments);
 
   useEffect(() => {
     dispatcher(fetchApartments());
+    console.log("**************");
+    console.log("**************");
+    console.log("Apatments here:", apartments);
+    console.log("**************");
+    console.log("**************");
     if (statekey === true) {
       const newData = searchedData(processedData);
       setPosts(newData);
     } else {
       setPosts(processedData.slice(0, LISTING_PAGE_POST_LIMIT) || []);
     }
-  }, [statekey]);
+  }, [statekey, apartments]);
 
   const handleMapToggle = () => {
     setShowMap((showMap) => !showMap);
