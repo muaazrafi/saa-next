@@ -28,7 +28,7 @@ import ListingWrapper, {
   PostsWrapper,
   ShowMapCheckbox,
 } from 'container/Listing/Listing.style';
-import { fetchApartments } from 'store/apartmentsSlice';
+import { fetchApartments } from 'store/services/apartment';
 
 const FilterDrawer = dynamic(() =>
   import('container/Listing/Search/MobileSearchView')
@@ -38,20 +38,13 @@ export default function ListingPage({ processedData, deviceType }) {
   const dispatcher = useDispatch();
   const { state, dispatch } = useContext(SearchContext);
   const statekey = searchStateKeyCheck(state);
-  const [posts, setPosts] = useState(
-    processedData.slice(0, LISTING_PAGE_POST_LIMIT) || []
-  );
-  const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
+  
   const [showMap, setShowMap] = useState(false);
-  const { apartments } = useSelector(state => state.apartments);
+  const { apartments, loading } = useSelector(state => state.apartments);
 
   useEffect(() => {
     dispatcher(fetchApartments());
-    console.log("**************");
-    console.log("**************");
-    console.log("Apatments here:", apartments);
-    console.log("**************");
-    console.log("**************");
     if (statekey === true) {
       const newData = searchedData(processedData);
       setPosts(newData);
