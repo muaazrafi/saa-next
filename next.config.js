@@ -10,7 +10,7 @@ const nextConfig = {
     SERVER_API: `http://localhost:3001`,
   },
   images: {
-    domains: ['s3.amazonaws.com'],
+    domains: ['s3.amazonaws.com', 'saastaging.s3.amazonaws.com'],
   },
   webpack: (config) => {
     // HOTFIX: https://github.com/webpack-contrib/mini-css-extract-plugin/issues/250

@@ -44,14 +44,10 @@ export default function ListingPage({ processedData, deviceType }) {
   const { apartments, loading } = useSelector(state => state.apartments);
 
   useEffect(() => {
-    dispatcher(fetchApartments());
-    if (statekey === true) {
-      const newData = searchedData(processedData);
-      setPosts(newData);
-    } else {
-      setPosts(processedData.slice(0, LISTING_PAGE_POST_LIMIT) || []);
+    if (apartments.length === 0 && loading) {
+      dispatcher(fetchApartments());
     }
-  }, [statekey, apartments]);
+  }, [apartments]);
 
   const handleMapToggle = () => {
     setShowMap((showMap) => !showMap);
@@ -102,7 +98,7 @@ export default function ListingPage({ processedData, deviceType }) {
           link={SINGLE_POST_PAGE}
           columnWidth={columnWidth}
           deviceType={deviceType}
-          data={posts}
+          data={apartments}
           totalItem={processedData.length}
           limit={LISTING_PAGE_POST_LIMIT}
           loading={loading}

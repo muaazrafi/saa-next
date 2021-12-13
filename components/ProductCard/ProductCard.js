@@ -34,14 +34,15 @@ const responsive = {
   },
 };
 export default function ProductCard({
-  title,
-  rating,
-  location,
-  price,
-  ratingCount,
-  gallery,
+  name,
+  apart_type,
+  area,
+  city,  
+  currency,
+  display_price,
+  image_public_ids,
   slug,
-  link,
+  link_path,
   deviceType,
 }) {
   return (
@@ -53,12 +54,11 @@ export default function ProductCard({
           }}
         />
       }
-      location={location.formattedAddress}
-      title={title}
-      price={`$${price}/Montly`}
-      rating={<Rating rating={rating} ratingCount={ratingCount} type="bulk" />}
+      location={`${area} ${city}`}
+      title={name}
+      price={`$${display_price}/Montly`}
       viewDetailsBtn={
-        <Link href={`${link}/[slug]`} as={`${link}/${slug}`} prefetch={false}>
+        <Link href={link_path} as={link_path} prefetch={false}>
           <a>
             <FiExternalLink /> View
           </a>
@@ -83,13 +83,11 @@ export default function ProductCard({
         sliderClass=""
         slidesToSlide={1}
       >
-        {gallery.map(({ url, title }, index) => (
-          <Image
+        {image_public_ids.map((url, index) => (
+          <img 
             key={index}
             src={url}
-            alt={title}
-            layout="fill"
-            objectFit="cover"
+            alt={name}
           />
         ))}
       </Carousel>
