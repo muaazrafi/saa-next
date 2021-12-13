@@ -12,8 +12,6 @@ const Description = ({
   title,
   location,
   content,
-  rating,
-  ratingCount,
   titleStyle,
   locationMetaStyle,
   contentStyle,
@@ -24,9 +22,9 @@ const Description = ({
       <DescriptionWrapper>
         <Text content={location.formattedAddress} {...locationMetaStyle} />
         <Heading as="h2" content={title} {...titleStyle} />
-        <RatingMeta>
+        {/* <RatingMeta>
           <Rating rating={rating} ratingCount={ratingCount} type="bulk" />
-        </RatingMeta>
+        </RatingMeta> */}
         <Text content={content} {...contentStyle} />
         <TextButton>
           <Button>Read more about the hotel</Button>

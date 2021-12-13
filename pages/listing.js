@@ -36,8 +36,6 @@ const FilterDrawer = dynamic(() =>
 
 export default function ListingPage({ processedData, deviceType }) {
   const dispatcher = useDispatch();
-  const { state, dispatch } = useContext(SearchContext);
-  const statekey = searchStateKeyCheck(state);
   const [posts, setPosts] = useState([]);
   
   const [showMap, setShowMap] = useState(false);
@@ -106,7 +104,7 @@ export default function ListingPage({ processedData, deviceType }) {
           placeholder={<PostPlaceholder />}
         />
       </PostsWrapper>
-      {showMap && <ListingMap loading={loading} mapData={posts} />}
+      {showMap && <ListingMap loading={loading} mapData={apartments} />}
     </ListingWrapper>
   );
 }
