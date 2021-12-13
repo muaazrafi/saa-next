@@ -14,7 +14,7 @@ export const apartmentsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchApartments.fulfilled, (state, action) => {
-      state.apartments = action.payload;
+      state.apartments = state.apartments.concat(action.payload.apartments);
       state.loading = false;
     });
   },
