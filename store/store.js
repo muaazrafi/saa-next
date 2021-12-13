@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import apartmentSlice from './apartmentsSlice';
+import apartmentSlice from './apartmentSlice';
+import apartmentsSlice from './apartmentsSlice';
 
 export const store = configureStore({
   reducer: {
-    apartments: apartmentSlice,
+    apartment: apartmentSlice,
+    apartments: apartmentsSlice,
   },
 })

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import isEmpty from "lodash/isEmpty";
 import Sticky from "react-stickynode";
 import { Row, Col, Modal, Button } from "antd";
@@ -23,10 +25,16 @@ import SinglePageWrapper, {
 } from "container/SinglePage/SinglePageView.style";
 import ImageGrid from "container/SinglePage/ImageGrid/ImageGrid";
 import PostImageGallery from "container/SinglePage/ImageGallery/ImageGallery";
+import { fetchApartment } from "store/services/apartment";
 
 export default function SinglePostPage({ processedData, deviceType, query }) {
+  const dispatcher = useDispatch();
+  const router = useRouter();
+  const { slug } = router.query;
+  const { apartment, loading } = useSelector((state) => state.apartment);
   const [href, setHref] = useState("");
   const [isModalShowing, setIsModalShowing] = useState(false);
+
   if (isEmpty(processedData)) return <Loader />;
   const {
     reviews,
@@ -45,9 +53,12 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
     query.slug.split("-").join(" ").slice(1);
 
   useEffect(() => {
+    if (!apartment && loading) {
+      dispatcher(fetchApartment(slug));
+    }
     const path = window.location.href;
     setHref(path);
-  }, [setHref]);
+  }, [apartment]);
 
   return (
     <>
@@ -56,17 +67,20 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
       </Head>
       <SinglePageWrapper>
         <PostImage>
-          <ImageGrid
-            viewMore={
-              <Button
-                type="primary"
-                onClick={() => setIsModalShowing(true)}
-                className="image_gallery_button"
-              >
-                View Photos
-              </Button>
-            }
-          />
+          {apartment && apartment.image_public_ids && (
+            <ImageGrid
+              images={apartment.image_public_ids}
+              viewMore={
+                <Button
+                  type="primary"
+                  onClick={() => setIsModalShowing(true)}
+                  className="image_gallery_button"
+                >
+                  View Photos
+                </Button>
+              }
+            />
+          )}
           {/* <Image
             src="/images/single-post-bg.jpg"
             layout="fill"
@@ -89,7 +103,7 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
               />
               <Amenities amenities={amenities} />
               <AccommodationPolicies accommodationpolicies={amenities} />
-              <Calender/>
+              <Calender />
               <Location location={processedData[0]} />
             </Col>
             <Col xl={8}>
@@ -137,7 +151,9 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
         closable={false}
       >
         <>
-          <PostImageGallery />
+          {apartment && apartment.image_public_ids && (
+            <PostImageGallery images={apartment.image_public_ids} />
+          )}
           <Button
             onClick={() => setIsModalShowing(false)}
             className="image_gallery_close"

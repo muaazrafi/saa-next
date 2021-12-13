@@ -11,3 +11,13 @@ export const fetchApartments = createAsyncThunk(
     return response.apartments;
   }
 )
+
+export const fetchApartment = createAsyncThunk(
+  'apartments/fetchApartments',
+  async (slug, thunkAPI) => {
+    const response = await fetch(`/api/apartments/${slug}.json`).then((res) => {
+      return res.json()
+    });
+    return response.apartment;
+  }
+)

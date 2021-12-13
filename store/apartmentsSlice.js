@@ -8,8 +8,8 @@ const initialState = {
   loading: true
 }
 
-export const apartmentSlice = createSlice({
-  name: 'counter',
+export const apartmentsSlice = createSlice({
+  name: 'apartments',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -20,4 +20,4 @@ export const apartmentSlice = createSlice({
   },
 });
 
-export default apartmentSlice.reducer;
+export default apartmentsSlice.reducer;

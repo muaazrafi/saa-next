@@ -6,6 +6,7 @@ const ImageGridWrapper = styled.div`
 
   .image-grid-first {
     height: 400px;
+    width: 550px;
     object-fit: cover;
   }
   .image-grid-second {
@@ -13,11 +14,13 @@ const ImageGridWrapper = styled.div`
     height: 200px;
     padding-bottom: 10px;
     object-fit: cover;
+    width: 270px;
   }
   .image-grid-third {
     display: block;
     height: 200px;
     object-fit: cover;
+    width: 270px;
   }
 `;
   
