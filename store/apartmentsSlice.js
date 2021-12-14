@@ -5,7 +5,26 @@ import { fetchApartments } from './services/apartment';
 
 const initialState = {
   apartments: [],
-  loading: true
+  areas: [],
+  amenties: null,
+  city: [],
+  currentPage: 0,
+  featuredApartments: [],
+  loading: true,
+  max_price: 0,
+  properties: [],
+  search: {
+    property_city_matches: "barcelona",
+    number_of_max_occupants_gteq: "",
+    property_area_in: [],
+    apart_type_eq: null,
+    startDate: null,
+    endDate: null,
+    lat: "",
+    lng: ""
+  },
+  sortOrder: null,
+  total: 0
 }
 
 export const apartmentsSlice = createSlice({
