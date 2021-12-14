@@ -37,7 +37,6 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
 
   if (isEmpty(processedData)) return <Loader />;
   const {
-    reviews,
     rating,
     ratingCount,
     price,
