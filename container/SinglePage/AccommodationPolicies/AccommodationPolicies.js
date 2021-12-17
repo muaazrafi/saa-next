@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Heading from 'components/UI/Heading/Heading';
 import Text from 'components/UI/Text/Text';
 import {Row,Col,Divider} from 'antd';
+import {  useSelector } from "react-redux";
 import AccommodationPoliciesArea, { AccommodationPolicieswrapper } from './AccommodationPolicies.style';
 import { Element } from 'react-scroll';
 
@@ -12,58 +13,63 @@ const AccommodationPolicies = ({
   titleStyleAP,
   detailstyle,
 }) => {
+  const { apartment, loading } = useSelector((state) => state.apartment);
+  
   return (
     <Element name="accommodationpolicies">
-      
       <AccommodationPoliciesArea>
         <Heading as="h2" content="Accommodation Policies" {...titleStyleAP} />
         <AccommodationPolicieswrapper>
           
           <Row gutter={[24, 24]}>
-            <Col span={8}>
-              <Heading content="Rent & Bills"{...titleStyle}/>
-            </Col>
-            <Col span={16}>
-              <Text  style={{ margin: '20px !important' }} content="Rent and utilities are due every 30 days.."
-                {...detailstyle}/>
-            </Col>
-          </Row>
-
-          <Row gutter={[24, 24]}>
-            <Col span={8}>
-              <Heading  content="Security Deposit"{...titleStyle}/>
-            </Col>
-            <Col span={16}>
-                <Text  style={{ margin: '20px !important' }} content="A €1600 security deposit is paid directly to your accommodation provider. In the event you move out earlier than expected or there are damages during your stay, the accommodation provider may keep a portion or all of the deposit."
-                {...detailstyle}/>
-            </Col>
+            {apartment && 
+              <>
+                <Col span={8}> <Heading content="Rent & Bills"{...titleStyle }/></Col>     
+                <Col span = {16}>
+                  <Text  style = {{ margin: '20px !important' }} content= {apartment.term_and_cond}{...detailstyle}/>
+                </Col>
+              </>
+            }
           </Row>
           <Row gutter={[24, 24]}>
-            <Col span={8}>
-              <Heading content="Rules"{...titleStyle}/>
-            </Col>
-            <Col span={16}>
-              <Text style={{ margin: '20px !important' }} content="Respect of the apartment and the neighbors. No noises or parties between 8pm - 8am"
-              {...detailstyle}/>
-            </Col>
+            {apartment && 
+              <>
+                <Col span={8}> <Heading content="Security Deposit"{...titleStyle }/></Col>     
+                <Col span = {16}>
+                  <Text  style = {{ margin: '20px !important' }} content= {apartment.deposit_instructions}{...detailstyle}/>
+                </Col>
+              </>
+            }
           </Row>
           <Row gutter={[24, 24]}>
-            <Col span={8}>
-              <Heading content="Cancellation Policy"{...titleStyle}/>
-            </Col>
-            <Col span={16}>
-              <Text style={{ margin: '20px !important' }} content="Moderate:  If a user cancels up to 60 days before move in date, there is a 50% refund for the payment on the first month rent payment. If the user cancels up to 30 days before move in date there is a 25% refund for the payment on the first month rent payment. If the user cancels under 30 days before move in date, there is no refund available for the payment on the first month rent payment."
-              {...detailstyle}/>
-            </Col>
+            {apartment && 
+              <>
+                <Col span={8}> <Heading content="Rules"{...titleStyle }/></Col>     
+                <Col span = {16}>
+                  <Text  style = {{ margin: '20px !important' }} content= {apartment.rules}{...detailstyle}/>
+                </Col>
+              </>
+            }
           </Row>
           <Row gutter={[24, 24]}>
-            <Col span={8}>
-              <Heading content="Contract Type"{...titleStyle}/>
-            </Col>
-            <Col span={16}>
-              <Text style={{ margin: '20px !important' }} content="Pro-rated: Rent is calculated in proportion to the number of days of your stay. You will pay the monthly rent for each whole month that you book, but the first and last month you will simply pay for the days that you stay (like a hotel)"
-              {...detailstyle}/>
-            </Col>
+            {apartment && 
+              <>
+                <Col span={8}> <Heading content="Cancellation Policy"{...titleStyle }/></Col>     
+                <Col span = {16}>
+                  <Text  style = {{ margin: '20px !important' }} content= {apartment.cancellation_policy}{...detailstyle}/>
+                </Col>
+              </>
+            }
+          </Row>
+          <Row gutter={[24, 24]}>
+            {apartment && 
+              <>
+                <Col span={8}> <Heading content="Contract Type"{...titleStyle }/></Col>     
+                <Col span = {16}>
+                  <Text  style = {{ margin: '20px !important' }} content= {apartment.contract_type}{...detailstyle}/>
+                </Col>
+              </>
+            }
           </Row>
         </AccommodationPolicieswrapper>
       </AccommodationPoliciesArea>
