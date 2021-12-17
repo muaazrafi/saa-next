@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from "react-redux";
 import Heading from 'components/UI/Heading/Heading';
 import {Row,Col,Divider} from 'antd';
 import { FaWifi, FaCarAlt, FaSwimmer, FaAirFreshener,FaCheck } from 'react-icons/fa';
@@ -10,6 +11,7 @@ import { TextButton } from '../SinglePageView.style';
 import { Element } from 'react-scroll';
 
 const Amenities = ({ titleStyle, linkStyle }) => {
+  const { apartment, loading } = useSelector((state) => state.apartment);
   return (
     <Element name="amenities" className="Amenities">
       <AmenitiesWrapper>
@@ -26,27 +28,13 @@ const Amenities = ({ titleStyle, linkStyle }) => {
           </Link>
         </TextButton>  
         <AmenitiesAreaMore>
-          <Row gutter={[24, 24]}>
-            <Col span={8}>{< FaCheck />}   Air conditioning</Col>
-            <Col span={8}>{< FaCheck />} Balcony</Col>
-            <Col span={8}>{< FaCheck />} Bed linens</Col>
-            <Col span={8}>{< FaCheck />} Carbon monoxide detector</Col>
-            <Col span={8}>{< FaCheck />} Chairs</Col>
-            <Col span={8}>{< FaCheck />} Closet</Col>
-            <Col span={8}>{< FaCheck />}   Air conditioning</Col>
-            <Col span={8}>{< FaCheck />} Balcony</Col>
-            <Col span={8}>{< FaCheck />} Bed linens</Col>
-            <Col span={8}>{< FaCheck />} Carbon monoxide detector</Col>
-            <Col span={8}>{< FaCheck />} Chairs</Col>
-            <Col span={8}>{< FaCheck />} Closet</Col>
-            <Col span={8}>{< FaCheck />}   Air conditioning</Col>
-            <Col span={8}>{< FaCheck />} Balcony</Col>
-            <Col span={8}>{< FaCheck />} Bed linens</Col>
-            <Col span={8}>{< FaCheck />} Carbon monoxide detector</Col>
-            <Col span={8}>{< FaCheck />} Chairs</Col>
-            <Col span={8}>{< FaCheck />} Closet</Col>
+          <Row gutter={[16, 16]}>
+            {apartment && apartment.amenities.map((amenitie) =>
+              <Col span={6}>{<FaCheck/>}{amenitie};</Col>
+            )};
           </Row>
         </AmenitiesAreaMore>
+
       </AmenitiesWrapper>
     </Element>
   );

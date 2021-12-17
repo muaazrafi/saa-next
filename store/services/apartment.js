@@ -21,3 +21,4 @@ export const fetchApartment = createAsyncThunk(
     return response.apartment;
   }
 )
+

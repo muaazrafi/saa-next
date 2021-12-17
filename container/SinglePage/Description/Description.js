@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Element } from 'react-scroll';
 import Rating from 'components/UI/Rating/Rating';
+import { useDispatch, useSelector } from "react-redux";
 import Heading from 'components/UI/Heading/Heading';
 import Text from 'components/UI/Text/Text';
 import { Button } from 'antd';
@@ -17,15 +18,16 @@ const Description = ({
   contentStyle,
   linkStyle,
 }) => {
+  const { apartment, loading } = useSelector((state) => state.apartment);
   return (
     <Element name="overview" className="overview">
       <DescriptionWrapper>
         <Text content={location.formattedAddress} {...locationMetaStyle} />
-        <Heading as="h2" content={title} {...titleStyle} />
+        <Heading as="h2" content={apartment && apartment.name} {...titleStyle} />
         {/* <RatingMeta>
           <Rating rating={rating} ratingCount={ratingCount} type="bulk" />
         </RatingMeta> */}
-        <Text content={content} {...contentStyle} />
+        <Text content={apartment && apartment.apartment_description } {...contentStyle} />
         <TextButton>
           <Button>Read more about the hotel</Button>
         </TextButton>
