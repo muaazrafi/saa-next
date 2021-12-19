@@ -24,6 +24,7 @@ const HotelMapMarkerCluster = ({ location, clusterer }) => {
 				formattedAddress: `${item.name}`,
 				price: item.display_price,
 				currency: item.currency,
+				link: item.link_path
 			});
 		});
 
