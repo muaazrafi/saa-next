@@ -1,6 +1,5 @@
 import React from 'react';
 import { InfoWindow } from '@react-google-maps/api';
-import Rating from 'components/UI/Rating/Rating';
 import GridCard from '../GridCard/GridCard';
 
 const MapInfoWindow = ({ data, onCloseClick }) => {
@@ -8,7 +7,7 @@ const MapInfoWindow = ({ data, onCloseClick }) => {
 	return (
 		<InfoWindow
 			position={position}
-			options={{ pixelOffset: new window.google.maps.Size(0, -85) }}
+			options={{ pixelOffset: new window.google.maps.Size(0, -40) }}
 			id={data?.id}
 			onCloseClick={onCloseClick}
 		>
@@ -17,13 +16,6 @@ const MapInfoWindow = ({ data, onCloseClick }) => {
 				location={data?.formattedAddress}
 				title={data?.title}
 				price={`$${data?.price}/Monthly`}
-				rating={
-					<Rating
-						rating={data?.rating}
-						ratingCount={data?.ratingCount}
-						type='bulk'
-					/>
-				}
 			>
 				<img src={data?.thumbUrl} alt={data?.title} />
 			</GridCard>

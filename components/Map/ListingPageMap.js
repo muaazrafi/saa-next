@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Marker } from '@react-google-maps/api';
 import HotelInfoWindow from './MapInfoWindow';
 
-// const MakerImage = '/images/hotelMapMarker.png';
+const MakerImage = 'https://d1d0zx56gx2nys.cloudfront.net/map_icon.png';
 
 const HotelMapMarkerCluster = ({ location, clusterer }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -13,19 +13,17 @@ const HotelMapMarkerCluster = ({ location, clusterer }) => {
 		setIsOpen(!isOpen);
 		setMarkerIndex(index);
 	};
-
 	location &&
 		location.forEach((item) => {
 			hotelData.push({
 				id: item.id,
-				lat: parseFloat(item.location.lat),
-				lng: parseFloat(item.location.lng),
+				lat: parseFloat(item.latitude),
+				lng: parseFloat(item.longitude),
 				title: item.title,
-				thumbUrl: item.image.thumb_url,
-				formattedAddress: item.location.formattedAddress,
-				price: item.price,
-				rating: item.rating,
-				ratingCount: item.ratingCount,
+				thumbUrl: item.image_public_ids[0],
+				formattedAddress: `${item.name}`,
+				price: item.display_price,
+				currency: item.currency,
 			});
 		});
 
@@ -33,7 +31,7 @@ const HotelMapMarkerCluster = ({ location, clusterer }) => {
 		return (
 			<Marker
 				key={index}
-				// icon={MakerImage}
+				icon={MakerImage}
 				clusterer={clusterer}
 				position={singlePostLocation}
 				onClick={() => infoWindowToggle(singlePostLocation.id)}
