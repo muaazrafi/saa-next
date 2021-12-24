@@ -10,6 +10,10 @@ const CategroySearchWrapper = styled.div`
     &:last-child {
       margin-right: 0;
     }
+    .scroll_checkbox{
+      overflow: auto;
+      height: 300px;
+    }
 
     .popup_handler {
       button,

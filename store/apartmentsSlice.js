@@ -6,7 +6,7 @@ import { fetchApartments } from './services/apartment';
 const initialState = {
   apartments: [],
   areas: [],
-  amenties: null,
+  amenties: [],
   city: [],
   currentPage: 0,
   featuredApartments: [],
@@ -34,6 +34,7 @@ export const apartmentsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchApartments.fulfilled, (state, action) => {
       state.apartments = state.apartments.concat(action.payload.apartments);
+      state.amenties = state.amenties.concat(action.payload.amenties_counts);
       state.loading = false;
     });
   },
