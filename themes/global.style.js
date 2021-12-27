@@ -234,8 +234,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .popoverCheckBox{
-    height: 350px;
-    overflow-y: auto;
     .ant-checkbox-group-item{
       display: flex;
       padding-bottom: 5px;

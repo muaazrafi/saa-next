@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { capitalize, filter, sortBy } from "lodash";
+import PerfectScrollbar from "react-perfect-scrollbar";
 import ViewWithPopup from "components/UI/ViewWithPopup/ViewWithPopup";
 import { Button, Checkbox, Input, Space, Popover } from "antd";
 import { getAmenities, getPropertyType } from "../SearchParams";
-import CategroySearchWrapper from "./CategorySearch.style";
+import CategroySearchWrapper from "./AmentiesSearch.style";
+import { height } from "styled-system";
 
 const { Search } = Input;
 
-const CategorySearchNext = (props) => {
+const AmentiesSearch = (props) => {
   const { amenties } = useSelector((state) => state.apartments);
   const [processedAmenties, setProcessedAmenties] = useState([]);
 
@@ -48,47 +50,29 @@ const CategorySearchNext = (props) => {
   return (
     <CategroySearchWrapper>
       <Popover
-        trigger='click'
+        trigger="click"
         placement="bottomLeft"
+        getPopupContainer={(trigger) => trigger.parentElement}
         content={
           <>
             <Search
               placeholder="Search Amenties"
               onChange={searchAmenties}
-              style={{ width: "240px", marginBottom: "20px", display: 'flex' }}
+              style={{ width: "240px", marginBottom: "20px", display: "flex" }}
             />
-            <Checkbox.Group
-              className="popoverCheckBox"
-              options={processedAmenties}
-            />
+            <PerfectScrollbar style={{ height: "350px" }}>
+              <Checkbox.Group
+                className="popoverCheckBox"
+                options={processedAmenties}
+              />
+            </PerfectScrollbar>
           </>
         }
       >
         <Button>Amenties</Button>
       </Popover>
-      <ViewWithPopup
-        // className={processedAmenties.length > 0 ? "activated" : ""}
-        key={getAmenities.id}
-        noView={true}
-        view={<Button type="default">{getAmenities.name}</Button>}
-        popup={
-          <>
-            <Space direction="vertical">
-              <Search
-                placeholder="Search Amenties"
-                onChange={searchAmenties}
-                style={{ width: "240px", marginBottom: "20px" }}
-              />
-            </Space>
-            <Checkbox.Group
-              style={{ height: "350px", overflow: "auto" }}
-              options={processedAmenties}
-            />
-          </>
-        }
-      />
     </CategroySearchWrapper>
   );
 };
 
-export default CategorySearchNext;
+export default AmentiesSearch;
