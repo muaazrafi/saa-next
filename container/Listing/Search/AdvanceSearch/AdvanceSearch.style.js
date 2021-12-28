@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import { themeGet } from '@styled-system/theme-get';
 
-const AmentiesSearchWrapper = styled.div`
+const AdvanceSearchWrapper = styled.div`
   display: flex;
   align-items: center;
 
@@ -186,4 +186,4 @@ export const ActionWrapper = styled.div`
   }
 `;
 
-export default AmentiesSearchWrapper;
+export default AdvanceSearchWrapper;

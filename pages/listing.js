@@ -5,7 +5,7 @@ import Sticky from "react-stickynode";
 import { BsMap, BsMapFill } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
-import AmentiesSearch from "container/Listing/Search/AmentiesSearch/AmentiesSearch";
+import AdvanceSearch from "container/Listing/Search/AdvanceSearch/AdvanceSearch";
 import BasicSearch from "container/Listing/Search/BasicSearch/BasicSearch";
 import { Checkbox, Row, Col, Button } from "antd";
 import SectionGrid from "components/SectionGrid/SectionGrid";
@@ -86,29 +86,7 @@ export default function ListingPage({ processedData, deviceType }) {
             </ShowMapCheckbox>
           }
         />
-        <Row>
-          <Col style={{ width: '60%' }} >
-            <AmentiesSearch />
-          </Col>
-          <Col
-            style={{
-              paddingLeft: "10px",
-            }}
-          >
-            <Button>
-              <MdClear />
-            </Button>
-          </Col>
-          <Col
-            style={{
-              paddingLeft: "10px",
-            }}
-          >
-            <Button type="primary">
-              Search
-            </Button>
-          </Col>
-        </Row>
+        <AdvanceSearch />
       </Sticky>
 
       <PostsWrapper className={columnCount}>
