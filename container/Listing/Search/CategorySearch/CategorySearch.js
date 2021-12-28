@@ -9,8 +9,12 @@ import CategroySearchWrapper from "./CategorySearch.style";
 const { Search } = Input;
 
 const CategorySearchNext = (props) => {
+  
   const { amenties } = useSelector((state) => state.apartments);
+  
   const [processedAmenties, setProcessedAmenties] = useState([]);
+  
+  const Property_type =['Aparments','Rooms','Halls','Beds']  
 
   useEffect(() => {
     if (amenties.length > 0) {
@@ -45,6 +49,10 @@ const CategorySearchNext = (props) => {
     }
   };
 
+  const search_propertype = (e) => {
+    return Property_type
+  }
+
   return (
     <CategroySearchWrapper>
       <Popover
@@ -53,40 +61,36 @@ const CategorySearchNext = (props) => {
         content={
           <>
             <Search
-              placeholder="Search Amenties"
-              onChange={searchAmenties}
-              style={{ width: "240px", marginBottom: "20px", display: 'flex' }}
+              placeholder = "Search Amenties"
+              onChange = {searchAmenties}
+              style = {{ width: "240px", marginBottom: "20px", display: 'flex' }}
             />
             <Checkbox.Group
-              className="popoverCheckBox"
-              options={processedAmenties}
+              className = "popoverCheckBox"
+              options = {processedAmenties}
             />
           </>
         }
       >
         <Button>Amenties</Button>
       </Popover>
-      <ViewWithPopup
-        // className={processedAmenties.length > 0 ? "activated" : ""}
-        key={getAmenities.id}
-        noView={true}
-        view={<Button type="default">{getAmenities.name}</Button>}
-        popup={
+
+      <Popover
+        trigger='click'
+        placement="bottomLeft"
+        content={
           <>
-            <Space direction="vertical">
-              <Search
-                placeholder="Search Amenties"
-                onChange={searchAmenties}
-                style={{ width: "240px", marginBottom: "20px" }}
-              />
-            </Space>
             <Checkbox.Group
-              style={{ height: "350px", overflow: "auto" }}
-              options={processedAmenties}
+              className = "popoverCheckBox"
+              style = {{ width: "240px",height: "150px" }}
+              options = { Property_type }
             />
           </>
         }
-      />
+      >
+        <Button>Property</Button>
+      </Popover>
+     
     </CategroySearchWrapper>
   );
 };

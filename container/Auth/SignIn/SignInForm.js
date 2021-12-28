@@ -2,104 +2,76 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import { useForm, Controller } from 'react-hook-form';
 import { MdLockOpen } from 'react-icons/md';
-import { Input, Switch, Button } from 'antd';
+import { Form, Button, Checkbox, Input, Switch } from 'antd';
 import FormControl from 'components/UI/FormControl/FormControl';
 import { AuthContext } from 'context/AuthProvider';
 import { FORGET_PASSWORD_PAGE } from 'settings/constant';
 import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+
 
 const SignInForm = () => {
-  const { signIn } = true;
-  const { control, errors, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    signIn(data);
+
+  const onFinish = (values) => {
+    console.log('Received values of form: ', values);
   };
 
+
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControl
-        label="Email"
-        htmlFor="email"
-        error={
-          errors.email && (
-            <>
-              {errors.email?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-              {errors.email?.type === 'pattern' && (
-                <span>Please enter a valid email address!</span>
-              )}
-            </>
-          )
-        }
-      >
-        <Controller
-          as={<Input />}
-          type="email"
-          id="email"
-          name="email"
-          defaultValue=""
-          control={control}
-          rules={{
+    <Form
+      name="normal_login"
+      className="login-form"
+      initialValues={{
+        remember: true,
+      }}
+      onFinish={onFinish}
+    >
+      <Form.Item
+        name="username"
+        rules={[
+          {
             required: true,
-            pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-          }}
-        />
-      </FormControl>
-      <FormControl
-        label="Password"
-        htmlFor="password"
-        error={
-          errors.password && (
-            <>
-              {errors.password?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-              {errors.password?.type === 'minLength' && (
-                <span>Password must be at lest 6 characters!</span>
-              )}
-              {errors.password?.type === 'maxLength' && (
-                <span>Password must not be longer than 20 characters!</span>
-              )}
-            </>
-          )
-        }
+            message: 'Please input your Username!',
+          },
+        ]}
       >
-        <Controller
-          as={<Input.Password />}
-          defaultValue=""
-          control={control}
-          id="password"
-          name="password"
-          rules={{ required: true, minLength: 6, maxLength: 20 }}
-        />
-      </FormControl>
-      <FieldWrapper>
-        <SwitchWrapper>
-          <Controller
-            as={<Switch />}
-            name="rememberMe"
-            defaultValue={false}
-            valueName="checked"
-            control={control}
-          />
-          <Label>Remember Me</Label>
-        </SwitchWrapper>
-        <Link href={FORGET_PASSWORD_PAGE}>
-          <a>Forget Password ?</a>
-        </Link>
-      </FieldWrapper>
-      <Button
-        className="signin-btn"
-        type="primary"
-        htmlType="submit"
-        size="large"
-        style={{ width: '100%' }}
+
+      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+      
+      </Form.Item>
+      <Form.Item
+        name="password"
+        rules={[
+          {
+            required: true,
+            message: 'Please input your Password!',
+          },
+        ]}
       >
-        <MdLockOpen />
-        Login
-      </Button>
-    </form>
+        <Input
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          placeholder="Password"
+        />
+      </Form.Item>
+      <Form.Item>
+        <Form.Item name="remember" valuePropName="checked" noStyle>
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
+
+        <a className="login-form-forgot" href="">
+          Forgot password
+        </a>
+      </Form.Item>
+
+      <Form.Item>
+        <Button type="primary" htmlType="submit" className="login-form-button">
+          Log in
+        </Button>
+        Or <a href="">register now!</a>
+      </Form.Item>
+    </Form>
   );
 };
 

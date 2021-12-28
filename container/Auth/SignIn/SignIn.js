@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Divider } from 'antd';
+import { Divider,Row,Col,Image } from 'antd';
 import Logo from 'components/UI/Logo/Logo';
 import { REGISTRATION_PAGE } from 'settings/constant';
 import SignInForm from './SignInForm';
@@ -17,33 +16,25 @@ import Wrapper, {
 const SignIn = () => {
   return (
     <Wrapper>
-      <FormWrapper>
-        <Logo
-          withLink
-          linkTo="/"
-          src="/images/logo-alt.svg"
-          title="SAA."
-        />
-        <Title>Welcome Back</Title>
-        <TitleInfo>Please log into your account</TitleInfo>
-        <SignInForm />
-        <Divider>Or log in with </Divider>
-        <SocialLogin />
-        <Text>
-          Don't Have an Account?&nbsp;
-          <Link href={REGISTRATION_PAGE}>
-            <a>Registration</a>
-          </Link>
-        </Text>
-      </FormWrapper>
-      <BannerWrapper>
-        <Image
-          src="/images/login-page-bg.jpg"
-          layout="fill"
-          objectFit="cover"
-          alt="Auth banner"
-        />
-      </BannerWrapper>
+      <Row gutter={[8, 8]} type='flex'>
+        <Col span={12}>
+          <BannerWrapper>
+            <Image
+              src="/images/login_signup.png"
+              width={398}
+            />
+         </BannerWrapper>
+        </Col>
+        <Col span={12}>
+        <FormWrapper>
+          <SignInForm/>
+        </FormWrapper>
+        </Col>
+      </Row>
+
+
+      
+
     </Wrapper>
   );
 };

@@ -255,11 +255,16 @@ const CategorySearchNext = (props) => {
       />
 
       <ViewWithPopup
+        
         className={dateRangeActivateClass}
+        
         key={400}
+        
         noView={true}
+        
         view={<Button type="default">Choose Date</Button>}
-        popup={
+        
+        popup = {
           <DateRangePickerBox
             startDateId="startDate-id-category"
             endDateId="endDate-id-category"
@@ -267,12 +272,17 @@ const CategorySearchNext = (props) => {
               current.setStartDate ? moment(current.setStartDate) : null
             }
             endDate={current.setEndDate ? moment(current.setEndDate) : null}
+            
             numberOfMonths={1}
+            
             small={true}
+            
             item={calenderItem}
+            
             updateSearchData={(value) => onChange(value, 'date_range')}
           />
         }
+
       />
 
       <ViewWithPopup

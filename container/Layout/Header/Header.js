@@ -105,15 +105,18 @@ const Header = ({ router }) => {
             visible={state}
           >
             <CloseDrawer>
+              
               <button onClick={sidebarHandler}>
                 <IoIosClose />
               </button>
             </CloseDrawer>
             {loggedIn ? (
+              
               <AvatarWrapper>
                 <AvatarImage>
                   <Logo src={avatarImg} />
                 </AvatarImage>
+                
                 <AvatarInfo>
                   <Text as="h3" content="Nova Scotia" />
                   <Link href={AGENT_PROFILE_PAGE}>

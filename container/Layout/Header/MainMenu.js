@@ -1,17 +1,40 @@
-import React from 'react';
+import {React,useState} from 'react';
 import { withRouter } from 'next/router';
-import { Menu } from 'antd';
+import { Menu,Modal, Button } from 'antd';
 import ActiveLink from 'library/helpers/activeLink';
+import SignIn from 'container/Auth/SignIn/SignIn';
 
 import {
   HOME_PAGE,
+  LOGIN_PAGE,
   LISTING_POSTS_PAGE,
   AGENT_PROFILE_PAGE,
   PRICING_PLAN_PAGE,
 } from 'settings/constant';
 
 const MainMenu = ({ className, router }) => {
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
+
+  <>
+      <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={isModalVisible} onOk={handleOk}  onCancel={handleCancel} width={800}>
+        <SignIn/>
+      </Modal>
+    
     <Menu className={className}>
       <Menu.Item key="0">
         <ActiveLink
@@ -21,6 +44,8 @@ const MainMenu = ({ className, router }) => {
            Become a Rep 
         </ActiveLink>
       </Menu.Item>
+     
+
       <Menu.Item key="1">
         <ActiveLink
           className={router.pathname === LISTING_POSTS_PAGE ? 'active' : ''}
@@ -37,6 +62,8 @@ const MainMenu = ({ className, router }) => {
           Agent
         </ActiveLink>
       </Menu.Item>
+      
+
       <Menu.Item key="3">
         <ActiveLink
           className={router.pathname === PRICING_PLAN_PAGE ? 'active' : ''}
@@ -45,7 +72,15 @@ const MainMenu = ({ className, router }) => {
           Pricing
         </ActiveLink>
       </Menu.Item> */}
+
+      <Menu.Item key="4">
+        <Button  onClick={showModal}>
+          Log in
+        </Button>
+      </Menu.Item>
     </Menu>
+  </>
+
   );
 };
 

@@ -2,16 +2,15 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 const Wrapper = styled.div`
-  display: flex;
   align-items: center;
   flex-wrap: wrap;
 `;
 
 export const FormWrapper = styled.div`
-  width: 43%;
+  width: 100%;
   padding: 81px;
   @media (min-width: 1441px) {
-    padding: 130px;
+    padding: 70px;
   }
   @media (max-width: 1200px) {
     width: 50%;
@@ -52,6 +51,8 @@ export const FormWrapper = styled.div`
       background-color: #0088E5d1;
     }
   }
+
+
 
   .ant-divider {
     margin: 41px 0 !important;
@@ -208,9 +209,8 @@ export const Text = styled.p`
 `;
 
 export const BannerWrapper = styled.div`
-  width: 57%;
-  height: 100%;
-  position: fixed;
+  width: 100%;
+  height: 0%;
   top: 0;
   right: 0;
   background-color: #e9e8ec;

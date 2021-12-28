@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import Sticky from 'react-stickynode';
 import Toolbar from 'components/UI/Toolbar/Toolbar';
 import CategorySearch from 'container/Listing/Search/CategorySearch/CategorySearch';
+import TestCategorySearch from 'container/Listing/Search/CategorySearch/Testfilter';
 import { Checkbox } from 'antd';
 import SectionGrid from 'components/SectionGrid/SectionGrid';
 import { PostPlaceholder } from 'components/UI/ContentLoader/ContentLoader';
