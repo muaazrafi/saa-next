@@ -71,7 +71,7 @@ const Header = ({ router }) => {
           avatar={<Logo src={avatarImg} />}
           profileMenu={<ProfileMenu avatar={<Logo src={avatarImg} />} />}
           headerType={headerType}
-          // searchComponent={<NavbarSearch />}
+          searchComponent={<NavbarSearch />}
           location={router}
           searchVisibility={searchVisibility}
         />
@@ -86,7 +86,7 @@ const Header = ({ router }) => {
                 title=""
               />
             </>
-            {/* <NavbarSearch /> */}
+            <NavbarSearch />
           </LogoArea>
           <Button
             className={`hamburg-btn ${state ? 'active' : ''}`}

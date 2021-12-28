@@ -74,6 +74,12 @@ const GlobalStyle = createGlobalStyle`
     height: auto;
   }
 
+  .sticky-white-bg{
+    padding: 10px;
+    background: #fff !important;
+    border-bottom: 1px solid  #E6E6E6;
+  }
+
   #__next {
     > .ant-layout {
       min-height: 100vh;
@@ -218,6 +224,15 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover{
+    background: #0088E5 !important;
+    border: 1px double #0088E5 !important;
+  }
+
+  .CalendarDay__selected_span {
+    background: #0088e587 !important;
+    border: 1px double #0088e587 !important;
+  }
   /*------------------------------------------*/ 
   // style for ant tooltip
   /*------------------------------------------*/

@@ -5,8 +5,6 @@ const ReactDatesStyleWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 40px;
-
   .ant-form-item {
     display: flex;
     align-items: center;
@@ -38,7 +36,7 @@ const ReactDateWrapper = ComponentName => styled(ComponentName)`
     .CalendarDay--selected-start,
     .CalendarDay--selected-end,
     .CalendarDay--selected {
-      color: #fff;
+      color: #000;
     }
 
     .CalendarDay--selected-span {

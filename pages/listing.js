@@ -1,20 +1,19 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
-import dynamic from "next/dynamic";
 import Sticky from "react-stickynode";
-import Toolbar from "components/UI/Toolbar/Toolbar";
+import { BsMap, BsMapFill } from "react-icons/bs";
+import { FaSearch } from "react-icons/fa";
+import { MdClear } from "react-icons/md";
 import AmentiesSearch from "container/Listing/Search/AmentiesSearch/AmentiesSearch";
-import { Checkbox } from "antd";
+import BasicSearch from "container/Listing/Search/BasicSearch/BasicSearch";
+import { Checkbox, Row, Col, Button } from "antd";
 import SectionGrid from "components/SectionGrid/SectionGrid";
 import { PostPlaceholder } from "components/UI/ContentLoader/ContentLoader";
 import ListingMap from "container/Listing/ListingMap";
-import { SearchContext } from "context/SearchProvider";
 import {
   getAPIData,
   paginator,
-  searchedData,
-  searchStateKeyCheck,
   processAPIData,
 } from "library/helpers/get-api-data";
 import { getDeviceType } from "library/helpers/get-device-type";
@@ -29,10 +28,6 @@ import ListingWrapper, {
   ShowMapCheckbox,
 } from "container/Listing/Listing.style";
 import { fetchApartments } from "store/services/apartment";
-
-const FilterDrawer = dynamic(() =>
-  import("container/Listing/Search/MobileSearchView")
-);
 
 export default function ListingPage({ processedData, deviceType }) {
   const dispatcher = useDispatch();
@@ -76,13 +71,44 @@ export default function ListingPage({ processedData, deviceType }) {
         <title>SAA Listing</title>
       </Head>
 
-      <Sticky top={82} innerZ={999} activeClass="isHeaderSticky">
-        <AmentiesSearch />
-        <ShowMapCheckbox>
-          <Checkbox defaultChecked={false} onChange={handleMapToggle}>
-            Show map
-          </Checkbox>
-        </ShowMapCheckbox>
+      <Sticky
+        top={82}
+        innerZ={999}
+        activeClass="isHeaderSticky"
+        innerClass="sticky-white-bg"
+      >
+        <BasicSearch
+          mapShowBtn={
+            <ShowMapCheckbox>
+              <i style={{ paddingLeft: "10px" }} onClick={handleMapToggle}>
+                {showMap ? <BsMapFill size="30px" /> : <BsMap size="30px" />}
+              </i>
+            </ShowMapCheckbox>
+          }
+        />
+        <Row>
+          <Col style={{ width: '60%' }} >
+            <AmentiesSearch />
+          </Col>
+          <Col
+            style={{
+              paddingLeft: "10px",
+            }}
+          >
+            <Button>
+              <MdClear />
+            </Button>
+          </Col>
+          <Col
+            style={{
+              paddingLeft: "10px",
+            }}
+          >
+            <Button type="primary">
+              Search
+            </Button>
+          </Col>
+        </Row>
       </Sticky>
 
       <PostsWrapper className={columnCount}>
