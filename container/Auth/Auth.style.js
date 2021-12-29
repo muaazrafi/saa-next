@@ -10,7 +10,7 @@ export const FormWrapper = styled.div`
   width: 100%;
   padding: 81px;
   @media (min-width: 1441px) {
-    padding: 70px;
+    padding: 40px;
   }
   @media (max-width: 1200px) {
     width: 50%;

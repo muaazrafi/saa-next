@@ -1,18 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
-import { Divider,Row,Col,Image } from 'antd';
+import { Divider,Row,Col,Image,Typography } from 'antd';
 import Logo from 'components/UI/Logo/Logo';
 import { REGISTRATION_PAGE } from 'settings/constant';
 import SignInForm from './SignInForm';
 import SocialLogin from '../SocialLogin';
 import Wrapper, {
-  Title,
   TitleInfo,
   Text,
   FormWrapper,
   BannerWrapper,
 } from '../Auth.style';
 
+const { Title } = Typography;
 const SignIn = () => {
   return (
     <Wrapper>
@@ -27,14 +27,11 @@ const SignIn = () => {
         </Col>
         <Col span={12}>
         <FormWrapper>
+          <Title level={5}>Log in </Title>
           <SignInForm/>
         </FormWrapper>
         </Col>
       </Row>
-
-
-      
-
     </Wrapper>
   );
 };

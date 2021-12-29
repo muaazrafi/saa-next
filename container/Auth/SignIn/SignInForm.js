@@ -16,8 +16,6 @@ const SignInForm = () => {
     console.log('Received values of form: ', values);
   };
 
-
-
   return (
     <Form
       name="normal_login"
@@ -36,9 +34,7 @@ const SignInForm = () => {
           },
         ]}
       >
-
-      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-      
+      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" style={{ width: 256 }}/>
       </Form.Item>
       <Form.Item
         name="password"
@@ -53,6 +49,7 @@ const SignInForm = () => {
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           placeholder="Password"
+          style={{ width: 256 }}
         />
       </Form.Item>
       <Form.Item>

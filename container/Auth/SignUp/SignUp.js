@@ -1,49 +1,56 @@
-import React from 'react';
-import Image from 'next/image';
+import {React,useState,useEffect} from 'react';
 import Link from 'next/link';
-import { Divider } from 'antd';
+import { Divider,Row,Col,Image,Radio,Typography,Button } from 'antd';
 import Logo from 'components/UI/Logo/Logo';
 import { LOGIN_PAGE } from 'settings/constant';
-import SignUpForm from './SignUpForm';
+import SignUpFormTenant from './SignUpFormTenant';
+import SignUpFormLandlord from './SignUpFormLandlord';
 import SocialLogin from '../SocialLogin';
 import Wrapper, {
-  Title,
   TitleInfo,
   Text,
   FormWrapper,
   BannerWrapper,
 } from '../Auth.style';
+const { Title } = Typography;
+
+
 
 const SignUp = () => {
+
+  const [isFormChange,setIsFormChange] = useState(true);
+
+  const handleformChange = (value) => {
+    setIsFormChange(value)
+  };
+
+
   return (
     <Wrapper>
-      <FormWrapper>
-        <Logo
-          withLink
-          linkTo="/"
-          src="/images/logo-alt.svg"
-          title="SAA."
-        />
-        <Title>Welcome To SAA</Title>
-        <TitleInfo>Please Register for your account</TitleInfo>
-        <SignUpForm />
-        <Divider>Or Register Up With </Divider>
-        <SocialLogin />
-        <Text>
-          Already Have an Account! &nbsp;
-          <Link href={LOGIN_PAGE}>
-            <a>Login</a>
-          </Link>
-        </Text>
-      </FormWrapper>
-      <BannerWrapper>
-        <Image
-          src="/images/login-page-bg.jpg"
-          layout="fill"
-          objectFit="cover"
-          alt="Auth banner"
-        />
-      </BannerWrapper>
+      <Row gutter={[8, 8]} type='flex'>
+        <Col span={12}>
+          <BannerWrapper>
+            <Image
+              src="/images/login_signup.png"
+              width={398}
+            />
+         </BannerWrapper>
+        </Col>
+        <Col span={12}>
+        <FormWrapper>
+          {isFormChange  ? <Title level={5}>Create Tenant Account</Title>  : <Title level={5}>Create Landlord Account</Title> }
+          <Radio.Group style={{ marginBottom: 15  }} size="large" defaultValue="Tenant" buttonStyle="solid" >
+            <Radio.Button value = "Tenant" onChange={() => handleformChange(true)}>Tenant</Radio.Button>
+            <Radio.Button value = "Landlord" onChange={() => handleformChange(false)} >Landlord</Radio.Button>
+          </Radio.Group>
+          {isFormChange  ? <SignUpFormTenant/> : <SignUpFormLandlord/>}
+          <Title level={5}>Do you have account already?</Title>
+          <Button type="default" style={{ width: 256 }} block>
+            Log in
+          </Button>
+        </FormWrapper>
+        </Col>
+      </Row>    
     </Wrapper>
   );
 };

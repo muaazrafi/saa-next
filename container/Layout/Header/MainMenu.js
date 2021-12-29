@@ -1,8 +1,9 @@
-import {React,useState} from 'react';
+import {React,useState,useEffect} from 'react';
 import { withRouter } from 'next/router';
 import { Menu,Modal, Button } from 'antd';
 import ActiveLink from 'library/helpers/activeLink';
 import SignIn from 'container/Auth/SignIn/SignIn';
+import SignUp from 'container/Auth/SignUp/SignUp';
 
 import {
   HOME_PAGE,
@@ -15,26 +16,33 @@ import {
 const MainMenu = ({ className, router }) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalSwitch, setIsModalSwitch] = useState("");
 
-  const showModal = () => {
+
+// useEffect(() => {
+//   },[isModalSwitch]);
+
+  const showModal = (value) => {
     setIsModalVisible(true);
+    setIsModalSwitch(value);
   };
 
   const handleOk = () => {
     setIsModalVisible(false);
+    setIsModalSwitch("");
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
+    setIsModalSwitch(" ");
   };
 
   return (
-
   <>
-      <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={isModalVisible} onOk={handleOk}  onCancel={handleCancel} width={800}>
-        <SignIn/>
-      </Modal>
-    
+    <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={isModalVisible} onOk={handleOk}  onCancel={handleCancel} width={800}>
+      {isModalSwitch == 'SignUp' ? <SignUp/> : <SignIn/> }
+    </Modal>
+      
     <Menu className={className}>
       <Menu.Item key="0">
         <ActiveLink
@@ -74,8 +82,13 @@ const MainMenu = ({ className, router }) => {
       </Menu.Item> */}
 
       <Menu.Item key="4">
-        <Button  onClick={showModal}>
+        <Button  onClick={ () => showModal("SignIn")} >
           Log in
+        </Button>
+      </Menu.Item>
+      <Menu.Item key="5">
+        <Button  onClick={() => showModal("SignUp")} >
+          Sign Up 
         </Button>
       </Menu.Item>
     </Menu>
