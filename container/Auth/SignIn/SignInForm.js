@@ -8,6 +8,7 @@ import { AuthContext } from 'context/AuthProvider';
 import { FORGET_PASSWORD_PAGE } from 'settings/constant';
 import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const SignInForm = () => {
@@ -15,6 +16,8 @@ const SignInForm = () => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
+  const dispatcher = useDispatch();
+  const { auth } = useSelector(state => state.apartments);
 
   return (
     <Form
@@ -63,10 +66,9 @@ const SignInForm = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
-        </Button>
-        Or <a href="">register now!</a>
+        <Button type="primary" htmlType="submit" style={{ width: 256 }} block>
+            Log in
+          </Button>
       </Form.Item>
     </Form>
   );

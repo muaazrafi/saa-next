@@ -1,10 +1,11 @@
 import {React,useState,useEffect} from 'react';
 import { withRouter } from 'next/router';
+import { useDispatch,useSelector } from 'react-redux';
 import { Menu,Modal, Button } from 'antd';
 import ActiveLink from 'library/helpers/activeLink';
 import SignIn from 'container/Auth/SignIn/SignIn';
 import SignUp from 'container/Auth/SignUp/SignUp';
-
+import { switchtrue, switchfalse } from 'store/authSlice'
 import {
   HOME_PAGE,
   LOGIN_PAGE,
@@ -16,31 +17,31 @@ import {
 const MainMenu = ({ className, router }) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isModalSwitch, setIsModalSwitch] = useState("");
-
-
-// useEffect(() => {
-//   },[isModalSwitch]);
+  const { auth_component_switch } = useSelector(state => state.auth);
+  const dispatcher = useDispatch();
 
   const showModal = (value) => {
     setIsModalVisible(true);
-    setIsModalSwitch(value);
+    if(value)
+      {
+        dispatcher(switchtrue())
+      }else{
+        dispatcher(switchfalse())
+      }
+    
   };
-
   const handleOk = () => {
     setIsModalVisible(false);
-    setIsModalSwitch("");
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
-    setIsModalSwitch(" ");
   };
 
   return (
   <>
     <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={isModalVisible} onOk={handleOk}  onCancel={handleCancel} width={800}>
-      {isModalSwitch == 'SignUp' ? <SignUp/> : <SignIn/> }
+      { auth_component_switch ? <SignUp  /> : <SignIn/> }
     </Modal>
       
     <Menu className={className}>
@@ -82,12 +83,12 @@ const MainMenu = ({ className, router }) => {
       </Menu.Item> */}
 
       <Menu.Item key="4">
-        <Button  onClick={ () => showModal("SignIn")} >
+        <Button  onClick={ () => showModal(false)} >
           Log in
         </Button>
       </Menu.Item>
       <Menu.Item key="5">
-        <Button  onClick={() => showModal("SignUp")} >
+        <Button  onClick={() => showModal(true)} >
           Sign Up 
         </Button>
       </Menu.Item>

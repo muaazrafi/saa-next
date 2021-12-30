@@ -13,12 +13,14 @@ import Wrapper, {
   BannerWrapper,
 } from '../Auth.style';
 const { Title } = Typography;
-
+import { useDispatch, useSelector } from 'react-redux';
+import { switchtrue, switchfalse } from 'store/authSlice'
 
 
 const SignUp = () => {
 
   const [isFormChange,setIsFormChange] = useState(true);
+  const dispatcher = useDispatch();
 
   const handleformChange = (value) => {
     setIsFormChange(value)
@@ -27,7 +29,9 @@ const SignUp = () => {
 
   return (
     <Wrapper>
+
       <Row gutter={[8, 8]} type='flex'>
+        
         <Col span={12}>
           <BannerWrapper>
             <Image
@@ -36,6 +40,7 @@ const SignUp = () => {
             />
          </BannerWrapper>
         </Col>
+        
         <Col span={12}>
         <FormWrapper>
           {isFormChange  ? <Title level={5}>Create Tenant Account</Title>  : <Title level={5}>Create Landlord Account</Title> }
@@ -45,7 +50,7 @@ const SignUp = () => {
           </Radio.Group>
           {isFormChange  ? <SignUpFormTenant/> : <SignUpFormLandlord/>}
           <Title level={5}>Do you have account already?</Title>
-          <Button type="default" style={{ width: 256 }} block>
+          <Button type="default" style={{ width: 256 }} block onClick={() => dispatcher(switchfalse())}>
             Log in
           </Button>
         </FormWrapper>
