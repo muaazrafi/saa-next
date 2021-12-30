@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 
@@ -7,8 +7,8 @@ const SwitchCom = ({ comName }) => {
     in: SignIn,
     up: SignUp
   }
+
   const TagName = components[comName];
-  
   console.log("Teri photo:", comName)
   return (<>
     <TagName />
