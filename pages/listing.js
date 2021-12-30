@@ -3,11 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
 import Sticky from "react-stickynode";
 import { BsMap, BsMapFill } from "react-icons/bs";
-import { FaSearch } from "react-icons/fa";
-import { MdClear } from "react-icons/md";
-import AdvanceSearch from "container/Listing/Search/AdvanceSearch/AdvanceSearch";
-import BasicSearch from "container/Listing/Search/BasicSearch/BasicSearch";
-import { Checkbox, Row, Col, Button } from "antd";
+import Search from "container/Listing/Search/Search/Search";
 import SectionGrid from "components/SectionGrid/SectionGrid";
 import { PostPlaceholder } from "components/UI/ContentLoader/ContentLoader";
 import ListingMap from "container/Listing/ListingMap";
@@ -77,7 +73,7 @@ export default function ListingPage({ processedData, deviceType }) {
         activeClass="isHeaderSticky"
         innerClass="sticky-white-bg"
       >
-        <BasicSearch
+        <Search
           mapShowBtn={
             <ShowMapCheckbox>
               <i style={{ paddingLeft: "10px" }} onClick={handleMapToggle}>
@@ -86,7 +82,6 @@ export default function ListingPage({ processedData, deviceType }) {
             </ShowMapCheckbox>
           }
         />
-        <AdvanceSearch />
       </Sticky>
 
       <PostsWrapper className={columnCount}>
