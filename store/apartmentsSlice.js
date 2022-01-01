@@ -11,7 +11,7 @@ const initialState = {
   currentPage: 0,
   featuredApartments: [],
   loading: true,
-  max_price: 0,
+  maxPrice: 0,
   properties: [],
   search: {
     property_city_matches: "barcelona",
@@ -36,6 +36,10 @@ export const apartmentsSlice = createSlice({
       state.apartments = state.apartments.concat(action.payload.apartments);
       state.amenties = state.amenties.concat(action.payload.amenties_counts);
       state.areas = state.areas.concat(action.payload.area_counts);
+      state.featuredApartments = state.featuredApartments.concat(action.payload.featured_apartments);
+      state.properties = state.properties.concat(action.payload.properties);
+      state.total = action.payload.apartment_count;
+      state.maxPrice = action.payload.max_price;      
       state.loading = false;
     });
   },
