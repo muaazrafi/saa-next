@@ -35,6 +35,7 @@ export const apartmentsSlice = createSlice({
     builder.addCase(fetchApartments.fulfilled, (state, action) => {
       state.apartments = state.apartments.concat(action.payload.apartments);
       state.amenties = state.amenties.concat(action.payload.amenties_counts);
+      state.areas = state.areas.concat(action.payload.area_counts);
       state.loading = false;
     });
   },

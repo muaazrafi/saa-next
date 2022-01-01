@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { capitalize, filter, sortBy } from "lodash";
+import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 import {
   Button,
-  Checkbox,
   Input,
   Popover,
   Row,
@@ -16,8 +13,8 @@ import {
 } from "antd";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import AdvanceSearchWrapper from "./Search.style";
-
-const { Search } = Input;
+import Amenties from "../Amenties/Amenties";
+import Areas from "../Areas/Areas";
 const { Option } = Select;
 
 const AdvanceSearch = ({ mapShowBtn }) => {
@@ -54,16 +51,16 @@ const AdvanceSearch = ({ mapShowBtn }) => {
         </Col>
         <Col>{mapShowBtn}</Col>
         <Col>
-          {/* <Popover
+          <Popover
             trigger="click"
             placement="bottomLeft"
             getPopupContainer={(trigger) => trigger.parentElement}
             content={
-
+              <Amenties />
             }
           >
             <Button>Amenties</Button>
-          </Popover> */}
+          </Popover>
           <Popover
             trigger="click"
             placement="bottomLeft"
@@ -84,6 +81,16 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             }
           >
             <Button>Price</Button>
+          </Popover>
+          <Popover
+            trigger="click"
+            placement="bottomLeft"
+            getPopupContainer={(trigger) => trigger.parentElement}
+            content={
+              <Areas />
+            }
+          >
+            <Button>Neighborhood</Button>
           </Popover>
           <Button style={{ marginLeft: "10px" }}>More Filters</Button>
         </Col>
