@@ -1,18 +1,21 @@
 import React from 'react';
-import Image from 'next/image';
 import { useForm, Controller } from 'react-hook-form';
 import { MdEmail } from 'react-icons/md';
-import { Input, Button } from 'antd';
+import { Form,Divider,Row,Col,Typography,Button,Input,Image } from 'antd';
 import Logo from 'components/UI/Logo/Logo';
 import FormControl from 'components/UI/FormControl/FormControl';
 import Wrapper, {
-  Title,
   TitleInfo,
   FormWrapper,
   BannerWrapper,
 } from './Auth.style';
+const { Title } = Typography;
+
+import { useDispatch } from 'react-redux';
+import { switchin, switchup } from 'store/authSlice' 
 
 export default function ForgetPassWord() {
+  const dispatcher = useDispatch();
   const { control, errors, handleSubmit } = useForm({
     mode: 'onChange',
   });
@@ -22,65 +25,44 @@ export default function ForgetPassWord() {
 
   return (
     <Wrapper>
-      <FormWrapper>
-        <Logo
-          withLink
-          linkTo="/"
-          src="/images/logo-alt.svg"
-          title="SAA."
-        />
-        <Title>Welcome Back</Title>
-        <TitleInfo>Enter your email to recover your account</TitleInfo>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <FormControl
-            label="Email"
-            htmlFor="email"
-            error={
-              errors.email && (
-                <>
-                  {errors.email?.type === 'required' && (
-                    <span>This field is required!</span>
-                  )}
-                  {errors.email?.type === 'pattern' && (
-                    <span>Please enter a valid email address!</span>
-                  )}
-                </>
-              )
-            }
-          >
-            <Controller
-              as={<Input />}
-              type="email"
-              id="email"
-              name="email"
-              defaultValue=""
-              control={control}
-              rules={{
-                required: true,
-                pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-              }}
+      <Row gutter={[8, 8]} type='flex'>
+        <Col span={12}>
+          <BannerWrapper>
+            <Image
+              src="/images/login_signup.png"
+              width={398}
             />
-          </FormControl>
-          <Button
-            className="signin-btn"
-            type="primary"
-            htmlType="submit"
-            size="large"
-            style={{ width: '100%' }}
+         </BannerWrapper>
+        </Col>
+        <Col span={12}>
+        <FormWrapper>
+        <Title level={5}>Welcome Back</Title>
+        <Title level={5}>Enter your email to recover your account</Title>
+        <>
+        <Form name="normal_login" className="login-form" initialValues={{remember: true,}} >
+          <Form.Item
+                name="First Name"
+                noStyle
+                rules={[{ required: true, message: 'Email is required' }]}
           >
-            <MdEmail />
-            Send email
+            <Input style={{ width: 256 , marginBottom: 10  }} placeholder="Email" />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" size='middle' style={{ width: 256 }} htmlType="submit" block  >
+            Forgot password
           </Button>
-        </form>
-      </FormWrapper>
-      <BannerWrapper>
-        <Image
-          src="/images/login-page-bg.jpg"
-          layout="fill"
-          objectFit="cover"
-          alt="Auth banner"
-        />
-      </BannerWrapper>
+          <Button type="default" style={{ width: 256 }} block onClick={() => dispatcher(switchup("up"))}>
+            Sign up
+          </Button>
+          <Button type="default" style={{ width: 256 }} block onClick={() => dispatcher(switchin("in"))}>
+            Log in
+          </Button>
+        </Form.Item>
+        </Form>
+        </>
+        </FormWrapper>
+        </Col>
+      </Row>
     </Wrapper>
   );
 }

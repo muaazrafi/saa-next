@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Divider,Row,Col,Image,Typography } from 'antd';
+import { Divider,Row,Col,Image,Typography,Button } from 'antd';
 import Logo from 'components/UI/Logo/Logo';
 import { REGISTRATION_PAGE } from 'settings/constant';
 import SignInForm from './SignInForm';
@@ -11,9 +11,11 @@ import Wrapper, {
   FormWrapper,
   BannerWrapper,
 } from '../Auth.style';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { switchin, switchup } from 'store/authSlice'  
 const { Title } = Typography;
 const SignIn = () => {
+  const dispatcher = useDispatch();
   return (
     <Wrapper>
       <Row gutter={[8, 8]} type='flex'>
@@ -29,6 +31,10 @@ const SignIn = () => {
         <FormWrapper>
           <Title level={5}>Log in </Title>
           <SignInForm/>
+          <Title level={5}>Do you not have account already?</Title>
+          <Button type="default" style={{ width: 256 }} block onClick={() => dispatcher(switchup("up"))}>
+            Sign Up
+          </Button>
         </FormWrapper>
         </Col>
       </Row>

@@ -8,10 +8,12 @@ import { AuthContext } from 'context/AuthProvider';
 import { FORGET_PASSWORD_PAGE } from 'settings/constant';
 import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { switchforgot } from 'store/authSlice'
 
 
 const SignInForm = () => {
-
+  const dispatcher = useDispatch();
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
@@ -53,20 +55,15 @@ const SignInForm = () => {
         />
       </Form.Item>
       <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
-        <a className="login-form-forgot" href="">
-          Forgot password
-        </a>
+          <Button type="default" style={{ width: 256 }} block onClick={() => dispatcher(switchforgot("forgot"))}>
+            Forgot password
+          </Button>
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
+        <Button type="primary" htmlType="submit" style={{ width: 256 }}>
           Log in
         </Button>
-        Or <a href="">register now!</a>
       </Form.Item>
     </Form>
   );
