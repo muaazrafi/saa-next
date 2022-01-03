@@ -76,7 +76,7 @@ export default function ListingPage({ processedData, deviceType }) {
         <Search
           mapShowBtn={
             <ShowMapCheckbox>
-              <i style={{ paddingLeft: "10px" }} onClick={handleMapToggle}>
+              <i onClick={handleMapToggle}>
                 {showMap ? <BsMapFill size="30px" /> : <BsMap size="30px" />}
               </i>
             </ShowMapCheckbox>

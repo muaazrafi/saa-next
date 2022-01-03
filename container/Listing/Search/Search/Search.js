@@ -1,16 +1,7 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
-import {
-  Button,
-  Input,
-  Popover,
-  Row,
-  Col,
-  Select,
-  Slider,
-  Switch,
-} from "antd";
+import { Button, Input, Popover, Row, Col, Select, Slider, Switch } from "antd";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import AdvanceSearchWrapper from "./Search.style";
 import Amenties from "../Amenties/Amenties";
@@ -18,12 +9,10 @@ import Areas from "../Areas/Areas";
 const { Option } = Select;
 
 const AdvanceSearch = ({ mapShowBtn }) => {
-
-
   return (
     <AdvanceSearchWrapper>
       <Row>
-        <Col style={{ marginBottom: "10px" }} >
+        <Col style={{ marginBottom: "10px" }}>
           <DatePickerRange
             startDateId="checkin-Id"
             endDateId="checkout-id"
@@ -36,7 +25,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
         <Col>
           <Select
             showSearch
-            style={{ paddingLeft: "10px", width: "100px" }}
+            style={{ width: "100px" }}
             placeholder="Guests"
             optionFilterProp="children"
           >
@@ -55,12 +44,12 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             trigger="click"
             placement="bottomLeft"
             getPopupContainer={(trigger) => trigger.parentElement}
-            content={
-              <Amenties />
-            }
+            content={<Amenties />}
           >
             <Button>Amenties</Button>
           </Popover>
+        </Col>
+        <Col>
           <Popover
             trigger="click"
             placement="bottomLeft"
@@ -82,24 +71,27 @@ const AdvanceSearch = ({ mapShowBtn }) => {
           >
             <Button>Price</Button>
           </Popover>
+        </Col>
+        <Col>
           <Popover
             trigger="click"
             placement="bottomLeft"
             getPopupContainer={(trigger) => trigger.parentElement}
-            content={
-              <Areas />
-            }
+            content={<Areas />}
           >
             <Button>Neighborhood</Button>
           </Popover>
-          <Button style={{ marginLeft: "10px" }}>More Filters</Button>
         </Col>
-        <Col style={{ marginLeft: "10px" }}>
+        <Col>
+          {" "}
+          <Button>More Filters</Button>
+        </Col>
+        <Col>
           <Button>
             <MdClear />
           </Button>
         </Col>
-        <Col style={{ marginLeft: "10px" }}>
+        <Col>
           <Button type="primary" style={{ width: "100px" }}>
             <FaSearch />
           </Button>
