@@ -1,8 +1,12 @@
 import {React,useState,useEffect} from 'react';
 import { withRouter } from 'next/router';
+import { useDispatch,useSelector } from 'react-redux';
 import { Menu,Modal, Button } from 'antd';
 import ActiveLink from 'library/helpers/activeLink';
 import SwitchCom from 'container/Auth/SwitchCom';
+import SignIn from 'container/Auth/SignIn/SignIn';
+import SignUp from 'container/Auth/SignUp/SignUp';
+import ForgetPassword from 'container/Auth/ForgetPassword';
 
 import {
   HOME_PAGE,
@@ -11,30 +15,35 @@ import {
   AGENT_PROFILE_PAGE,
   PRICING_PLAN_PAGE,
 } from 'settings/constant';
+import { switchin, switchup } from 'store/authSlice'
 
-const MainMenu = ({ className, router }) => {
+const MainMenu = ( { className, router } ) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isModalSwitch, setIsModalSwitch] = useState("");
-
+  const dispatcher = useDispatch();
+  
   const showModal = (value) => {
+    
     setIsModalVisible(true);
-    setIsModalSwitch(value);
+    if(value=="in"){
+      dispatcher(switchin())
+    }else{
+      dispatcher(switchup())
+    }
+     
   };
-
+  
   const handleOk = () => {
-    setIsModalVisible(false);
-    setIsModalSwitch("");
+    setIsModalVisible(false)
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
-    setIsModalSwitch(" ");
   };
 
   return (
   <>
-    <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={isModalVisible} onOk={handleOk}  onCancel={handleCancel} width={800}>      
-      <SwitchCom comName={isModalSwitch} />
+    <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={isModalVisible} onOk={handleOk}  onCancel={handleCancel} width={800}> 
+       <SwitchCom/>
     </Modal>
       
     <Menu className={className}>

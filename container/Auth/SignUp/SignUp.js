@@ -13,11 +13,13 @@ import Wrapper, {
   BannerWrapper,
 } from '../Auth.style';
 const { Title } = Typography;
+import { useDispatch, useSelector } from 'react-redux';
+import { switchin } from 'store/authSlice'
 
 
 
 const SignUp = () => {
-
+  const dispatcher = useDispatch();
   const [isFormChange,setIsFormChange] = useState(true);
 
   const handleformChange = (value) => {
@@ -45,7 +47,7 @@ const SignUp = () => {
           </Radio.Group>
           {isFormChange  ? <SignUpFormTenant/> : <SignUpFormLandlord/>}
           <Title level={5}>Do you have account already?</Title>
-          <Button type="default" style={{ width: 256 }} block>
+          <Button type="default" style={{ width: 256 }} block onClick={() => dispatcher(switchin("in"))}>
             Log in
           </Button>
         </FormWrapper>
