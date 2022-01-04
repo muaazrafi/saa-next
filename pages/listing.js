@@ -30,11 +30,18 @@ export default function ListingPage({ processedData, deviceType }) {
   const [posts, setPosts] = useState([]);
 
   const [showMap, setShowMap] = useState(false);
-  const { apartments, loading } = useSelector((state) => state.apartments);
+  const { apartments, loading, search, init } = useSelector(
+    (state) => state.apartments
+  );
 
   useEffect(() => {
     if (apartments.length === 0 && loading) {
-      dispatcher(fetchApartments());
+      console.log("*******************");
+      console.log("*******************");
+      console.log("Only One Time:", loading);
+      console.log("*******************");
+      console.log("*******************");
+      dispatcher(fetchApartments(search));
     }
   }, [apartments]);
 

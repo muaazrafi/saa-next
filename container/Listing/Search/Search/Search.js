@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 import { Button, Input, Popover, Row, Col, Select, Slider, Switch } from "antd";
+import { searching } from "store/apartmentsSlice";
+import { fetchApartments } from "store/services/apartment";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import AdvanceSearchWrapper from "./Search.style";
 import Amenties from "../Amenties/Amenties";
@@ -9,6 +12,13 @@ import Areas from "../Areas/Areas";
 const { Option } = Select;
 
 const AdvanceSearch = ({ mapShowBtn }) => {
+  const { search, loading } = useSelector( state => state.apartments );
+  const dispatcher = useDispatch();
+
+  const searchApartments = () => {
+    dispatcher(searching());
+  }
+
   return (
     <AdvanceSearchWrapper>
       <Row>
@@ -92,7 +102,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
           </Button>
         </Col>
         <Col>
-          <Button type="primary" style={{ width: "100px" }}>
+          <Button type="primary" style={{ width: "100px" }} onClick={searchApartments} disabled={loading} >
             <FaSearch />
           </Button>
         </Col>

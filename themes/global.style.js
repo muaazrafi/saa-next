@@ -232,7 +232,14 @@ const GlobalStyle = createGlobalStyle`
   .CalendarDay__selected_span {
     background: #0088e587 !important;
     border: 1px double #0088e587 !important;
+    color: #fff !important;
   }
+
+  .CalendarDay__hovered_span, .CalendarDay__hovered_span:hover{
+    background: #0088e587 !important;
+    border: 1px double #0088e587 !important;
+  }
+
   /*------------------------------------------*/ 
   // style for ant tooltip
   /*------------------------------------------*/

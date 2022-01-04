@@ -21,7 +21,8 @@ const initialState = {
     startDate: null,
     endDate: null,
     lat: "",
-    lng: ""
+    lng: "",
+    page: 0
   },
   sortOrder: null,
   total: 0
@@ -30,7 +31,16 @@ const initialState = {
 export const apartmentsSlice = createSlice({
   name: 'apartments',
   initialState,
-  reducers: {},
+  reducers: {
+    searching: (state, action) => {
+      state.amenties = [];
+      state.apartments = [];
+      state.loading = true;
+    },
+    updateSearch: (state, action) => {
+      state.search = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchApartments.fulfilled, (state, action) => {
       state.apartments = state.apartments.concat(action.payload.apartments);
@@ -44,5 +54,7 @@ export const apartmentsSlice = createSlice({
     });
   },
 });
+
+export const { updateSearch, searching } = apartmentsSlice.actions;
 
 export default apartmentsSlice.reducer;
