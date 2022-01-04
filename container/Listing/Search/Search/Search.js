@@ -4,7 +4,6 @@ import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 import { Button, Input, Popover, Row, Col, Select, Slider, Switch } from "antd";
 import { searching } from "store/apartmentsSlice";
-import { fetchApartments } from "store/services/apartment";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import AdvanceSearchWrapper from "./Search.style";
 import Amenties from "../Amenties/Amenties";
@@ -12,7 +11,7 @@ import Areas from "../Areas/Areas";
 const { Option } = Select;
 
 const AdvanceSearch = ({ mapShowBtn }) => {
-  const { search, loading } = useSelector( state => state.apartments );
+  const { search, loading, selectedAmenties } = useSelector( state => state.apartments );
   const dispatcher = useDispatch();
 
   const searchApartments = () => {
@@ -56,7 +55,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             getPopupContainer={(trigger) => trigger.parentElement}
             content={<Amenties />}
           >
-            <Button>Amenties</Button>
+            <Button type={(selectedAmenties.length > 0) ? 'primary' : ''} >Amenties {(selectedAmenties.length > 0) ? `(${selectedAmenties.length})` : '' } </Button>
           </Popover>
         </Col>
         <Col>

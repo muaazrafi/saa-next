@@ -7,6 +7,7 @@ const initialState = {
   apartments: [],
   areas: [],
   amenties: [],
+  selectedAmenties: [],
   city: [],
   currentPage: 0,
   featuredApartments: [],
@@ -39,6 +40,9 @@ export const apartmentsSlice = createSlice({
     },
     updateSearch: (state, action) => {
       state.search = action.payload;
+    },
+    selectAmenties: (state, action) => {
+      state.selectedAmenties = action.payload;      
     }
   },
   extraReducers: (builder) => {
@@ -55,6 +59,6 @@ export const apartmentsSlice = createSlice({
   },
 });
 
-export const { updateSearch, searching } = apartmentsSlice.actions;
+export const { updateSearch, searching, selectAmenties } = apartmentsSlice.actions;
 
 export default apartmentsSlice.reducer;

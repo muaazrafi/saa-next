@@ -4,13 +4,13 @@ import { capitalize, filter, sortBy, cloneDeep } from "lodash";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { Input, Select, Checkbox } from "antd";
 import AmentiesWrapper from "./Amenties.style";
-import { updateSearch } from 'store/apartmentsSlice';
+import { updateSearch, selectAmenties } from 'store/apartmentsSlice';
 const { Search } = Input;
 const { Option } = Select;
 
 const Amenties = (props) => {
   const dispatcher = useDispatch();
-  const { amenties, loading, search } = useSelector((state) => state.apartments);
+  const { amenties, loading, search, selectedAmenties } = useSelector((state) => state.apartments);
   const [processedAmenties, setProcessedAmenties] = useState([]);
 
   useEffect(() => {
@@ -48,10 +48,15 @@ const Amenties = (props) => {
 
   const storeSearchAmenties = (amenties) => {
     let modifiedSearch = cloneDeep(search);
-    amenties.map( (amenty) => {
-      modifiedSearch[`${amenty}_eq`] = true;
-      return false;
-    });
+    if (event.target.checked) {
+      amenties.map( (amenty) => {
+        modifiedSearch[`${amenty}_eq`] = true;
+        return false;
+      });
+    } else {
+      delete modifiedSearch[`${event.target.value}_eq`];
+    }
+    dispatcher(selectAmenties(amenties));
     dispatcher(updateSearch(modifiedSearch));
   }
 
@@ -74,6 +79,7 @@ const Amenties = (props) => {
             className="popoverCheckBox"
             options={processedAmenties}
             onChange={storeSearchAmenties}
+            defaultValue={selectedAmenties}
           />
         )}
       </PerfectScrollbar>
