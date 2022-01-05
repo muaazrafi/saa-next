@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { capitalize, filter, sortBy } from "lodash";
+import { useSelector, useDispatch } from "react-redux";
+import { filter, sortBy, cloneDeep } from "lodash";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { Input, Checkbox } from "antd";
 import AreasWrapper from "./Areas.style";
+import { updateSearch } from 'store/apartmentsSlice';
 
 const { Search } = Input;
 
 const Areas = (props) => {
-  const { areas, loading } = useSelector((state) => state.apartments);
+  const dispatcher = useDispatch();
+  const { areas, loading, search } = useSelector((state) => state.apartments);
   const [processedAreas, setProcessedAreas] = useState([]);
 
   useEffect(() => {
-    if (areas.length > 0) {
-      setProcessedAreas(getDefaultAreas());
-    }
+    setProcessedAreas(getDefaultAreas());
   }, [areas]);
 
   const getDefaultAreas = () => {
@@ -44,6 +44,12 @@ const Areas = (props) => {
     }
   };
 
+  const storeSearchAreas = (areas) => {
+    let modifiedSearch = cloneDeep(search);
+    modifiedSearch.property_area_in = areas.map(area => area.area);
+    dispatcher(updateSearch(modifiedSearch));
+  }
+
   return (
     <AreasWrapper>
       <Search
@@ -62,6 +68,7 @@ const Areas = (props) => {
           <Checkbox.Group
             className="popoverCheckBox"
             options={processedAreas}
+            onChange={storeSearchAreas}
           />
         )}
       </PerfectScrollbar>
