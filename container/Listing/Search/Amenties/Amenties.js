@@ -6,7 +6,6 @@ import { Input, Select, Checkbox } from "antd";
 import AmentiesWrapper from "./Amenties.style";
 import { updateSearch, selectAmenties } from 'store/apartmentsSlice';
 const { Search } = Input;
-const { Option } = Select;
 
 const Amenties = (props) => {
   const dispatcher = useDispatch();

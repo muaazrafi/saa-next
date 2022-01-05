@@ -38,6 +38,7 @@ class DateRangePickerBox extends Component {
   onDateChangeFunc = ({ startDate, endDate }) => {
     const { dateFormat } = this.state;
     this.setState({ startDate, endDate });
+    this.props.selectDates(startDate, endDate);
   };
 
   onFocusChangeFunc = (focusedInput) => {

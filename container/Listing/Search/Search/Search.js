@@ -1,13 +1,15 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
+import { cloneDeep } from "lodash";
 import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 import { Button, Input, Popover, Row, Col, Select, Slider, Switch } from "antd";
-import { searching } from "store/apartmentsSlice";
+import { searching, updateSearch } from "store/apartmentsSlice";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import AdvanceSearchWrapper from "./Search.style";
 import Amenties from "../Amenties/Amenties";
 import Areas from "../Areas/Areas";
+import Price from "../Price/Price";
 const { Option } = Select;
 
 const AdvanceSearch = ({ mapShowBtn }) => {
@@ -16,6 +18,13 @@ const AdvanceSearch = ({ mapShowBtn }) => {
 
   const searchApartments = () => {
     dispatcher(searching());
+  }
+
+  const dateSelection = (startDate, endDate) => {
+    let modifiedSearch = cloneDeep(search);
+    modifiedSearch.startDate = startDate ? startDate.format('YYYY-MM-DD') : null;
+    modifiedSearch.endDate = endDate ? endDate.format('YYYY-MM-DD') : null;
+    dispatcher(updateSearch(modifiedSearch));
   }
 
   return (
@@ -29,6 +38,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             endDatePlaceholderText="Check Out"
             numberOfMonths={1}
             small
+            selectDates={dateSelection}
           />
         </Col>
         <Col>
@@ -65,16 +75,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             getPopupContainer={(trigger) => trigger.parentElement}
             content={
               <div style={{ width: "350px" }}>
-                <Select
-                  showSearch
-                  style={{ width: "100%", marginBottom: "5px" }}
-                  placeholder="Sort By"
-                  optionFilterProp="children"
-                >
-                  <Option value="barcelona">Price: low to high</Option>
-                  <Option value="madrid">Price: high to low</Option>
-                </Select>
-                <Slider range defaultValue={[0, 2000]} max={2000} />
+                <Price />    
               </div>
             }
           >
