@@ -102,7 +102,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
           </Button>
         </Col>
         <Col>
-          <Button type="primary" style={{ width: "100px" }} onClick={searchApartments} disabled={loading} >
+          <Button type="primary" style={{ width: "100px" }} onClick={searchApartments} loading={loading} >
             <FaSearch />
           </Button>
         </Col>
