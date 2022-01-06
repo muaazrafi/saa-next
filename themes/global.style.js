@@ -852,6 +852,14 @@ const GlobalStyle = createGlobalStyle`
 .ant-checkbox-checked::after {
   border-color: ${themeGet('primary.0', '#0088E5')} !important;
 }
+
+@media all and (max-width: 720px) {
+  .hide-on-sm {
+   display: none !important;
+   }
+ }
+ 
+
 `;
 
 export default GlobalStyle;

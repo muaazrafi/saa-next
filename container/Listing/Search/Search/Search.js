@@ -85,7 +85,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             <Button size="large">Price</Button>
           </Popover>
         </Col>
-        <Col>
+        <Col className="hide-on-sm" >
           <Popover
             trigger="click"
             placement="bottomLeft"
@@ -103,7 +103,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             </Button>
           </Popover>
         </Col>
-        <Col>
+        <Col className="hide-on-sm" >
           <Popover
             trigger="click"
             placement="bottomLeft"
