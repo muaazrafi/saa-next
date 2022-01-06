@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Select } from "antd";
 import { cloneDeep } from "lodash";
 import { updateSearch } from 'store/apartmentsSlice';
+const { Option } = Select;
 
 const NumberSelector = ({ title, modifier, icon }) => {
   const dispatcher = useDispatch();
