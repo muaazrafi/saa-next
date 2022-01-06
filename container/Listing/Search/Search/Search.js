@@ -36,7 +36,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
   return (
     <AdvanceSearchWrapper>
       <Row gutter={10} style={{ width: "100%" }}>
-        <Col lg={4} md={8} xs={20} sm={22} style={{ marginBottom: "10px" }}>
+        <Col xl={3} lg={6} md={8} xs={20} sm={22} style={{ marginBottom: "10px" }}>
           <DatePickerRange
             startDateId="checkin-Id"
             endDateId="checkout-id"
@@ -50,21 +50,21 @@ const AdvanceSearch = ({ mapShowBtn }) => {
         <Col md={0} xs={4} sm={2}>
           {mapShowBtn}
         </Col>
-        <Col lg={3} md={4} xs={0} sm={0}>
+        <Col xl={2} lg={3} md={4} xs={0} sm={0}>
           <NumberSelector
             title="Beds"
             modifier="number_of_beds_gteq"
             icon={<FaBed size={18} />}
           />
         </Col>
-        <Col lg={3} md={5} xs={0} sm={0}>
+        <Col xl={2} lg={3} md={5} xs={0} sm={0}>
           <NumberSelector
             title="Bedrooms"
             modifier="number_of_bedrooms_eq"
             icon={<MdMeetingRoom size={18} />}
           />
         </Col>
-        <Col lg={3} md={4} xs={0} sm={0}>
+        <Col xl={2} lg={3} md={4} xs={0} sm={0}>
           <NumberSelector
             title="Baths"
             modifier="number_of_bathrooms_gteq"
