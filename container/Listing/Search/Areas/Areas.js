@@ -61,7 +61,7 @@ const Areas = (props) => {
           display: "flex",
         }}
       />
-      <PerfectScrollbar style={{ height: "350px" }}>
+      <PerfectScrollbar style={{height: "350px"}}>
         {loading ? (
           "loading..."
         ) : (

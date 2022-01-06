@@ -75,10 +75,10 @@ export default function ListingPage({ processedData, deviceType }) {
       </Head>
 
       <Sticky
-        top={82}
-        innerZ={999}
-        activeClass="isHeaderSticky"
-        innerClass="sticky-white-bg"
+        top = {82}
+        innerZ = {999}
+        activeClass = "isHeaderSticky"
+        innerClass = "sticky-white-bg"
       >
         <Search
           mapShowBtn={
@@ -104,7 +104,7 @@ export default function ListingPage({ processedData, deviceType }) {
           placeholder={<PostPlaceholder />}
         />
       </PostsWrapper>
-      {showMap && <ListingMap loading={loading} mapData={apartments} />}
+      {showMap && <ListingMap loading={loading} mapData={apartments}/>}
     </ListingWrapper>
   );
 }

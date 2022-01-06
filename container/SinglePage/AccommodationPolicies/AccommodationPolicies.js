@@ -116,7 +116,6 @@ AccommodationPolicies.defaultProps = {
     lineHeight: '1.6',
     mb: ['14px', '20px', '27px'],
   },
-
 };
 
 export default AccommodationPolicies;

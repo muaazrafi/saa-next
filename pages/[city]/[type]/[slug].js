@@ -13,6 +13,7 @@ import { getAPIData, processAPIData } from "library/helpers/get-api-data";
 import Description from "container/SinglePage/Description/Description";
 import Amenities from "container/SinglePage/Amenities/Amenities";
 import Calender from "container/SinglePage/Calender/Calender";
+import SimilarApartments from "container/SinglePage/SimilarApartment/SimilarApartments";
 import AccommodationPolicies from "container/SinglePage/AccommodationPolicies/AccommodationPolicies";
 import Location from "container/SinglePage/Location/Location";
 import Review from "container/SinglePage/Review/Review";
@@ -104,6 +105,7 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
               <AccommodationPolicies accommodationpolicies={amenities} />
               <Calender />
               <Location location={processedData[0]} />
+              <SimilarApartments/>
             </Col>
             <Col xl={8}>
               {deviceType === "desktop" ? (
