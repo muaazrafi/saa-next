@@ -43,25 +43,25 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             selectDates={dateSelection}
           />
         </Col>
-        <Col>
+        <Col style={{ width: '140px' }} >
           <NumberSelector 
             title='Beds'
             modifier='number_of_beds_gteq'
-            icon={<FaBed />}
+            icon={<FaBed size={18}  />}
           />
         </Col>
-        <Col>
+        <Col style={{ width: '140px' }} >
           <NumberSelector 
             title='Bedrooms'
             modifier='number_of_bedrooms_eq'
-            icon={<MdMeetingRoom />}
+            icon={<MdMeetingRoom size={18} />}
           />
         </Col>
-        <Col>
+        <Col style={{ width: '140px' }} >
           <NumberSelector 
-            title='Bathrooms'
+            title='Baths'
             modifier='number_of_bathrooms_gteq'
-            icon={<GiBathtub />}
+            icon={<GiBathtub size={18} />}
           />
         </Col>
         <Col>{mapShowBtn}</Col>

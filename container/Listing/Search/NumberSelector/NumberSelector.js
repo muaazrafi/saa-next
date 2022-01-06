@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Select } from "antd";
-import { cloneDeep } from "lodash";
-import { updateSearch } from 'store/apartmentsSlice';
+import { Select, Row, Col } from "antd";
+import { cloneDeep, range } from "lodash";
+import { updateSearch } from "store/apartmentsSlice";
 const { Option } = Select;
 
 const NumberSelector = ({ title, modifier, icon }) => {
@@ -18,27 +18,27 @@ const NumberSelector = ({ title, modifier, icon }) => {
   return (
     <Select
       showSearch
-      style={{ width: "100px" }}
+      style={{ width: "100%" }}
       placeholder={title}
       optionFilterProp="children"
       onChange={updateNumberInSearch}
       placeholder={
-        <>
-          {icon}
-          &nbsp; {title}
-        </>
+        <Row>
+          <Col style={{ marginTop: "4px" }}>{icon}</Col>
+          <Col>&nbsp; {title}</Col>
+        </Row>
       }
     >
-      <Option value="1">1</Option>
-      <Option value="2">2</Option>
-      <Option value="3">3</Option>
-      <Option value="4">4</Option>
-      <Option value="5">5</Option>
-      <Option value="6">6</Option>
-      <Option value="7">7</Option>
-      <Option value="8">8</Option>
-      <Option value="9">9</Option>
-      <Option value="10">10</Option>
+      {range(1, 10).map((number) => {
+        return (
+          <Option value={number}>
+            <Row>
+              <Col style={{ marginTop: "4px" }}>{icon}</Col>
+              <Col>&nbsp; {number}</Col>
+            </Row>
+          </Option>
+        );
+      })}
     </Select>
   );
 };
