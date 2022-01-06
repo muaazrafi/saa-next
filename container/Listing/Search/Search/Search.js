@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from 'next/router';
 import { cloneDeep } from "lodash";
 import { FaSearch, FaBed } from "react-icons/fa";
 import { MdClear, MdMeetingRoom } from "react-icons/md";
@@ -19,8 +20,9 @@ const AdvanceSearch = ({ mapShowBtn }) => {
     (state) => state.apartments
   );
   const dispatcher = useDispatch();
-
+  const router = useRouter();
   const searchApartments = () => {
+    router.push(`/listings/${search.property_city_matches}?q=${JSON.stringify(search)}`, undefined, { shallow: true })
     dispatcher(searching());
   };
 

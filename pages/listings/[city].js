@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
+import { useRouter } from 'next/router';
 import Sticky from "react-stickynode";
 import { BsMap, BsMapFill } from "react-icons/bs";
 import Search from "container/Listing/Search/Search/Search";
@@ -27,6 +28,7 @@ import { fetchApartments } from "store/services/apartment";
 
 export default function ListingPage({ processedData, deviceType }) {
   const dispatcher = useDispatch();
+  const router = useRouter();
   const [posts, setPosts] = useState([]);
 
   const [showMap, setShowMap] = useState(false);
@@ -35,13 +37,10 @@ export default function ListingPage({ processedData, deviceType }) {
   );
 
   useEffect(() => {
+    const { q } = router.query;
+    const searchParam = q ? JSON.parse(q) : search;
     if (apartments.length === 0 && loading) {
-      console.log("*******************");
-      console.log("*******************");
-      console.log("Only One Time:", loading);
-      console.log("*******************");
-      console.log("*******************");
-      dispatcher(fetchApartments(search));
+      dispatcher(fetchApartments(searchParam));
     }
   }, [apartments]);
 
