@@ -21,6 +21,7 @@ const NumberSelector = ({ title, modifier, icon, options=[] }) => {
       <Select
         showSearch
         style={{ width: "100%" }}
+        dropdownStyle={{ zIndex: 2000 }}
         placeholder={title}
         optionFilterProp="children"
         onChange={updateNumberInSearch}

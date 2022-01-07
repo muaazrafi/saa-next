@@ -344,7 +344,7 @@ const GlobalStyle = createGlobalStyle`
   .ant-drawer,
   .ant-modal-mask,
   .ant-modal-wrap  {
-    z-index: 99999 !important;
+    z-index: 1500 !important;
   }
   .ant-drawer {
     &.filter_drawer {
@@ -859,6 +859,13 @@ const GlobalStyle = createGlobalStyle`
    }
  }
  
+ .more-filters-modal{
+   top: 0px;
+   margin: 0px;
+   width: 100%;
+   max-width: 100%;
+   padding-bottom: 0px;
+ }
 
 `;
 

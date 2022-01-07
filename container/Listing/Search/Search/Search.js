@@ -5,7 +5,7 @@ import { cloneDeep, range } from "lodash";
 import { FaSearch, FaBed } from "react-icons/fa";
 import { MdClear, MdMeetingRoom, MdHomeWork } from "react-icons/md";
 import { GiBathtub } from "react-icons/gi";
-import { Button, Input, Popover, Row, Col, Select, Slider, Switch } from "antd";
+import { Button, Input, Popover, Row, Col, Select } from "antd";
 import { searching, updateSearch } from "store/apartmentsSlice";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import AdvanceSearchWrapper from "./Search.style";
@@ -13,6 +13,7 @@ import Amenties from "../Amenties/Amenties";
 import Areas from "../Areas/Areas";
 import Price from "../Price/Price";
 import Selector from "../Selector/Selector";
+import MoreFilters from '../MoreFilters/MoreFilters';
 const { Option } = Select;
 
 const AdvanceSearch = ({ mapShowBtn }) => {
@@ -127,10 +128,8 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             <Button size="large">Neighborhood</Button>
           </Popover>
         </Col>
-
         <Col md={0}>
-          {" "}
-          <Button size="large" >More Filters</Button>
+          <MoreFilters />
         </Col>
         <Col>
           <Button size="large" >
