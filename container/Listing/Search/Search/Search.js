@@ -22,8 +22,9 @@ const AdvanceSearch = ({ mapShowBtn }) => {
   const dispatcher = useDispatch();
   const router = useRouter();
   const searchApartments = () => {
-    router.push(`/listings/${search.property_city_matches}?q=${JSON.stringify(search)}`, undefined, { shallow: true })
-    dispatcher(searching());
+    router.push(`/listings/${search.property_city_matches}?q=${JSON.stringify(search)}`, undefined, { shallow: true }).then( () =>{
+      dispatcher(searching());
+    });
   };
 
   const dateSelection = (startDate, endDate) => {
@@ -38,12 +39,12 @@ const AdvanceSearch = ({ mapShowBtn }) => {
   return (
     <AdvanceSearchWrapper>
       <Row gutter={10} style={{ width: "100%" }}>
-        <Col xl={2} lg={3} md={4} xs={0} sm={0} style={{ marginBottom: "10px" }}>
+        <Col xl={2} lg={3} md={5} xs={0} sm={0} style={{ marginBottom: "10px" }}>
           <Selector
             title="Type"
             modifier="apart_type_eq"
             icon={<MdHomeWork size={18} />}
-            options={['apartment','rooms']}
+            options={['apartment','room']}
           />
         </Col>
         <Col xl={3} lg={6} md={8} xs={20} sm={22} style={{ marginBottom: "10px" }}>
