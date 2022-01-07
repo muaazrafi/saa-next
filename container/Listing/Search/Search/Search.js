@@ -48,7 +48,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             options={['apartment','room']}
           />
         </Col>
-        <Col xl={3} lg={6} md={8} xs={20} sm={22} style={{ marginBottom: "10px" }}>
+        <Col xxl={4} xl={5} lg={6} md={8} xs={20} sm={22} style={{ marginBottom: "10px" }}>
           <DatePickerRange
             startDateId="checkin-Id"
             endDateId="checkout-id"
@@ -59,10 +59,10 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             selectDates={dateSelection}
           />
         </Col>
-        <Col md={0} xs={4} sm={2}>
+        <Col style={{textAlign: 'center', marginTop: '5px'}} md={0} xs={4} sm={2}>
           {mapShowBtn}
         </Col>
-        <Col xl={2} lg={3} md={4} xs={0} sm={0}>
+        <Col xl={3} lg={4} md={4} xs={0} sm={0}>
           <Selector
             title="Beds"
             modifier="number_of_beds_gteq"
@@ -70,7 +70,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             options={range(1, 11)}
           />
         </Col>
-        <Col xl={2} lg={3} md={5} xs={0} sm={0}>
+        <Col xl={3} lg={4} md={5} xs={0} sm={0}>
           <Selector
             title="Bedrooms"
             modifier="number_of_bedrooms_eq"
@@ -78,7 +78,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             options={range(1, 11)}
           />
         </Col>
-        <Col xl={2} lg={3} md={4} xs={0} sm={0}>
+        <Col xl={3} lg={4} md={4} xs={0} sm={0}>
           <Selector
             title="Baths"
             modifier="number_of_bathrooms_gteq"
@@ -146,6 +146,9 @@ const AdvanceSearch = ({ mapShowBtn }) => {
           >
             <FaSearch />
           </Button>
+        </Col>
+        <Col style={{textAlign: 'right', marginTop: '5px'}} md={1} xs={0} sm={0}>
+          {mapShowBtn}
         </Col>
       </Row>
     </AdvanceSearchWrapper>
