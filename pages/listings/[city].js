@@ -17,7 +17,7 @@ import {
 import { getDeviceType } from "library/helpers/get-device-type";
 import { SINGLE_POST_PAGE } from "settings/constant";
 import {
-  LISTING_PAGE_POST_LIMIT,
+  LISTING_PAGE_APARTMENT_LIMIT,
   LISTING_PAGE_COLUMN_WIDTH_WITHOUT_MAP,
   LISTING_PAGE_COLUMN_WIDTH_WITH_MAP,
 } from "settings/config";
@@ -51,9 +51,8 @@ export default function ListingPage({ processedData, deviceType }) {
   };
 
   const handleLoadMore = () => {
-    const nextPage = parseInt(total / 48);
     let modifiedSearch = cloneDeep(search);
-    modifiedSearch.page = (search.page < nextPage) ? (search.page + 1) : search.page;
+    modifiedSearch.page =  search.page + 1;
     dispatcher(updateSearch(modifiedSearch));
     dispatcher(loadUp());
     dispatcher(fetchApartments(modifiedSearch));
@@ -68,6 +67,8 @@ export default function ListingPage({ processedData, deviceType }) {
   if (deviceType === "desktop" && showMap === true) {
     columnCount = "col-12";
   }
+
+  const nextPage = parseInt(total / LISTING_PAGE_APARTMENT_LIMIT);
 
   return (
     <ListingWrapper>
@@ -99,10 +100,11 @@ export default function ListingPage({ processedData, deviceType }) {
           deviceType={deviceType}
           data={apartments}
           totalItem={total}
-          limit={48}
+          limit={LISTING_PAGE_APARTMENT_LIMIT}
           loading={loading}
           handleLoadMore={handleLoadMore}
           loadMore={loadMore}
+          canLoadMore={(search.page < nextPage)}
           placeholder={<PostPlaceholder />}
         />
       </PostsWrapper>

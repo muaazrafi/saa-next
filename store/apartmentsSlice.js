@@ -42,6 +42,7 @@ export const apartmentsSlice = createSlice({
     },
     updateSearch: (state, action) => {
       state.search = action.payload;
+      state.search.page = 0;
     },
     selectAmenties: (state, action) => {
       state.selectedAmenties = action.payload;      

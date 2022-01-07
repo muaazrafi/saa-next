@@ -8,7 +8,7 @@ export const HOME_PAGE_SECTIONS_COLUMNS_RESPONSIVE_WIDTH = [
   1 / 4,
   1 / 5,
 ];
-export const LISTING_PAGE_POST_LIMIT = 10;
+export const LISTING_PAGE_APARTMENT_LIMIT = 48;
 
 export const LISTING_PAGE_COLUMN_WIDTH_WITHOUT_MAP = [
   1 / 1,
