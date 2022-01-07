@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { Select, Row, Col } from "antd";
 import { cloneDeep, range } from "lodash";
 import { updateSearch } from "store/apartmentsSlice";
-import NumberSelectorWrapper from "./NumberSelector.style";
+import NumberSelectorWrapper from "./Selector.style";
 const { Option } = Select;
 
-const NumberSelector = ({ title, modifier, icon }) => {
+const NumberSelector = ({ title, modifier, icon, options=[] }) => {
   const dispatcher = useDispatch();
   const { search } = useSelector((state) => state.apartments);
 
@@ -31,12 +31,12 @@ const NumberSelector = ({ title, modifier, icon }) => {
           </Row>
         }
       >
-        {range(1, 10).map((number) => {
+        {options.map((option) => {
           return (
-            <Option value={number}>
+            <Option value={option}>
               <Row style={{ padding: "5px" }}>
                 <Col style={{ marginTop: "4px" }}>{icon}</Col>
-                <Col>&nbsp; {number}</Col>
+                <Col>&nbsp; {option}</Col>
               </Row>
             </Option>
           );

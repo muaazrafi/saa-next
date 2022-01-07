@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from 'next/router';
-import { cloneDeep } from "lodash";
+import { cloneDeep, range } from "lodash";
 import { FaSearch, FaBed } from "react-icons/fa";
-import { MdClear, MdMeetingRoom } from "react-icons/md";
+import { MdClear, MdMeetingRoom, MdHomeWork } from "react-icons/md";
 import { GiBathtub } from "react-icons/gi";
 import { Button, Input, Popover, Row, Col, Select, Slider, Switch } from "antd";
 import { searching, updateSearch } from "store/apartmentsSlice";
@@ -12,7 +12,7 @@ import AdvanceSearchWrapper from "./Search.style";
 import Amenties from "../Amenties/Amenties";
 import Areas from "../Areas/Areas";
 import Price from "../Price/Price";
-import NumberSelector from "../NumberSelector/NumberSelector";
+import Selector from "../Selector/Selector";
 const { Option } = Select;
 
 const AdvanceSearch = ({ mapShowBtn }) => {
@@ -38,6 +38,14 @@ const AdvanceSearch = ({ mapShowBtn }) => {
   return (
     <AdvanceSearchWrapper>
       <Row gutter={10} style={{ width: "100%" }}>
+        <Col xl={2} lg={3} md={4} xs={0} sm={0} style={{ marginBottom: "10px" }}>
+          <Selector
+            title="Type"
+            modifier="apart_type_eq"
+            icon={<MdHomeWork size={18} />}
+            options={['apartment','rooms']}
+          />
+        </Col>
         <Col xl={3} lg={6} md={8} xs={20} sm={22} style={{ marginBottom: "10px" }}>
           <DatePickerRange
             startDateId="checkin-Id"
@@ -53,24 +61,27 @@ const AdvanceSearch = ({ mapShowBtn }) => {
           {mapShowBtn}
         </Col>
         <Col xl={2} lg={3} md={4} xs={0} sm={0}>
-          <NumberSelector
+          <Selector
             title="Beds"
             modifier="number_of_beds_gteq"
             icon={<FaBed size={18} />}
+            options={range(1, 11)}
           />
         </Col>
         <Col xl={2} lg={3} md={5} xs={0} sm={0}>
-          <NumberSelector
+          <Selector
             title="Bedrooms"
             modifier="number_of_bedrooms_eq"
             icon={<MdMeetingRoom size={18} />}
+            options={range(1, 11)}
           />
         </Col>
         <Col xl={2} lg={3} md={4} xs={0} sm={0}>
-          <NumberSelector
+          <Selector
             title="Baths"
             modifier="number_of_bathrooms_gteq"
             icon={<GiBathtub size={18} />}
+            options={range(1, 11)}
           />
         </Col>
         <Col>
