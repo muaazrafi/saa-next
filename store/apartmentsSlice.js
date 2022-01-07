@@ -26,7 +26,8 @@ const initialState = {
     page: 0
   },
   sortOrder: null,
-  total: 0
+  total: 0,
+  loadMore: true
 }
 
 export const apartmentsSlice = createSlice({
@@ -37,17 +38,21 @@ export const apartmentsSlice = createSlice({
       state.amenties = [];
       state.apartments = [];
       state.loading = true;
+      state.loadMore = true;
     },
     updateSearch: (state, action) => {
       state.search = action.payload;
     },
     selectAmenties: (state, action) => {
       state.selectedAmenties = action.payload;      
-    }
+    },    
+    loadUp: (state, action) => {
+      state.loadMore = true;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchApartments.fulfilled, (state, action) => {
-      let combineApartments = [];
+      let combineApartments = state.apartments;
       combineApartments.push(action.payload.featured_apartments);
       combineApartments.push(action.payload.apartments);      
       state.apartments = flatten(combineApartments);
@@ -57,10 +62,11 @@ export const apartmentsSlice = createSlice({
       state.total = action.payload.apartment_count;
       state.maxPrice = action.payload.max_price;      
       state.loading = false;
+      state.loadMore = false;
     });
   },
 });
 
-export const { updateSearch, searching, selectAmenties } = apartmentsSlice.actions;
+export const { updateSearch, searching, selectAmenties, loadUp } = apartmentsSlice.actions;
 
 export default apartmentsSlice.reducer;

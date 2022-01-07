@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { cloneDeep } from "lodash";
 import Head from "next/head";
 import { useRouter } from 'next/router';
 import Sticky from "react-stickynode";
@@ -24,6 +25,7 @@ import ListingWrapper, {
   PostsWrapper,
   ShowMapCheckbox,
 } from "container/Listing/Listing.style";
+import { updateSearch, loadUp } from "store/apartmentsSlice";
 import { fetchApartments } from "store/services/apartment";
 
 export default function ListingPage({ processedData, deviceType }) {
@@ -32,7 +34,7 @@ export default function ListingPage({ processedData, deviceType }) {
   const [posts, setPosts] = useState([]);
 
   const [showMap, setShowMap] = useState(false);
-  const { apartments, loading, search, init } = useSelector(
+  const { apartments, loading, search, total, loadMore } = useSelector(
     (state) => state.apartments
   );
 
@@ -49,12 +51,12 @@ export default function ListingPage({ processedData, deviceType }) {
   };
 
   const handleLoadMore = () => {
-    setLoading(true);
-    setTimeout(() => {
-      const data = paginator(posts, processedData, LISTING_PAGE_POST_LIMIT);
-      setPosts(data);
-      setLoading(false);
-    }, 1000);
+    const nextPage = parseInt(total / 48);
+    let modifiedSearch = cloneDeep(search);
+    modifiedSearch.page = (search.page < nextPage) ? (search.page + 1) : search.page;
+    dispatcher(updateSearch(modifiedSearch));
+    dispatcher(loadUp());
+    dispatcher(fetchApartments(modifiedSearch));
   };
 
   let columnWidth = LISTING_PAGE_COLUMN_WIDTH_WITHOUT_MAP;
@@ -96,10 +98,11 @@ export default function ListingPage({ processedData, deviceType }) {
           columnWidth={columnWidth}
           deviceType={deviceType}
           data={apartments}
-          totalItem={processedData.length}
-          limit={LISTING_PAGE_POST_LIMIT}
+          totalItem={total}
+          limit={48}
           loading={loading}
           handleLoadMore={handleLoadMore}
+          loadMore={loadMore}
           placeholder={<PostPlaceholder />}
         />
       </PostsWrapper>

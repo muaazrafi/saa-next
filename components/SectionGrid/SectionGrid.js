@@ -18,7 +18,7 @@ const LoadMore = ({
         {loadMoreComponent ? (
           loadMoreComponent
         ) : (
-          <Button loading={loading} onClick={handleLoadMore}>
+          <Button loading={loading} onClick={handleLoadMore} >
             {buttonText || 'Load More'}
           </Button>
         )}
@@ -42,6 +42,7 @@ export default function SectionGrid({
   columnStyle,
   loadMoreStyle,
   link,
+  loadMore
 }) {
   const n = limit ? Number(limit) : 1;
   const limits = Array(n).fill(0);
@@ -82,7 +83,7 @@ export default function SectionGrid({
         <LoadMore
           showButton={showButton}
           handleLoadMore={handleLoadMore}
-          loading={loading}
+          loading={loadMore}
           buttonText={buttonText}
           loadMoreComponent={loadMoreComponent}
           loadMoreStyle={loadMoreStyle}
