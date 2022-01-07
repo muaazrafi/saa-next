@@ -28,7 +28,6 @@ const MoreFilters = (props) => {
     router.push(`/listings/${search.property_city_matches}?q=${JSON.stringify(search)}`, undefined, { shallow: true }).then( () =>{
       dispatcher(searching());
     });
-    debugger
     setIsModalVisible(false);
   };
 
