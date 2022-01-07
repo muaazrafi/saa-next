@@ -125,7 +125,15 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             getPopupContainer={(trigger) => trigger.parentElement}
             content={<Areas />}
           >
-            <Button size="large">Neighborhood</Button>
+            <Button
+              size="large"
+              type={search.property_area_in.length > 0 ? "primary" : ""}
+            >
+              Neighborhood{" "}
+              {search.property_area_in.length > 0
+                ? `(${search.property_area_in.length})`
+                : ""}{" "}
+            </Button>
           </Popover>
         </Col>
         <Col md={0}>

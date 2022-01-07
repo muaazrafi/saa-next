@@ -16,7 +16,7 @@ const { Panel } = Collapse;
 const MoreFilters = (props) => {
   const dispatcher = useDispatch();
   const router = useRouter();
-  const { search, loading } = useSelector(
+  const { search, loading, selectedAmenties } = useSelector(
     (state) => state.apartments
   );
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -91,10 +91,10 @@ const MoreFilters = (props) => {
               </Col>
             </Row>
           </Panel>
-          <Panel header="Amenities" key="2">
+          <Panel header={selectedAmenties.length > 0 ? `Amenties (${selectedAmenties.length})` : "Amenties"} key="2">
             <Amenties />
           </Panel>
-          <Panel header="Neighborhood" key="3">
+          <Panel header={search.property_area_in.length > 0 ? `Neighborhood (${search.property_area_in.length})` : "Neighborhood"} key="3">
             <Areas />
           </Panel>
         </Collapse>
