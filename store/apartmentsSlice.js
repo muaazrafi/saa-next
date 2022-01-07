@@ -2,6 +2,7 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import { fetchApartments } from './services/apartment';
+import { flatten } from 'lodash';
 
 const initialState = {
   apartments: [],
@@ -10,7 +11,6 @@ const initialState = {
   selectedAmenties: [],
   city: [],
   currentPage: 0,
-  featuredApartments: [],
   loading: true,
   maxPrice: 0,
   properties: [],
@@ -47,10 +47,12 @@ export const apartmentsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchApartments.fulfilled, (state, action) => {
-      state.apartments = state.apartments.concat(action.payload.apartments);
+      let combineApartments = [];
+      combineApartments.push(action.payload.featured_apartments);
+      combineApartments.push(action.payload.apartments);      
+      state.apartments = flatten(combineApartments);
       state.amenties = state.amenties.concat(action.payload.amenties_counts);
       state.areas = state.areas.concat(action.payload.area_counts);
-      state.featuredApartments = state.featuredApartments.concat(action.payload.featured_apartments);
       state.properties = state.properties.concat(action.payload.properties);
       state.total = action.payload.apartment_count;
       state.maxPrice = action.payload.max_price;      
