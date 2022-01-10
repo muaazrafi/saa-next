@@ -25,13 +25,14 @@ import SinglePageWrapper, {
 } from "container/SinglePage/SinglePageView.style";
 import ImageGrid from "container/SinglePage/ImageGrid/ImageGrid";
 import PostImageGallery from "container/SinglePage/ImageGallery/ImageGallery";
+import SimilarApartment from "components/SimilarApartment/SimilarApartments";
 import { fetchApartment } from "store/services/apartment";
 
 export default function SinglePostPage({ processedData, deviceType, query }) {
   const dispatcher = useDispatch();
   const router = useRouter();
   const { slug } = router.query;
-  const { apartment, loading } = useSelector((state) => state.apartment);
+  const { apartment ,loading } = useSelector((state) => state.apartment);
   const [href, setHref] = useState("");
   const [isModalShowing, setIsModalShowing] = useState(false);
 
@@ -104,6 +105,8 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
               <AccommodationPolicies accommodationpolicies={amenities} />
               <Calender />
               <Location location={processedData[0]} />
+              <SimilarApartment apartment = {apartment}/>
+              
             </Col>
             <Col xl={8}>
               {deviceType === "desktop" ? (
