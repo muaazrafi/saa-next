@@ -1,21 +1,15 @@
-import React, { useContext } from 'react';
-import Link from 'next/link';
-import { useForm, Controller } from 'react-hook-form';
-import { MdLockOpen } from 'react-icons/md';
-import { Form, Button, Checkbox, Input, Switch } from 'antd';
-import FormControl from 'components/UI/FormControl/FormControl';
-import { AuthContext } from 'context/AuthProvider';
-import { FORGET_PASSWORD_PAGE } from 'settings/constant';
-import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { useDispatch, useSelector } from 'react-redux';
-import { switchforgot } from 'store/authSlice'
-
+import React from "react";
+import { Form, Button, Input, Alert } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { switchforgot } from "store/authSlice";
+import { authenticate } from "store/services/auth";
 
 const SignInForm = () => {
   const dispatcher = useDispatch();
+  const { existError } = useSelector((state) => state.auth);
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    dispatcher(authenticate(values));
   };
 
   return (
@@ -28,22 +22,24 @@ const SignInForm = () => {
       onFinish={onFinish}
     >
       <Form.Item
-        name="username"
+        name="email"
         rules={[
-          {
-            required: true,
-            message: 'Please input your Username!',
-          },
+          { type: "email", message: "The input is not valid E-mail!" },
+          { required: true, message: "Please input your E-mail!" },
         ]}
       >
-      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" style={{ width: 256 }}/>
+        <Input
+          prefix={<UserOutlined className="site-form-item-icon" />}
+          placeholder="Email"
+          style={{ width: 256 }}
+        />
       </Form.Item>
       <Form.Item
         name="password"
         rules={[
           {
             required: true,
-            message: 'Please input your Password!',
+            message: "Please input your Password!",
           },
         ]}
       >
@@ -54,15 +50,27 @@ const SignInForm = () => {
           style={{ width: 256 }}
         />
       </Form.Item>
-      <Form.Item>
-          <Button type="default" style={{ width: 256 }} block onClick={() => dispatcher(switchforgot("forgot"))}>
-            Forgot password
-          </Button>
-      </Form.Item>
-
+      {existError && (
+        <Alert
+          message="Invalid Email/Password."
+          type="error"
+          style={{ width: 256, marginBottom: "20px" }}
+          showIcon
+        />
+      )}
       <Form.Item>
         <Button type="primary" htmlType="submit" style={{ width: 256 }}>
           Log in
+        </Button>
+      </Form.Item>
+      <Form.Item>
+        <Button
+          type="default"
+          style={{ width: 256 }}
+          block
+          onClick={() => dispatcher(switchforgot("forgot"))}
+        >
+          Forgot password
         </Button>
       </Form.Item>
     </Form>

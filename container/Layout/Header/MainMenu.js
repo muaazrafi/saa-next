@@ -4,45 +4,37 @@ import { useDispatch,useSelector } from 'react-redux';
 import { Menu,Modal, Button } from 'antd';
 import ActiveLink from 'library/helpers/activeLink';
 import SwitchCom from 'container/Auth/SwitchCom';
-import SignIn from 'container/Auth/SignIn/SignIn';
-import SignUp from 'container/Auth/SignUp/SignUp';
-import ForgetPassword from 'container/Auth/ForgetPassword';
 
 import {
   HOME_PAGE,
-  LOGIN_PAGE,
   LISTING_POSTS_PAGE,
-  AGENT_PROFILE_PAGE,
-  PRICING_PLAN_PAGE,
 } from 'settings/constant';
-import { switchin, switchup } from 'store/authSlice'
+import { switchin, switchup, handlePopUp } from 'store/authSlice'
 
 const MainMenu = ( { className, router } ) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const { popUp } = useSelector( state => state.auth );
   const dispatcher = useDispatch();
   
   const showModal = (value) => {
-    
-    setIsModalVisible(true);
+    dispatcher(handlePopUp(true));
     if(value=="in"){
       dispatcher(switchin())
     }else{
       dispatcher(switchup())
     }
-     
   };
   
   const handleOk = () => {
-    setIsModalVisible(false)
+    dispatcher(handlePopUp(false));
   };
 
   const handleCancel = () => {
-    setIsModalVisible(false);
+    dispatcher(handlePopUp(false));
   };
 
   return (
   <>
-    <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={isModalVisible} onOk={handleOk}  onCancel={handleCancel} width={800}> 
+    <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={popUp} onOk={handleOk}  onCancel={handleCancel} width={800}> 
        <SwitchCom/>
     </Modal>
       

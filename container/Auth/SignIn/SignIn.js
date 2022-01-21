@@ -1,19 +1,14 @@
 import React from 'react';
-import Link from 'next/link';
-import { Divider,Row,Col,Image,Typography,Button } from 'antd';
-import Logo from 'components/UI/Logo/Logo';
-import { REGISTRATION_PAGE } from 'settings/constant';
+import { Row,Col,Image,Typography,Button } from 'antd';
 import SignInForm from './SignInForm';
-import SocialLogin from '../SocialLogin';
 import Wrapper, {
-  TitleInfo,
-  Text,
   FormWrapper,
   BannerWrapper,
 } from '../Auth.style';
-import { useDispatch, useSelector } from 'react-redux';
-import { switchin, switchup } from 'store/authSlice'  
+import { useDispatch } from 'react-redux';
+import { switchup } from 'store/authSlice'  
 const { Title } = Typography;
+
 const SignIn = () => {
   const dispatcher = useDispatch();
   return (
