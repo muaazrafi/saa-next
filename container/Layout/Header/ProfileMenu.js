@@ -2,14 +2,13 @@ import React, { useContext, useState, useRef } from 'react';
 import { Menu } from 'antd';
 import useOnClickOutside from 'library/hooks/useOnClickOutside';
 import ActiveLink from 'library/helpers/activeLink';
-
+import LogOut from './LogOut';
 import {
   AGENT_PROFILE_PAGE,
   AGENT_ACCOUNT_SETTINGS_PAGE,
 } from 'settings/constant';
 
 const ProfileMenu = ({ avatar }) => {
-  const logOut = () => { console.log("Worabke") };
   const [state, setState] = useState(false);
 
   const handleDropdown = () => {
@@ -39,7 +38,7 @@ const ProfileMenu = ({ avatar }) => {
           </ActiveLink>
         </Menu.Item>
         <Menu.Item key="3">
-          <button onClick={logOut}>Log Out</button>
+          <LogOut />
         </Menu.Item>
       </Menu>
     </div>

@@ -80,7 +80,7 @@ const TopBar = (props) => {
   const { title, shareURL, author, media } = props;
   return (
     <TobBarWrapper>
-      <Sticky innerZ={9999} top={80} activeClass="isSticky">
+      <Sticky innerZ={1500} top={80} activeClass="isSticky">
         <ScrollBar
           menu={topBarMenu}
           other={

@@ -31,3 +31,19 @@ export const fetchMe = createAsyncThunk(
     return response.user;
   }
 )
+
+export const unAuthenticate = createAsyncThunk(
+  'auth/unauthenticate',
+  async (user, thunkAPI) => {
+    const response = await fetch('/users/sign_out.json', {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then((res) => {
+      return res.json()
+    });
+    return response;
+  }
+)

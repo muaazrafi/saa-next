@@ -1,7 +1,7 @@
 import {
   createSlice
 } from '@reduxjs/toolkit';
-import { authenticate, fetchMe } from './services/auth';
+import { authenticate, fetchMe, unAuthenticate } from './services/auth';
 import { notification } from 'antd';
 const initialState = {
   currentUser: null,
@@ -18,6 +18,9 @@ export const authSlice = createSlice({
   reducers: {
     handlePopUp: (state, action) => {
       state.popUp = action.payload;
+    },
+    handleLoading: (state, action) => {
+      state.loading = action.payload;
     },
     switchin: (state) => {
       state.auth_component_switch = "in"
@@ -49,12 +52,17 @@ export const authSlice = createSlice({
       if (action.payload) {
         state.currentUser = action.payload;
       }
+    });
+    
+    builder.addCase(unAuthenticate.fulfilled, (state, action) => {
+      state.loading = false;
+      state.currentUser = null;
     });    
     
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { switchin, switchup, switchforgot, handlePopUp } = authSlice.actions;
+export const { switchin, switchup, switchforgot, handlePopUp, handleLoading } = authSlice.actions;
 
 export default authSlice.reducer;
