@@ -72,7 +72,7 @@ const Header = ({ router }) => {
           authMenu={<AuthMenu />}
           isLogin={loggedIn}
           avatar={<Avatar size={42} icon={<UserOutlined />} />}
-          profileMenu={<ProfileMenu avatar={<Avatar size={42} icon={<UserOutlined />} />} />}
+          profileMenu={<ProfileMenu avatar={<Avatar size={42} icon={<UserOutlined />} style={{ marginLeft: '-2px' }} />} />}
           headerType={headerType}
           searchComponent={<NavbarSearch />}
           location={router}
@@ -119,7 +119,7 @@ const Header = ({ router }) => {
                   <Avatar size={64} icon={<UserOutlined />} />
                 </AvatarImage>
                 <AvatarInfo>
-                  <Text as="h3" content="Nova Scotia" />
+                  <Text as="h3" content={currentUser.first_name} />
                   <Link href={AGENT_PROFILE_PAGE}>
                     <a>View Profile</a>
                   </Link>
