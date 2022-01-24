@@ -41,7 +41,7 @@ const LogoIcon = () => (
 );
 
 const Header = ({ router }) => {
-  const loggedIn = true;
+  const loggedIn = false;
   const [{ searchVisibility }] = useContext(LayoutContext);
   const [state, setState] = useState(false);
   const sidebarHandler = () => {

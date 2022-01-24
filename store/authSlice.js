@@ -1,13 +1,14 @@
 import {
   createSlice
 } from '@reduxjs/toolkit';
-import { authenticate } from './services/auth';
+import { authenticate, fetchMe } from './services/auth';
 import { notification } from 'antd';
 const initialState = {
   currentUser: null,
   popUp: false,
   auth_component_switch: "",
-  existError: false
+  existError: false,
+  loading: true
 };
 
 
@@ -42,6 +43,12 @@ export const authSlice = createSlice({
         });
       }
     });
+
+    builder.addCase(fetchMe.fulfilled, (state, action) => {
+      debugger
+      state.loading = false;
+    });    
+    
   },
 });
 

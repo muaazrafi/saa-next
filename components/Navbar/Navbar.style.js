@@ -210,8 +210,6 @@ export const MenuWrapper = styled.div`
 `;
 
 export const AuthWrapper = styled.div`
-  margin-left: 74px;
-
   ul,
   .ant-menu,
   ul.ant-menu {
