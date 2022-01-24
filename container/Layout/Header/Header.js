@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useDispatch,useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
 import dynamic from 'next/dynamic';
@@ -77,6 +77,7 @@ const Header = ({ router }) => {
           searchComponent={<NavbarSearch />}
           location={router}
           searchVisibility={searchVisibility}
+          innerZ={1500}
         />
         <MobileNavbar className={headerType}>
           <LogoArea>
