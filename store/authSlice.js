@@ -45,8 +45,10 @@ export const authSlice = createSlice({
     });
 
     builder.addCase(fetchMe.fulfilled, (state, action) => {
-      debugger
       state.loading = false;
+      if (action.payload) {
+        state.currentUser = action.payload;
+      }
     });    
     
   },

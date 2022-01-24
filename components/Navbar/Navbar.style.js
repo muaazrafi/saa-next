@@ -75,8 +75,8 @@ export const MenuArea = styled.div`
 `;
 
 export const AvatarWrapper = styled.div`
-  margin-left: 46px;
-
+  margin-left: 20px;
+  
   .avatar-dropdown {
     position: relative;
 

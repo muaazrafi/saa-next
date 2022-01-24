@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { Menu,Modal, Button } from 'antd';
+import { Menu,Modal, Spin } from 'antd';
 import SwitchCom from 'container/Auth/SwitchCom';
 import { fetchMe } from 'store/services/auth';
 import { switchin, switchup, handlePopUp } from 'store/authSlice';
@@ -32,10 +32,11 @@ const AuthMenu = ({ className }) => {
 
   return (
     <>
-        <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={popUp} onOk={handleOk}  onCancel={handleCancel} width={800}> 
+      <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={popUp} onOk={handleOk}  onCancel={handleCancel} width={800}> 
        <SwitchCom/>
     </Modal>
-
+    <>
+    </>
     {
       (!loading && !currentUser ) &&
       <Menu className={className}>
@@ -49,7 +50,15 @@ const AuthMenu = ({ className }) => {
             Sign Up 
           </a>
         </Menu.Item>        
-        </Menu>
+      </Menu>
+    }
+    {
+      loading &&
+      <Menu className={className}>
+        <Menu.Item key="3">
+          <Spin />
+        </Menu.Item>
+      </Menu> 
     }
     </>
   );

@@ -2,11 +2,10 @@ import React, { useContext, useState, useRef } from 'react';
 import { Menu } from 'antd';
 import useOnClickOutside from 'library/hooks/useOnClickOutside';
 import ActiveLink from 'library/helpers/activeLink';
-import { AuthContext } from 'context/AuthProvider';
+
 import {
   AGENT_PROFILE_PAGE,
   AGENT_ACCOUNT_SETTINGS_PAGE,
-  ADD_HOTEL_PAGE,
 } from 'settings/constant';
 
 const ProfileMenu = ({ avatar }) => {
@@ -34,9 +33,6 @@ const ProfileMenu = ({ avatar }) => {
         <Menu.Item onClick={closeDropdown} key="0">
           <ActiveLink href={AGENT_PROFILE_PAGE}>View Profile</ActiveLink>
         </Menu.Item>
-        {/* <Menu.Item onClick={closeDropdown} key="1">
-          <ActiveLink href={ADD_HOTEL_PAGE}>Add Hotel</ActiveLink>
-        </Menu.Item> */}
         <Menu.Item onClick={closeDropdown} key="2">
           <ActiveLink href={AGENT_ACCOUNT_SETTINGS_PAGE}>
             Account Settings

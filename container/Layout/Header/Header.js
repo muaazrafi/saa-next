@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
 import dynamic from 'next/dynamic';
@@ -6,7 +7,8 @@ import Sticky from 'react-stickynode';
 import { IoIosClose } from 'react-icons/io';
 import Logo from 'components/UI/Logo/Logo';
 import Text from 'components/UI/Text/Text';
-import { Button, Drawer } from 'antd';
+import { Button, Drawer, Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import Navbar from 'components/Navbar/Navbar';
 import { LayoutContext } from 'context/LayoutProvider';
 import { AGENT_PROFILE_PAGE } from 'settings/constant';
@@ -41,7 +43,8 @@ const LogoIcon = () => (
 );
 
 const Header = ({ router }) => {
-  const loggedIn = false;
+  const { currentUser } = useSelector( state => state.auth );
+  const loggedIn = currentUser;
   const [{ searchVisibility }] = useContext(LayoutContext);
   const [state, setState] = useState(false);
   const sidebarHandler = () => {
@@ -68,8 +71,8 @@ const Header = ({ router }) => {
           navMenu={<MainMenu />}
           authMenu={<AuthMenu />}
           isLogin={loggedIn}
-          avatar={<Logo src={avatarImg} />}
-          profileMenu={<ProfileMenu avatar={<Logo src={avatarImg} />} />}
+          avatar={<Avatar size={42} icon={<UserOutlined />} />}
+          profileMenu={<ProfileMenu avatar={<Avatar size={42} icon={<UserOutlined />} />} />}
           headerType={headerType}
           searchComponent={<NavbarSearch />}
           location={router}
@@ -111,12 +114,10 @@ const Header = ({ router }) => {
               </button>
             </CloseDrawer>
             {loggedIn ? (
-              
               <AvatarWrapper>
                 <AvatarImage>
-                  <Logo src={avatarImg} />
+                  <Avatar size={64} icon={<UserOutlined />} />
                 </AvatarImage>
-                
                 <AvatarInfo>
                   <Text as="h3" content="Nova Scotia" />
                   <Link href={AGENT_PROFILE_PAGE}>
@@ -127,7 +128,7 @@ const Header = ({ router }) => {
             ) : (
               <AuthMenu className="auth-menu" />
             )}
-            <MobileMenu className="main-menu" />
+            <MobileMenu className="main-menu" loggedIn={loggedIn} />
           </Drawer>
         </MobileNavbar>
       </Sticky>
