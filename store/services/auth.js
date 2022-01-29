@@ -21,6 +21,25 @@ export const authenticate = createAsyncThunk(
   }
 )
 
+export const register = createAsyncThunk(
+  'auth/register',
+  async (user, thunkAPI) => {
+    const response = await fetch('/users/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: user 
+      })
+    }).then((res) => {
+      return res.json()
+    });
+    return response;
+  }
+)
+
 
 export const fetchMe = createAsyncThunk(
   'auth/me',

@@ -1,67 +1,96 @@
-import React, { useContext } from 'react';
-import Link from 'next/link';
-import { useForm, Controller } from 'react-hook-form';
-import { MdLockOpen } from 'react-icons/md';
-import { Form, Button, Checkbox, Input, Switch ,Typography} from 'antd';
-import FormControl from 'components/UI/FormControl/FormControl';
-import { AuthContext } from 'context/AuthProvider';
-import { FORGET_PASSWORD_PAGE } from 'settings/constant';
-import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-const { Title } = Typography;
-
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Form, Button, Input } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { HiOutlineMail } from 'react-icons/hi';
+import { register } from "store/services/auth";
 
 const SignUpForm = () => {
+  const dispatcher = useDispatch();
+  const { existError } = useSelector((state) => state.auth);
 
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    dispatcher(register(values));
   };
 
   return (
     <>
-      <Form name="normal_login" className="login-form" initialValues={{remember: true,}} onFinish={onFinish}>
+      <Form
+        name="normal_login"
+        className="login-form"
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+      >
         <Form.Item
-              name="First Name"
-              noStyle
-              rules={[{ required: true, message: 'Firstname is required' }]}
-            >
-              <Input style={{ width: 256 , marginBottom: 10  }} placeholder="First Name" />
-        </Form.Item>
-        
-        <Form.Item
-              name="First Name"
-              noStyle
-              rules={[{ required: true, message: 'Lastname is required' }]}
-            >
-              <Input style={{ width: 256 , marginBottom: 10  }} placeholder="Last Name" />
+          name="first_name"
+          rules={[{ required: true, message: "First Name is required" }]}
+          style={{ marginBottom: '10px'}}
+        >
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            style={{ width: 256 }}
+            placeholder="First Name"
+          />
         </Form.Item>
 
+        <Form.Item
+          name="last_name"
+          rules={[{ required: true, message: "Last Name is required" }]}
+          style={{ marginBottom: '10px'}}
+        >
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            style={{ width: 256 }}
+            placeholder="Last Name"
+          />
+        </Form.Item>
 
         <Form.Item
-              name="First Name"
-              noStyle
-              rules={[{ required: true, message: 'Email is required' }]}
-            >
-              <Input style={{ width: 256 , marginBottom: 10  }} placeholder="Email" />
+          name="email"
+          rules={[
+            { type: "email", message: "The input is not valid E-mail!" },
+            { required: true, message: "Please input your E-mail!" },
+          ]}
+          style={{ marginBottom: '10px'}}
+        >
+          <Input
+            prefix={<HiOutlineMail className="site-form-item-icon" />}
+            placeholder="Email"
+            style={{ width: 256 }}
+          />
         </Form.Item>
-        
         <Form.Item
-              name="First Name"
-              noStyle
-              rules={[{ required: true, message: 'Password' }]}
-            >
-              <Input style={{ width: 256 , marginBottom: 10  }} placeholder="Password" />
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: "Please input your Password!",
+            },
+          ]}
+          style={{ marginBottom: '20px'}}
+        >
+          <Input
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            type="password"
+            placeholder="Password"
+            style={{ width: 256 }}
+          />
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" size='middle' style={{ width: 256 }} htmlType="submit" block  >
-            Continu
+          <Button
+            type="primary"
+            size="middle"
+            style={{ width: 256 }}
+            htmlType="submit"
+            block
+          >
+            Continue
           </Button>
         </Form.Item>
       </Form>
     </>
   );
 };
-
 
 export default SignUpForm;

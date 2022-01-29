@@ -1,7 +1,7 @@
 import {
   createSlice
 } from '@reduxjs/toolkit';
-import { authenticate, fetchMe, unAuthenticate } from './services/auth';
+import { authenticate, fetchMe, unAuthenticate, register } from './services/auth';
 import { notification } from 'antd';
 const initialState = {
   currentUser: null,
@@ -57,6 +57,20 @@ export const authSlice = createSlice({
     builder.addCase(unAuthenticate.fulfilled, (state, action) => {
       state.loading = false;
       state.currentUser = null;
+    });
+    
+    builder.addCase(register.fulfilled, (state, action) => {
+      if (action.payload.error) {
+        state.existError = true;
+      } else {
+        state.popUp = false;
+        state.currentUser = action.payload.user;
+        notification['success']({
+          message: 'Successful',
+          description:
+            'You are successfully registered.',
+        });
+      }
     });    
     
   },
