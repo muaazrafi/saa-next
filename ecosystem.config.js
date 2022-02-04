@@ -3,7 +3,7 @@ module.exports = {
     name: "SAA",
     script: "yarn",
     args: "start",
-    instances  : 1,
+    instances  : 2,
     exec_mode  : "cluster"
   }],
   deploy : {
