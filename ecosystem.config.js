@@ -11,7 +11,7 @@ module.exports = {
       user : 'ubuntu',
       host : '18.142.53.216',
       ref  : 'origin/dev',
-      repo : 'https://muaazrafi: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@@github.com/muaazrafi/saa-next.git',
+      repo : 'https://muaazrafi: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@github.com/muaazrafi/saa-next.git',
       path : '/home/ubuntu/saa_next',
       'pre-deploy-local': '',
       'post-deploy' : 'nvm use 16.13.0 && yarn && yarn build && pm2 restart ecosystem.config.js',
