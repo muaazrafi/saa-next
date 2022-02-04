@@ -9,7 +9,7 @@ module.exports = {
   deploy : {
     staging : {
       user : 'ubuntu',
-      host : '18.237.41.223',
+      host : '34.213.52.205',
       ref  : 'origin/master',
       repo : 'https://muaazrafi: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@github.com/muaazrafi/saa-next.git',
       path : '/home/ubuntu/saa_next',
