@@ -64,7 +64,7 @@ export const authSlice = createSlice({
         state.existError = true;
       } else {
         state.popUp = false;
-        state.currentUser = action.payload.user;
+        state.currentUser = action.payload;
         notification['success']({
           message: 'Successful',
           description:
