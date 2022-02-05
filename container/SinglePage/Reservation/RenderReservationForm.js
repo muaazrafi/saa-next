@@ -3,11 +3,10 @@ import { Button } from 'antd';
 import { useSelector } from 'react-redux';
 import HtmlLabel from 'components/UI/HtmlLabel/HtmlLabel';
 import DatePickerRange from 'components/UI/DatePicker/ReactDates';
+import { Row, Col } from 'antd';
 import ReservationFormWrapper, {
   FormActionArea,
   FieldWrapper,
-  RoomGuestWrapper,
-  ItemWrapper,
 } from './Reservation.style.js';
 
 const RenderReservationForm = () => {
@@ -36,26 +35,36 @@ const RenderReservationForm = () => {
   };
 
   const handleSubmit = (e) => {
+    console.log("Form state current:", formState)
     e.preventDefault();
-
   };
 
   return (
     <ReservationFormWrapper className="form-container" onSubmit={handleSubmit}>
       <FieldWrapper>
-        <HtmlLabel htmlFor="dates" content="Dates" />
-
-        <DatePickerRange
-          startDateId="checkin-Id"
-          endDateId="checkout-id"
-          startDatePlaceholderText="Check In"
-          endDatePlaceholderText="Check Out"
-          updateSearchData={(value) => updateSearchDataFunc(value)}
-          numberOfMonths={1}
-          selectDates={dateSelection}
-          small
-          isDayBlocked={disableDates}
-        />
+        <Row>
+          <Col span='18'>
+            <HtmlLabel htmlFor="dates" content="Dates" />
+            <DatePickerRange
+              startDateId="checkin-Id"
+              endDateId="checkout-id"
+              startDatePlaceholderText="Check In"
+              endDatePlaceholderText="Check Out"
+              updateSearchData={(value) => updateSearchDataFunc(value)}
+              numberOfMonths={1}
+              selectDates={dateSelection}
+              small
+              isDayBlocked={disableDates}
+            />
+          </Col>
+          <Col span='6'>
+            <HtmlLabel htmlFor="guests" content="Guests" style={{ textAlign: 'center' }} />
+          </Col>
+        </Row>
+        <Row>
+          <Col span={18}>Down Payment</Col>
+          <Col span={6}></Col>
+        </Row>
 
       </FieldWrapper>
       {/* <FieldWrapper>

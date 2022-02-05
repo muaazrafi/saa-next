@@ -81,6 +81,10 @@ export const FieldWrapper = styled.div`
     }
   }
 
+  .DateInput_input {
+    padding: 0px !important;
+  }
+
   /* Room guest component style */
   .view_with__popup {
     .popup_handler {
