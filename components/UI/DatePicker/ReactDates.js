@@ -66,6 +66,7 @@ class DateRangePickerBox extends Component {
       numberOfMonths,
       regular,
       noBorder,
+      isDayBlocked
     } = this.props;
 
     // Add all classs to an array **************
@@ -98,6 +99,7 @@ class DateRangePickerBox extends Component {
       block,
       regular,
       noBorder,
+      isDayBlocked
     };
 
     return (

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from 'antd';
+import { useSelector } from 'react-redux';
 import HtmlLabel from 'components/UI/HtmlLabel/HtmlLabel';
 import DatePickerRange from 'components/UI/DatePicker/ReactDates';
-import ViewWithPopup from 'components/UI/ViewWithPopup/ViewWithPopup';
-import InputIncDec from 'components/UI/InputIncDec/InputIncDec';
 import ReservationFormWrapper, {
   FormActionArea,
   FieldWrapper,
@@ -12,52 +11,40 @@ import ReservationFormWrapper, {
 } from './Reservation.style.js';
 
 const RenderReservationForm = () => {
+  const { apartment } = useSelector( (state) => state.apartment )
+
   const [formState, setFormState] = useState({
     startDate: null,
     endDate: null,
-    room: 0,
     guest: 0,
   });
-  const handleIncrement = (type) => {
-    setFormState({
-      ...formState,
-      [type]: formState[type] + 1,
-    });
-  };
-  const handleDecrement = (type) => {
-    if (formState[type] <= 0) {
-      return false;
+
+  const disableDates = (current) => {
+    if (current && current.valueOf() < Date.now()) {
+      return true;
     }
+    if ( apartment && apartment.occupied_dates ) {
+      return apartment.occupied_dates.includes(current.format("YYYY/MM/DD"));
+    }
+  }
+
+  const dateSelection = (startDate, endDate) => {
     setFormState({
-      ...formState,
-      [type]: formState[type] - 1,
-    });
+      startDate: startDate,
+      endDate: endDate
+    })
   };
-  const handleIncDecOnChnage = (e, type) => {
-    let currentValue = e.target.value;
-    setFormState({
-      ...formState,
-      [type]: currentValue,
-    });
-  };
-  const updateSearchDataFunc = (value) => {
-    setFormState({
-      ...formState,
-      startDate: value.setStartDate,
-      endDate: value.setEndDate,
-    });
-  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(
-      `Start Date: ${formState.startDate}\nEnd Date: ${formState.endDate}\nRooms: ${formState.room}\nGuests: ${formState.guest}`
-    );
+
   };
 
   return (
     <ReservationFormWrapper className="form-container" onSubmit={handleSubmit}>
       <FieldWrapper>
         <HtmlLabel htmlFor="dates" content="Dates" />
+
         <DatePickerRange
           startDateId="checkin-Id"
           endDateId="checkout-id"
@@ -65,10 +52,13 @@ const RenderReservationForm = () => {
           endDatePlaceholderText="Check Out"
           updateSearchData={(value) => updateSearchDataFunc(value)}
           numberOfMonths={1}
+          selectDates={dateSelection}
           small
+          isDayBlocked={disableDates}
         />
+
       </FieldWrapper>
-      <FieldWrapper>
+      {/* <FieldWrapper>
         <HtmlLabel htmlFor="guests" content="Guests" />
         <ViewWithPopup
           key={200}
@@ -107,7 +97,7 @@ const RenderReservationForm = () => {
             </RoomGuestWrapper>
           }
         />
-      </FieldWrapper>
+      </FieldWrapper> */}
       <FormActionArea>
         <Button htmlType="submit" type="primary">
           Book Hotel

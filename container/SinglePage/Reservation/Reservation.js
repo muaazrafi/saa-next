@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Card from 'components/UI/Card/Card';
@@ -8,19 +8,19 @@ import RenderReservationForm from './RenderReservationForm';
 
 const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
   return (
-    <Fragment>
+    <>
       <Heading
         content={
-          <Fragment>
+          <>
             $162 <Text as="span" content="/ monthy" {...pricePeriodStyle} />
-          </Fragment>
+          </>
         }
         {...priceStyle}
       />
       <Link href="/#1">
         <a style={{ ...linkStyle }}>Contact Us</a>
       </Link>
-    </Fragment>
+    </>
   );
 };
 
