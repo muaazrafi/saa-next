@@ -3,7 +3,9 @@ import { Button } from 'antd';
 import { useSelector } from 'react-redux';
 import HtmlLabel from 'components/UI/HtmlLabel/HtmlLabel';
 import DatePickerRange from 'components/UI/DatePicker/ReactDates';
-import { Row, Col } from 'antd';
+import { Row, Col, Tooltip } from 'antd';
+import { MdHelpCenter } from 'react-icons/md';
+
 import ReservationFormWrapper, {
   FormActionArea,
   FieldWrapper,
@@ -42,7 +44,7 @@ const RenderReservationForm = () => {
   return (
     <ReservationFormWrapper className="form-container" onSubmit={handleSubmit}>
       <FieldWrapper>
-        <Row>
+        <Row style={{ padding: '0px 20px' }} >
           <Col span='18'>
             <HtmlLabel htmlFor="dates" content="Dates" />
             <DatePickerRange
@@ -61,11 +63,16 @@ const RenderReservationForm = () => {
             <HtmlLabel htmlFor="guests" content="Guests" style={{ textAlign: 'center' }} />
           </Col>
         </Row>
-        <Row>
-          <Col span={18}>Down Payment</Col>
+        <Row className='down-payment' >
+          <Col span={18}>
+            Down Payment
+            <Tooltip placement="top" title="Deposit to hold this apartment. This amount will be applied to the first month's charges.">
+              <MdHelpCenter fontSize={18} />
+            </Tooltip>
+
+          </Col>
           <Col span={6}></Col>
         </Row>
-
       </FieldWrapper>
       {/* <FieldWrapper>
         <HtmlLabel htmlFor="guests" content="Guests" />
@@ -107,7 +114,7 @@ const RenderReservationForm = () => {
           }
         />
       </FieldWrapper> */}
-      <FormActionArea>
+      <FormActionArea style={{ padding: '0px 20px' }} >
         <Button htmlType="submit" type="primary">
           Book Hotel
         </Button>

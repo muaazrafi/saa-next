@@ -2,9 +2,19 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 const ReservationFormWrapper = styled.form`
-  padding: 0 30px;
+  padding: 0px;
   @media (max-width: 375px) {
     padding: 0 15px;
+  }
+  .down-payment {
+    row-gap: 0px;
+    background-color: #387CAF;
+    padding: 10px 20px;
+    color: #fff;
+    border-top: 1px solid #929EA6;
+    border-bottom: 1px solid #929EA6;
+    font-weight: bold;
+    margin-top: 14px;
   }
 `;
 
