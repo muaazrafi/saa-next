@@ -3,6 +3,8 @@ import "react-dates/lib/css/_datepicker.css";
 import "react-multi-carousel/lib/styles.css";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 import "antd/lib/date-picker/style/index.css";
+import Router from "next/router";
+import NProgress from "nprogress";
 import { ThemeProvider } from "styled-components";
 import theme from "themes/default.theme";
 import GlobalStyles from "themes/global.style";
@@ -11,6 +13,11 @@ import { SearchProvider } from "context/SearchProvider";
 import { store } from "store/store";
 import { Provider } from "react-redux";
 import "antd/dist/antd.css";
+
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
+
 
 function App({ Component, router, pageProps }) {
   const { query } = router;
