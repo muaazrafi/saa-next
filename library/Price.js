@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const Price = class {
 
   constructor(apartment, booking) {

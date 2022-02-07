@@ -1,20 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Card from 'components/UI/Card/Card';
 import Heading from 'components/UI/Heading/Heading';
 import Text from 'components/UI/Text/Text';
 import RenderReservationForm from './RenderReservationForm';
+import { updatePrice } from '/store/bookingSlice';
 import ApartmentCurrency from 'container/SinglePage/ApartmentCurrency/ApartmentCurrency';
 
 const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
-  
+  const dispatch = useDispatch();
+  const { apartment } = useSelector( (state) => state.apartment );
+  const { firstMonthRent, booking } = useSelector( (state) => state.booking );
+
+  useEffect(() => {
+    if(apartment) {
+      dispatch((updatePrice(apartment)))
+    }
+  }, [apartment, booking.checkIn, booking.checkOut]);
+
   return (
     <>
       <Heading
         content={
           <>
-            <ApartmentCurrency />162 <Text as="span" content="/ monthy" {...pricePeriodStyle} />
+            <ApartmentCurrency /> { firstMonthRent } <Text as="span" content="/ monthy" {...pricePeriodStyle} />
           </>
         }
         {...priceStyle}

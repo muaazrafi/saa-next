@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
 import { Button } from 'antd';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import HtmlLabel from 'components/UI/HtmlLabel/HtmlLabel';
 import DatePickerRange from 'components/UI/DatePicker/ReactDates';
 import { Row, Col, Tooltip } from 'antd';
 import { MdHelpCenter } from 'react-icons/md';
-
+import { updateDates } from '/store/bookingSlice';
 import ReservationFormWrapper, {
   FormActionArea,
   FieldWrapper,
 } from './Reservation.style.js';
 
 const RenderReservationForm = () => {
+  const dispatch = useDispatch();
   const { apartment } = useSelector( (state) => state.apartment )
-
-  const [formState, setFormState] = useState({
-    startDate: null,
-    endDate: null,
-    guest: 0,
-  });
+  const { booking } = useSelector( (state) => state.booking )
 
   const disableDates = (current) => {
     if (current && current.valueOf() < Date.now()) {
@@ -30,10 +26,10 @@ const RenderReservationForm = () => {
   }
 
   const dateSelection = (startDate, endDate) => {
-    setFormState({
-      startDate: startDate,
-      endDate: endDate
-    })
+    dispatch(updateDates({
+      checkIn: startDate,
+      checkOut: endDate
+    }))
   };
 
   const handleSubmit = (e) => {
