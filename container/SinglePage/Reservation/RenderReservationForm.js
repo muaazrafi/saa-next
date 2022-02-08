@@ -73,7 +73,7 @@ const RenderReservationForm = () => {
       </FieldWrapper>
       <FormActionArea style={{ padding: "0px 20px" }}>
         <Button htmlType="submit" type="primary">
-          Book Hotel
+          Book Now
         </Button>
       </FormActionArea>
     </ReservationFormWrapper>
