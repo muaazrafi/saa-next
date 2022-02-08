@@ -1,6 +1,9 @@
 const withPlugins = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 const nextConfig = {
   env: {
@@ -39,6 +42,7 @@ module.exports = withPlugins(
         },
       },
     ],
+    [withBundleAnalyzer],
   ],
   nextConfig
 );

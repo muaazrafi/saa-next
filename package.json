@@ -9,6 +9,7 @@
 	},
 	"dependencies": {
 		"@glidejs/glide": "^3.4.1",
+		"@next/bundle-analyzer": "^12.0.10",
 		"@react-google-maps/api": "^2.2.0",
 		"@redq/reuse-modal": "^1.2.4",
 		"@reduxjs/toolkit": "^1.6.2",
@@ -23,7 +24,7 @@
 		"lodash": "^4.17.20",
 		"mobile-detect": "^1.4.4",
 		"moment": "^2.29.1",
-		"next": "^12.0.1",
+		"next": "^11.0.1",
 		"next-compose-plugins": "^2.2.1",
 		"next-cookies": "^2.0.3",
 		"next-optimized-images": "^2.6.2",
