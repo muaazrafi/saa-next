@@ -64,7 +64,9 @@ export default function Reservation({ linkStyle }) {
               </Tooltip>
             </Col>
             <Col span={6}>
-              <ApartmentCurrency /> 100
+              <strong>
+                <ApartmentCurrency /> 100
+              </strong>
             </Col>
           </Row>
           {apartment && booking.checkIn && booking.checkOut && (
@@ -116,7 +118,9 @@ export default function Reservation({ linkStyle }) {
                   </Tooltip>
                 </Col>
                 <Col span={6}>
-                  <ApartmentCurrency /> {Math.ceil(grandTotal)}
+                  <strong>
+                    <ApartmentCurrency /> {Math.ceil(grandTotal)}
+                  </strong>
                 </Col>
               </Row>
             </>
