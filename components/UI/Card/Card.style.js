@@ -13,7 +13,5 @@ export const Header = styled.header`
 
 export const Content = styled.div``;
 export const Footer = styled.footer`
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 `;

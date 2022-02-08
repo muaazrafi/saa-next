@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Heading from 'components/UI/Heading/Heading';
-import {Row,Col,Divider} from 'antd';
+import { Row,Col } from 'antd';
 import { FaWifi, FaCarAlt, FaSwimmer, FaAirFreshener,FaCheck } from 'react-icons/fa';
 import IconCard from 'components/IconCard/IconCard';
 import AmenitiesWrapper, { AmenitiesArea,AmenitiesAreaMore } from './Amenities.style';

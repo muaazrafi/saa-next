@@ -12,7 +12,6 @@ import Layout from "container/Layout/Layout";
 import { SearchProvider } from "context/SearchProvider";
 import { store } from "store/store";
 import { Provider } from "react-redux";
-import "antd/dist/antd.css";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());

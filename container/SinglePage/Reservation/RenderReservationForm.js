@@ -59,16 +59,6 @@ const RenderReservationForm = () => {
             <HtmlLabel htmlFor="guests" content="Guests" style={{ textAlign: 'center' }} />
           </Col>
         </Row>
-        <Row className='down-payment' >
-          <Col span={18}>
-            Down Payment
-            <Tooltip placement="top" title="Deposit to hold this apartment. This amount will be applied to the first month's charges.">
-              <MdHelpCenter fontSize={18} />
-            </Tooltip>
-
-          </Col>
-          <Col span={6}></Col>
-        </Row>
       </FieldWrapper>
       {/* <FieldWrapper>
         <HtmlLabel htmlFor="guests" content="Guests" />

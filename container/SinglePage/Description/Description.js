@@ -1,22 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Element } from 'react-scroll';
-import Rating from 'components/UI/Rating/Rating';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Heading from 'components/UI/Heading/Heading';
 import Text from 'components/UI/Text/Text';
 import { Button } from 'antd';
 import DescriptionWrapper from './Description.style';
-import { RatingMeta, TextButton } from '../SinglePageView.style';
+import { TextButton } from '../SinglePageView.style';
 
 const Description = ({
-  title,
   location,
-  content,
   titleStyle,
   locationMetaStyle,
   contentStyle,
-  linkStyle,
 }) => {
   const { apartment, loading } = useSelector((state) => state.apartment);
   return (
@@ -24,9 +20,6 @@ const Description = ({
       <DescriptionWrapper>
         <Text content={location.formattedAddress} {...locationMetaStyle} />
         <Heading as="h2" content={apartment && apartment.name} {...titleStyle} />
-        {/* <RatingMeta>
-          <Rating rating={rating} ratingCount={ratingCount} type="bulk" />
-        </RatingMeta> */}
         <Text content={apartment && apartment.apartment_description } {...contentStyle} />
         <TextButton>
           <Button>Read more about the hotel</Button>

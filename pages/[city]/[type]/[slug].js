@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import isEmpty from "lodash/isEmpty";
 import Sticky from "react-stickynode";
@@ -15,7 +14,6 @@ import Amenities from "container/SinglePage/Amenities/Amenities";
 import Calender from "container/SinglePage/Calender/Calender";
 import AccommodationPolicies from "container/SinglePage/AccommodationPolicies/AccommodationPolicies";
 import Location from "container/SinglePage/Location/Location";
-import Review from "container/SinglePage/Review/Review";
 import Reservation from "container/SinglePage/Reservation/Reservation";
 import BottomReservation from "container/SinglePage/Reservation/BottomReservation";
 import TopBar from "container/SinglePage/TopBar/TopBar";

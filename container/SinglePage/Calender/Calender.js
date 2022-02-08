@@ -33,8 +33,7 @@ const Calender = ({ calenderStyle }) => {
 	        	<Col span={24}>{<FaSquare style= {{color: '#d9534f'}} />} Red dates above are confirmed as occupied.</Col>
 	        </Row>	
 	        <Row>
-	        	<Col span={24}>{<FaSquare style = {{color: '#e0d3d2'}}/>} White dates above are dates that the apartment is unoccupied.
-				</Col>
+	        	<Col span={24}>{<FaSquare style = {{color: '#e0d3d2'}}/>} White dates above are dates that the apartment is unoccupied.</Col>
 	        </Row>
       </CalenderWrapper>
 

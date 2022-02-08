@@ -40,6 +40,7 @@ export default class MyDocument extends Document {
             type="image/png"
             sizes="16x16"
           />
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/4.18.6/antd.min.css" integrity="sha512-meBGB3BChYHahUNhmDakUbAulyQX+6sIaADq5eZ6HT2HLtWaCISkUv9cQ+tr+pay/c/QSinZsahBQsefmKLtpg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Lato:400,400i,600,600i,700,700i&display=swap"
