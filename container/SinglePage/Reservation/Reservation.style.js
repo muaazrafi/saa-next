@@ -16,6 +16,15 @@ const ReservationFormWrapper = styled.form`
     font-weight: bold;
     margin-top: 14px;
   }
+  .ant-select{
+    width: 60px;
+
+    .ant-select-selector{
+      padding-top: 8px;
+      height: 50px !important;
+    }
+  }
+
 `;
 
 export const FieldWrapper = styled.div`

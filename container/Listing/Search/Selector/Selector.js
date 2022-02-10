@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Select, Row, Col } from "antd";
-import { cloneDeep, range } from "lodash";
+import { cloneDeep } from "lodash";
 import { updateSearch } from "store/apartmentsSlice";
 import NumberSelectorWrapper from "./Selector.style";
 const { Option } = Select;

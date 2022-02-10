@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import { range } from "lodash";
 import { Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import HtmlLabel from "components/UI/HtmlLabel/HtmlLabel";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
-import { Row, Col } from "antd";
+import { Row, Col, Select } from "antd";
 import { updateDates } from "/store/bookingSlice";
 import ReservationFormWrapper, {
   FormActionArea,
   FieldWrapper,
 } from "./Reservation.style.js";
+
+const { Option } = Select;
 
 const RenderReservationForm = () => {
   const dispatch = useDispatch();
@@ -56,18 +59,17 @@ const RenderReservationForm = () => {
               isDayBlocked={disableDates}
             />
           </Col>
-          <Col span="6">
-            <HtmlLabel
-              htmlFor="guests"
-              content="Guests"
-              style={{ textAlign: "center" }}
-            />
-            {/* <Selector
-              title="Beds"
-              modifier="number_of_beds_gteq"
-              icon={<FaBed size={18} />}
-              options={range(1, 11)}
-            /> */}
+          <Col span="6" style={{ textAlign: "center" }}>
+            <HtmlLabel htmlFor="guests" content="Guests" />
+            <Select
+              labelInValue
+              defaultValue={{ value: "1" }}
+              class='guest-selector'
+            >
+              {range(1, 11).map((guest) => {
+                return <Option value={guest}>{guest}</Option>;
+              })}
+            </Select>
           </Col>
         </Row>
       </FieldWrapper>
