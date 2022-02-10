@@ -198,6 +198,9 @@ export const FormActionArea = styled.div`
       outline: none;
       opacity: 0.93;
     }
+    &:disabled{
+      opacity: 0.50;      
+    }
   }
 `;
 

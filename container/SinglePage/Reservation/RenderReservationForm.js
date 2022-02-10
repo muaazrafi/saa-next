@@ -1,5 +1,6 @@
 import React from "react";
 import { range } from "lodash";
+import moment from "moment";
 import { Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import HtmlLabel from "components/UI/HtmlLabel/HtmlLabel";
@@ -37,8 +38,61 @@ const RenderReservationForm = () => {
   };
 
   const handleSubmit = (e) => {
-    console.log("Form state current:", formState);
     e.preventDefault();
+  };
+
+  const bookingBtnState = () => {
+    return !(
+      apartment &&
+      booking.checkIn &&
+      booking.checkOut &&
+      (rangeOverlaps() || !minStayRequired())
+    );
+  };
+
+  const rangeOverlaps = () => {
+    if (
+      apartment.occupancies.length == 0 ||
+      booking.checkIn == null ||
+      booking.checkOut == null
+    ) {
+      return false;
+    } else {
+      for (let occupancy of Array.from(apartment.occupancies)) {
+        if (
+          dateRangeOverlaps(
+            Date.parse(occupancy.from),
+            Date.parse(occupancy.to),
+            Date.parse(booking.checkIn),
+            Date.parse(booking.checkOut)
+          )
+        ) {
+          return true;
+        }
+      }
+      return false;
+    }
+  };
+
+  let dateRangeOverlaps = (a_start, a_end, b_start, b_end) => {
+    if (a_start <= b_start && b_start <= a_end) {
+      return true;
+    }
+    if (a_start <= b_end && b_end <= a_end) {
+      return true;
+    }
+    if (b_start < a_start && a_end < b_end) {
+      return true;
+    }
+    return false;
+  };
+
+  const minStayRequired = () => {
+    let checkinDate = moment(booking.checkIn, "MM/DD/YYYY");
+    let checkoutDate = moment(booking.checkOut, "MM/DD/YYYY");
+    let staydiff = checkoutDate.diff(checkinDate, "days");
+    const minDays = Math.max(apartment.minimum_stay, 30);
+    return staydiff < minDays - 1;
   };
 
   return (
@@ -64,7 +118,7 @@ const RenderReservationForm = () => {
             <Select
               labelInValue
               defaultValue={{ value: "1" }}
-              class='guest-selector'
+              class="guest-selector"
             >
               {range(1, 11).map((guest) => {
                 return <Option value={guest}>{guest}</Option>;
@@ -74,7 +128,7 @@ const RenderReservationForm = () => {
         </Row>
       </FieldWrapper>
       <FormActionArea style={{ padding: "0px 20px" }}>
-        <Button htmlType="submit" type="primary">
+        <Button htmlType="submit" type="primary" disabled={bookingBtnState()}>
           Book Now
         </Button>
       </FormActionArea>
