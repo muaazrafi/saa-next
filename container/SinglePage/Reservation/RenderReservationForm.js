@@ -7,6 +7,8 @@ import HtmlLabel from "components/UI/HtmlLabel/HtmlLabel";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import { Row, Col, Select } from "antd";
 import { updateDates } from "/store/bookingSlice";
+import { handlePopUp } from "/store/authSlice";
+
 import ReservationFormWrapper, {
   FormActionArea,
   FieldWrapper,
@@ -16,6 +18,7 @@ const { Option } = Select;
 
 const RenderReservationForm = () => {
   const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.auth);  
   const { apartment } = useSelector((state) => state.apartment);
   const { booking } = useSelector((state) => state.booking);
 
@@ -39,6 +42,11 @@ const RenderReservationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (currentUser) {
+
+    } else {
+      dispatch(handlePopUp(true));
+    }
   };
 
   const bookingBtnState = () => {
@@ -95,6 +103,10 @@ const RenderReservationForm = () => {
     return staydiff < minDays - 1;
   };
 
+  const bookNow = () => {
+    return apartment && apartment.availability_status === 'available' && apartment.updated_in_past_month;
+  }
+
   return (
     <ReservationFormWrapper className="form-container" onSubmit={handleSubmit}>
       <FieldWrapper>
@@ -129,7 +141,7 @@ const RenderReservationForm = () => {
       </FieldWrapper>
       <FormActionArea style={{ padding: "0px 20px" }}>
         <Button htmlType="submit" type="primary" disabled={bookingBtnState()}>
-          Book Now
+          { bookNow() ? 'Book Now' : 'Request to Book' }  
         </Button>
       </FormActionArea>
     </ReservationFormWrapper>

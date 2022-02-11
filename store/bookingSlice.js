@@ -23,6 +23,8 @@ const initialState = {
   surcharge: null,
   extraTenantCharges: null,
   excessTenants: null,
+  bookingForm: false,
+  requestToBook: false,
   loading: false
 }
 

@@ -6,9 +6,9 @@ import { notification } from 'antd';
 const initialState = {
   currentUser: null,
   popUp: false,
-  auth_component_switch: "",
+  auth_component_switch: "up",
   existError: false,
-  loading: true
+  loading: true,
 };
 
 
