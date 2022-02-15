@@ -942,7 +942,9 @@ const GlobalStyle = createGlobalStyle`
   100% { transform: rotate(360deg); }
 }
 
-
+.iti-flag{
+  background-image: url('https://patw0929.github.io/react-intl-tel-input/img/flags.png');
+}
 
 `;
 
