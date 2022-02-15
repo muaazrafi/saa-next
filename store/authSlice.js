@@ -71,6 +71,7 @@ export const authSlice = createSlice({
             'You are successfully registered.',
         });
       }
+      state.loading = false;
     });    
     
   },

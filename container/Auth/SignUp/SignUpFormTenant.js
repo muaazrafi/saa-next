@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Input } from "antd";
 import IntlTelInput from "react-intl-tel-input";
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import { cloneDeep } from 'lodash';
+import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { HiOutlineMail } from "react-icons/hi";
+import { handleLoading } from "store/authSlice";
 import { register } from "store/services/auth";
 
 const SignUpForm = () => {
   const dispatcher = useDispatch();
-  const { existError } = useSelector((state) => state.auth);
+  const { existError, loading } = useSelector((state) => state.auth);
   const [phoneNo, setPhoneNo] = useState(null);
   const [phoneNoCountry, setPhoneNoCountry] = useState(null);
 
   const onFinish = (values) => {
-    dispatcher(register(values));
+    let registerValues = cloneDeep(values);
+    registerValues.phone = parsePhoneNumber(`+${phoneNoCountry.dialCode}${phoneNo}`).number;
+    dispatcher(handleLoading(true));
+    dispatcher(register(registerValues));
   };
 
   const handlePhoneChange = (status, phoneNumber, country) => {
@@ -30,7 +35,6 @@ const SignUpForm = () => {
     }
     
     const formatPhoneNumber = `+${phoneNoCountry.dialCode}${phoneNo}` 
-
     if( isValidPhoneNumber(formatPhoneNumber, phoneNoCountry.iso2) ) {
       callback();
     } else {
@@ -127,6 +131,7 @@ const SignUpForm = () => {
             style={{ width: 256 }}
             htmlType="submit"
             block
+            loading={loading}
           >
             Continue
           </Button>
