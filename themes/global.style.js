@@ -946,6 +946,12 @@ const GlobalStyle = createGlobalStyle`
   background-image: url('https://patw0929.github.io/react-intl-tel-input/img/flags.png');
 }
 
+.intl-tel-input{
+  input[type=tel]{
+    width: 256px;
+  }
+}
+
 `;
 
 export default GlobalStyle;

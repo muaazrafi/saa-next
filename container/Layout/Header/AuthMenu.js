@@ -32,7 +32,7 @@ const AuthMenu = ({ className }) => {
 
   return (
     <>
-      <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={popUp} onOk={handleOk}  onCancel={handleCancel} width={800}> 
+      <Modal title=""  bodyStyle ={{padding: 0 , fontSize: 0}} centered footer={null} header={null} visible={popUp} onOk={handleOk}  onCancel={handleCancel} maskClosable={false} width={335} > 
        <SwitchCom/>
     </Modal>
     <>

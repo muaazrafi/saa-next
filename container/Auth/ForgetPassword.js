@@ -26,15 +26,7 @@ export default function ForgetPassWord() {
   return (
     <Wrapper>
       <Row gutter={[8, 8]} type='flex'>
-        <Col span={12}>
-          <BannerWrapper>
-            <Image
-              src="/images/login_signup.png"
-              width={398}
-            />
-         </BannerWrapper>
-        </Col>
-        <Col span={12}>
+        <Col span={24}>
         <FormWrapper>
         <Title level={5}>Welcome Back</Title>
         <Title level={5}>Enter your email to recover your account</Title>
