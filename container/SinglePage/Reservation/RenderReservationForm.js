@@ -8,6 +8,7 @@ import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import { Row, Col, Select } from "antd";
 import { updateBooking } from "/store/bookingSlice";
 import { handlePopUp } from "/store/authSlice";
+import { createBooking } from "/store/services/booking";
 
 import ReservationFormWrapper, {
   FormActionArea,
@@ -36,8 +37,9 @@ const RenderReservationForm = () => {
   }, [apartment])
 
   useEffect( () => {
-    if (currentUser) {
-      console.log("Check user is one time called.")
+    if (currentUser && booking && booking.waitUserToLogin) {
+      reCallTheBookingProcedure(false);
+      handleBooking();
     }
   }, [currentUser]);
 
@@ -54,21 +56,32 @@ const RenderReservationForm = () => {
     let updatedBooking = cloneDeep(booking);
     updatedBooking.check_in = startDate;
     updatedBooking.check_out = endDate; 
-
     dispatch(
       updateBooking(updatedBooking)
     );
   };
 
+  const reCallTheBookingProcedure = (state) => {
+    let updatedBooking = cloneDeep(booking);
+    updatedBooking.waitUserToLogin = state; 
+    dispatch(
+      updateBooking(updatedBooking)
+    );
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (currentUser) {
-
-    } else {
-
+    if (!currentUser) {
+      reCallTheBookingProcedure(true);
       dispatch(handlePopUp(true));
+    } else {
+      handleBooking();
     }
   };
+
+  const handleBooking = () => {
+    dispatch(createBooking(booking));
+  }
 
   const bookingBtnState = () => {
     return !(

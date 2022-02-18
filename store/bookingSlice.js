@@ -2,6 +2,7 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import moment from "moment";
+import { createBooking } from './services/booking';
 import Price from 'library/Price';
 
 const initialState = {
@@ -85,12 +86,12 @@ export const bookingSlice = createSlice({
       }
     }
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(fetchApartment.fulfilled, (state, action) => {
-  //     state.apartment = action.payload;
-  //     state.loading = false;
-  //   });
-  // },
+  extraReducers: (builder) => {
+    builder.addCase(createBooking.fulfilled, (state, action) => {
+      state.apartment = action.payload;
+      state.loading = false;
+    });
+  },
 });
 
 // Action creators are generated for each case reducer function
