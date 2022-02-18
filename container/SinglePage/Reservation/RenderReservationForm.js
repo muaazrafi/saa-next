@@ -81,6 +81,7 @@ const RenderReservationForm = () => {
 
   const handleBooking = () => {
     dispatch(createBooking(booking));
+    // Thanks for requesting, our landlords typically respond within 48 hours to respond to booking requests.
   }
 
   const bookingBtnState = () => {
