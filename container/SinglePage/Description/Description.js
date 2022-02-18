@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import renderHTML from 'react-render-html';
 import { Element } from 'react-scroll';
 import { useSelector } from "react-redux";
 import Heading from 'components/UI/Heading/Heading';
@@ -20,7 +21,7 @@ const Description = ({
       <DescriptionWrapper>
         <Text content={location.formattedAddress} {...locationMetaStyle} />
         <Heading as="h2" content={apartment && apartment.name} {...titleStyle} />
-        <Text content={apartment && apartment.apartment_description } {...contentStyle} />
+        <Text content={apartment && renderHTML(apartment.apartment_description) } {...contentStyle} />
         <TextButton>
           <Button>Read more about the hotel</Button>
         </TextButton>

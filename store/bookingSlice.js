@@ -6,9 +6,12 @@ import Price from 'library/Price';
 
 const initialState = {
   booking: {
-    apartmentId: null,
-    checkIn: null,
-    checkOut: null,
+    apartment_id: null,
+    check_in: null,
+    check_out: null,
+    number_of_room_mates: 1,
+    was_availability_request: false,
+    check_availability_request: false
   },
   firstMonthRent: null,
   firstMonthIsPartial: null,
@@ -25,19 +28,20 @@ const initialState = {
   excessTenants: null,
   bookingForm: false,
   requestToBook: false,
-  loading: false
+  loading: false,
+  waitUserToLogin: false
 }
 
 export const bookingSlice = createSlice({
   name: 'apartment',
   initialState,
   reducers: {
-    updateDates: (state, action) => {
+    updateBooking: (state, action) => {
       state.booking = action.payload;
     },
     updatePrice: (state, action) => {
       let price;
-      if ((state.booking.checkIn != undefined) && (state.booking.checkOut != undefined) && (action.payload != undefined) && (action.payload.reservation_deposit)) {
+      if ((state.booking.check_in != undefined) && (state.booking.check_out != undefined) && (action.payload != undefined) && (action.payload.reservation_deposit)) {
         //       //dates selected, apt has res deposit
         price = new Price(action.payload, state.booking);
         state.firstMonthRent = Math.ceil(price.firstMonthRent());
@@ -53,7 +57,7 @@ export const bookingSlice = createSlice({
         state.surcharge = price.variedPricingSurcharge();
         state.extraTenantCharges = price.extra_tenant_charges();
         state.excessTenants = price.excess_tenants();
-      } else if ((state.booking.checkIn != undefined) && (state.booking.checkOut != undefined) && (action.payload != undefined)) {
+      } else if ((state.booking.check_in != undefined) && (state.booking.check_out != undefined) && (action.payload != undefined)) {
         price = new Price(action.payload, state.booking);
         state.firstMonthRent = Math.ceil(price.firstMonthRent());
         state.firstMonthIsPartial = price.firstMonthIsPartial();
@@ -90,6 +94,6 @@ export const bookingSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { updatePrice, updateDates } = bookingSlice.actions;
+export const { updatePrice, updateBooking } = bookingSlice.actions;
 
 export default bookingSlice.reducer;

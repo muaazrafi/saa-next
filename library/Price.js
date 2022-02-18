@@ -8,15 +8,15 @@ const Price = class {
   }
 
   stayLength () {
-    return moment(this.booking.checkOut).diff(moment(this.booking.checkIn), 'days') + 1;
+    return moment(this.booking.check_out).diff(moment(this.booking.check_in), 'days') + 1;
   }
 
   startOfFirstMonth () {
     let contractType = this.apartment.contract_type;
-    if (contractType === "Monthly" || contractType === "Partially pro-rated" && moment(this.booking.checkIn).date() <= 14) {
-      return moment(this.booking.checkIn).startOf('month');
+    if (contractType === "Monthly" || contractType === "Partially pro-rated" && moment(this.booking.check_in).date() <= 14) {
+      return moment(this.booking.check_in).startOf('month');
     } else {
-      return moment(this.booking.checkIn);
+      return moment(this.booking.check_in);
     }
   }
 
@@ -88,9 +88,9 @@ const Price = class {
 
   finalDayToPay () {
     let contractType = this.apartment.contract_type;
-    let checkOutDate = moment(this.booking.checkOut).date();
-    let defaultsToActualCheckOut = (contractType === 'Pro-rated') || (contractType === 'Partially pro-rated' && checkOutDate <= 14)
-    let lastDay = defaultsToActualCheckOut ? this.booking.checkOut : moment(this.booking.checkOut).endOf('month');
+    let check_outDate = moment(this.booking.check_out).date();
+    let defaultsToActualCheckOut = (contractType === 'Pro-rated') || (contractType === 'Partially pro-rated' && check_outDate <= 14)
+    let lastDay = defaultsToActualCheckOut ? this.booking.check_out : moment(this.booking.check_out).endOf('month');
     return lastDay;
   }
 

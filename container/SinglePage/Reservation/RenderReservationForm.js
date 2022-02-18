@@ -1,12 +1,12 @@
-import React from "react";
-import { range } from "lodash";
+import React, { useEffect } from "react";
+import { cloneDeep, range } from "lodash";
 import moment from "moment";
 import { Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import HtmlLabel from "components/UI/HtmlLabel/HtmlLabel";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import { Row, Col, Select } from "antd";
-import { updateDates } from "/store/bookingSlice";
+import { updateBooking } from "/store/bookingSlice";
 import { handlePopUp } from "/store/authSlice";
 
 import ReservationFormWrapper, {
@@ -22,6 +22,25 @@ const RenderReservationForm = () => {
   const { apartment } = useSelector((state) => state.apartment);
   const { booking } = useSelector((state) => state.booking);
 
+  useEffect( () => {
+    if (apartment) {
+      const canBook = bookNow();
+      let updatedBooking = cloneDeep(booking);
+      updatedBooking.apartment_id = apartment.id;
+      updatedBooking.was_availability_request = !canBook;
+      updatedBooking.check_availability_request = !canBook;
+      dispatch(
+        updateBooking(updatedBooking)
+      );
+    }
+  }, [apartment])
+
+  useEffect( () => {
+    if (currentUser) {
+      console.log("Check user is one time called.")
+    }
+  }, [currentUser]);
+
   const disableDates = (current) => {
     if (current && current.valueOf() < Date.now()) {
       return true;
@@ -32,11 +51,12 @@ const RenderReservationForm = () => {
   };
 
   const dateSelection = (startDate, endDate) => {
+    let updatedBooking = cloneDeep(booking);
+    updatedBooking.check_in = startDate;
+    updatedBooking.check_out = endDate; 
+
     dispatch(
-      updateDates({
-        checkIn: startDate,
-        checkOut: endDate,
-      })
+      updateBooking(updatedBooking)
     );
   };
 
@@ -45,6 +65,7 @@ const RenderReservationForm = () => {
     if (currentUser) {
 
     } else {
+
       dispatch(handlePopUp(true));
     }
   };
@@ -52,8 +73,8 @@ const RenderReservationForm = () => {
   const bookingBtnState = () => {
     return !(
       apartment &&
-      booking.checkIn &&
-      booking.checkOut &&
+      booking.check_in &&
+      booking.check_out &&
       (rangeOverlaps() || !minStayRequired())
     );
   };
@@ -61,8 +82,8 @@ const RenderReservationForm = () => {
   const rangeOverlaps = () => {
     if (
       apartment.occupancies.length == 0 ||
-      booking.checkIn == null ||
-      booking.checkOut == null
+      booking.check_in == null ||
+      booking.check_out == null
     ) {
       return false;
     } else {
@@ -71,8 +92,8 @@ const RenderReservationForm = () => {
           dateRangeOverlaps(
             Date.parse(occupancy.from),
             Date.parse(occupancy.to),
-            Date.parse(booking.checkIn),
-            Date.parse(booking.checkOut)
+            Date.parse(booking.check_in),
+            Date.parse(booking.check_out)
           )
         ) {
           return true;
@@ -96,8 +117,8 @@ const RenderReservationForm = () => {
   };
 
   const minStayRequired = () => {
-    let checkinDate = moment(booking.checkIn, "MM/DD/YYYY");
-    let checkoutDate = moment(booking.checkOut, "MM/DD/YYYY");
+    let checkinDate = moment(booking.check_in, "MM/DD/YYYY");
+    let checkoutDate = moment(booking.check_out, "MM/DD/YYYY");
     let staydiff = checkoutDate.diff(checkinDate, "days");
     const minDays = Math.max(apartment.minimum_stay, 30);
     return staydiff < minDays - 1;

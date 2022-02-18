@@ -20,7 +20,7 @@ const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
     if (apartment) {
       dispatch(updatePrice(apartment));
     }
-  }, [apartment, booking.checkIn, booking.checkOut]);
+  }, [apartment, booking.check_in, booking.check_out]);
 
   return (
     <>
@@ -69,7 +69,7 @@ export default function Reservation({ linkStyle }) {
               </strong>
             </Col>
           </Row>
-          {apartment && booking.checkIn && booking.checkOut && (
+          {apartment && booking.check_in && booking.check_out && (
             <>
               {apartment.reservation_deposit && (
                 <Row style={{ width: "100%" }}>
