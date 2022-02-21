@@ -3,12 +3,14 @@ import {
 } from '@reduxjs/toolkit';
 import { authenticate, fetchMe, unAuthenticate, register } from './services/auth';
 import { notification } from 'antd';
+
 const initialState = {
   currentUser: null,
   popUp: false,
   auth_component_switch: "up",
   existError: false,
   loading: true,
+  loginFailed: false
 };
 
 
@@ -51,6 +53,8 @@ export const authSlice = createSlice({
       state.loading = false;
       if (action.payload) {
         state.currentUser = action.payload;
+      } else {
+        state.loginFailed = true;
       }
     });
     
