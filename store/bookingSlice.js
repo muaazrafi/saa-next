@@ -7,6 +7,7 @@ import Price from 'library/Price';
 
 const initialState = {
   booking: {
+    id: null,
     apartment_id: null,
     check_in: null,
     check_out: null,
@@ -88,7 +89,7 @@ export const bookingSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(createBooking.fulfilled, (state, action) => {
-      state.apartment = action.payload;
+      state.booking.id = action.payload.booking.id;
       state.loading = false;
     });
   },

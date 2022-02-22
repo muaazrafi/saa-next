@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { cloneDeep, range } from "lodash";
 import moment from "moment";
-import { Button } from "antd";
+import { Button, notification } from "antd";
 import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from 'next/router';
 import HtmlLabel from "components/UI/HtmlLabel/HtmlLabel";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import { Row, Col, Select } from "antd";
@@ -19,6 +20,7 @@ const { Option } = Select;
 
 const RenderReservationForm = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { currentUser } = useSelector((state) => state.auth);  
   const { apartment } = useSelector((state) => state.apartment);
   const { booking } = useSelector((state) => state.booking);
@@ -42,6 +44,17 @@ const RenderReservationForm = () => {
       handleBooking();
     }
   }, [currentUser]);
+
+  useEffect( () => {
+    if (currentUser && booking && booking.id && bookNow()) {
+      notification['success']({
+        message: 'Booking Initiated',
+        description:
+          'Booking successfully initiated, please proceed.',
+      });
+      router.push(`/apartment_lead/${apartment.id}/${booking.id}/step_one`);
+    }
+  }, [booking]);
 
   const disableDates = (current) => {
     if (current && current.valueOf() < Date.now()) {
