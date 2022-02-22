@@ -5,7 +5,7 @@ import IntlTelInput from "react-intl-tel-input";
 import { isValidPhoneNumber, parsePhoneNumber } from "libphonenumber-js";
 import { setTempPhone } from 'store/authSlice';
 
-const PhoneInput = (props) => {
+const PhoneInput = ({label=false}) => {
   const dispatch = useDispatch();
   const [phoneNo, setPhoneNo] = useState(null);
   const [phoneNoCountry, setPhoneNoCountry] = useState(null);
@@ -34,6 +34,7 @@ const PhoneInput = (props) => {
   return (
     <Form.Item
       name="phone"
+      label={label}
       style={{ marginBottom: "10px" }}
       rules={[{ validator: validatePhone }]}
     >
