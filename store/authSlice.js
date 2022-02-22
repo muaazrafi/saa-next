@@ -10,7 +10,8 @@ const initialState = {
   auth_component_switch: "up",
   existError: false,
   loading: true,
-  loginFailed: false
+  loginFailed: false,
+  tempPhone: null
 };
 
 
@@ -32,6 +33,9 @@ export const authSlice = createSlice({
     },
     switchforgot: (state) => {
       state.auth_component_switch = "forgot"
+    },
+    setTempPhone: (state, action) => {
+      state.tempPhone = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -82,6 +86,6 @@ export const authSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { switchin, switchup, switchforgot, handlePopUp, handleLoading } = authSlice.actions;
+export const { switchin, switchup, switchforgot, handlePopUp, handleLoading, setTempPhone } = authSlice.actions;
 
 export default authSlice.reducer;
