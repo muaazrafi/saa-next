@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { cloneDeep } from 'lodash';
-import { Form, Input, Button, Row, Col, Radio, Select } from "antd";
+import { Form, Input, Button, Row, Col, Radio, Select, Tooltip } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { handleLoading } from "store/authSlice";
 import { updateMe } from "store/services/auth";
 import PhoneInput from "components/UI/FormControl/PhoneInput";
-
+import CountrySelect from 'components/UI/CountrySelect/CountrySelect';
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -15,6 +15,7 @@ export default function UpdateInfo({ user }) {
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
+    debugger
     let updateValues = cloneDeep(values);
     updateValues.phone = tempPhone;
     dispatch(handleLoading(true));
@@ -30,7 +31,7 @@ export default function UpdateInfo({ user }) {
       onFinish={onFinish}
     >
       <Row gutter={20}>
-        <Col lg={6} md={6} sm={24} xs={24} >
+        <Col lg={6} md={8} sm={24} xs={24} >
           <Form.Item
             label="First Name"
             name="first_name"
@@ -45,7 +46,7 @@ export default function UpdateInfo({ user }) {
             />
           </Form.Item>
         </Col>
-        <Col lg={6} md={6} sm={24} xs={24} >
+        <Col lg={6} md={8} sm={24} xs={24} >
           <Form.Item
             label="Last Name"
             name="last_name"
@@ -59,7 +60,7 @@ export default function UpdateInfo({ user }) {
             />
           </Form.Item>
         </Col>
-        <Col lg={6} md={6} sm={24} xs={24} >
+        <Col lg={6} md={8} sm={24} xs={24} >
           <Form.Item
             label="Gender"
             name="gender"
@@ -74,16 +75,21 @@ export default function UpdateInfo({ user }) {
             </Radio.Group>
           </Form.Item>
         </Col>
-        <Col lg={6} md={6} sm={24} xs={24} >
+        <Col lg={6} md={8} sm={24} xs={24} >
           <PhoneInput label="Phone" />
         </Col>
 
-        <Col lg={6} md={6} sm={24} xs={24}  >
+        <Col lg={6} md={8} sm={24} xs={24}  >
           <Form.Item
             label="School"
             name="school_name"
             rules={[{ required: true, message: "School is required" }]}
             style={{ marginBottom: "10px" }}
+            tooltip={
+              <Tooltip placement="top" title="First Name">
+                Your school name where you are going.   
+              </Tooltip>
+            }
           >
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
@@ -93,12 +99,17 @@ export default function UpdateInfo({ user }) {
           </Form.Item>
         </Col>
 
-        <Col lg={6} md={6} sm={24} xs={24} >
+        <Col lg={6} md={8} sm={24} xs={24} >
           <Form.Item
             label="Purpose Of Trip"
             name="purpose_of_trip_choice"
             rules={[{ required: true, message: "Purpose is required" }]}
             style={{ marginBottom: "10px" }}
+            tooltip={
+              <Tooltip placement="top" title="First Name">
+                State your purpose for the trip.   
+              </Tooltip>
+            }            
           >
             <Select placeholder="Select Purpose">
               <Option value="Teaching">Teaching</Option>
@@ -111,29 +122,22 @@ export default function UpdateInfo({ user }) {
           </Form.Item>
         </Col>
 
-        <Col lg={6} md={6} sm={24} xs={24} >
+        <Col lg={6} md={8} sm={24} xs={24} >
           <Form.Item
             label="Country"
             name="country"
-            rules={[{ required: true, message: "Purpose is required" }]}
+            rules={[{ required: true, message: "Country is required" }]}
             style={{ marginBottom: "10px" }}
           >
-            <Select placeholder="Select Country">
-              <Option value="Teaching">Teaching</Option>
-              <Option value="Interning">Interning</Option>
-              <Option value="Studying at a University">
-                Studying at a University
-              </Option>
-              <Option value="other">Other</Option>
-            </Select>
+            <CountrySelect />
           </Form.Item>
         </Col>
 
-        <Col lg={6} md={6} sm={24} xs={24} >
+        <Col lg={6} md={8} sm={24} xs={24} >
           <Form.Item
             label="How heard about us ?"
             name="how_heard"
-            rules={[{ required: true, message: "Purpose is required" }]}
+            rules={[{ required: true, message: "Heard about us is required" }]}
             style={{ marginBottom: "10px" }}
           >
             <Select placeholder="How did you hear about us?">
@@ -166,11 +170,10 @@ export default function UpdateInfo({ user }) {
         </Col>
       </Row>
 
-      <Form.Item>
+      <Form.Item className='step-submit' >
         <Button
           type="primary"
           size="middle"
-          style={{ width: 256 }}
           htmlType="submit"
           block
           loading={loading}
