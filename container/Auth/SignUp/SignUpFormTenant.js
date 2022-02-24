@@ -15,7 +15,6 @@ const SignUpForm = () => {
   const onFinish = (values) => {
     let registerValues = cloneDeep(values);
     registerValues.phone = tempPhone;
-    debugger
     dispatcher(handleLoading(true));
     dispatcher(register(registerValues));
   };

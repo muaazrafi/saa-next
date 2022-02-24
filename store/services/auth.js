@@ -43,11 +43,30 @@ export const register = createAsyncThunk(
 
 export const fetchMe = createAsyncThunk(
   'auth/me',
-  async (slug, thunkAPI) => {
+  async (thunkAPI) => {
     const response = await fetch(`/api/users/1.json`).then((res) => {
       return res.json()
     });
     return response.user;
+  }
+)
+
+export const updateMe = createAsyncThunk(
+  'auth/update',
+  async (user, thunkAPI) => {
+    const response = await fetch('/api/users/1', {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: user 
+      })
+    }).then((res) => {
+      return res.json()
+    });
+    return response;
   }
 )
 

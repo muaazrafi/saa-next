@@ -182,15 +182,11 @@ export const FormContent = styled.div`
     }
   }
 
-  input {
-    width: 200px;
-  }
-
   .ant-select-selector { 
-    width: 200px !important;
+    width: 100% !important;
   }
 
-  .intl-tel-input input[type=tel] {
+  .intl-tel-input {
     width: 100%;
   }
 

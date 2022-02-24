@@ -58,7 +58,7 @@ export const authSlice = createSlice({
       if (action.payload) {
         state.currentUser = action.payload;
       } else {
-        state.loginFailed = true;
+        // state.loginFailed = true;
       }
     });
     
