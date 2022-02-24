@@ -181,6 +181,19 @@ export const FormContent = styled.div`
       }
     }
   }
+
+  input {
+    width: 200px;
+  }
+
+  .ant-select-selector { 
+    width: 200px !important;
+  }
+
+  .intl-tel-input input[type=tel] {
+    width: 100%;
+  }
+
 `;
 
 export const FormAction = styled.div`
