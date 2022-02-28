@@ -952,6 +952,34 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+.StripeElement--webkit-autofill {
+  background: transparent !important;
+}
+
+.StripeElement {
+  width: 100%;
+  padding: 6px 11px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  height: 32px;
+}
+
+.StripeElement--focus {
+  border-color: #40a9ff;
+  border-right-width: 1px !important;
+  box-shadow: 0 0 0 2px rgb(24 144 255 / 20%);
+}
+
+
+.stripe-form {
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  align-items: center;
+  justify-content: center;
+  margin-top: 10em;
+}
+
 `;
 
 export default GlobalStyle;
