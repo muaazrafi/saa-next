@@ -979,7 +979,6 @@ const GlobalStyle = createGlobalStyle`
   justify-content: center;
   margin-top: 10em;
 }
-
 `;
 
 export default GlobalStyle;

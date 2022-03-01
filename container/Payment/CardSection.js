@@ -18,18 +18,21 @@ const CARD_ELEMENT_OPTIONS = {
     },
   },
 };
-function CardSection() {
+function CardSection({ error }) {
   return (
-    <div className="ant-col ant-form-item-label">
-      <label
-        for="card_details"
-        className="ant-form-item-required"
-        title="Card Details"
-      >
-        Card details
-        <CardElement options={CARD_ELEMENT_OPTIONS} />
-      </label>
-    </div>
+    <>
+      <div className="ant-col ant-form-item-label">
+        <label
+          for="card_details"
+          className="ant-form-item-required"
+          title="Card Details"
+        >
+          Card details
+        </label>
+      </div>
+      <CardElement options={CARD_ELEMENT_OPTIONS} />
+      {error && <div role="alert" class="ant-form-item-explain-error">{error}</div>}
+    </>
   );
 }
 export default CardSection;
