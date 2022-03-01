@@ -20,3 +20,15 @@ export const createBooking = createAsyncThunk(
     return response;
   }
 )
+
+export const fetchBooking = createAsyncThunk(
+  'booking/show',
+  async (bookingId, thunkAPI) => {
+    const response = await fetch(`/api/bookings/${bookingId}.json`).then((res) => {
+      return res.json()
+    });
+    return response;
+  }
+)
+
+
