@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { UserOutlined } from "@ant-design/icons";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { Form, Button, Input, Row, Col } from "antd";
 import CardSection from "./CardSection";
@@ -8,9 +8,9 @@ import { create } from 'store/services/card';
 
 const { TextArea } = Input;
 
-export default function Card() {
-  const stripe = useStripe();
+const Card = (props) => {
   const elements = useElements();
+  const stripe = useStripe();
   const dispatch = useDispatch();
   const [cardError, setCardError] = useState(null);
 
@@ -150,3 +150,5 @@ export default function Card() {
     </Form>
   );
 }
+
+export default Card;
