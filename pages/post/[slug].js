@@ -1,19 +1,15 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import isEmpty from "lodash/isEmpty";
 import Sticky from "react-stickynode";
 import { Row, Col, Modal, Button } from "antd";
 import Container from "components/UI/Container/Container";
 import Loader from "components/Loader/Loader";
-import { getDeviceType } from "library/helpers/get-device-type";
-import { getAPIData, processAPIData } from "library/helpers/get-api-data";
 import Description from "container/SinglePage/Description/Description";
 import Amenities from "container/SinglePage/Amenities/Amenities";
 import Calender from "container/SinglePage/Calender/Calender";
 import AccommodationPolicies from "container/SinglePage/AccommodationPolicies/AccommodationPolicies";
 import Location from "container/SinglePage/Location/Location";
-import Review from "container/SinglePage/Review/Review";
 import Reservation from "container/SinglePage/Reservation/Reservation";
 import BottomReservation from "container/SinglePage/Reservation/BottomReservation";
 import TopBar from "container/SinglePage/TopBar/TopBar";
@@ -155,20 +151,4 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
       </Modal>
     </>
   );
-}
-
-export async function getServerSideProps(context) {
-  const { req, query } = context;
-  const apiUrl = [
-    {
-      endpoint: "hotel-single",
-      name: "hotelSingleData",
-    },
-  ];
-  const pageData = await getAPIData(apiUrl);
-  const processedData = processAPIData(pageData);
-  const deviceType = getDeviceType(req);
-  return {
-    props: { query, processedData, deviceType },
-  };
 }

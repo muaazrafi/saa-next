@@ -13,10 +13,10 @@ const StepOne = (props) => {
 
   return (
     <FormContent>
+      <Cart />
       <Stepper step={0} />
       <VerifyAuth />
       {currentUser && <UpdateInfo user={currentUser} />}
-      <Cart />
     </FormContent>
   );
 };

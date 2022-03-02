@@ -1,33 +1,23 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import Link from "next/link";
-import { Row, Col, Tooltip } from "antd";
-import { MdHelpCenter } from "react-icons/md";
 import PropTypes from "prop-types";
 import Card from "components/UI/Card/Card";
 import Heading from "components/UI/Heading/Heading";
 import Text from "components/UI/Text/Text";
 import RenderReservationForm from "./RenderReservationForm";
-import { updatePrice } from "/store/bookingSlice";
+import ReservationDetails from './ReservationDetails';
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 
 const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
-  const dispatch = useDispatch();
-  const { apartment } = useSelector((state) => state.apartment);
-  const { booking, firstMonthRent } = useSelector((state) => state.booking);
-
-  useEffect(() => {
-    if (apartment) {
-      dispatch(updatePrice(apartment));
-    }
-  }, [apartment, booking.check_in, booking.check_out]);
+  const { firstMonthRent } = useSelector((state) => state.booking);
 
   return (
     <>
       <Heading
         content={
           <>
-            <ApartmentCurrency /> {firstMonthRent}{" "}
+            <ApartmentCurrency /> {firstMonthRent}
             <Text as="span" content="/ monthy" {...pricePeriodStyle} />
           </>
         }
@@ -51,82 +41,7 @@ export default function Reservation({ linkStyle }) {
       className="reservation_sidebar"
       header={<CardHeader />}
       content={<RenderReservationForm />}
-      footer={
-        <>
-          <Row style={{ width: "100%" }}>
-            <Col span={18}>
-              Down Payment
-              <Tooltip
-                placement="top"
-                title="Deposit to hold this apartment. This amount will be applied to the first month's charges."
-              >
-                <MdHelpCenter fontSize={18} />
-              </Tooltip>
-            </Col>
-            <Col span={6}>
-              <strong>
-                <ApartmentCurrency /> 100
-              </strong>
-            </Col>
-          </Row>
-          {apartment && booking.check_in && booking.check_out && (
-            <>
-              {apartment.reservation_deposit && (
-                <Row style={{ width: "100%" }}>
-                  <Col span={18}>
-                    Reservation Deposit
-                    <Tooltip
-                      placement="top"
-                      title="Deposit sent straight away to hold the accommodation. This is either fully refunded or added to the security deposit upon arrival."
-                    >
-                      <MdHelpCenter fontSize={18} />
-                    </Tooltip>
-                  </Col>
-                  <Col span={6}>
-                    <ApartmentCurrency /> {apartment.reservation_deposit}
-                  </Col>
-                </Row>
-              )}
-              <Row style={{ width: "100%" }}>
-                <Col span={18}>
-                  Second payment
-                  <Tooltip
-                    placement="top"
-                    title="Due 3 days after the landlord approves your booking. If you like, you may split this payment with your roommates."
-                  >
-                    <MdHelpCenter fontSize={18} />
-                  </Tooltip>
-                  <p style={{ fontSize: "10px", color: "#999" }}>
-                    Includes one-time service fee of {Math.ceil(bookingFee)}. To
-                    be paid 3 days after approval.
-                  </p>
-                </Col>
-                <Col span={6}>
-                  <ApartmentCurrency />{" "}
-                  {Math.ceil(amountDue - apartment.booking_request_amount)}
-                </Col>
-              </Row>
-              <hr />
-              <Row style={{ width: "100%" }}>
-                <Col span={18}>
-                  Total
-                  <Tooltip
-                    placement="top"
-                    title="Due 3 days after the landlord approves your booking. If you like, you may split this payment with your roommates."
-                  >
-                    <MdHelpCenter fontSize={18} />
-                  </Tooltip>
-                </Col>
-                <Col span={6}>
-                  <strong>
-                    <ApartmentCurrency /> {Math.ceil(grandTotal)}
-                  </strong>
-                </Col>
-              </Row>
-            </>
-          )}
-        </>
-      }
+      footer={<ReservationDetails />}
     />
   );
 }
