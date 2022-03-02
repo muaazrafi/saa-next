@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { Drawer, Button } from "antd";
+import { Card, Drawer, Button } from "antd";
 import Carousel from "react-multi-carousel";
 import { BsCart4 } from "react-icons/bs";
 import { updatePrice } from "store/bookingSlice";
@@ -87,33 +87,38 @@ const Cart = (props) => {
       >
         {apartment && (
           <>
-            <h3>{apartment.name}</h3>
-            <Carousel
-              ssr
-              additionalTransfrom={0}
-              arrows
-              autoPlaySpeed={1000}
-              containerClass="container"
-              dotListClass=""
-              draggable
-              focusOnSelect={false}
-              infinite
-              itemClass=""
-              renderDotsOutside={false}
-              responsive={responsive}
-              showDots={true}
-              sliderClass=""
-              slidesToSlide={1}
-            >
-              {apartment.image_public_ids.map((photo, index) => (
-                <img
-                  key={index}
-                  src={photo.img}
-                  alt={photo.img}
-                  style={{ height: "200px", objectFit: "cover", width: "100%" }}
-                />
-              ))}
-            </Carousel>
+            <Card size="small" title={apartment.name}>
+              <Carousel
+                ssr
+                additionalTransfrom={0}
+                arrows
+                autoPlaySpeed={1000}
+                containerClass="container"
+                dotListClass=""
+                draggable
+                focusOnSelect={false}
+                infinite
+                itemClass=""
+                renderDotsOutside={false}
+                responsive={responsive}
+                showDots={true}
+                sliderClass=""
+                slidesToSlide={1}
+              >
+                {apartment.image_public_ids.map((photo, index) => (
+                  <img
+                    key={index}
+                    src={photo.img}
+                    alt={photo.img}
+                    style={{
+                      height: "200px",
+                      objectFit: "cover",
+                      width: "100%",
+                    }}
+                  />
+                ))}
+              </Carousel>
+            </Card>
           </>
         )}
         <ReservationDetails />
