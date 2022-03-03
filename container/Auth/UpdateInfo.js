@@ -15,7 +15,6 @@ export default function UpdateInfo({ user }) {
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
-    debugger
     let updateValues = cloneDeep(values);
     updateValues.phone = tempPhone;
     dispatch(handleLoading(true));

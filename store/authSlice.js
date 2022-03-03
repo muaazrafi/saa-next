@@ -10,7 +10,8 @@ const initialState = {
   auth_component_switch: "up",
   existError: false,
   loading: true,
-  tempPhone: null
+  tempPhone: null,
+  moveStep: false
 };
 
 
@@ -84,6 +85,7 @@ export const authSlice = createSlice({
         state.existError = true;
       } else {
         state.currentUser = action.payload;
+        state.moveStep = true;
       }
       state.loading = false;
     });    
