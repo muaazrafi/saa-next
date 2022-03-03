@@ -23,7 +23,7 @@ const StepOne = (props) => {
           'Please enter payment details.',
       });
     }
-  }, [moveStep])
+  }, [moveStep]);
 
   return (
     <FormContent>

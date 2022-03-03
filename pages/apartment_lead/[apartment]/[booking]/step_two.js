@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Stepper from "components/UI/Stepper/Stepper";
 import VerifyAuth from "container/Auth/VerifyAuth";
@@ -13,6 +13,20 @@ const stripePromise = loadStripe('pk_test_oJYwZZaKNdW0Qzl1asjCwD9B');
 
 export default function StepOne(props) {
   const { currentUser } = useSelector((state) => state.auth);
+  const { moveStep } = useSelector((state) => state.card);
+  const { apartment } = useSelector((state) => state.apartment);
+  const { booking } = useSelector((state) => state.booking);
+
+  useEffect( () => {
+    if (moveStep){
+      router.push(`/apartment_lead/${apartment.id}/${booking.id}/step_three`);
+      notification['success']({
+        message: 'Updated Card Info!',
+        description:
+          'Please confirm payment.',
+      });
+    }
+  }, [moveStep]);  
 
   return (
     <FormContent>

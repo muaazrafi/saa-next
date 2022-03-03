@@ -135,11 +135,11 @@ const Card = (props) => {
           </Form.Item>
         </Col>
       </Row>
-
-      <Form.Item>
+            
+      <Form.Item style={{ textAlign: 'right' }} >
         <Button
           type="primary"
-          size="middle"
+          size="large"
           style={{ width: 256 }}
           htmlType="submit"
           block

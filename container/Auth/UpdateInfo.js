@@ -172,7 +172,7 @@ export default function UpdateInfo({ user }) {
       <Form.Item className='step-submit' >
         <Button
           type="primary"
-          size="middle"
+          size="large"
           htmlType="submit"
           block
           loading={loading}

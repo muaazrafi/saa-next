@@ -5,7 +5,8 @@ import { create, show } from './services/card';
 
 const initialState = {
   card: null,
-  loading: true
+  loading: true,
+  moveStep: false
 }
 
 export const cardSlice = createSlice({
@@ -18,6 +19,7 @@ export const cardSlice = createSlice({
     });
     builder.addCase(show.fulfilled, (state, action) => {
       state.card = action.payload.user;
+      state.moveStep = true;
       state.loading = false;
     });
   },
