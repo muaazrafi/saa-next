@@ -10,7 +10,6 @@ import Cart from "container/Cart/Cart";
 
 const StepOne = (props) => {
   const router = useRouter();
-  const router = useRouter();
   const apartmentId = router.query.apartment;
   const bookingId = router.query.booking;
   const { currentUser, moveStep } = useSelector((state) => state.auth);
