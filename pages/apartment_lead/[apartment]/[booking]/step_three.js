@@ -29,14 +29,26 @@ const StepThree = (props) => {
       <VerifyAuth />
       <Elements stripe={stripePromise}>
         <Row gutter={20}>
-          <Col md={6} sm={24} xs={24} style={{ marginBottom: "15px" }} loading={bookingLoading} >
+          <Col
+            md={6}
+            sm={24}
+            xs={24}
+            style={{ marginBottom: "15px" }}
+            loading={bookingLoading}
+          >
             <Card title="Due Today" hoverable>
               <h1>
                 <ApartmentCurrency /> 100
               </h1>
             </Card>
           </Col>
-          <Col md={6} sm={24} xs={24} style={{ marginBottom: "15px" }} loading={bookingLoading} >
+          <Col
+            md={6}
+            sm={24}
+            xs={24}
+            style={{ marginBottom: "15px" }}
+            loading={bookingLoading}
+          >
             <Card title="Due after acceptance" hoverable>
               <h1>
                 <ApartmentCurrency />
@@ -45,7 +57,13 @@ const StepThree = (props) => {
               </h1>
             </Card>
           </Col>
-          <Col md={6} sm={24} xs={24} style={{ marginBottom: "15px" }} loading={loading} >
+          <Col
+            md={6}
+            sm={24}
+            xs={24}
+            style={{ marginBottom: "15px" }}
+            loading={loading}
+          >
             <Card title="Your information" hoverable>
               {currentUser && (
                 <>
@@ -65,9 +83,19 @@ const StepThree = (props) => {
         <br />
         <ConfirmPayment bookingId={booking_id} />
         <p>
-          By clicking "Confirm Booking" you agree to Study Abroad Apartments <a>privacy policy</a> and <a>terms of service</a>.
-          <br />      
-          The <ApartmentCurrency />100 down payment will be charged to your card. The remaining <ApartmentCurrency />{Math.ceil(amountDue - apartment.booking_request_amount)} is due no more than three days following the landlord's acceptance of your application.
+          By clicking "Confirm Booking" you agree to Study Abroad Apartments{" "}
+          <a>privacy policy</a> and <a>terms of service</a>.
+          <br />
+          {apartment && amountDue && (
+            <>
+              The <ApartmentCurrency />
+              100 down payment will be charged to your card. The remaining{" "}
+              <ApartmentCurrency />
+              {Math.ceil(amountDue - apartment.booking_request_amount)} is due
+              no more than three days following the landlord's acceptance of
+              your application.
+            </>
+          )}
         </p>
       </Elements>
     </FormContent>
