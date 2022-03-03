@@ -8,6 +8,7 @@ import { FormContent } from "./Steps.style";
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 import ConfirmPayment from "container/Payment/ConfirmPayment";
 import Cart from "container/Cart/Cart";
+import CardDetails from "container/Payment/CardDetails";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -17,6 +18,7 @@ const StepThree = (props) => {
   const { currentUser } = useSelector((state) => state.auth);
   const { apartment } = useSelector((state) => state.apartment);
   const { amountDue } = useSelector((state) => state.booking);
+  const cardLoading = useSelector((state) => state.card.loading);
   const router = useRouter();
   const booking_id = router.query.booking;
 
@@ -27,7 +29,7 @@ const StepThree = (props) => {
       <VerifyAuth />
       <Elements stripe={stripePromise}>
         <Row gutter={20}>
-          <Col md={6} sm={24} xs={24} style={{ marginBottom: "15px" }} >
+          <Col md={6} sm={24} xs={24} style={{ marginBottom: "15px" }}>
             <Card title="Due Today" hoverable>
               <h1>
                 <ApartmentCurrency /> 100
@@ -38,7 +40,8 @@ const StepThree = (props) => {
             <Card title="Due after acceptance" hoverable>
               <h1>
                 <ApartmentCurrency />
-                { apartment && Math.ceil(amountDue - apartment.booking_request_amount)}
+                {apartment &&
+                  Math.ceil(amountDue - apartment.booking_request_amount)}
               </h1>
             </Card>
           </Col>
@@ -56,9 +59,7 @@ const StepThree = (props) => {
             </Card>
           </Col>
           <Col md={6} sm={24} xs={24} style={{ marginBottom: "15px" }}>
-            <Card title="Billing Information" hoverable>
-              
-            </Card>
+            <CardDetails />
           </Col>
         </Row>
         <br />
