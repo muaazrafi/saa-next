@@ -27,4 +27,10 @@ const CartUp = styled.div`
   }
 `;
 
+export const CartDrawer = styled.div`
+  .ant-card-head {
+    background: #F6F6F6;
+  }
+`;
+
 export default CartUp;

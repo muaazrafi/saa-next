@@ -8,7 +8,8 @@ import { updatePrice } from "store/bookingSlice";
 import { fetchApartment } from "store/services/apartment";
 import { fetchBooking } from "store/services/booking";
 import ReservationDetails from "container/SinglePage/Reservation/ReservationDetails";
-import CartUp from "./CartUp.style";
+import MonthlyBreakDown from "container/SinglePage/Reservation/MonthlyBreakDown";
+import CartUp, { CartDrawer } from "./CartUp.style";
 
 const responsive = {
   desktop: {
@@ -85,43 +86,52 @@ const Cart = (props) => {
         onClose={onClose}
         visible={visible}
       >
-        {apartment && (
-          <>
-            <Card size="small" title={apartment.name}>
-              <Carousel
-                ssr
-                additionalTransfrom={0}
-                arrows
-                autoPlaySpeed={1000}
-                containerClass="container"
-                dotListClass=""
-                draggable
-                focusOnSelect={false}
-                infinite
-                itemClass=""
-                renderDotsOutside={false}
-                responsive={responsive}
-                showDots={true}
-                sliderClass=""
-                slidesToSlide={1}
-              >
-                {apartment.image_public_ids.map((photo, index) => (
-                  <img
-                    key={index}
-                    src={photo.img}
-                    alt={photo.img}
-                    style={{
-                      height: "200px",
-                      objectFit: "cover",
-                      width: "100%",
-                    }}
-                  />
-                ))}
-              </Carousel>
-            </Card>
-          </>
-        )}
-        <ReservationDetails />
+        <CartDrawer>
+          {apartment && (
+            <>
+              <Card size="small" title={apartment.name}>
+                <Carousel
+                  ssr
+                  additionalTransfrom={0}
+                  arrows
+                  autoPlaySpeed={1000}
+                  containerClass="container"
+                  dotListClass=""
+                  draggable
+                  focusOnSelect={false}
+                  infinite
+                  itemClass=""
+                  renderDotsOutside={false}
+                  responsive={responsive}
+                  showDots={false}
+                  sliderClass=""
+                  slidesToSlide={1}
+                >
+                  {apartment.image_public_ids.map((photo, index) => (
+                    <img
+                      key={index}
+                      src={photo.img}
+                      alt={photo.img}
+                      style={{
+                        height: "200px",
+                        objectFit: "cover",
+                        width: "100%",
+                      }}
+                    />
+                  ))}
+                </Carousel>
+              </Card>
+            </>
+          )}
+          <br />
+          <Card size="small" title="Payment Details">
+            <ReservationDetails />
+          </Card>
+          <br />
+          <Card size="small" title="Monthly Breakdown">
+            <MonthlyBreakDown />
+          </Card>
+        </CartDrawer>
       </Drawer>
     </>
   );

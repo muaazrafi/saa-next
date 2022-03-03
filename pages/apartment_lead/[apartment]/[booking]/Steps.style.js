@@ -190,6 +190,15 @@ export const FormContent = styled.div`
     width: 100%;
   }
 
+  h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .ant-card-head {
+    background: #F6F6F6;
+  }
+
 `;
 
 export const FormAction = styled.div`

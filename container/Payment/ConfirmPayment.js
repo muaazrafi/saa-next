@@ -19,7 +19,6 @@ const ConfirmPayment = ({bookingId}) => {
     <Button
       type="success"
       size="middle"
-      style={{ width: 256 }}
       block
       onClick={makeDownPayment}
       loading={!stripe}

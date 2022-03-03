@@ -7,10 +7,8 @@ import { FormContent } from "./Steps.style";
 import Cart from "container/Cart/Cart";
 
 const StepOne = (props) => {
-  const dispatcher = useDispatch();
-
   const { currentUser } = useSelector((state) => state.auth);
-
+  
   return (
     <FormContent>
       <Cart />

@@ -979,6 +979,11 @@ const GlobalStyle = createGlobalStyle`
   justify-content: center;
   margin-top: 10em;
 }
+
+.ant-tooltip{
+  z-index: 999999;
+}
+
 `;
 
 export default GlobalStyle;
