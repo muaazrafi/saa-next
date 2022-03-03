@@ -55,13 +55,13 @@ const Cart = (props) => {
   }, [apartmentId]);
 
   useEffect(() => {
-    if (bookingId && !booking.id) {
+    if (bookingId && !booking) {
       dispatch(fetchBooking(bookingId));
     }
   }, [bookingId]);
 
   useEffect(() => {
-    if (apartment && booking.id) {
+    if (apartment && booking && booking.id) {
       dispatch(updatePrice(apartment));
     }
   }, [booking, apartment]);

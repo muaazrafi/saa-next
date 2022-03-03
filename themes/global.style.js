@@ -979,7 +979,9 @@ const GlobalStyle = createGlobalStyle`
   justify-content: center;
   margin-top: 10em;
 }
-
+.ant-notification{
+  z-index: 999999;  
+}
 .ant-tooltip{
   z-index: 999999;
 }

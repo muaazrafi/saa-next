@@ -5,10 +5,11 @@ import { notification } from "antd";
 
 export default function VerifyAuth(props) {
   const router = useRouter();
-  const { loginFailed } = useSelector( state => state.auth );
+  const { currentUser, loading } = useSelector( state => state.auth );
 
   useEffect( () => {
-    if(loginFailed) {
+    
+    if(!currentUser && !loading ) {
       router.push('/');
       notification['error']({
         message: 'Login Faild',
@@ -16,7 +17,7 @@ export default function VerifyAuth(props) {
           'Please login before you continue.',
       });
     }
-  }, [loginFailed]);
+  }, [currentUser]);
 
   return (
     <></>
