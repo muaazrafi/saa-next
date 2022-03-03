@@ -12,17 +12,23 @@ const initialState = {
 export const cardSlice = createSlice({
   name: 'card',
   initialState,
-  reducers: {},
+  reducers: {
+    handleLoading: (state, action) => {
+      state.loading = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(create.fulfilled, (state, action) => {
+      state.moveStep = true;
       state.loading = false;
     });
     builder.addCase(show.fulfilled, (state, action) => {
       state.card = action.payload.user;
-      state.moveStep = true;
       state.loading = false;
     });
   },
 });
+
+export const { handleLoading } = cardSlice.actions;
 
 export default cardSlice.reducer;

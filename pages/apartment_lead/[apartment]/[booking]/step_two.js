@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useRouter } from 'next/router';
+import { notification } from "antd";
 import Stepper from "components/UI/Stepper/Stepper";
 import VerifyAuth from "container/Auth/VerifyAuth";
 import { FormContent } from "./Steps.style";
@@ -11,15 +13,16 @@ import Cart from "container/Cart/Cart";
 
 const stripePromise = loadStripe('pk_test_oJYwZZaKNdW0Qzl1asjCwD9B');
 
-export default function StepOne(props) {
+export default function StepTwo(props) {
+  const router = useRouter();
+  const apartmentId = router.query.apartment;
+  const bookingId = router.query.booking;
   const { currentUser } = useSelector((state) => state.auth);
   const { moveStep } = useSelector((state) => state.card);
-  const { apartment } = useSelector((state) => state.apartment);
-  const { booking } = useSelector((state) => state.booking);
 
   useEffect( () => {
     if (moveStep){
-      router.push(`/apartment_lead/${apartment.id}/${booking.id}/step_three`);
+      router.push(`/apartment_lead/${apartmentId}/${bookingId}/step_three`);
       notification['success']({
         message: 'Updated Card Info!',
         description:

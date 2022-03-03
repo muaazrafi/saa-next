@@ -20,7 +20,7 @@ const StepThree = (props) => {
   const { amountDue } = useSelector((state) => state.booking);
   const bookingLoading = useSelector((state) => state.booking.loading);
   const router = useRouter();
-  const booking_id = router.query.booking;
+  const bookingId = router.query.booking;
 
   return (
     <FormContent>
@@ -81,7 +81,7 @@ const StepThree = (props) => {
           </Col>
         </Row>
         <br />
-        <ConfirmPayment bookingId={booking_id} />
+        <ConfirmPayment bookingId={bookingId} />
         <p>
           By clicking "Confirm Booking" you agree to Study Abroad Apartments{" "}
           <a>privacy policy</a> and <a>terms of service</a>.

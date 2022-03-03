@@ -10,13 +10,14 @@ import Cart from "container/Cart/Cart";
 
 const StepOne = (props) => {
   const router = useRouter();
+  const router = useRouter();
+  const apartmentId = router.query.apartment;
+  const bookingId = router.query.booking;
   const { currentUser, moveStep } = useSelector((state) => state.auth);
-  const { apartment } = useSelector((state) => state.apartment);
-  const { booking } = useSelector((state) => state.booking);
 
   useEffect( () => {
     if (moveStep){
-      router.push(`/apartment_lead/${apartment.id}/${booking.id}/step_two`);
+      router.push(`/apartment_lead/${apartmentId}/${bookingId}/step_two`);
       notification['success']({
         message: 'Successfully Updated',
         description:
