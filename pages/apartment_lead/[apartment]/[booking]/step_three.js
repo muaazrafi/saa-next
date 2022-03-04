@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { Row, Col, Card } from "antd";
 import Stepper from "components/UI/Stepper/Stepper";
@@ -9,12 +9,14 @@ import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentC
 import ConfirmPayment from "container/Payment/ConfirmPayment";
 import Cart from "container/Cart/Cart";
 import CardDetails from "container/Payment/CardDetails";
+import { fetchMe } from 'store/services/auth';
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe("pk_test_oJYwZZaKNdW0Qzl1asjCwD9B");
 
 const StepThree = (props) => {
+  const dispatch = useDispatch();
   const { currentUser, loading } = useSelector((state) => state.auth);
   const { apartment } = useSelector((state) => state.apartment);
   const { amountDue } = useSelector((state) => state.booking);
@@ -22,11 +24,17 @@ const StepThree = (props) => {
   const router = useRouter();
   const bookingId = router.query.booking;
 
+  useEffect( () => {
+    if (!currentUser){
+      dispatch(fetchMe())
+    }
+  }, [currentUser])
+
   return (
     <FormContent>
       <Cart />
       <Stepper step={2} />
-      <VerifyAuth />
+    <VerifyAuth />
       <Elements stripe={stripePromise}>
         <Row gutter={20}>
           <Col
@@ -34,9 +42,8 @@ const StepThree = (props) => {
             sm={24}
             xs={24}
             style={{ marginBottom: "15px" }}
-            loading={bookingLoading}
           >
-            <Card title="Due Today" hoverable>
+            <Card title="Due Today" hoverable loading={bookingLoading} >
               <h1>
                 <ApartmentCurrency /> 100
               </h1>
@@ -47,9 +54,8 @@ const StepThree = (props) => {
             sm={24}
             xs={24}
             style={{ marginBottom: "15px" }}
-            loading={bookingLoading}
           >
-            <Card title="Due after acceptance" hoverable>
+            <Card title="Due after acceptance" hoverable loading={bookingLoading} >
               <h1>
                 <ApartmentCurrency />
                 {apartment &&
@@ -64,7 +70,7 @@ const StepThree = (props) => {
             style={{ marginBottom: "15px" }}
             loading={loading}
           >
-            <Card title="Your information" hoverable>
+            <Card title="Your information" hoverable loading={loading} >
               {currentUser && (
                 <>
                   {currentUser.first_name} {currentUser.last_name}
