@@ -1,20 +1,44 @@
 import React from "react";
-import { Button } from "antd";
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
+import { Button, notification } from "antd";
 import { useStripe } from "@stripe/react-stripe-js";
 import { createIntent } from "store/services/card";
-import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 import { ConfirmButtonWrapper } from "./Card.style";
+import { handleLoading } from 'store/bookingSlice';
 
-const ConfirmPayment = ({ bookingId }) => {
+const ConfirmPayment = (props) => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const bookingId = router.query.booking;
+
+  const { loading } = useSelector( state => state.booking );
   const stripe = useStripe();
   const makeDownPayment = async () => {
     if (!stripe) {
       return;
     }
+    dispatch(handleLoading(true));
     const intent = await createIntent(bookingId);
     const { paymentIntent, error } = await stripe.confirmCardPayment(
       intent.client_secret
     );
+    dispatch(handleLoading(false));
+    if (error) {
+      notification['error']({
+        message: 'Payment Proccesing Error!',
+        description:
+          `Please rectify payment details was not able to process payment. ${error}`,
+      });
+      router.back();
+    } else {
+      notification['success']({
+        message: 'Successfully Sent!',
+        description:
+          'Booking request pending approval.',
+      });
+      router.push('/thank-you');
+    }
   };
 
   return (
@@ -24,7 +48,7 @@ const ConfirmPayment = ({ bookingId }) => {
         size="large"
         block
         onClick={makeDownPayment}
-        loading={!stripe}
+        loading={loading}
       >
         Confirm Booking
       </Button>

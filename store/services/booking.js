@@ -31,4 +31,24 @@ export const fetchBooking = createAsyncThunk(
   }
 )
 
+export const confirmStatus = createAsyncThunk(
+  'auth/update',
+  async (bookingId, thunkAPI) => {
+    const response = await fetch(`/api/bookings/${bookingId}/invitation`, {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        booking: {
+          booking_status: true
+        }
+      })
+    }).then((res) => {
+      return res.json()
+    });
+    return response;
+  }
+)
 

@@ -986,6 +986,25 @@ const GlobalStyle = createGlobalStyle`
   z-index: 999999;
 }
 
+.thankyou-holder {
+  background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/thankyou-bg-pattren.png);
+  background-repeat: repeat-x;
+  background-position: left top;
+  margin-bottom: 100px;
+  .thankyou-title {
+    background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/Request-is-pending-for-approval-01.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    height: 280px;
+    margin-bottom: 15px;
+  }
+}
+
+
+
 `;
 
 export default GlobalStyle;

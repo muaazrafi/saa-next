@@ -38,6 +38,9 @@ export const bookingSlice = createSlice({
   name: 'apartment',
   initialState,
   reducers: {
+    handleLoading: (state, action) => {
+      state.loading = action.payload;
+    },
     updateBooking: (state, action) => {
       state.booking = action.payload;
     },
@@ -100,6 +103,6 @@ export const bookingSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { updatePrice, updateBooking } = bookingSlice.actions;
+export const { handleLoading, updatePrice, updateBooking } = bookingSlice.actions;
 
 export default bookingSlice.reducer;
