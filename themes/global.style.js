@@ -1003,7 +1003,35 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+.center-stage {
+  flex: 1;
+  max-width: 1050px;
+  width: 100%;
+  margin: 10px auto 104px;
+  @media (max-width: 1050px) {
+    padding: 0 30px;
+  }
+  @media (max-width: 480px) {
+    margin-top: 10px;
+  }
+}
 
+.thank-para {
+  color: #949494;
+  font-size: 18px;
+  font-family: "Helvetica";
+  text-align: center;
+}
+
+.referral-link{
+  color: #55ACEE;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
+
+}
 
 `;
 
