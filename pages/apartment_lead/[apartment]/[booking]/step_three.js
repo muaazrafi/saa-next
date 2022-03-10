@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { Row, Col, Card } from "antd";
 import Stepper from "components/UI/Stepper/Stepper";
 import VerifyAuth from "container/Auth/VerifyAuth";
-import { FormContent } from "./Steps.style";
+import { FormContent } from "/container/Stylis/InnerContainer.style";
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 import ConfirmPayment from "container/Payment/ConfirmPayment";
 import Cart from "container/Cart/Cart";

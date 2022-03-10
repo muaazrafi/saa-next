@@ -4,8 +4,7 @@ import { useRouter } from 'next/router';
 import { notification } from "antd";
 import Stepper from "components/UI/Stepper/Stepper";
 import VerifyAuth from "container/Auth/VerifyAuth";
-import { FormContent } from "./Steps.style";
-
+import { FormContent } from "/container/Stylis/InnerContainer.style";
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import Card from 'container/Payment/Card';

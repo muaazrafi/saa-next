@@ -75,7 +75,7 @@ const ProfileNavigation = (props) => {
         </Container>
       </NavigationArea>
       <Container fluid={true}>
-        {component === 'allListing' && <AgentItemLists {...props} />}
+        {/* {component === 'allListing' && <AgentItemLists {...props} />} */}
         {component === 'favouriteListing' && <AgentFavItemLists {...props} />}
         {component === 'contact' && <AgentContact {...props} />}
       </Container>
