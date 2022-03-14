@@ -85,3 +85,22 @@ export const unAuthenticate = createAsyncThunk(
     return response;
   }
 )
+
+export const resendConfirmation = createAsyncThunk(
+  'auth/resendConfirmation',
+  async (user, thunkAPI) => {
+    const response = await fetch('/api/users/re_send_confirmation', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: user 
+      })
+    }).then((res) => {
+      return res.json()
+    });
+    return response;
+  }
+)

@@ -1,8 +1,17 @@
 import {
   createSlice
 } from '@reduxjs/toolkit';
-import { authenticate, fetchMe, unAuthenticate, register, updateMe } from './services/auth';
-import { notification } from 'antd';
+import {
+  authenticate,
+  fetchMe,
+  unAuthenticate,
+  register,
+  updateMe,
+  resendConfirmation
+} from './services/auth';
+import {
+  notification
+} from 'antd';
 
 const initialState = {
   currentUser: null,
@@ -47,8 +56,7 @@ export const authSlice = createSlice({
         state.currentUser = action.payload.user;
         notification['success']({
           message: 'Successful',
-          description:
-            'You are successfully logged in.',
+          description: 'You are successfully logged in.',
         });
       }
     });
@@ -59,12 +67,12 @@ export const authSlice = createSlice({
         state.currentUser = action.payload;
       }
     });
-    
+
     builder.addCase(unAuthenticate.fulfilled, (state, action) => {
       state.loading = false;
       state.currentUser = null;
     });
-    
+
     builder.addCase(register.fulfilled, (state, action) => {
       if (action.payload.error) {
         state.existError = true;
@@ -73,13 +81,12 @@ export const authSlice = createSlice({
         state.currentUser = action.payload;
         notification['success']({
           message: 'Successful',
-          description:
-            'You are successfully registered.',
+          description: 'You are successfully registered.',
         });
       }
       state.loading = false;
     });
-    
+
     builder.addCase(updateMe.fulfilled, (state, action) => {
       if (action.payload.error) {
         state.existError = true;
@@ -88,12 +95,28 @@ export const authSlice = createSlice({
         state.moveStep = true;
       }
       state.loading = false;
-    });    
-    
+    });
+
+    builder.addCase(resendConfirmation.fulfilled, (state, action) => {
+
+      notification['success']({
+        message: 'Sent!',
+        description: 'Successfully sent email, please confirm it.',
+      });
+      state.loading = false;
+    });
+
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { switchin, switchup, switchforgot, handlePopUp, handleLoading, setTempPhone } = authSlice.actions;
+export const {
+  switchin,
+  switchup,
+  switchforgot,
+  handlePopUp,
+  handleLoading,
+  setTempPhone
+} = authSlice.actions;
 
 export default authSlice.reducer;
