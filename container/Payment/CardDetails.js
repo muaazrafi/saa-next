@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card } from "antd";
 import { show } from "store/services/card";
-
+import { BsFillCreditCard2FrontFill } from 'react-icons/bs';
 
 const CardDetails = (props) => {
   const dispatch = useDispatch();
@@ -13,9 +13,9 @@ const CardDetails = (props) => {
       dispatch(show());
     }
   }, []);
-  console.log("Card Details: ", card);
+
   return (
-    <Card title="Card Information" hoverable loading={loading}>
+    <Card title={<><BsFillCreditCard2FrontFill size={24} /> Card Information</>} hoverable loading={loading}>
       { card && card.customer_detail && (
         <>
           <span style={{ textTransform: 'capitalize' }} >{card.customer_detail.card.brand}</span>

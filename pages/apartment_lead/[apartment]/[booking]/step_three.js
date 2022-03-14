@@ -70,17 +70,7 @@ const StepThree = (props) => {
             style={{ marginBottom: "15px" }}
             loading={loading}
           >
-            <Card title="Your information" hoverable loading={loading} >
-              {currentUser && (
-                <>
-                  {currentUser.first_name} {currentUser.last_name}
-                  <br />
-                  {currentUser.email}
-                  <br />
-                  {currentUser.phone}
-                </>
-              )}
-            </Card>
+
           </Col>
           <Col md={6} sm={24} xs={24} style={{ marginBottom: "15px" }}>
             <CardDetails />

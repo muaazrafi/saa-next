@@ -1033,6 +1033,15 @@ const GlobalStyle = createGlobalStyle`
 
 }
 
+.cardholder {
+  .ant-col {
+    display: flex;
+    .ant-card {
+      flex: 1;
+    }
+  }
+}
+
 `;
 
 export default GlobalStyle;
