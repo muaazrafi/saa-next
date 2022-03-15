@@ -31,6 +31,7 @@ const ResendConfirmation = (props) => {
               Resend confirmation
             </Button>
           }
+          closable
         />
       )}
     </>

@@ -1042,6 +1042,17 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+.referralLinkAlert{
+  margin-bottom: 15px;
+  .ant-alert-message{
+    font-size: 14px;
+  }
+  .ant-alert-description{
+    font-size: 18px;
+    font-weight: bold;    
+  }
+}
+
 `;
 
 export default GlobalStyle;
