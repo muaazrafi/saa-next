@@ -8,9 +8,8 @@ const { Meta } = Card;
 
 const History = (props) => {
   const { bookings, loading } = useSelector((state) => state.booking);
-  useEffect(() => {
-    console.log("Read Bookings", bookings);
-  }, [bookings]);
+
+  console.log("Booking History Issue:", bookings)
 
   return (
     <Row gutter={18} className="cardholder" >
@@ -18,7 +17,6 @@ const History = (props) => {
         return (
           <Col md={8} sm={24} xs={24} >
             <Card
-              title={`Booking ID ${booking.id}`}
               hoverable
               cover={
                 <img
@@ -28,6 +26,14 @@ const History = (props) => {
                 />
               }
             >
+
+              <Row gutter={10}>
+                <Col>
+                  <strong>Booking ID:</strong>
+                </Col>
+                <Col>{booking.id}</Col>
+              </Row>
+
               <Row gutter={10}>
                 <Col>
                   <strong>Name:</strong>

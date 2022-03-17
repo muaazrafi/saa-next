@@ -2,11 +2,12 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import moment from "moment";
-import { createBooking, fetchBooking, fetchBookings } from './services/booking';
+import { createBooking, fetchBooking, fetchBookings, fetchApprovedBookings } from './services/booking';
 import Price from 'library/Price';
 
 const initialState = {
   bookings: [],
+  approved_bookings: [],
   booking: {
     id: null,
     apartment_id: null,
@@ -102,6 +103,10 @@ export const bookingSlice = createSlice({
     });
     builder.addCase(fetchBookings.fulfilled, (state, action) => {
       state.bookings = action.payload;
+      state.loading = false;
+    });
+    builder.addCase(fetchApprovedBookings.fulfilled, (state, action) => {
+      state.approved_bookings = action.payload.approved_bookings;
       state.loading = false;
     });
   },

@@ -5,15 +5,14 @@ import ResendConfirmation from "/container/Auth/ResendConfirmation";
 import Nav from "/container/Dashboard/Nav";
 import { FormContent } from "/container/Stylis/InnerContainer.style";
 import History from "/container/Booking/History";
-import { fetchBookings } from "store/services/booking";
+import ApprovedBookings from "/container/Booking/ApprovedBookings";
+import { fetchBookings, fetchApprovedBookings } from "store/services/booking";
 
 const Dashboard = (props) => {
   const dispatch = useDispatch();
-  const { bookings } = useSelector((state) => state.booking);
   useEffect(() => {
-    if (bookings.length === 0) {
-      dispatch(fetchBookings());
-    }
+    dispatch(fetchBookings());
+    dispatch(fetchApprovedBookings());
   }, []);
 
   return (
@@ -22,7 +21,7 @@ const Dashboard = (props) => {
       <ResendConfirmation />
       <FormContent>
         <Nav current="bookings" />
-        <br />
+        <ApprovedBookings />
         <h3>Booking History</h3>
         <History />
       </FormContent>
