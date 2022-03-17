@@ -2,10 +2,11 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import moment from "moment";
-import { createBooking, fetchBooking } from './services/booking';
+import { createBooking, fetchBooking, fetchBookings } from './services/booking';
 import Price from 'library/Price';
 
 const initialState = {
+  bookings: [],
   booking: {
     id: null,
     apartment_id: null,
@@ -97,6 +98,10 @@ export const bookingSlice = createSlice({
     });
     builder.addCase(fetchBooking.fulfilled, (state, action) => {
       state.booking = action.payload.booking;
+      state.loading = false;
+    });
+    builder.addCase(fetchBookings.fulfilled, (state, action) => {
+      state.bookings = action.payload;
       state.loading = false;
     });
   },
