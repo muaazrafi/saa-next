@@ -32,7 +32,11 @@ const ReservationDetails = () => {
         </Col>
         <Col span={6}>
           <strong>
-            <ApartmentCurrency /> 100
+            {apartment && (
+              <>
+                <ApartmentCurrency currency={apartment.currency} /> 100
+              </>
+            )}
           </strong>
         </Col>
       </Row>
@@ -50,7 +54,8 @@ const ReservationDetails = () => {
                 </Tooltip>
               </Col>
               <Col span={6}>
-                <ApartmentCurrency /> {apartment.reservation_deposit}
+                <ApartmentCurrency currency={apartment.currency} />{" "}
+                {apartment.reservation_deposit}
               </Col>
             </Row>
           )}
@@ -69,7 +74,7 @@ const ReservationDetails = () => {
               </p>
             </Col>
             <Col span={6}>
-              <ApartmentCurrency />
+              <ApartmentCurrency currency={apartment.currency} />
               {Math.ceil(amountDue - apartment.booking_request_amount)}
             </Col>
           </Row>
@@ -86,7 +91,8 @@ const ReservationDetails = () => {
             </Col>
             <Col span={6}>
               <strong>
-                <ApartmentCurrency /> {Math.ceil(grandTotal)}
+                <ApartmentCurrency currency={apartment.currency} />{" "}
+                {Math.ceil(grandTotal)}
               </strong>
             </Col>
           </Row>

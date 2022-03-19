@@ -45,7 +45,7 @@ const StepThree = (props) => {
           >
             <Card title="Due Today" hoverable loading={bookingLoading} >
               <h1>
-                <ApartmentCurrency /> 100
+                <ApartmentCurrency currency={apartment.currency} /> 100
               </h1>
             </Card>
           </Col>
@@ -57,7 +57,7 @@ const StepThree = (props) => {
           >
             <Card title="Due after acceptance" hoverable loading={bookingLoading} >
               <h1>
-                <ApartmentCurrency />
+                <ApartmentCurrency currency={apartment.currency} />
                 {apartment &&
                   Math.ceil(amountDue - apartment.booking_request_amount)}
               </h1>
@@ -84,9 +84,9 @@ const StepThree = (props) => {
           <br />
           {apartment && amountDue && (
             <>
-              The <ApartmentCurrency />
+              The <ApartmentCurrency currency={apartment.currency} />
               100 down payment will be charged to your card. The remaining{" "}
-              <ApartmentCurrency />
+              <ApartmentCurrency currency={apartment.currency} />
               {Math.ceil(amountDue - apartment.booking_request_amount)} is due
               no more than three days following the landlord's acceptance of
               your application.

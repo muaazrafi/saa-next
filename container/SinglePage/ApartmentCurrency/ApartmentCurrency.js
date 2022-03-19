@@ -1,8 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-const ApartmentCurrency = () => {
-  const { apartment } = useSelector( (state) => state.apartment );
+const ApartmentCurrency = ({ currency }) => {
   const isoCurrency = {
     EUR: '€',
     USD: '$',
@@ -11,7 +9,7 @@ const ApartmentCurrency = () => {
   }
   
   return (
-    <>{apartment && isoCurrency[apartment.currency]}</>
+    <>{isoCurrency[currency]}</>
   )
 }
 

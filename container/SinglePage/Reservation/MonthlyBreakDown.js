@@ -5,6 +5,7 @@ import { MdHelpCenter } from "react-icons/md";
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 
 const MonthlyBreakDown = () => {
+  const { apartment } = useSelector((state) => state.apartment);
   const { monthlyBreakdown } = useSelector((state) => state.booking);
   console.log("Monthly break down: ", monthlyBreakdown);
   return (
@@ -25,7 +26,7 @@ const MonthlyBreakDown = () => {
                 </Col>
                 <Col span={6}>
                   <strong>
-                    <ApartmentCurrency /> {Math.ceil(month[1])}
+                    <ApartmentCurrency currency={apartment.currency} /> {Math.ceil(month[1])}
                   </strong>
                 </Col>
               </Row>

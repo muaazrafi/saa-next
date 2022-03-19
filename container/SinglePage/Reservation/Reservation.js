@@ -6,10 +6,11 @@ import Card from "components/UI/Card/Card";
 import Heading from "components/UI/Heading/Heading";
 import Text from "components/UI/Text/Text";
 import RenderReservationForm from "./RenderReservationForm";
-import ReservationDetails from './ReservationDetails';
+import ReservationDetails from "./ReservationDetails";
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 
 const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
+  const { apartment } = useSelector((state) => state.apartment);
   const { firstMonthRent } = useSelector((state) => state.booking);
 
   return (
@@ -17,7 +18,12 @@ const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
       <Heading
         content={
           <>
-            <ApartmentCurrency /> {firstMonthRent}
+            {apartment && (
+              <>
+                <ApartmentCurrency currency={apartment.currency} />{" "}
+                {firstMonthRent}
+              </>
+            )}
             <Text as="span" content="/ monthy" {...pricePeriodStyle} />
           </>
         }
