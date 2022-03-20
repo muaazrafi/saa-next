@@ -48,7 +48,7 @@ const ApprovedBooking = ({ booking }) => {
               </h4>
             </Col>
           </Row>
-          <Link href="/splits">
+          <Link href={`/splits/${booking.id}`}>
             <Button
               type="primary"
               style={{

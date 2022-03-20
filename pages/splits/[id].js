@@ -21,9 +21,8 @@ const Dashboard = (props) => {
       <ResendConfirmation />
       <FormContent>
         <Nav current="bookings" />
-        <ApprovedBookings />
-        <br />
-
+        <h3>Complete Your Payment</h3>
+        
       </FormContent>
     </>
   );
