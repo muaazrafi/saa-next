@@ -1061,6 +1061,22 @@ const GlobalStyle = createGlobalStyle`
   text-align: right;
 }
 
+.ant-btn-warning{
+  background-color: #FD9A01;
+  border-color: #ed9205;
+  color: #fff;
+  &:hover {
+    background-color: #fd9a01a6;
+    color: #fff;
+    border-color: #ed9205b0;
+  }
+  &:focus {
+    background-color: #FD9A01;
+    border-color: #ed9205;
+    color: #fff;
+  }
+}
+
 
 
 `;
