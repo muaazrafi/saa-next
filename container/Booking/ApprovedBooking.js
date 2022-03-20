@@ -1,11 +1,13 @@
 import React from "react";
 import moment from "moment";
+import Link from "next/link";
 import { Row, Col, Card, Button } from "antd";
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 import ApartmentDetails from "./ApartmentDetails";
 import AmountPaid from "./AmountPaid";
 import InviteFriends from "./InviteFriends";
 import Tenants from "./Tenants";
+import ShareLink from "./ShareLink";
 
 const ApprovedBooking = ({ booking }) => {
   return (
@@ -46,17 +48,19 @@ const ApprovedBooking = ({ booking }) => {
               </h4>
             </Col>
           </Row>
-          <Button
-            type="primary"
-            style={{
-              width: "100%",
-              fontSize: "18px",
-              height: "40px",
-              fontWeight: "bold",
-            }}
-          >
-            Pay Now
-          </Button>
+          <Link href="/splits">
+            <Button
+              type="primary"
+              style={{
+                width: "100%",
+                fontSize: "18px",
+                height: "40px",
+                fontWeight: "bold",
+              }}
+            >
+              Pay Now
+            </Button>
+          </Link>
           <p
             style={{
               marginBottom: "0px",
@@ -72,12 +76,14 @@ const ApprovedBooking = ({ booking }) => {
         <br />
         <AmountPaid booking={booking} />
         <br />
-        <Tenants tenants={booking.splits} currency={booking.currency} />
-        <br />
         <InviteFriends booking={booking} />
+        <br />
+        <ShareLink booking={booking} />
       </Col>
       <Col md={12} sm={24} xs={24}>
         <ApartmentDetails booking={booking} />
+        <br />
+        <Tenants tenants={booking.splits} currency={booking.currency} />
       </Col>
     </Row>
   );
