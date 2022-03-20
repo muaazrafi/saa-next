@@ -20,7 +20,7 @@ const History = (props) => {
               hoverable
               cover={
                 <img
-                  alt="example"
+                  alt="apartment picture"
                   src={booking.first_image}
                   style={{ height: "200px", objectFit: "cover" }}
                 />

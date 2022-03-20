@@ -1053,6 +1053,16 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+.mb-imp-5 {
+  margin-bottom: 5px !important;
+}
+
+.text-right {
+  text-align: right;
+}
+
+
+
 `;
 
 export default GlobalStyle;

@@ -22,6 +22,7 @@ const Dashboard = (props) => {
       <FormContent>
         <Nav current="bookings" />
         <ApprovedBookings />
+        <br />
         <h3>Booking History</h3>
         <History />
       </FormContent>

@@ -7,7 +7,7 @@ const ApprovedBookings = (props) => {
 
   return (
     <>
-      <h3>Payments</h3>    
+      <h3>Your Bookings</h3>    
       {approved_bookings.map( (booking) => {
         return <ApprovedBooking booking={booking} />
       } )}
