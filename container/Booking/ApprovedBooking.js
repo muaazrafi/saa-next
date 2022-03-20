@@ -3,6 +3,7 @@ import moment from "moment";
 import { Row, Col, Card, Button } from "antd";
 import { Progress, Tooltip } from "antd";
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
+import Tenants from './Tenants';
 
 const ApprovedBooking = ({ booking }) => {
   return (
@@ -82,19 +83,18 @@ const ApprovedBooking = ({ booking }) => {
             </div>
           </Card>
           <br />
-          <Card title="Tenants"></Card>
+          <Tenants tenants={booking.splits} currency={booking.currency} />
           <br />
           <Card title="Invite Friends"></Card>
         </Col>
         <Col md={12} sm={24} xs={24}>
           <Card
             title={booking.apartment_name}
-            hoverable
             cover={
               <img
                 alt="apartment picture"
                 src={booking.first_image}
-                style={{ height: "200px", objectFit: "cover" }}
+                style={{ height: "300px", objectFit: "cover" }}
               />
             }
           >
@@ -109,11 +109,11 @@ const ApprovedBooking = ({ booking }) => {
               <Col span="6">
                 <strong>Arrival:</strong>
               </Col>
-              <Col span="6">{booking.check_in}</Col>
+              <Col span="6" className="text-right" >{booking.check_in}</Col>
               <Col span="6">
                 <strong>Departure:</strong>
               </Col>
-              <Col span="6">{booking.check_out}</Col>
+              <Col span="6" className="text-right" >{booking.check_out}</Col>
             </Row>
 
             <Row gutter={10}>
