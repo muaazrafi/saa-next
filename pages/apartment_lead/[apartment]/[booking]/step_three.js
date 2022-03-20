@@ -8,7 +8,7 @@ import { FormContent } from "/container/Stylis/InnerContainer.style";
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 import ConfirmPayment from "container/Payment/ConfirmPayment";
 import Cart from "container/Cart/Cart";
-import CardDetails from "container/Payment/CardDetails";
+import CardHolder from "container/Payment/CardHolder";
 import { fetchMe } from 'store/services/auth';
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -73,7 +73,7 @@ const StepThree = (props) => {
 
           </Col>
           <Col md={6} sm={24} xs={24} style={{ marginBottom: "15px" }}>
-            <CardDetails />
+            <CardHolder />
           </Col>
         </Row>
         <br />

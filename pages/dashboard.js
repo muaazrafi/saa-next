@@ -4,7 +4,7 @@ import VerifyAuth from "container/Auth/VerifyAuth";
 import ResendConfirmation from "/container/Auth/ResendConfirmation";
 import Nav from "/container/Dashboard/Nav";
 import ProfileCard from "container/Auth/ProfileCard";
-import CardDetails from "container/Payment/CardDetails";
+import CardHolder from "container/Payment/CardHolder";
 
 import ReferralCard from "container/Referral/ReferralCard";
 
@@ -24,7 +24,7 @@ const Dashboard = (props) => {
             <ProfileCard />
           </Col>
           <Col md={12} sm={24} xs={24}>
-            <CardDetails />
+            <CardHolder />
           </Col>
         </Row>
         <br />
