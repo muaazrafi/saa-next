@@ -83,3 +83,19 @@ export const confirmStatus = createAsyncThunk(
   }
 )
 
+export const confirmSplit = createAsyncThunk(
+  'auth/split',
+  async (intent, thunkAPI) => {
+    const response = await fetch(`/api/splits/${intent.bookingID}?payment_intent=${intent.intent.intent_id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(intent.intent)
+    }).then((res) => {
+      return res.json()
+    });
+    return response;
+  }
+)

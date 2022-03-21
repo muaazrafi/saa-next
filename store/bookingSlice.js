@@ -2,7 +2,7 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import moment from "moment";
-import { createBooking, fetchBooking, fetchBookings, fetchApprovedBookings, fetchActiveBooking } from './services/booking';
+import { createBooking, fetchBooking, fetchBookings, fetchApprovedBookings, fetchActiveBooking, confirmSplit } from './services/booking';
 import Price from 'library/Price';
 
 const initialState = {
@@ -111,6 +111,12 @@ export const bookingSlice = createSlice({
     });
     builder.addCase(fetchActiveBooking.fulfilled, (state, action) => {
       state.booking = action.payload.booking;
+      state.loading = false;
+    });
+    builder.addCase(confirmSplit.fulfilled, (state, action) => {
+      const { paid_balance, pending_balance } = action.payload.split;
+      state.booking.paid_balance = paid_balance;
+      state.booking.pending_balance = pending_balance;
       state.loading = false;
     });
   },

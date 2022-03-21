@@ -44,3 +44,17 @@ export const createIntent = async (bookingID) => {
   });
   return response;
 }
+
+export const splitIntent = async (bookingID, amount) => {
+  const response = await fetch(`/api/splits/${bookingID}/payment_intent?amount=${amount}`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({})
+  }).then((res) => {
+    return res.json()
+  });
+  return response;
+}
