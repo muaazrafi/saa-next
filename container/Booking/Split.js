@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useStripe } from "@stripe/react-stripe-js";
-import { Card, Row, Col, InputNumber, Button, Popconfirm } from "antd";
+import { Card, Row, Col, InputNumber, Button, Popconfirm, notification } from "antd";
 import { splitIntent } from "store/services/card";
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 import CardDetails from "../Payment/CardDetails";
 import { confirmSplit } from "/store/services/booking";
+import { handleLoading } from 'store/bookingSlice';
 
 const Split = (props) => {
   const dispatch = useDispatch();
@@ -14,6 +15,10 @@ const Split = (props) => {
   const stripe = useStripe();
 
   const makePayment = async () => {
+    if (!stripe) {
+      return;
+    }
+    dispatch(handleLoading(true));
     const intent = await splitIntent(booking.id, amount);
     const { paymentIntent, error } = await stripe.confirmCardPayment(
       intent.client_secret

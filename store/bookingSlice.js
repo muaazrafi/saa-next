@@ -2,6 +2,7 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import moment from "moment";
+import { notification } from "antd";
 import { createBooking, fetchBooking, fetchBookings, fetchApprovedBookings, fetchActiveBooking, confirmSplit } from './services/booking';
 import Price from 'library/Price';
 
@@ -117,6 +118,11 @@ export const bookingSlice = createSlice({
       const { paid_balance, pending_balance } = action.payload.split;
       state.booking.paid_balance = paid_balance;
       state.booking.pending_balance = pending_balance;
+      notification['success']({
+        message: 'Successfully Paid!',
+        description:
+          'Payment Successfully processed.',
+      });
       state.loading = false;
     });
   },
