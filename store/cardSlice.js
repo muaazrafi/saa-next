@@ -1,12 +1,18 @@
 import {
   createSlice
 } from '@reduxjs/toolkit';
-import { create, show } from './services/card';
-import { notification } from 'antd';
+import {
+  create,
+  show
+} from './services/card';
+import {
+  notification
+} from 'antd';
 const initialState = {
   card: null,
   loading: true,
-  moveStep: false
+  moveStep: false,
+  error: ''
 }
 
 export const cardSlice = createSlice({
@@ -18,19 +24,30 @@ export const cardSlice = createSlice({
     },
     changeMoveStep: (state, action) => {
       state.moveStep = action.payload;
+    },
+    setError: (state, action) => {
+      notification["error"]({
+        message: "Payment Proccesing Error!",
+        description: action.payload,
+      });
+      state.error = action.payload;
     }
   },
   extraReducers: (builder) => {
     builder.addCase(create.fulfilled, (state, action) => {
-      if (action.payload.error) {
+      const {
+        error
+      } = action.payload;
+      if (error) {
         notification["error"]({
           message: "Payment Proccesing Error!",
-          description: action.payload.error,
+          description: error,
         });
+        state.error = error;
       } else {
         state.moveStep = true;
         state.loading = false;
-        state.card = null;        
+        state.card = null;
       }
     });
     builder.addCase(show.fulfilled, (state, action) => {
@@ -40,6 +57,10 @@ export const cardSlice = createSlice({
   },
 });
 
-export const { handleLoading, changeMoveStep } = cardSlice.actions;
+export const {
+  handleLoading,
+  changeMoveStep,
+  setError
+} = cardSlice.actions;
 
 export default cardSlice.reducer;

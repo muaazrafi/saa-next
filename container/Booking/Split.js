@@ -20,7 +20,7 @@ import CardDetails from "../Payment/CardDetails";
 import CardSection from "../Payment/CardSection";
 import { confirmSplit } from "/store/services/booking";
 import { handleLoading } from "store/bookingSlice";
-import { changeMoveStep } from "store/cardSlice";
+import { changeMoveStep, setError } from "store/cardSlice";
 import { create } from "store/services/card";
 
 const { TextArea } = Input;
@@ -33,12 +33,12 @@ const Split = (props) => {
     card,
     moveStep,
     loading: cardLoading,
+    error,
   } = useSelector((state) => state.card);
   const [changeCard, setChangeCard] = useState(false);
   const [amount, setAmount] = useState(null);
   const elements = useElements();
   const stripe = useStripe();
-  const [cardError, setCardError] = useState(null);
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -84,9 +84,9 @@ const Split = (props) => {
         },
       },
     });
-    
     if (error) {
-      setCardError(error.message);
+      dispatch(handleLoading(false));
+      dispatch(setError(error.message));
     } else {
       dispatch(create(paymentMethod.id));
     }
@@ -101,12 +101,9 @@ const Split = (props) => {
     const { paymentIntent, error } = await stripe.confirmCardPayment(
       intent.client_secret
     );
-    debugger
     if (error) {
-      notification["error"]({
-        message: "Payment Proccesing Error!",
-        description: `Please rectify payment details was not able to process payment. ${error}`,
-      });
+      dispatch(setError(error.message));
+      dispatch(handleLoading(false));
     } else {
       dispatch(confirmSplit({ bookingID: booking.id, intent }));
       setAmount(null);
@@ -142,7 +139,7 @@ const Split = (props) => {
           onFinish={handleSubmit}
           layout="vertical"
         >
-          <CardSection error={cardError} />
+          <CardSection error={error} />
           <br />
           <Row gutter={20}>
             <Col md={12} sm={24} xs={24}>
