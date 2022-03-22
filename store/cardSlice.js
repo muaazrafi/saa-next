@@ -15,12 +15,16 @@ export const cardSlice = createSlice({
   reducers: {
     handleLoading: (state, action) => {
       state.loading = action.payload;
+    },
+    changeMoveStep: (state, action) => {
+      state.moveStep = action.payload;
     }
   },
   extraReducers: (builder) => {
     builder.addCase(create.fulfilled, (state, action) => {
       state.moveStep = true;
       state.loading = false;
+      state.card = null;
     });
     builder.addCase(show.fulfilled, (state, action) => {
       state.card = action.payload.user;
@@ -29,6 +33,6 @@ export const cardSlice = createSlice({
   },
 });
 
-export const { handleLoading } = cardSlice.actions;
+export const { handleLoading, changeMoveStep } = cardSlice.actions;
 
 export default cardSlice.reducer;

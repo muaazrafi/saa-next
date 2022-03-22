@@ -9,6 +9,7 @@ import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentC
 import ConfirmPayment from "container/Payment/ConfirmPayment";
 import Cart from "container/Cart/Cart";
 import CardHolder from "container/Payment/CardHolder";
+import ProfileCard from "container/Auth/ProfileCard";
 import { fetchMe } from 'store/services/auth';
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -36,6 +37,8 @@ const StepThree = (props) => {
       <Stepper step={2} />
     <VerifyAuth />
       <Elements stripe={stripePromise}>
+        { apartment &&
+        <>
         <Row gutter={20}>
           <Col
             md={6}
@@ -70,7 +73,7 @@ const StepThree = (props) => {
             style={{ marginBottom: "15px" }}
             loading={loading}
           >
-
+            <ProfileCard />
           </Col>
           <Col md={6} sm={24} xs={24} style={{ marginBottom: "15px" }}>
             <CardHolder />
@@ -93,6 +96,7 @@ const StepThree = (props) => {
             </>
           )}
         </p>
+        </> }
       </Elements>
     </FormContent>
   );
