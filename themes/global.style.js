@@ -1077,6 +1077,42 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+.banner-vsual {
+  background: url(https://d1d0zx56gx2nys.cloudfront.net/assets/thankyou_banner.png) 0px 0px no-repeat;
+  background-size: cover;
+  height: 90vh;
+  .banner-overlay {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fbf7f754);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+  }
+  .banner-content-holder {
+    position: absolute;
+    top: 40%;
+    left: 0px;
+    width: 100%;
+    transform: translate(0, -40%);
+    z-index: 200;
+    .banner-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      h1 {
+        font-family: 'Cabin', sans-serif;
+        font-size: 50px;
+        font-weight: bold;
+        color: #ffffff;
+        margin: 0px;
+        padding: 0 0 35px;
+        text-shadow: 2px 2px 2px #000000;
+      }
+    }
+  }
+}
 
 
 `;
