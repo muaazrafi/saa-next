@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useStripe } from "@stripe/react-stripe-js";
 import { Card, Row, Col, InputNumber, Button, Popconfirm, notification } from "antd";
@@ -13,6 +13,12 @@ const Split = (props) => {
   const { booking, loading } = useSelector((state) => state.booking);
   const [amount, setAmount] = useState(null);
   const stripe = useStripe();
+
+  useEffect( () => {
+    if (booking.pending_balance === 0) {
+      debugger
+    }
+  }, [booking])
 
   const makePayment = async () => {
     if (!stripe) {
@@ -41,7 +47,7 @@ const Split = (props) => {
         <Col span={24}>
           <strong>
             Amount (Pending <ApartmentCurrency currency={booking.currency} />
-            {booking.pending_balance}){" "}
+            {booking.pending_balance})
           </strong>
           <InputNumber
             placeholder="Enter amount you want to contribute."
