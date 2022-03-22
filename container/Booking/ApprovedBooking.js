@@ -13,7 +13,7 @@ const ApprovedBooking = ({ booking }) => {
     <Row gutter={16}>
       <Col md={12} sm={24} xs={24}>
         {booking.pending_balance === 0 ? (
-          <LandLordInfo landlord={booking.landlord} />
+          <LandLordInfo booking={booking} />
         ) : (
           <DuePayment booking={booking} />
         )}

@@ -1,9 +1,10 @@
 import React from "react";
 import { Card, Row, Col } from "antd";
 
-const LandLordInfo = ({ landlord }) => {
+const LandLordInfo = ({ booking }) => {
+  const { landlord } = booking;
   return (
-    <Card title='Landlord Information'>
+    <Card title={`Landlord Information (Booking ID ${booking.id})`}>
       <Row gutter={10}>
         <Col span="8">
           <strong>Name:</strong>
