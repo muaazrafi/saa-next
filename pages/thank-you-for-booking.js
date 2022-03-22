@@ -1,9 +1,5 @@
 import React from "react";
-import { Row, Col } from "antd";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/router";
-import { AiFillPhone } from "react-icons/ai";
-import { FaThumbsUp } from "react-icons/fa";
 
 const ThankYouForBooking = (props) => {
   const { currentUser } = useSelector((state) => state.auth);

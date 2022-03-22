@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from "react-redux";
 import { useStripe } from "@stripe/react-stripe-js";
 import { Card, Row, Col, InputNumber, Button, Popconfirm, notification } from "antd";
@@ -10,13 +11,18 @@ import { handleLoading } from 'store/bookingSlice';
 
 const Split = (props) => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { booking, loading } = useSelector((state) => state.booking);
   const [amount, setAmount] = useState(null);
   const stripe = useStripe();
 
   useEffect( () => {
-    if (booking.pending_balance === 0) {
-      debugger
+    if (booking && booking.pending_balance === 0) {
+      notification['success']({
+        message: 'Thank You!',
+        description: 'Successfully completed the payment.',
+      });
+      router.push('/thank-you-for-booking');
     }
   }, [booking])
 
