@@ -21,7 +21,7 @@ import CardSection from "../Payment/CardSection";
 import { confirmSplit } from "/store/services/booking";
 import { handleLoading } from "store/bookingSlice";
 import { changeMoveStep } from "store/cardSlice";
-import { create } from 'store/services/card';
+import { create } from "store/services/card";
 
 const { TextArea } = Input;
 
@@ -29,7 +29,11 @@ const Split = (props) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { booking, loading } = useSelector((state) => state.booking);
-  const { moveStep } = useSelector((state) => state.card);
+  const {
+    card,
+    moveStep,
+    loading: cardLoading,
+  } = useSelector((state) => state.card);
   const [changeCard, setChangeCard] = useState(false);
   const [amount, setAmount] = useState(null);
   const elements = useElements();
@@ -47,13 +51,19 @@ const Split = (props) => {
     }
   }, [booking]);
 
-  useEffect( async () => {
-    if (moveStep){
+  useEffect(async () => {
+    if (moveStep) {
       dispatch(changeMoveStep(false));
       await makePayment();
       setChangeCard(false);
     }
   }, [moveStep]);
+
+  useEffect(() => {
+    if (!cardLoading) {
+      setChangeCard(true);
+    }
+  }, [cardLoading]);
 
   const handleSubmit = async (values) => {
     if (!stripe || !elements) {
@@ -74,7 +84,7 @@ const Split = (props) => {
         },
       },
     });
-
+    
     if (error) {
       setCardError(error.message);
     } else {
@@ -91,6 +101,7 @@ const Split = (props) => {
     const { paymentIntent, error } = await stripe.confirmCardPayment(
       intent.client_secret
     );
+    debugger
     if (error) {
       notification["error"]({
         message: "Payment Proccesing Error!",
@@ -100,6 +111,25 @@ const Split = (props) => {
       dispatch(confirmSplit({ bookingID: booking.id, intent }));
       setAmount(null);
     }
+  };
+
+  const ChangeCard = () => {
+    return (
+      <>
+        {card && !cardLoading && (
+          <Row gutter={20}>
+            <Col span={24} style={{ textAlign: "center" }}>
+              <a
+                style={{ textTransform: "uppercase", fontWeight: "bold" }}
+                onClick={() => setChangeCard(!changeCard)}
+              >
+                {changeCard ? "Use Exisitng Credit Card" : "Change Credit Card"}
+              </a>
+            </Col>
+          </Row>
+        )}
+      </>
+    );
   };
 
   return (
@@ -198,7 +228,7 @@ const Split = (props) => {
               </Form.Item>
             </Col>
           </Row>
-
+          <ChangeCard />
           <Row gutter={20}>
             <Col span={24}>
               <Form.Item
@@ -257,15 +287,7 @@ const Split = (props) => {
       ) : (
         <>
           <CardDetails />
-          <Row>
-            <Col span={24}>
-              {changeCard ? (
-                <a onClick={() => setChangeCard(false)}>Use Exisitng</a>
-              ) : (
-                <a onClick={() => setChangeCard(true)}>Change Card</a>
-              )}
-            </Col>
-          </Row>
+          <ChangeCard />
           <Row style={{ marginTop: "8px" }}>
             <Col span={24}>
               <strong>
