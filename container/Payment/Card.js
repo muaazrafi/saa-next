@@ -1,24 +1,25 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { UserOutlined } from "@ant-design/icons";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { Form, Button, Input, Row, Col } from "antd";
 import CardSection from "./CardSection";
 import { create } from 'store/services/card';
-
+import { handleLoading, setError, error } from "/store/cardSlice";
 const { TextArea } = Input;
 
 const Card = (props) => {
   const elements = useElements();
   const stripe = useStripe();
   const dispatch = useDispatch();
+  const { loading } = useSelector(state => state.card);
   const [cardError, setCardError] = useState(null);
 
   const handleSubmit = async (values) => {
     if (!stripe || !elements) {
       return;
     }
-
+    dispatch(handleLoading(true));
     const cardElement = elements.getElement(CardElement);
     const { paymentMethod, error } = await stripe.createPaymentMethod({
       type: "card",
@@ -35,7 +36,7 @@ const Card = (props) => {
     });
 
     if (error) {
-      setCardError(error.message);
+      dispatch(setError(error.message));
     } else {
       dispatch(create(paymentMethod.id));
     }
@@ -43,7 +44,7 @@ const Card = (props) => {
 
   return (
     <Form name="card" className="card-form" onFinish={handleSubmit} layout="vertical" >
-      <CardSection error={cardError} />
+      <CardSection error={error} />
       <br />
       <Row gutter={20}>
         <Col md={6} sm={24} xs={24}>
@@ -143,6 +144,7 @@ const Card = (props) => {
           style={{ width: 256 }}
           htmlType="submit"
           block
+          loading={loading}
         >
           Continue
         </Button>
