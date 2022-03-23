@@ -12,7 +12,7 @@ export const createBooking = createAsyncThunk(
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        booking: booking 
+        booking: booking
       })
     }).then((res) => {
       return res.json()
@@ -62,27 +62,6 @@ export const fetchActiveBooking = createAsyncThunk(
   }
 );
 
-export const confirmStatus = createAsyncThunk(
-  'auth/update',
-  async (bookingId, thunkAPI) => {
-    const response = await fetch(`/api/bookings/${bookingId}/invitation`, {
-      method: 'PATCH',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        booking: {
-          booking_status: true
-        }
-      })
-    }).then((res) => {
-      return res.json()
-    });
-    return response;
-  }
-)
-
 export const confirmSplit = createAsyncThunk(
   'auth/split',
   async (intent, thunkAPI) => {
@@ -99,3 +78,21 @@ export const confirmSplit = createAsyncThunk(
     return response;
   }
 )
+
+export const confirmStatus = async (bookingId) => {
+  const response = await fetch(`/api/bookings/${bookingId}/invitation`, {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      booking: {
+        booking_status: true
+      }
+    })
+  }).then((res) => {
+    return res.json()
+  });
+  return response;
+}
