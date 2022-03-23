@@ -10,7 +10,7 @@ import {
 } from 'antd';
 const initialState = {
   card: null,
-  loading: true,
+  loading: false,
   moveStep: false,
   error: ''
 }
