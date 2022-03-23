@@ -59,11 +59,11 @@ const Split = (props) => {
     }
   }, [moveStep]);
 
-  useEffect(() => {
-    if (!cardLoading) {
-      setChangeCard(true);
-    }
-  }, [cardLoading]);
+  // useEffect(() => {
+  //   if (!cardLoading) {
+  //     setChangeCard(true);
+  //   }
+  // }, [cardLoading]);
 
   const handleSubmit = async (values) => {
     if (!stripe || !elements) {
