@@ -32,25 +32,27 @@ const Dashboard = (props) => {
     <>
       <VerifyAuth />
       <ResendConfirmation />
-      <Elements stripe={stripePromise}>
-        <FormContent>
-          <Nav current="bookings" />
-          <h3>Complete Your Payment</h3>
-          <Row gutter={10}>
-            <Col md={12} sm={24} xs={24}>
-              <Split />
-              <br />
-              <InviteFriends booking={booking} />
-              <br />
-              <ShareLink booking={booking} />
-            </Col>
-            <Col md={12} sm={24} xs={24}>
-              {booking && <AmountPaid booking={booking} />}
-              <br />
-            </Col>
-          </Row>
-        </FormContent>
-      </Elements>
+      {booking && (
+        <Elements stripe={stripePromise}>
+          <FormContent>
+            <Nav current="bookings" />
+            <h3>Complete Your Payment</h3>
+            <Row gutter={10}>
+              <Col md={12} sm={24} xs={24}>
+                <Split />
+                <br />
+                <InviteFriends booking={booking} />
+                <br />
+                <ShareLink booking={booking} />
+              </Col>
+              <Col md={12} sm={24} xs={24}>
+                {booking && <AmountPaid booking={booking} />}
+                <br />
+              </Col>
+            </Row>
+          </FormContent>
+        </Elements>
+      )}
     </>
   );
 };

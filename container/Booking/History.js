@@ -2,15 +2,10 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import { Row, Col, Card } from "antd";
-import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
-
-const { Meta } = Card;
 
 const History = (props) => {
   const { bookings, loading } = useSelector((state) => state.booking);
-
-  console.log("Booking History Issue:", bookings)
-
+  console.log("Check Bookings: ", bookings)
   return (
     <Row gutter={18} className="cardholder" >
       {bookings.map((booking) => {
@@ -26,7 +21,6 @@ const History = (props) => {
                 />
               }
             >
-
               <Row gutter={10}>
                 <Col>
                   <strong>Booking ID:</strong>

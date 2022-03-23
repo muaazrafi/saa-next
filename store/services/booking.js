@@ -54,7 +54,6 @@ export const fetchApprovedBookings = createAsyncThunk(
 export const fetchActiveBooking = createAsyncThunk(
   'booking/active',
   async (bookingId, thunkAPI) => {
-    console.log("Check URL: ", `/api/bookings/${bookingId}/own.json`)
     const response = await fetch(`/api/bookings/${bookingId}/own.json`).then((res) => {
       return res.json()
     });

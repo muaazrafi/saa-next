@@ -20,7 +20,8 @@ const initialState = {
   existError: false,
   loading: true,
   tempPhone: null,
-  moveStep: false
+  moveStep: false,
+  authFailed: false
 };
 
 
@@ -65,6 +66,8 @@ export const authSlice = createSlice({
       state.loading = false;
       if (action.payload) {
         state.currentUser = action.payload;
+      } else {
+        state.authFailed = true
       }
     });
 

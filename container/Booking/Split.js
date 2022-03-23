@@ -287,7 +287,7 @@ const Split = (props) => {
           <Row style={{ marginTop: "8px" }}>
             <Col span={24}>
               <strong>
-                Amount (Pending{" "}
+                Amount (Pending
                 <ApartmentCurrency currency={booking.currency} />
                 {booking.pending_balance})
               </strong>

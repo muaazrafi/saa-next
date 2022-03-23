@@ -103,11 +103,15 @@ export const bookingSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(fetchBookings.fulfilled, (state, action) => {
-      state.bookings = action.payload;
+      if (!action.payload.error) {
+        state.bookings = action.payload;
+      }
       state.loading = false;
     });
     builder.addCase(fetchApprovedBookings.fulfilled, (state, action) => {
-      state.approved_bookings = action.payload.approved_bookings;
+      if (action.payload.approved_bookings) {
+        state.approved_bookings = action.payload.approved_bookings;
+      }
       state.loading = false;
     });
     builder.addCase(fetchActiveBooking.fulfilled, (state, action) => {
