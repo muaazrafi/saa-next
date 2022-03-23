@@ -43,6 +43,7 @@ export const cardSlice = createSlice({
           message: "Payment Proccesing Error!",
           description: error,
         });
+        state.loading = false;
         state.error = error;
       } else {
         state.moveStep = true;

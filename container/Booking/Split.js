@@ -20,7 +20,7 @@ import CardDetails from "../Payment/CardDetails";
 import CardSection from "../Payment/CardSection";
 import { confirmSplit } from "/store/services/booking";
 import { handleLoading } from "store/bookingSlice";
-import { changeMoveStep, setError } from "store/cardSlice";
+import { changeMoveStep, setError, handleLoading as handleCardLoading } from "store/cardSlice";
 import { create } from "store/services/card";
 
 const { TextArea } = Input;
@@ -69,7 +69,7 @@ const Split = (props) => {
     if (!stripe || !elements) {
       return;
     }
-    dispatch(handleLoading(true));
+    dispatch(handleCardLoading(true));
     const cardElement = elements.getElement(CardElement);
     const { paymentMethod, error } = await stripe.createPaymentMethod({
       type: "card",
@@ -85,11 +85,9 @@ const Split = (props) => {
       },
     });
     if (error) {
-      dispatch(handleLoading(false));
       dispatch(setError(error.message));
     } else {
       dispatch(create(paymentMethod.id));
-      dispatch(handleLoading(false));
     }
   };
 
@@ -264,17 +262,17 @@ const Split = (props) => {
               cancelText="No"
               okButtonProps={{
                 size: "large",
-                loading: loading,
+                loading: (cardLoading || loading ),
               }}
               cancelButtonProps={{
                 size: "large",
-                loading: loading,
+                loading: (cardLoading || loading ),
               }}
             >
               <Button
                 type="primary"
                 style={{ width: "100%" }}
-                loading={loading}
+                loading={(cardLoading || loading )}
               >
                 Pay Now (<ApartmentCurrency currency={booking.currency} />
                 {amount})
