@@ -89,6 +89,7 @@ const Split = (props) => {
       dispatch(setError(error.message));
     } else {
       dispatch(create(paymentMethod.id));
+      dispatch(handleLoading(false));
     }
   };
 
