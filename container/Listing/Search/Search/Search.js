@@ -123,7 +123,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
               </div>
             }
           >
-            <Button size="large">Price</Button>
+            <Button size="large" type={ (search.base_monthly_price_gteq || search.base_monthly_price_lteq) ? "primary" : ""} >Price</Button>
           </Popover>
         </Col>
         <Col className="hide-on-sm" >
