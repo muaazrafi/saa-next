@@ -158,7 +158,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
               Neighborhood{" "}
               {search.property_area_in.length > 0
                 ? `(${search.property_area_in.length})`
-                : ""}{" "}
+                : ""}
             </Button>
           </Popover>
         </Col>
