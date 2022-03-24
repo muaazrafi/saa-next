@@ -1,9 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { FiExternalLink } from 'react-icons/fi';
 import Carousel from 'react-multi-carousel';
-import Rating from 'components/UI/Rating/Rating';
 import Favourite from 'components/UI/Favorite/Favorite';
 import GridCard from '../GridCard/GridCard';
 
@@ -57,13 +53,7 @@ export default function ProductCard({
       location={`${area} ${city}`}
       title={name}
       price={`$${display_price}/Montly`}
-      viewDetailsBtn={
-        <Link href={link_path} as={link_path} prefetch={false}>
-          <a>
-            <FiExternalLink /> View
-          </a>
-        </Link>
-      }
+      link_path={link_path}
     >
       <Carousel
         ssr
