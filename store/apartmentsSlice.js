@@ -15,7 +15,7 @@ const initialState = {
   maxPrice: 0,
   properties: [],
   search: {
-    property_city_matches: "barcelona",
+    property_city_matches: "",
     number_of_max_occupants_gteq: "",
     property_area_in: [],
     apart_type_eq: null,
