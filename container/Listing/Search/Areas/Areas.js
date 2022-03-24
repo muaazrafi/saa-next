@@ -12,6 +12,7 @@ const Areas = (props) => {
   const dispatcher = useDispatch();
   const { areas, loading, search } = useSelector((state) => state.apartments);
   const [processedAreas, setProcessedAreas] = useState([]);
+  console.log(processedAreas);
 
   useEffect(() => {
     setProcessedAreas(getDefaultAreas());
@@ -30,7 +31,19 @@ const Areas = (props) => {
       return area.label;
     });
   };
-
+  
+  const getCheckedAreas = () => {
+    return areas.map((area) => {
+      if (search.property_area_in.includes(area.area)) {
+        return {
+          value: area,
+        };
+      }
+    });
+  };
+  
+  
+  console.log ("Why no select", getCheckedAreas())
   const searchAreas = (e) => {
     const actualAreas = getDefaultAreas();
     const searchValue = e.target.value;
@@ -69,6 +82,7 @@ const Areas = (props) => {
             className="popoverCheckBox"
             options={processedAreas}
             onChange={storeSearchAreas}
+            value={getCheckedAreas()}
           />
         )}
       </PerfectScrollbar>
