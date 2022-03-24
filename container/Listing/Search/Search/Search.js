@@ -44,6 +44,24 @@ const AdvanceSearch = ({ mapShowBtn }) => {
     dispatcher(updateSearch(modifiedSearch));
   };
 
+  const clearSearch = () => {
+    const defaultSearch = {
+      property_city_matches: search.property_city_matches,
+      number_of_max_occupants_gteq: "",
+      property_area_in: [],
+      apart_type_eq: null,
+      startDate: null,
+      endDate: null,
+      lat: "",
+      lng: "",
+      page: 0
+    }
+    dispatcher(updateSearch(defaultSearch));
+    router.push(`/listings/${defaultSearch.property_city_matches}?q=${JSON.stringify(defaultSearch)}`, undefined, { shallow: true }).then( () =>{
+      dispatcher(searching());
+    });
+  }
+
   return (
     <AdvanceSearchWrapper>
       <Row gutter={10} style={{ width: "100%" }}>
@@ -53,6 +71,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             modifier="apart_type_eq"
             icon={<MdHomeWork size={18} />}
             options={['apartment','room']}
+            value={search.apart_type_eq}
           />
         </Col>
         <Col xxl={4} xl={5} lg={6} md={8} xs={20} sm={22} style={{ marginBottom: "10px" }}>
@@ -147,7 +166,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
           <MoreFilters />
         </Col>
         <Col>
-          <Button size="large" >
+          <Button size="large" onClick={clearSearch} >
             <MdClear />
           </Button>
         </Col>
