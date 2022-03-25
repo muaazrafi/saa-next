@@ -40,6 +40,7 @@ export default function ListingPage({ processedData, deviceType }) {
 
   useEffect(() => {
     const { q } = router.query;
+    let searchParam = {};
     if (q) {
       searchParam = JSON.parse(q);
     } else {
