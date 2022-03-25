@@ -2,7 +2,7 @@ import React from 'react';
 import Carousel from 'react-multi-carousel';
 import Favourite from 'components/UI/Favorite/Favorite';
 import GridCard from '../GridCard/GridCard';
-
+import { useSelector } from 'react-redux';
 const responsive = {
   desktop: {
     breakpoint: {
@@ -41,6 +41,11 @@ export default function ProductCard({
   link_path,
   deviceType,
 }) {
+
+  const { search } = useSelector(
+    (state) => state.apartments
+  );
+
   return (
     <GridCard
       favorite={
@@ -53,7 +58,7 @@ export default function ProductCard({
       location={`${area} ${city}`}
       title={name}
       price={`$${display_price}/Montly`}
-      link_path={link_path}
+      link_path={`${link_path}${ (search && search.startDate && search.endDate) ? `?startDate=${search.startDate}&endDate=${search.endDate}` : '' }`}
     >
       <Carousel
         ssr
