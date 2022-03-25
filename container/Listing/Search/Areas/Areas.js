@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { filter, sortBy, cloneDeep } from "lodash";
+import { filter, sortBy, cloneDeep, uniqBy } from "lodash";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { Input, Checkbox } from "antd";
 import AreasWrapper from "./Areas.style";
@@ -12,7 +12,6 @@ const Areas = (props) => {
   const dispatcher = useDispatch();
   const { areas, loading, search } = useSelector((state) => state.apartments);
   const [processedAreas, setProcessedAreas] = useState([]);
-  console.log(processedAreas);
 
   useEffect(() => {
     setProcessedAreas(getDefaultAreas());
@@ -24,26 +23,15 @@ const Areas = (props) => {
         label: `${area.area} (${
           area.count
         })`,
-        value: area,
+        value: area.area,
       };
     });
+    rawAreas = uniqBy(processedAreas, (area) => { return area.value } );
     return sortBy(rawAreas, (area) => {
       return area.label;
     });
   };
   
-  const getCheckedAreas = () => {
-    return areas.map((area) => {
-      if (search.property_area_in.includes(area.area)) {
-        return {
-          value: area,
-        };
-      }
-    });
-  };
-  
-  
-  console.log ("Why no select", getCheckedAreas())
   const searchAreas = (e) => {
     const actualAreas = getDefaultAreas();
     const searchValue = e.target.value;
@@ -59,7 +47,7 @@ const Areas = (props) => {
 
   const storeSearchAreas = (areas) => {
     let modifiedSearch = cloneDeep(search);
-    modifiedSearch.property_area_in = areas.map(area => area.area);
+    modifiedSearch.property_area_in = areas;
     dispatcher(updateSearch(modifiedSearch));
   }
 
@@ -82,7 +70,7 @@ const Areas = (props) => {
             className="popoverCheckBox"
             options={processedAreas}
             onChange={storeSearchAreas}
-            value={getCheckedAreas()}
+            value={search.property_area_in}
           />
         )}
       </PerfectScrollbar>
