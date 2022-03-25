@@ -10,19 +10,14 @@ import GridCardWrapper, {
   LocationArea,
   TitleArea,
   PriceArea,
-  RatingArea,
   MetaWrapper,
-  ButtonGroup,
 } from "./GridCard.style";
 
 const GridCard = ({
-  className,
   favorite,
   location,
   title,
   price,
-  rating,
-  editBtn,
   link_path,
   children,
 }) => {
