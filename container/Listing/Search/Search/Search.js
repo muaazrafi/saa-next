@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from 'next/router';
 import { cloneDeep, range } from "lodash";
@@ -77,6 +78,8 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             numberOfMonths={1}
             small
             selectDates={dateSelection}
+            startDate={ search.startDate ? moment(search.startDate) : null }
+            endDate={ search.endDate ? moment(search.endDate) : null}
           />
         </Col>
         <Col style={{textAlign: 'center', marginTop: '5px'}} md={0} xs={4} sm={2}>

@@ -78,7 +78,7 @@ const Amenties = (props) => {
             className="popoverCheckBox"
             options={processedAmenties}
             onChange={storeSearchAmenties}
-            defaultValue={selectedAmenties}
+            value={selectedAmenties}
           />
         )}
       </PerfectScrollbar>

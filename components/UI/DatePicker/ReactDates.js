@@ -20,6 +20,7 @@ class DateRangePickerBox extends Component {
       this.props.item && this.props.item.format
         ? this.props.item.format
         : 'llll';
+
     this.state = {
       focusedInput: null,
       startDate: this.props.startDate ? this.props.startDate : null,
@@ -35,6 +36,10 @@ class DateRangePickerBox extends Component {
     // moment.locale('fr');
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState(nextProps);
+}
+
   onDateChangeFunc = ({ startDate, endDate }) => {
     const { dateFormat } = this.state;
     this.setState({ startDate, endDate });
@@ -47,6 +52,8 @@ class DateRangePickerBox extends Component {
 
   render() {
     const { focusedInput, startDate, endDate } = this.state;
+    console.log("React Start Date: ", startDate);
+    console.log("React End Date: ", endDate);
     // DateRangePickerBox props list
     const {
       className,
@@ -66,7 +73,7 @@ class DateRangePickerBox extends Component {
       numberOfMonths,
       regular,
       noBorder,
-      isDayBlocked
+      isDayBlocked,
     } = this.props;
 
     // Add all classs to an array **************
