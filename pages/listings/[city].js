@@ -40,7 +40,10 @@ export default function ListingPage({ processedData, deviceType }) {
 
   useEffect(() => {
     const { q } = router.query;
-    const searchParam = q ? JSON.parse(q) : search;
+    let modifiedSearch = cloneDeep(search);
+    modifiedSearch.property_city_matches = router.query.city;
+    dispatcher(updateSearch(modifiedSearch));
+    const searchParam = q ? JSON.parse(q) : modifiedSearch;
     if (apartments.length === 0 && loading) {
       dispatcher(fetchApartments(searchParam));
     }

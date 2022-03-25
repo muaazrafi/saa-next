@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { cloneDeep } from "lodash";
@@ -14,12 +14,6 @@ const NavbarSearch = () => {
     (state) => state.apartments
   );
   const dispatcher = useDispatch();
-
-  useEffect( () => {
-    let modifiedSearch = cloneDeep(search);
-    modifiedSearch.property_city_matches = router.query.city;
-    dispatcher(updateSearch(modifiedSearch));        
-  },[])
 
   const changeCity = (value) => {
     let modifiedSearch = cloneDeep(search);
