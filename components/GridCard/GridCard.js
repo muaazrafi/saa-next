@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PropTypes from "prop-types";
 import { Row, Col } from "antd";
 import { FaBed, FaBath } from "react-icons/fa";
+import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 import GridCardWrapper, {
   ImageWrapper,
   FavoriteIcon,
@@ -18,6 +19,7 @@ const GridCard = ({
   location,
   title,
   price,
+  currency,
   link_path,
   children,
 }) => {
@@ -29,7 +31,7 @@ const GridCard = ({
           {location && <LocationArea>{location}</LocationArea>}
           {title && <TitleArea>{title}</TitleArea>}
           <MetaWrapper className="meta_wrapper">
-            {price && <PriceArea className="price">{price}</PriceArea>}
+            {price && <PriceArea className="price"><ApartmentCurrency currency={currency} />{price}</PriceArea>}
             <Row>
               <Col span={2} style={{ paddingTop: "2px" }}>
                 <FaBed size="18px" />

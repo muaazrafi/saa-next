@@ -3,6 +3,7 @@ import Carousel from 'react-multi-carousel';
 import Favourite from 'components/UI/Favorite/Favorite';
 import GridCard from '../GridCard/GridCard';
 import { useSelector } from 'react-redux';
+
 const responsive = {
   desktop: {
     breakpoint: {
@@ -57,7 +58,8 @@ export default function ProductCard({
       }
       location={`${area} ${city}`}
       title={name}
-      price={`$${display_price}/Montly`}
+      price={`${display_price}/Montly`}
+      currency={currency}
       link_path={`${link_path}${ (search && search.startDate && search.endDate) ? `?startDate=${search.startDate}&endDate=${search.endDate}` : '' }`}
     >
       <Carousel
