@@ -52,8 +52,6 @@ class DateRangePickerBox extends Component {
 
   render() {
     const { focusedInput, startDate, endDate } = this.state;
-    console.log("React Start Date: ", startDate);
-    console.log("React End Date: ", endDate);
     // DateRangePickerBox props list
     const {
       className,
