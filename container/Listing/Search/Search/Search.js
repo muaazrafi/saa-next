@@ -23,12 +23,6 @@ const AdvanceSearch = ({ mapShowBtn }) => {
   const dispatcher = useDispatch();
   const router = useRouter();
 
-  useEffect( () => {
-    if(router.query.q){
-      dispatcher(updateSearch(JSON.parse(router.query.q)));      
-    }
-  },[])
-
   const searchApartments = () => {
     router.push(`/listings/${search.property_city_matches}?q=${JSON.stringify(search)}`, undefined, { shallow: true }).then( () =>{
       dispatcher(searching());

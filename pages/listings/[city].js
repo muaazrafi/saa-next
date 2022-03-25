@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cloneDeep } from "lodash";
 import Head from "next/head";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import Sticky from "react-stickynode";
 import { BsMap, BsMapFill } from "react-icons/bs";
 import Search from "container/Listing/Search/Search/Search";
@@ -40,11 +40,16 @@ export default function ListingPage({ processedData, deviceType }) {
 
   useEffect(() => {
     const { q } = router.query;
-    let modifiedSearch = cloneDeep(search);
-    modifiedSearch.property_city_matches = router.query.city;
-    dispatcher(updateSearch(modifiedSearch));
-    const searchParam = q ? JSON.parse(q) : modifiedSearch;
+    let searchParam = q ? JSON.parse(q) : modifiedSearch;
+    if (q) {
+      searchParam = JSON.parse(q);
+    } else {
+      let modifiedSearch = cloneDeep(search);
+      modifiedSearch.property_city_matches = router.query.city;
+      searchParam = modifiedSearch;
+    }
     if (apartments.length === 0 && loading) {
+      dispatcher(updateSearch(searchParam));
       dispatcher(fetchApartments(searchParam));
     }
   }, [apartments]);
@@ -55,7 +60,7 @@ export default function ListingPage({ processedData, deviceType }) {
 
   const handleLoadMore = () => {
     let modifiedSearch = cloneDeep(search);
-    modifiedSearch.page =  search.page + 1;
+    modifiedSearch.page = search.page + 1;
     dispatcher(updateSearch(modifiedSearch));
     dispatcher(loadUp());
     dispatcher(fetchApartments(modifiedSearch));
@@ -107,7 +112,7 @@ export default function ListingPage({ processedData, deviceType }) {
           loading={loading}
           handleLoadMore={handleLoadMore}
           loadMore={loadMore}
-          canLoadMore={(search.page < nextPage)}
+          canLoadMore={search.page < nextPage}
           placeholder={<PostPlaceholder />}
         />
       </PostsWrapper>
