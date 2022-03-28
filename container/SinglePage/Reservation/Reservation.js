@@ -29,10 +29,15 @@ const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
         }
         {...priceStyle}
       />
-      <Link href="/#1">
-        <a style={{ ...linkStyle }}>Contact Us</a>
-      </Link>
-      <a>View Seasonal Pricing</a>
+      <>
+      {apartment && (
+        <>
+          Bills: {apartment.utilities_info} /
+          <br/>
+          Min Stay: {apartment.minimum_stay} days
+        </>
+      )}
+      </>
     </>
   );
 };
