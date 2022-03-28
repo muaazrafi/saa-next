@@ -32,6 +32,7 @@ const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
       <Link href="/#1">
         <a style={{ ...linkStyle }}>Contact Us</a>
       </Link>
+      <a>View Seasonal Pricing</a>
     </>
   );
 };

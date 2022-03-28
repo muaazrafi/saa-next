@@ -4,6 +4,7 @@ import { Row, Col, Tooltip } from "antd";
 import { MdHelpCenter } from "react-icons/md";
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 import { updatePrice } from "store/bookingSlice";
+import PriceBreakDown from "./PriceBreakDown";
 
 const ReservationDetails = () => {
   const dispatch = useDispatch();
@@ -95,7 +96,11 @@ const ReservationDetails = () => {
                 {Math.ceil(grandTotal)}
               </strong>
             </Col>
+            <Col span={24}>
+              <PriceBreakDown />
+            </Col>
           </Row>
+    
         </>
       )}
     </>
