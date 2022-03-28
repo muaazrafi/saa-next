@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { MdHelp } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { Modal, Card, Button, Row, Col } from "antd";
+import { Modal, Card, Button, Row, Col, Tooltip } from "antd";
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 
 const PriceBreakDown = (props) => {
   const { apartment } = useSelector((state) => state.apartment);
   const {
+    amountDue,
     booking,
     firstMonthRent,
     startOfFirstMonth,
@@ -38,7 +40,13 @@ const PriceBreakDown = (props) => {
         <Card title="Before your stay:">
           <Row gutter={10}>
             <Col span={16}>
-              <strong>Due upon booking</strong> (down payment):
+              <strong>Due upon booking</strong> (down payment){" "}
+              <Tooltip
+                placement="top"
+                title="Deposit to hold this apartment. This amount will be applied to the first month's charges."
+              >
+                <MdHelp size={18} color="#0088E5" />
+              </Tooltip>
             </Col>
             <Col span={8} className="text-right">
               <ApartmentCurrency currency={apartment.currency} />
@@ -53,7 +61,6 @@ const PriceBreakDown = (props) => {
               <strong>
                 First month ({startOfFirstMonth} - {endOfFirstMonth}){" "}
               </strong>
-              :
             </Col>
             <Col span={8} className="text-right">
               <ApartmentCurrency currency={apartment.currency} />
@@ -62,7 +69,13 @@ const PriceBreakDown = (props) => {
           </Row>
           <Row gutter={10}>
             <Col span={16}>
-              <strong>+ SAA Service Fee</strong>:
+              <strong>+ SAA Service Fee</strong>{" "}
+              <Tooltip
+                placement="top"
+                title="This is a one-time fee that allows us to provide assistance during your booking process and throughout your stay."
+              >
+                <MdHelp size={18} color="#0088E5" />
+              </Tooltip>
             </Col>
             <Col span={8} className="text-right">
               <ApartmentCurrency currency={apartment.currency} />
@@ -96,14 +109,38 @@ const PriceBreakDown = (props) => {
             </>
           )}
 
+          {booking.reservation_deposit && (
+            <Row gutter={10}>
+              <Col span={16}>
+                <strong>Reservation deposit</strong>{" "}
+                <Tooltip
+                  placement="top"
+                  title="Deposit sent straight away to hold the accommodation. This is either fully refunded or added to the security deposit upon arrival."
+                >
+                  <MdHelp size={18} color="#0088E5" />
+                </Tooltip>
+              </Col>
+              <Col span={8} className="text-right">
+                <ApartmentCurrency currency={apartment.currency} />
+                100
+              </Col>
+            </Row>
+          )}
+
           <hr />
           <Row gutter={10}>
             <Col span={16}>
-              <strong>2nd Payment Total</strong>:
+              <strong>2nd Payment Total</strong>{" "}
+              <Tooltip
+                placement="top"
+                title="Due 3 days after booking acceptance - split between friends!"
+              >
+                <MdHelp size={18} color="#0088E5" />
+              </Tooltip>
             </Col>
             <Col span={8} className="text-right">
               <ApartmentCurrency currency={apartment.currency} />
-              100
+              {Math.ceil(amountDue - apartment.booking_request_amount)}
             </Col>
           </Row>
         </Card>
