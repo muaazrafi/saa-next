@@ -26,6 +26,13 @@ const RenderReservationForm = () => {
   const { booking } = useSelector((state) => state.booking);
 
   useEffect( () => {
+    const {startDate, endDate} = router.query;
+    if(startDate && endDate) {
+      dateSelection(moment(startDate), moment(endDate))
+    }
+  },[]);
+
+  useEffect( () => {
     if (apartment) {
       const canBook = bookNow();
       let updatedBooking = cloneDeep(booking);
