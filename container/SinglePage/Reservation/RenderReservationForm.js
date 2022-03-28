@@ -24,9 +24,9 @@ const RenderReservationForm = () => {
   const { currentUser } = useSelector((state) => state.auth);  
   const { apartment } = useSelector((state) => state.apartment);
   const { booking } = useSelector((state) => state.booking);
+  const {startDate, endDate} = router.query;
 
   useEffect( () => {
-    const {startDate, endDate} = router.query;
     if(startDate && endDate) {
       dateSelection(moment(startDate), moment(endDate))
     }
@@ -178,6 +178,8 @@ const RenderReservationForm = () => {
               selectDates={dateSelection}
               small
               isDayBlocked={disableDates}
+              startDate={ startDate ? moment(startDate) : null }
+              endDate={ endDate ? moment(endDate) : null}
             />
           </Col>
           <Col span="6" style={{ textAlign: "center" }}>
