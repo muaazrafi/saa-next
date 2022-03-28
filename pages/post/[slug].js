@@ -78,7 +78,7 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
               />
               <Amenities amenities={amenities} />
               <AccommodationPolicies accommodationpolicies={amenities} />
-              <Calender/>
+              <Calender />
               <Location location={processedData[0]} />
             </Col>
             <Col xl={8}>

@@ -12,16 +12,15 @@ const MapInfoWindow = ({ data, onCloseClick }) => {
       id={data?.id}
       onCloseClick={onCloseClick}
     >
-      <a href={data.link} target="_blank">
-        <GridCard
-          className="info_window_card"
-          location={data?.formattedAddress}
-          title={data?.title}
-          price={`$${data?.price}/Monthly`}
-        >
-          <img src={data?.thumbUrl} alt={data?.title} />
-        </GridCard>
-      </a>
+      <GridCard
+        className="info_window_card"
+        location={data?.formattedAddress}
+        title={data?.title}
+        price={`$${data?.price}/Monthly`}
+        link_path={data.link}
+      >
+        <img src={data?.thumbUrl} alt={data?.title} />
+      </GridCard>
     </InfoWindow>
   );
 };

@@ -13,6 +13,7 @@ const HotelMapMarkerCluster = ({ location, clusterer }) => {
 		setIsOpen(!isOpen);
 		setMarkerIndex(index);
 	};
+
 	location &&
 		location.forEach((item) => {
 			hotelData.push({

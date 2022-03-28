@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Marker } from '@react-google-maps/api';
 import HotelInfoWindow from './MapInfoWindow';
-// import MakerImage from './hotelMapMarker.png';
+
+const MakerImage = 'https://d1d0zx56gx2nys.cloudfront.net/map_icon.png';
 
 const SingleMapDisplay = ({ location }) => {
 	let hotelData = [];
@@ -29,7 +30,7 @@ const SingleMapDisplay = ({ location }) => {
 		return (
 			<Marker
 				key={index}
-				// icon={MakerImage}
+				icon={MakerImage}
 				position={singlePostLoaction}
 				onClick={() => {
 					infoWindowToggle(singlePostLoaction.id);
