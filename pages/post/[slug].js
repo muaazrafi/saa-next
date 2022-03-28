@@ -25,7 +25,6 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
   const [isModalShowing, setIsModalShowing] = useState(false);
   if (isEmpty(processedData)) return <Loader />;
   const {
-    reviews,
     rating,
     ratingCount,
     price,
@@ -63,12 +62,6 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
               </Button>
             }
           />
-          {/* <Image
-            src="/images/single-post-bg.jpg"
-            layout="fill"
-            objectFit="cover"
-            alt="Listing details banner"
-          /> */}
         </PostImage>
 
         <TopBar title={title} shareURL={href} author={author} media={gallery} />
@@ -108,16 +101,6 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
               )}
             </Col>
           </Row>
-          {/* <Row gutter={30}>
-            <Col xl={16}>
-              <Review
-                reviews={reviews}
-                ratingCount={ratingCount}
-                rating={rating}
-              />
-            </Col>
-            <Col xl={8} />
-          </Row> */}
         </Container>
       </SinglePageWrapper>
 

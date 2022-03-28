@@ -38,7 +38,6 @@ export default function ProductCard({
   currency,
   display_price,
   image_public_ids,
-  slug,
   link_path,
   deviceType,
 }) {
