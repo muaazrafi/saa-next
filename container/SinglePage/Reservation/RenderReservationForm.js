@@ -180,7 +180,7 @@ const RenderReservationForm = () => {
               defaultValue={{ value: "1" }}
               class="guest-selector"
             >
-              {range(1, 11).map((guest) => {
+              { apartment && range(1, (apartment.number_of_max_occupants + 1)).map((guest) => {
                 return <Option value={guest}>{guest}</Option>;
               })}
             </Select>
