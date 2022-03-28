@@ -12,6 +12,7 @@ const PriceBreakDown = (props) => {
     firstMonthRent,
     startOfFirstMonth,
     endOfFirstMonth,
+    excessTenants,
     extraTenantCharges,
     bookingFee,
     monthlyBreakdown,
@@ -99,7 +100,13 @@ const PriceBreakDown = (props) => {
             <>
               <Row gutter={10}>
                 <Col span={16}>
-                  <strong>Total Extra Charges:</strong>:
+                  <strong>Total Extra Charges</strong>{" "}
+                <Tooltip
+                  placement="top"
+                  title={`Per addtional guest charges are ${apartment.additional_guest_monthly_price} x ${excessTenants} tenants.`}
+                >
+                  <MdHelp size={18} color="#0088E5" />
+                </Tooltip>
                 </Col>
                 <Col span={8} className="text-right">
                   <ApartmentCurrency currency={apartment.currency} />
