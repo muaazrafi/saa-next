@@ -50,7 +50,7 @@ const PriceBreakDown = (props) => {
             </Col>
             <Col span={8} className="text-right">
               <ApartmentCurrency currency={apartment.currency} />
-              100
+              {apartment.booking_request_amount}
             </Col>
           </Row>
         </Card>
@@ -91,7 +91,7 @@ const PriceBreakDown = (props) => {
             </Col>
             <Col span={8} className="text-right">
               <ApartmentCurrency currency={apartment.currency} />
-              100
+              {apartment.booking_request_amount}
             </Col>
           </Row>
 
@@ -109,7 +109,7 @@ const PriceBreakDown = (props) => {
             </>
           )}
 
-          {booking.reservation_deposit && (
+          {apartment.reservation_deposit && (
             <Row gutter={10}>
               <Col span={16}>
                 <strong>Reservation deposit</strong>{" "}
@@ -122,7 +122,25 @@ const PriceBreakDown = (props) => {
               </Col>
               <Col span={8} className="text-right">
                 <ApartmentCurrency currency={apartment.currency} />
-                100
+                {apartment.reservation_deposit_amount}
+              </Col>
+            </Row>
+          )}
+
+          {booking.has_promo_code && (
+            <Row gutter={10}>
+              <Col span={16}>
+                <strong>Promo Code Discount</strong>{" "}
+                <Tooltip
+                  placement="top"
+                  title="Hurry up! Use Promo Code Discount."
+                >
+                  <MdHelp size={18} color="#0088E5" />
+                </Tooltip>
+              </Col>
+              <Col span={8} className="text-right">
+                <ApartmentCurrency currency={apartment.currency} />
+                {booking.discount_amount}
               </Col>
             </Row>
           )}
