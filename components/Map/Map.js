@@ -44,11 +44,8 @@ const Map = (props) => {
 						height: '400px',
 						width: '100%',
 					}}
-					zoom={8}
-					center={{
-						lat: 40.706877,
-						lng: -74.011265,
-					}}
+					zoom={14}
+					center={location}
 				>
 					<HotelMapMarkerSingle location={location} />
 				</MapWrapper>
