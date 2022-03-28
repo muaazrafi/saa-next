@@ -187,7 +187,8 @@ const RenderReservationForm = () => {
             <Select
               labelInValue
               defaultValue={{ value: "1" }}
-              class="guest-selector"
+
+              className="guest-selector"
             >
               { apartment && range(1, (apartment.number_of_max_occupants + 1)).map((guest) => {
                 return <Option value={guest}>{guest}</Option>;

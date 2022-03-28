@@ -1115,6 +1115,16 @@ const GlobalStyle = createGlobalStyle`
 }
 
 
+.guest-selector{
+  width: 60px;
+
+  .ant-select-selector{
+    padding-top: 8px !important;
+    height: 50px !important;
+  }
+}
+
+
 `;
 
 export default GlobalStyle;
