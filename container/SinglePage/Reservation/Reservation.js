@@ -7,6 +7,8 @@ import Heading from "components/UI/Heading/Heading";
 import Text from "components/UI/Text/Text";
 import RenderReservationForm from "./RenderReservationForm";
 import ReservationDetails from "./ReservationDetails";
+import ViewSeasonalPricing from './ViewSeasonalPricing';
+
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 
 const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
@@ -25,6 +27,7 @@ const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
               </>
             )}
             <Text as="span" content="/ monthy" {...pricePeriodStyle} />
+            <ViewSeasonalPricing />
           </>
         }
         {...priceStyle}
