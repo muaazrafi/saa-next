@@ -7,9 +7,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   env: {
-    GOOGLE_API_KEY: 'AIzaSyCmM0r8-DP62TVgH4dDliJko9CMMmGoHKc',
+    GOOGLE_API_KEY: 'AIzaSyAwOAW5fLXzdYo0RH11bA5wq2nQf2ZBec4',
     REACT_APP_GOOGLE_MAP_API_KEY:
-      'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCmM0r8-DP62TVgH4dDliJko9CMMmGoHKc&libraries=geometry,drawing,places',
+      'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAwOAW5fLXzdYo0RH11bA5wq2nQf2ZBec4&libraries=geometry,drawing,places',
     SERVER_API: `http://localhost:3001`,
   },
   images: {
