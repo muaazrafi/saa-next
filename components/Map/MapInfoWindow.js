@@ -16,8 +16,9 @@ const MapInfoWindow = ({ data, onCloseClick }) => {
         className="info_window_card"
         location={data?.formattedAddress}
         title={data?.title}
-        price={`$${data?.price}/Monthly`}
+        price={`${data?.price}/Monthly`}
         link_path={data.link}
+        currency={data?.currency}
       >
         <img src={data?.thumbUrl} alt={data?.title} />
       </GridCard>

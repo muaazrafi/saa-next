@@ -12,8 +12,6 @@ const Map = (props) => {
 		console.log(markerClusterer);
 	};
 
-	console.log("Need to check location: ", location)
-
 	return (
 		<>
 			{multiple ? (
@@ -48,8 +46,8 @@ const Map = (props) => {
 					}}
 					zoom={14}
 					center={{
-						lat: location.location.lat,
-						lng: location.location.lng,
+						lat: location.latitude,
+						lng: location.longitude,
 					}}
 				>
 					<HotelMapMarkerSingle location={location} />

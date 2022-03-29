@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Marker } from '@react-google-maps/api';
+import { useSelector } from "react-redux";
 import HotelInfoWindow from './MapInfoWindow';
 
 const MakerImage = 'https://d1d0zx56gx2nys.cloudfront.net/map_icon.png';
@@ -8,22 +9,24 @@ const SingleMapDisplay = ({ location }) => {
 	let hotelData = [];
 	const [isOpen, setIsOpen] = useState(false);
 	const [markerIndex, setMarkerIndex] = useState(0);
+  const { apartment } = useSelector((state) => state.apartment);
+  const { firstMonthRent } = useSelector((state) => state.booking);
 
 	const infoWindowToggle = (index) => {
 		setIsOpen(!isOpen);
 		setMarkerIndex(index);
 	};
-
+	
 	hotelData.push({
-		lat: location?.location.lat,
-		lng: location?.location.lng,
-		id: location?.id,
-		title: location?.title,
-		thumbUrl: location?.image.thumb_url,
-		formattedAddress: location?.location.formattedAddress,
-		price: location?.price,
-		rating: location?.rating,
-		ratingCount: location?.ratingCount,
+		lat: apartment.latitude,
+		lng: apartment.longitude,
+		id: apartment.id,
+		title: apartment.name,
+		thumbUrl: apartment.first_image,
+		formattedAddress: apartment.area,
+		price: firstMonthRent,
+		currency: apartment.currency,
+		link: '#.'
 	});
 
 	return hotelData.map((singlePostLoaction, index) => {
