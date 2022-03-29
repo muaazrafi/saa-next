@@ -21,10 +21,11 @@ const GridCard = ({
   price,
   currency,
   link_path,
+  isMap=false,
   children,
 }) => {
   return (
-    <GridCardWrapper>
+    <GridCardWrapper style={{ marginBottom: isMap ? '0px' : '30px' }} >
       <ImageWrapper className="media_wrapper">{children}</ImageWrapper>
       <Link href={link_path} as={link_path} prefetch={false}  >
         <ContentWrapper className="content_wrapper" style={{ cursor: 'pointer' }} >

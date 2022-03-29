@@ -19,6 +19,7 @@ const MapInfoWindow = ({ data, onCloseClick }) => {
         price={`${data?.price}/Monthly`}
         link_path={data.link}
         currency={data?.currency}
+        isMap={true}
       >
         <img src={data?.thumbUrl} alt={data?.title} style={{ height: '150px', objectFit: 'object-fit', width: '100%' }} />
       </GridCard>
