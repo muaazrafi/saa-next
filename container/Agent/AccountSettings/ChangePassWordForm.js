@@ -14,26 +14,10 @@ export default function ChangePassWord() {
 
   return (
     <>
-      <FormTitle>Change Password</FormTitle>
+      <h2>Change Password</h2>
       <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
         <Row gutter={30}>
-          <Col lg={12}>
-            <FormControl
-              label="Enter old password"
-              htmlFor="oldPassword"
-              error={errors.oldPassword && <span>This field is required!</span>}
-            >
-              <Controller
-                as={<Input.Password />}
-                defaultValue=""
-                control={control}
-                id="oldPassword"
-                name="oldPassword"
-                rules={{ required: true }}
-              />
-            </FormControl>
-          </Col>
-          <Col lg={12}>
+          <Col span={24}>
             <FormControl
               label="Enter new password"
               htmlFor="newPassword"
@@ -65,7 +49,7 @@ export default function ChangePassWord() {
               />
             </FormControl>
           </Col>
-          <Col lg={24}>
+          <Col span={24}>
             <FormControl
               label="Confirm new password"
               htmlFor="confirmPassword"

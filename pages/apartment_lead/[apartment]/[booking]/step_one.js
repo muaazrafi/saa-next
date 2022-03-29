@@ -5,7 +5,7 @@ import { notification } from "antd";
 import Stepper from "components/UI/Stepper/Stepper";
 import VerifyAuth from "container/Auth/VerifyAuth";
 import UpdateInfo from "container/Auth/UpdateInfo";
-import { FormContent } from "/container/Stylis/InnerContainer.style";
+import { FormContent } from "container/Stylis/InnerContainer.style";
 import Cart from "container/Cart/Cart";
 
 const StepOne = (props) => {

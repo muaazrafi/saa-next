@@ -10,7 +10,7 @@ import CountrySelect from 'components/UI/CountrySelect/CountrySelect';
 const { TextArea } = Input;
 const { Option } = Select;
 
-export default function UpdateInfo({ user }) {
+export default function UpdateInfo({ user, onlyUpdateInfo=false }) {
   const { loading, tempPhone } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -29,6 +29,7 @@ export default function UpdateInfo({ user }) {
       initialValues={user}
       onFinish={onFinish}
     >
+      { onlyUpdateInfo && <h2>Edit Profile</h2> }
       <Row gutter={20}>
         <Col lg={6} md={8} sm={24} xs={24} >
           <Form.Item

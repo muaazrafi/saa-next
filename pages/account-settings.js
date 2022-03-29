@@ -9,7 +9,7 @@ export default function accountSettingsPage({ processedData }) {
       <Head>
         <title>Account Settings | SAA.</title>
       </Head>
-      <AgentAccountSettingsPage processedData={processedData} />
+      <AgentAccountSettingsPage />
     </>
   );
 }

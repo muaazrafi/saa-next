@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
-import ActiveLink from 'library/helpers/activeLink';
-import { Row, Col, Menu, Avatar } from 'antd';
-import Container from 'components/UI/Container/Container.style';
-import { AGENT_PROFILE_PAGE } from 'settings/constant';
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
+import { useSelector } from "react-redux";
+import ActiveLink from "library/helpers/activeLink";
+import { Row, Col, Menu, Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import Container from "components/UI/Container/Container.style";
+import { AGENT_PROFILE_PAGE } from "settings/constant";
 import AccountSettingWrapper, {
   AccountSidebar,
   AgentAvatar,
@@ -11,23 +13,17 @@ import AccountSettingWrapper, {
   ContentWrapper,
   AgentName,
   FromWrapper,
-} from './AccountSettings.style';
+} from "./AccountSettings.style";
 
-const AgentCreateOrUpdateForm = dynamic(() =>
-  import('./AgentCreateOrUpdateForm')
+const UpdateInfo = dynamic(() =>
+  import("container/Auth/UpdateInfo")
 );
-const AgentPictureChangeForm = dynamic(() =>
-  import('./AgentPictureChangeForm')
-);
-const ChangePassWord = dynamic(() => import('./ChangePassWordForm'));
+
+const ChangePassWord = dynamic(() => import("./ChangePassWordForm"));
 
 export default function AgentAccountSettingsPage(props) {
-  const { processedData } = props;
-  const [currentRoute, setCurrentRoute] = useState('edit-profile');
-  const profileData = processedData ? processedData[0] : '';
-  const firstName = profileData ? profileData.first_name : '';
-  const lastName = profileData ? profileData.last_name : '';
-  const profilePic = profileData ? profileData.profile_pic.url : '';
+  const [currentRoute, setCurrentRoute] = useState("edit-profile");
+  const { currentUser } = useSelector((state) => state.auth);
   return (
     <AccountSettingWrapper>
       <Container fullWidth={true}>
@@ -35,35 +31,36 @@ export default function AgentAccountSettingsPage(props) {
           <Col md={9} lg={6}>
             <AccountSidebar>
               <AgentAvatar>
-                <Avatar src={profilePic} alt="Profile Picture" />
+                <Avatar
+                  style={{ fontSize: "62px", paddingTop: "10px" }}
+                  icon={<UserOutlined />}
+                />
                 <ContentWrapper>
-                  <AgentName>
-                    {firstName} {lastName}
-                  </AgentName>
+                  {currentUser && (
+                    <AgentName>
+                      {currentUser.first_name} {currentUser.last_name}
+                    </AgentName>
+                  )}
+
                   <ActiveLink href={`${AGENT_PROFILE_PAGE}`}>
-                    View profile
+                    View Dashboard
                   </ActiveLink>
                 </ContentWrapper>
               </AgentAvatar>
               <>
                 <SidebarMenuWrapper>
                   <Menu
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
+                    defaultSelectedKeys={["1"]}
+                    defaultOpenKeys={["sub1"]}
                     mode="inline"
                   >
                     <Menu.Item key="1">
-                      <a onClick={() => setCurrentRoute('edit-profile')}>
+                      <a onClick={() => setCurrentRoute("edit-profile")}>
                         Edit Profile
                       </a>
                     </Menu.Item>
-                    <Menu.Item key="2">
-                      <a onClick={() => setCurrentRoute('change-photo')}>
-                        Change Photos
-                      </a>
-                    </Menu.Item>
                     <Menu.Item key="3">
-                      <a onClick={() => setCurrentRoute('change-password')}>
+                      <a onClick={() => setCurrentRoute("change-password")}>
                         Change Password
                       </a>
                     </Menu.Item>
@@ -74,17 +71,10 @@ export default function AgentAccountSettingsPage(props) {
           </Col>
           <Col md={15} lg={18}>
             <FromWrapper>
-              {currentRoute === 'edit-profile' ? (
-                <AgentCreateOrUpdateForm />
-              ) : (
-                ''
-              )}
-              {currentRoute === 'change-photo' ? (
-                <AgentPictureChangeForm />
-              ) : (
-                ''
-              )}
-              {currentRoute === 'change-password' ? <ChangePassWord /> : ''}
+              {currentRoute === "edit-profile"
+                ? currentUser && <UpdateInfo user={currentUser} onlyUpdateInfo={true} />
+                : ""}
+              {currentRoute === "change-password" ? <ChangePassWord /> : ""}
             </FromWrapper>
           </Col>
         </Row>
