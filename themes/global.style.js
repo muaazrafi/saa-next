@@ -1128,6 +1128,14 @@ const GlobalStyle = createGlobalStyle`
   overflow-x: auto;
 }
 
+.gm-style-iw-c {
+  max-height: inherit !important;
+}
+
+.gm-style-iw-d{
+  max-height: inherit !important;
+}
+
 
 `;
 

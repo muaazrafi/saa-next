@@ -5,7 +5,6 @@ const GridCardWrapper = styled.div`
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  margin-bottom: 30px;
 
   @media (max-width: 480px) {
     margin-bottom: 20px;
