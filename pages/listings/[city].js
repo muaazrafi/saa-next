@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { cloneDeep } from "lodash";
+import { cloneDeep, uniqBy } from "lodash";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Sticky from "react-stickynode";
@@ -9,11 +9,6 @@ import Search from "container/Listing/Search/Search/Search";
 import SectionGrid from "components/SectionGrid/SectionGrid";
 import { PostPlaceholder } from "components/UI/ContentLoader/ContentLoader";
 import ListingMap from "container/Listing/ListingMap";
-import {
-  getAPIData,
-  paginator,
-  processAPIData,
-} from "library/helpers/get-api-data";
 import { getDeviceType } from "library/helpers/get-device-type";
 import { SINGLE_POST_PAGE } from "settings/constant";
 import {
@@ -31,8 +26,6 @@ import { fetchApartments } from "store/services/apartment";
 export default function ListingPage({ processedData, deviceType }) {
   const dispatcher = useDispatch();
   const router = useRouter();
-  const [posts, setPosts] = useState([]);
-
   const [showMap, setShowMap] = useState(false);
   const { apartments, loading, search, total, loadMore } = useSelector(
     (state) => state.apartments
@@ -116,23 +109,15 @@ export default function ListingPage({ processedData, deviceType }) {
           placeholder={<PostPlaceholder />}
         />
       </PostsWrapper>
-      {showMap && <ListingMap loading={loading} mapData={apartments} />}
+      {showMap && <ListingMap loading={loading} mapData={  uniqBy(apartments, function(apar) { return [apar.latitude, apar.longitude].join(); })} />}
     </ListingWrapper>
   );
 }
 
 export async function getServerSideProps(context) {
   const { req } = context;
-  const apiUrl = [
-    {
-      endpoint: "hotel",
-      name: "listingHotel",
-    },
-  ];
-  const pageData = await getAPIData(apiUrl);
-  const processedData = processAPIData(pageData);
   const deviceType = getDeviceType(req);
   return {
-    props: { processedData, deviceType },
+    props: { deviceType },
   };
 }
