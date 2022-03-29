@@ -1124,6 +1124,10 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+.overflow-it{
+  overflow-x: auto;
+}
+
 
 `;
 

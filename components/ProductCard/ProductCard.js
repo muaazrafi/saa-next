@@ -55,7 +55,7 @@ export default function ProductCard({
           }}
         />
       }
-      location={`${area} ${city}`}
+      location={area}
       title={name}
       price={`${display_price}/Montly`}
       currency={currency}

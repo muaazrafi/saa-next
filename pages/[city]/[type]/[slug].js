@@ -17,6 +17,7 @@ import Location from "container/SinglePage/Location/Location";
 import Reservation from "container/SinglePage/Reservation/Reservation";
 import BottomReservation from "container/SinglePage/Reservation/BottomReservation";
 import TopBar from "container/SinglePage/TopBar/TopBar";
+import Apartments from "container/SinglePage/Similar/Apartments";
 
 import SinglePageWrapper, {
   PostImage,
@@ -123,16 +124,12 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
               )}
             </Col>
           </Row>
-          {/* <Row gutter={30}>
-            <Col xl={16}>
-              <Review
-                reviews={reviews}
-                ratingCount={ratingCount}
-                rating={rating}
-              />
-            </Col>
-            <Col xl={8} />
-          </Row> */}
+        </Container>
+        <br />
+
+        <Container className="overflow-it">
+          <h2>Similar Listings</h2>
+          <Apartments />
         </Container>
       </SinglePageWrapper>
 

@@ -101,6 +101,7 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
               )}
             </Col>
           </Row>
+
         </Container>
       </SinglePageWrapper>
 
