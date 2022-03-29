@@ -30,7 +30,7 @@ const ProfileMenu = ({ avatar }) => {
 
       <Menu className={`dropdown-menu ${state ? 'active' : 'hide'}`}>
         <Menu.Item onClick={closeDropdown} key="0">
-          <ActiveLink href={AGENT_PROFILE_PAGE}>View Profile</ActiveLink>
+          <ActiveLink href={AGENT_PROFILE_PAGE}>Dashboard</ActiveLink>
         </Menu.Item>
         <Menu.Item onClick={closeDropdown} key="2">
           <ActiveLink href={AGENT_ACCOUNT_SETTINGS_PAGE}>

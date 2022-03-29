@@ -7,7 +7,7 @@ export const LISTING_POSTS_PAGE = '/listing';
 export const SINGLE_POST_PAGE = '/post';
 
 // Agent Profile Page Section
-export const AGENT_PROFILE_PAGE = '/profile';
+export const AGENT_PROFILE_PAGE = '/dashboard';
 export const AGENT_ACCOUNT_SETTINGS_PAGE = '/account-settings';
 export const AGENT_PROFILE_EDIT_PAGE = '/edit';
 export const AGENT_IMAGE_EDIT_PAGE = '/change-image';

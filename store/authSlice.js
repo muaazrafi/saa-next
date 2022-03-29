@@ -65,9 +65,10 @@ export const authSlice = createSlice({
     builder.addCase(fetchMe.fulfilled, (state, action) => {
       state.loading = false;
       if (action.payload) {
+        state.authFailed = false;
         state.currentUser = action.payload;
       } else {
-        state.authFailed = true
+        state.authFailed = true;
       }
     });
 

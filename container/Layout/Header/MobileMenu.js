@@ -14,7 +14,7 @@ const MobileMenu = ({ className, loggedIn }) => {
       {loggedIn && (
         <>
           <Menu.Item key="0">
-            <ActiveLink href={AGENT_PROFILE_PAGE}>View Profile</ActiveLink>
+            <ActiveLink href={AGENT_PROFILE_PAGE}>Dashboard</ActiveLink>
           </Menu.Item>
           <Menu.Item key="1">
             <ActiveLink href={AGENT_ACCOUNT_SETTINGS_PAGE}>
