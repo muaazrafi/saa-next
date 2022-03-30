@@ -11,9 +11,11 @@ const PhoneInput = ({label=false, form}) => {
   const [phoneNoCountry, setPhoneNoCountry] = useState(null);
   
   const handlePhoneChange = (status, phoneNumber, country) => {
-    form.setFieldsValue({
-      ['phone']: phoneNumber
-    })
+    if (form) {
+      form.setFieldsValue({
+        ['phone']: phoneNumber
+      });
+    }
     setPhoneNo(phoneNumber);
     setPhoneNoCountry(country);
   };

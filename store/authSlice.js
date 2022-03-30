@@ -55,6 +55,7 @@ export const authSlice = createSlice({
       } else {
         state.popUp = false;
         state.currentUser = action.payload.user;
+        state.authFailed = false;
         notification['success']({
           message: 'Successful',
           description: 'You are successfully logged in.',
@@ -75,6 +76,7 @@ export const authSlice = createSlice({
     builder.addCase(unAuthenticate.fulfilled, (state, action) => {
       state.loading = false;
       state.currentUser = null;
+      state.authFailed = true;
     });
 
     builder.addCase(register.fulfilled, (state, action) => {
@@ -82,6 +84,7 @@ export const authSlice = createSlice({
         state.existError = true;
       } else {
         state.popUp = false;
+        state.authFailed = false;
         state.currentUser = action.payload;
         notification['success']({
           message: 'Successful',
