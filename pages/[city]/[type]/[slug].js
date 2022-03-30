@@ -25,6 +25,7 @@ import SinglePageWrapper, {
 import ImageGrid from "container/SinglePage/ImageGrid/ImageGrid";
 import PostImageGallery from "container/SinglePage/ImageGallery/ImageGallery";
 import { fetchApartment } from "store/services/apartment";
+import { reset } from 'store/apartmentSlice';
 
 export default function SinglePostPage({ processedData, deviceType, query }) {
   const dispatcher = useDispatch();
@@ -50,7 +51,11 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
     query.slug.split("-").join(" ").charAt(0).toUpperCase() +
     query.slug.split("-").join(" ").slice(1);
 
-  useEffect(() => {
+    useEffect( () => {
+      dispatcher(reset());
+    },[])
+
+    useEffect(() => {
     if (!apartment && loading) {
       dispatcher(fetchApartment(slug));
     }

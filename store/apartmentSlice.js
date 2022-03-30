@@ -11,7 +11,12 @@ const initialState = {
 export const apartmentSlice = createSlice({
   name: 'apartment',
   initialState,
-  reducers: {},
+  reducers: {
+    reset: (state, action) => {
+      state.apartment = null;
+      state.loading = true;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchApartment.fulfilled, (state, action) => {
       state.apartment = action.payload;
@@ -19,5 +24,7 @@ export const apartmentSlice = createSlice({
     });
   },
 });
+
+export const { reset } = apartmentSlice.actions;
 
 export default apartmentSlice.reducer;

@@ -6,6 +6,8 @@ import { Row, Col, Menu, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import Container from "components/UI/Container/Container.style";
 import { AGENT_PROFILE_PAGE } from "settings/constant";
+import VerifyAuth from "container/Auth/VerifyAuth";
+
 import AccountSettingWrapper, {
   AccountSidebar,
   AgentAvatar,
@@ -26,6 +28,7 @@ export default function AgentAccountSettingsPage(props) {
   const { currentUser } = useSelector((state) => state.auth);
   return (
     <AccountSettingWrapper>
+      <VerifyAuth />
       <Container fullWidth={true}>
         <Row gutter={30}>
           <Col md={9} lg={6}>
