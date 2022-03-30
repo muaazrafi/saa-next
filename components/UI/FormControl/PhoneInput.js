@@ -5,12 +5,15 @@ import IntlTelInput from "react-intl-tel-input";
 import { isValidPhoneNumber, parsePhoneNumber } from "libphonenumber-js";
 import { setTempPhone } from 'store/authSlice';
 
-const PhoneInput = ({label=false}) => {
+const PhoneInput = ({label=false, form}) => {
   const dispatch = useDispatch();
   const [phoneNo, setPhoneNo] = useState(null);
   const [phoneNoCountry, setPhoneNoCountry] = useState(null);
   
   const handlePhoneChange = (status, phoneNumber, country) => {
+    form.setFieldsValue({
+      ['phone']: phoneNumber
+    })
     setPhoneNo(phoneNumber);
     setPhoneNoCountry(country);
   };

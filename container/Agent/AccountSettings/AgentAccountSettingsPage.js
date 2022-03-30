@@ -75,7 +75,7 @@ export default function AgentAccountSettingsPage(props) {
           <Col md={15} lg={18}>
             <FromWrapper>
               {currentRoute === "edit-profile"
-                ? currentUser && <UpdateInfo user={currentUser} onlyUpdateInfo={true} />
+                ? currentUser && <UpdateInfo onlyUpdateInfo={true} />
                 : ""}
               {currentRoute === "change-password" ? <ChangePassWord /> : ""}
             </FromWrapper>

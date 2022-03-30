@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { cloneDeep } from 'lodash';
 import { Form, Input, Button, Row, Col, Radio, Select, Tooltip } from "antd";
@@ -10,10 +11,10 @@ import CountrySelect from 'components/UI/CountrySelect/CountrySelect';
 const { TextArea } = Input;
 const { Option } = Select;
 
-export default function UpdateInfo({ user, onlyUpdateInfo=false }) {
-  const { loading, tempPhone } = useSelector((state) => state.auth);
+export default function UpdateInfo({ onlyUpdateInfo=false }) {
+  const { loading, tempPhone, currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-
+  const [form] = Form.useForm();
   const onFinish = (values) => {
     let updateValues = cloneDeep(values);
     updateValues.phone = tempPhone;
@@ -26,7 +27,8 @@ export default function UpdateInfo({ user, onlyUpdateInfo=false }) {
       name="normal_login"
       className="login-form"
       layout="vertical"
-      initialValues={user}
+      form={form}
+      initialValues={currentUser}
       onFinish={onFinish}
     >
       { onlyUpdateInfo && <h2>Edit Profile</h2> }
@@ -76,7 +78,7 @@ export default function UpdateInfo({ user, onlyUpdateInfo=false }) {
           </Form.Item>
         </Col>
         <Col lg={6} md={8} sm={24} xs={24} >
-          <PhoneInput label="Phone" />
+          <PhoneInput label="Phone" form={form} />
         </Col>
 
         <Col lg={6} md={8} sm={24} xs={24}  >

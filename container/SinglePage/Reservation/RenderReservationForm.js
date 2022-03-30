@@ -178,8 +178,6 @@ const RenderReservationForm = () => {
               selectDates={dateSelection}
               small
               isDayBlocked={disableDates}
-              startDate={ startDate ? moment(startDate) : null }
-              endDate={ endDate ? moment(endDate) : null}
             />
           </Col>
           <Col span="6" style={{ textAlign: "center" }}>
