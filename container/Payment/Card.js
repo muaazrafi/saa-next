@@ -13,7 +13,6 @@ const Card = (props) => {
   const stripe = useStripe();
   const dispatch = useDispatch();
   const { loading } = useSelector(state => state.card);
-  const [cardError, setCardError] = useState(null);
 
   const handleSubmit = async (values) => {
     if (!stripe || !elements) {
@@ -44,7 +43,7 @@ const Card = (props) => {
 
   return (
     <Form name="card" className="card-form" onFinish={handleSubmit} layout="vertical" >
-      <CardSection error={error} />
+      <CardSection />
       <br />
       <Row gutter={20}>
         <Col md={6} sm={24} xs={24}>
@@ -141,7 +140,6 @@ const Card = (props) => {
         <Button
           type="primary"
           size="large"
-          style={{ width: 256 }}
           htmlType="submit"
           block
           loading={loading}

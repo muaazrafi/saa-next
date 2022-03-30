@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { CardElement } from "@stripe/react-stripe-js";
 
 const CARD_ELEMENT_OPTIONS = {
@@ -18,7 +19,8 @@ const CARD_ELEMENT_OPTIONS = {
     },
   },
 };
-function CardSection({ error }) {
+function CardSection(props) {
+  const { error } = useSelector( state => state.card );
   return (
     <>
       <div className="ant-col ant-form-item-label">

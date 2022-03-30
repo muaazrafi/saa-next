@@ -32,8 +32,7 @@ const Split = (props) => {
   const {
     card,
     moveStep,
-    loading: cardLoading,
-    error,
+    loading: cardLoading
   } = useSelector((state) => state.card);
   const [changeCard, setChangeCard] = useState(false);
   const [amount, setAmount] = useState(null);
@@ -138,7 +137,7 @@ const Split = (props) => {
           onFinish={handleSubmit}
           layout="vertical"
         >
-          <CardSection error={error} />
+          <CardSection />
           <br />
           <Row gutter={20}>
             <Col md={12} sm={24} xs={24}>

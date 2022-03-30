@@ -7,6 +7,7 @@ import { createIntent } from "store/services/card";
 import { confirmStatus } from "/store/services/booking";
 import { ConfirmButtonWrapper } from "./Card.style";
 import { handleLoading } from 'store/bookingSlice';
+import { setError } from "store/cardSlice";
 
 const ConfirmPayment = (props) => {
   const router = useRouter();
@@ -26,11 +27,8 @@ const ConfirmPayment = (props) => {
       intent.client_secret
     );
     if (error) {
-      notification['error']({
-        message: 'Payment Proccesing Error!',
-        description:
-          `Please rectify payment details was not able to process payment. ${error}`,
-      });
+      debugger
+      dispatch(setError(error.message));
       dispatch(handleLoading(false));
       router.back();
     } else {
