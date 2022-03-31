@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { switchforgot } from "store/authSlice";
 import { authenticate } from "store/services/auth";
 
-const SignInForm = () => {
+const SignInForm = ({ booking = false }) => {
   const dispatcher = useDispatch();
   const { existError } = useSelector((state) => state.auth);
+  const inputWidthControl = { width: booking ? "100%" : 256 };
+
   const onFinish = (values) => {
     dispatcher(authenticate(values));
   };
@@ -31,7 +33,7 @@ const SignInForm = () => {
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder="Email"
-          style={{ width: 256 }}
+          style={inputWidthControl}
         />
       </Form.Item>
       <Form.Item
@@ -47,7 +49,7 @@ const SignInForm = () => {
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           placeholder="Password"
-          style={{ width: 256 }}
+          style={inputWidthControl}
         />
       </Form.Item>
       {existError && (
@@ -59,20 +61,22 @@ const SignInForm = () => {
         />
       )}
       <Form.Item>
-        <Button type="primary" htmlType="submit" style={{ width: 256 }}>
-          Log in
+        <Button type="primary" htmlType="submit" style={inputWidthControl}>
+          { booking ? 'LOGIN TO JOIN BOOKING' : 'Log in' } 
         </Button>
       </Form.Item>
-      <Form.Item>
-        <Button
-          type="default"
-          style={{ width: 256 }}
-          block
-          onClick={() => dispatcher(switchforgot("forgot"))}
-        >
-          Forgot password
-        </Button>
-      </Form.Item>
+      {!booking && (
+        <Form.Item>
+          <Button
+            type="default"
+            style={inputWidthControl}
+            block
+            onClick={() => dispatcher(switchforgot("forgot"))}
+          >
+            Forgot password
+          </Button>
+        </Form.Item>
+      )}
     </Form>
   );
 };

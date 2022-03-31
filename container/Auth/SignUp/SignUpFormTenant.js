@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Input } from "antd";
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from "lodash";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { HiOutlineMail } from "react-icons/hi";
 import { handleLoading } from "store/authSlice";
 import { register } from "store/services/auth";
-import PhoneInput from 'components/UI/FormControl/PhoneInput';
+import PhoneInput from "components/UI/FormControl/PhoneInput";
 
-const SignUpForm = () => {
+const SignUpForm = ({ booking = false }) => {
   const dispatcher = useDispatch();
   const { existError, loading, tempPhone } = useSelector((state) => state.auth);
+  const inputWidthControl = { width: booking ? "100%" : 256 };
 
   const onFinish = (values) => {
     let registerValues = cloneDeep(values);
@@ -34,7 +35,7 @@ const SignUpForm = () => {
         >
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
-            style={{ width: 256 }}
+            style={inputWidthControl}
             placeholder="First Name"
           />
         </Form.Item>
@@ -46,7 +47,7 @@ const SignUpForm = () => {
         >
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
-            style={{ width: 256 }}
+            style={inputWidthControl}
             placeholder="Last Name"
           />
         </Form.Item>
@@ -62,7 +63,7 @@ const SignUpForm = () => {
           <Input
             prefix={<HiOutlineMail className="site-form-item-icon" />}
             placeholder="Email"
-            style={{ width: 256 }}
+            style={inputWidthControl}
           />
         </Form.Item>
 
@@ -83,7 +84,7 @@ const SignUpForm = () => {
             prefix={<LockOutlined className="site-form-item-icon" />}
             type="password"
             placeholder="Password"
-            style={{ width: 256 }}
+            style={inputWidthControl}
           />
         </Form.Item>
 
@@ -91,12 +92,12 @@ const SignUpForm = () => {
           <Button
             type="primary"
             size="middle"
-            style={{ width: 256 }}
+            style={inputWidthControl}
             htmlType="submit"
             block
             loading={loading}
           >
-            Continue
+            { booking ? 'REGISTER TO JOIN BOOKING' : 'Continue' }  
           </Button>
         </Form.Item>
       </Form>
