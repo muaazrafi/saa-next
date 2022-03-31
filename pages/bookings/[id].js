@@ -13,7 +13,7 @@ const { Content } = Layout;
 const InviteBooking = (props) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { booking } = useSelector((state) => state.booking);
+  const { booking, move } = useSelector((state) => state.booking);
   const { currentUser } = useSelector((state) => state.auth);
   const { id } = router.query;
 
@@ -35,6 +35,12 @@ const InviteBooking = (props) => {
       );
     }
   }, [currentUser]);
+
+  useEffect(() => {
+    if (move) {
+      router.push(`/splits/${booking.id}`);
+    }
+  }, [move]);
 
   return (
     <Content className="container">

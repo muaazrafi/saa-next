@@ -16,7 +16,8 @@ const initialState = {
     check_out: null,
     number_of_room_mates: 1,
     was_availability_request: false,
-    check_availability_request: false
+    check_availability_request: false,
+    move: false
   },
   firstMonthRent: null,
   firstMonthIsPartial: null,
@@ -136,6 +137,7 @@ export const bookingSlice = createSlice({
           'Successfully booking joined.',
       });
       state.loading = false;
+      state.move = true
     });
   },
 });
