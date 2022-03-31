@@ -112,12 +112,12 @@ export const createSplit = createAsyncThunk(
   'split/create',
   async (split, thunkAPI) => {
     const response = await fetch(`/api/splits`, {
-      method: 'PUT',
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(intent.intent)
+      body: JSON.stringify(split)
     }).then((res) => {
       return res.json()
     });

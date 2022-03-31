@@ -3,7 +3,7 @@ import {
 } from '@reduxjs/toolkit';
 import moment from "moment";
 import { notification } from "antd";
-import { createBooking, fetchBooking, fetchBookings, fetchApprovedBookings, fetchActiveBooking, confirmSplit } from './services/booking';
+import { createBooking, fetchBooking, fetchBookings, fetchApprovedBookings, fetchActiveBooking, confirmSplit, createSplit } from './services/booking';
 import Price from 'library/Price';
 
 const initialState = {
@@ -126,6 +126,14 @@ export const bookingSlice = createSlice({
         message: 'Successfully Paid!',
         description:
           'Payment Successfully processed.',
+      });
+      state.loading = false;
+    });
+    builder.addCase(createSplit.fulfilled, (state, action) => {
+      notification['success']({
+        message: 'Successfully Joined!',
+        description:
+          'Successfully booking joined.',
       });
       state.loading = false;
     });
