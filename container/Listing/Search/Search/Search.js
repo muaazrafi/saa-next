@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import NoSSR from 'react-no-ssr';
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from 'next/router';
 import { cloneDeep, range } from "lodash";
@@ -70,6 +71,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
           />
         </Col>
         <Col xxl={4} xl={5} lg={6} md={8} xs={20} sm={22} style={{ marginBottom: "10px" }}>
+          <NoSSR>
           <DatePickerRange
             startDateId="checkin-Id"
             endDateId="checkout-id"
@@ -81,6 +83,8 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             startDate={ search.startDate ? moment(search.startDate) : null }
             endDate={ search.endDate ? moment(search.endDate) : null}
           />
+          </NoSSR>
+
         </Col>
         <Col style={{textAlign: 'center', marginTop: '5px'}} md={0} xs={4} sm={2}>
           {mapShowBtn}

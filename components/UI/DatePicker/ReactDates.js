@@ -1,4 +1,5 @@
 import 'react-dates/initialize';
+import moment from 'moment';
 import { DateRangePicker } from 'react-dates';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -20,11 +21,15 @@ class DateRangePickerBox extends Component {
       this.props.item && this.props.item.format
         ? this.props.item.format
         : 'llll';
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+    const preStartDate = params.get('startDate')
+    const preEndDate = params.get('endDate')
 
     this.state = {
       focusedInput: null,
-      startDate: this.props.startDate ? this.props.startDate : null,
-      endDate: this.props.endDate ? this.props.endDate : null,
+      startDate: preStartDate ? moment(preStartDate) : null,
+      endDate: preEndDate  ? moment(preEndDate) : null,
       dateFormat,
       separator,
     };
@@ -35,10 +40,6 @@ class DateRangePickerBox extends Component {
      */
     // moment.locale('fr');
   }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState(nextProps);
-}
 
   onDateChangeFunc = ({ startDate, endDate }) => {
     const { dateFormat } = this.state;

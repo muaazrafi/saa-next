@@ -45,6 +45,7 @@
 		"react-indiana-drag-scroll": "^2.1.0",
 		"react-intl-tel-input": "^8.2.0",
 		"react-multi-carousel": "^2.6.1",
+		"react-no-ssr": "^1.1.0",
 		"react-perfect-scrollbar": "^1.5.8",
 		"react-redux": "^7.2.6",
 		"react-render-html": "^0.6.0",

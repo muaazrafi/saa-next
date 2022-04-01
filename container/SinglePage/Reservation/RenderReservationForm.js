@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { cloneDeep, range } from "lodash";
 import moment from "moment";
+import NoSSR from "react-no-ssr";
 import { Button, notification } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import HtmlLabel from "components/UI/HtmlLabel/HtmlLabel";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import { Row, Col, Select } from "antd";
@@ -21,43 +22,40 @@ const { Option } = Select;
 const RenderReservationForm = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { currentUser } = useSelector((state) => state.auth);  
+  const { currentUser } = useSelector((state) => state.auth);
   const { apartment } = useSelector((state) => state.apartment);
   const { booking } = useSelector((state) => state.booking);
-  const {startDate, endDate} = router.query;
+  const { startDate, endDate } = router.query;
 
-  useEffect( () => {
-    if(startDate && endDate) {
-      dateSelection(moment(startDate), moment(endDate))
+  useEffect(() => {
+    if (startDate && endDate) {
+      dateSelection(moment(startDate), moment(endDate));
     }
-  },[]);
+  }, []);
 
-  useEffect( () => {
+  useEffect(() => {
     if (apartment) {
       const canBook = bookNow();
       let updatedBooking = cloneDeep(booking);
       updatedBooking.apartment_id = apartment.id;
       updatedBooking.was_availability_request = !canBook;
       updatedBooking.check_availability_request = !canBook;
-      dispatch(
-        updateBooking(updatedBooking)
-      );
+      dispatch(updateBooking(updatedBooking));
     }
-  }, [apartment])
+  }, [apartment]);
 
-  useEffect( () => {
+  useEffect(() => {
     if (currentUser && booking && booking.waitUserToLogin) {
       reCallTheBookingProcedure(false);
       handleBooking();
     }
   }, [currentUser]);
 
-  useEffect( () => {
+  useEffect(() => {
     if (currentUser && booking && booking.id && bookNow()) {
-      notification['success']({
-        message: 'Booking Initiated',
-        description:
-          'Booking successfully initiated, please proceed.',
+      notification["success"]({
+        message: "Booking Initiated",
+        description: "Booking successfully initiated, please proceed.",
       });
       router.push(`/apartment_lead/${apartment.id}/${booking.id}/step_one`);
     }
@@ -75,19 +73,15 @@ const RenderReservationForm = () => {
   const dateSelection = (startDate, endDate) => {
     let updatedBooking = cloneDeep(booking);
     updatedBooking.check_in = startDate;
-    updatedBooking.check_out = endDate; 
-    dispatch(
-      updateBooking(updatedBooking)
-    );
+    updatedBooking.check_out = endDate;
+    dispatch(updateBooking(updatedBooking));
   };
 
   const reCallTheBookingProcedure = (state) => {
     let updatedBooking = cloneDeep(booking);
-    updatedBooking.waitUserToLogin = state; 
-    dispatch(
-      updateBooking(updatedBooking)
-    );
-  }
+    updatedBooking.waitUserToLogin = state;
+    dispatch(updateBooking(updatedBooking));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -102,7 +96,7 @@ const RenderReservationForm = () => {
   const handleBooking = () => {
     dispatch(createBooking(booking));
     // Thanks for requesting, our landlords typically respond within 48 hours to respond to booking requests.
-  }
+  };
 
   const bookingBtnState = () => {
     return !(
@@ -159,8 +153,12 @@ const RenderReservationForm = () => {
   };
 
   const bookNow = () => {
-    return apartment && apartment.availability_status === 'available' && apartment.updated_in_past_month;
-  }
+    return (
+      apartment &&
+      apartment.availability_status === "available" &&
+      apartment.updated_in_past_month
+    );
+  };
 
   return (
     <ReservationFormWrapper className="form-container" onSubmit={handleSubmit}>
@@ -168,36 +166,38 @@ const RenderReservationForm = () => {
         <Row style={{ padding: "0px 20px" }}>
           <Col span="18">
             <HtmlLabel htmlFor="dates" content="Dates" />
-            <DatePickerRange
-              startDateId="checkin-Id"
-              endDateId="checkout-id"
-              startDatePlaceholderText="Check In"
-              endDatePlaceholderText="Check Out"
-              updateSearchData={(value) => updateSearchDataFunc(value)}
-              numberOfMonths={1}
-              selectDates={dateSelection}
-              small
-              isDayBlocked={disableDates}
-            />
+            <NoSSR>
+              <DatePickerRange
+                startDateId="checkin-Id"
+                endDateId="checkout-id"
+                startDatePlaceholderText="Check In"
+                endDatePlaceholderText="Check Out"
+                updateSearchData={(value) => updateSearchDataFunc(value)}
+                numberOfMonths={1}
+                selectDates={dateSelection}
+                small
+                isDayBlocked={disableDates}
+              />
+            </NoSSR>
           </Col>
           <Col span="6" style={{ textAlign: "center" }}>
             <HtmlLabel htmlFor="guests" content="Guests" />
             <Select
               labelInValue
               defaultValue={{ value: "1" }}
-
               className="guest-selector"
             >
-              { apartment && range(1, (apartment.number_of_max_occupants + 1)).map((guest) => {
-                return <Option value={guest}>{guest}</Option>;
-              })}
+              {apartment &&
+                range(1, apartment.number_of_max_occupants + 1).map((guest) => {
+                  return <Option value={guest}>{guest}</Option>;
+                })}
             </Select>
           </Col>
         </Row>
       </FieldWrapper>
       <FormActionArea style={{ padding: "0px 20px" }}>
         <Button htmlType="submit" type="primary" disabled={bookingBtnState()}>
-          { bookNow() ? 'Book Now' : 'Request to Book' }  
+          {bookNow() ? "Book Now" : "Request to Book"}
         </Button>
       </FormActionArea>
     </ReservationFormWrapper>
