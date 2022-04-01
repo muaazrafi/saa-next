@@ -229,4 +229,9 @@ export const PostImage = styled.div`
   }
 `;
 
+const MaxHeightAnimation = styled.div`
+  max-height: inherit;
+  transition: max-height 0.25s ease-in;
+`
+
 export default SinglePageWrapper;
