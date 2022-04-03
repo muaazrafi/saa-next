@@ -1,10 +1,24 @@
 import React from "react";
-import { Card, Form, Select, Button, Input, Alert, Row, Col, Tag } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { Card, Form, Select, Button } from "antd";
 import { each } from "lodash";
+import { handleLoading } from "store/bookingSlice";
+import { inviteSplit } from "store/services/booking";
 
 const InviteFriends = ({ booking }) => {
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.booking);
+
   const onFinish = (values) => {
-    console.log("Let's wire this up");
+    dispatch(handleLoading(true));
+    dispatch(
+      inviteSplit({
+        split: {
+          booking_id: booking.id,
+          emails: values.emails,
+        },
+      })
+    );
   };
 
   return (
@@ -19,10 +33,15 @@ const InviteFriends = ({ booking }) => {
               validator(rule, emails) {
                 let invalid = false;
                 each(emails, (email) => {
-                  if (!email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) && !invalid ) {
-                    invalid = true
+                  if (
+                    !email.match(
+                      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                    ) &&
+                    !invalid
+                  ) {
+                    invalid = true;
                   }
-                })
+                });
                 if (invalid) {
                   return Promise.reject("List has invalid email addresses.");
                 }
@@ -39,7 +58,12 @@ const InviteFriends = ({ booking }) => {
           ></Select>
         </Form.Item>
 
-        <Button type="warning" htmlType="submit" style={ { width: '100%', marginTop: '10px' } } >
+        <Button
+          type="warning"
+          htmlType="submit"
+          style={{ width: "100%", marginTop: "10px" }}
+          loading={loading}
+        >
           Send Invite
         </Button>
       </Form>

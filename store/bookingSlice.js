@@ -3,7 +3,7 @@ import {
 } from '@reduxjs/toolkit';
 import moment from "moment";
 import { notification } from "antd";
-import { createBooking, fetchBooking, fetchBookings, fetchApprovedBookings, fetchActiveBooking, confirmSplit, createSplit } from './services/booking';
+import { createBooking, fetchBooking, fetchBookings, fetchApprovedBookings, fetchActiveBooking, confirmSplit, createSplit, inviteSplit } from './services/booking';
 import Price from 'library/Price';
 
 const initialState = {
@@ -138,6 +138,14 @@ export const bookingSlice = createSlice({
       });
       state.loading = false;
       state.move = true
+    });
+    builder.addCase(inviteSplit.fulfilled, (state, action) => {
+      notification['success']({
+        message: 'Successfully Invited!',
+        description:
+          'Successfully sent invited.',
+      });
+      state.loading = false;
     });
   },
 });
