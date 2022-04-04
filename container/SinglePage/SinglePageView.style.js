@@ -84,7 +84,7 @@ export const TobBarWrapper = styled.div`
           a {
             color: ${themeGet('text.0', '#2C2C2C')};
             font-size: 15px;
-            padding: 28px 20px;
+            padding: 0px 15px;
             text-transform: capitalize;
             transition: color 0.2s ease-in-out;
 

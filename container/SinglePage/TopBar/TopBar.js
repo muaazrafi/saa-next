@@ -21,7 +21,7 @@ const topBarMenu = [
     target: 'amenities',
   },
     {
-    name: 'Accommodation Policies',
+    name: 'Policies',
     target: 'accommodationpolicies',
   },
   {
