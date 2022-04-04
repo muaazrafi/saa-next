@@ -28,10 +28,10 @@ const Amenities = ({ titleStyle, linkStyle }) => {
           </Link>
         </TextButton>  
         <AmenitiesAreaMore>
-          <Row gutter={[16, 16]}>
+          <Row gutter={[16, 16]} style={{ width: '100%' }} >
             {apartment && apartment.amenities.map((amenitie) =>
-              <Col span={6}>{<FaCheck/>}{amenitie};</Col>
-            )};
+              <Col lg={6} md={6} sm={8} xs={8}>{<FaCheck/>}{amenitie}</Col>
+            )}
           </Row>
         </AmenitiesAreaMore>
 
