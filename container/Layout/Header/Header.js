@@ -1,17 +1,17 @@
-import React, { useState, useContext } from 'react';
-import { useSelector } from 'react-redux';
-import Link from 'next/link';
-import { withRouter } from 'next/router';
-import dynamic from 'next/dynamic';
-import Sticky from 'react-stickynode';
-import { IoIosClose } from 'react-icons/io';
-import Logo from 'components/UI/Logo/Logo';
-import Text from 'components/UI/Text/Text';
-import { Button, Drawer, Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import Navbar from 'components/Navbar/Navbar';
-import { LayoutContext } from 'context/LayoutProvider';
-import { AGENT_PROFILE_PAGE } from 'settings/constant';
+import React, { useState, useContext, useEffect } from "react";
+import { useSelector } from "react-redux";
+import Link from "next/link";
+import { withRouter } from "next/router";
+import dynamic from "next/dynamic";
+import Sticky from "react-stickynode";
+import { IoIosClose } from "react-icons/io";
+import Logo from "components/UI/Logo/Logo";
+import Text from "components/UI/Text/Text";
+import { Button, Drawer, Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import Navbar from "components/Navbar/Navbar";
+import { LayoutContext } from "context/LayoutProvider";
+import { AGENT_PROFILE_PAGE } from "settings/constant";
 import HeaderWrapper, {
   MobileNavbar,
   CloseDrawer,
@@ -19,16 +19,16 @@ import HeaderWrapper, {
   AvatarImage,
   AvatarInfo,
   LogoArea,
-} from './Header.style';
+} from "./Header.style";
 
-const AuthMenu = dynamic(() => import('./AuthMenu'));
-const MainMenu = dynamic(() => import('./MainMenu'));
-const MobileMenu = dynamic(() => import('./MobileMenu'));
-const ProfileMenu = dynamic(() => import('./ProfileMenu'));
-const NavbarSearch = dynamic(() => import('./NavbarSearch'));
+const AuthMenu = dynamic(() => import("./AuthMenu"));
+const MainMenu = dynamic(() => import("./MainMenu"));
+const MobileMenu = dynamic(() => import("./MobileMenu"));
+const ProfileMenu = dynamic(() => import("./ProfileMenu"));
+const NavbarSearch = dynamic(() => import("./NavbarSearch"));
 
 const avatarImg =
-  'http://s3.amazonaws.com/redqteam.com/isomorphic-reloaded-image/profilepic.png';
+  "http://s3.amazonaws.com/redqteam.com/isomorphic-reloaded-image/profilepic.png";
 
 const LogoIcon = () => (
   <svg width="25" height="27.984" viewBox="0 0 25 27.984">
@@ -43,7 +43,7 @@ const LogoIcon = () => (
 );
 
 const Header = ({ router }) => {
-  const { currentUser } = useSelector( state => state.auth );
+  const { currentUser } = useSelector((state) => state.auth);
   const loggedIn = currentUser;
   const [{ searchVisibility }] = useContext(LayoutContext);
   const [state, setState] = useState(false);
@@ -51,7 +51,13 @@ const Header = ({ router }) => {
     setState((state) => !state);
   };
 
-  const headerType = router.pathname === '/' ? 'transparent' : 'default';
+  useEffect(() => {
+    if (currentUser && currentUser.role === "provider") {
+      window.location = '/landlords'
+    }
+  }, [currentUser]);
+
+  const headerType = router.pathname === "/" ? "transparent" : "default";
 
   return (
     <HeaderWrapper>
@@ -59,20 +65,25 @@ const Header = ({ router }) => {
         <Navbar
           logo={
             <>
-              {headerType === 'transparent' && <LogoIcon />}
-              <Logo
-                withLink
-                linkTo="/"
-                src="/images/logo-alt.svg"
-                title=""
-              />
+              {headerType === "transparent" && <LogoIcon />}
+              <Logo withLink linkTo="/" src="/images/logo-alt.svg" title="" />
             </>
           }
           navMenu={<MainMenu />}
           authMenu={<AuthMenu />}
           isLogin={loggedIn}
           avatar={<Avatar size={42} icon={<UserOutlined />} />}
-          profileMenu={<ProfileMenu avatar={<Avatar size={42} icon={<UserOutlined />} style={{ marginLeft: '-2px' }} />} />}
+          profileMenu={
+            <ProfileMenu
+              avatar={
+                <Avatar
+                  size={42}
+                  icon={<UserOutlined />}
+                  style={{ marginLeft: "-2px" }}
+                />
+              }
+            />
+          }
           headerType={headerType}
           searchComponent={<NavbarSearch />}
           location={router}
@@ -82,18 +93,13 @@ const Header = ({ router }) => {
         <MobileNavbar className={headerType}>
           <LogoArea>
             <>
-              {headerType === 'transparent' && <LogoIcon />}
-              <Logo
-                withLink
-                linkTo="/"
-                src="/images/logo-alt.svg"
-                title=""
-              />
+              {headerType === "transparent" && <LogoIcon />}
+              <Logo withLink linkTo="/" src="/images/logo-alt.svg" title="" />
             </>
             <NavbarSearch />
           </LogoArea>
           <Button
-            className={`hamburg-btn ${state ? 'active' : ''}`}
+            className={`hamburg-btn ${state ? "active" : ""}`}
             onClick={sidebarHandler}
           >
             <span />
@@ -109,7 +115,6 @@ const Header = ({ router }) => {
             visible={state}
           >
             <CloseDrawer>
-              
               <button onClick={sidebarHandler}>
                 <IoIosClose />
               </button>
