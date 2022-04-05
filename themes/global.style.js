@@ -1201,6 +1201,13 @@ const GlobalStyle = createGlobalStyle`
   background: #fafafa;
 }
 
+.strike-through{
+  text-decoration: line-through;
+  .ant-steps-item-title {
+    text-decoration: line-through;    
+  }
+}
+
 `;
 
 export default GlobalStyle;

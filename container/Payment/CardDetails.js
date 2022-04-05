@@ -29,7 +29,7 @@ const CardDetails = (props) => {
           </Row>
           <Row gutter={10}>
             <Col span={12}>
-              <strong>Card Last 4 Digit</strong>
+              <strong>Last 4 Digit</strong>
             </Col>
             <Col span={12} className="text-right">
               **********{card.customer_detail.card.last4}

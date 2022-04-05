@@ -66,7 +66,7 @@ export const updateMe = createAsyncThunk(
     }).then((res) => {
       return res.json()
     });
-    return response;
+    return response.user;
   }
 )
 

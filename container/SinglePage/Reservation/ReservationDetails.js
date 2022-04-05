@@ -9,6 +9,7 @@ import PriceBreakDown from "./PriceBreakDown";
 const ReservationDetails = () => {
   const dispatch = useDispatch();
   const { apartment } = useSelector((state) => state.apartment);
+  const { currentUser } = useSelector((state) => state.auth);
   const { booking, amountDue, grandTotal, bookingFee } = useSelector(
     (state) => state.booking
   );
@@ -26,13 +27,23 @@ const ReservationDetails = () => {
           Down Payment
           <Tooltip
             placement="top"
-            title="Deposit to hold this apartment. This amount will be applied to the first month's charges."
+            title={
+              currentUser && !currentUser.must_pay_deposit
+                ? "Deposit is already paid, thank you. Please continue with the booking."
+                : "Deposit to hold this apartment. This amount will be applied to the first month's charges."
+            }
           >
             <MdHelpCenter fontSize={18} />
           </Tooltip>
         </Col>
         <Col span={6}>
-          <strong>
+          <strong
+            className={
+              currentUser && !currentUser.must_pay_deposit
+                ? "strike-through"
+                : ""
+            }
+          >
             {apartment && (
               <>
                 <ApartmentCurrency currency={apartment.currency} /> 100
@@ -100,7 +111,6 @@ const ReservationDetails = () => {
               <PriceBreakDown />
             </Col>
           </Row>
-    
         </>
       )}
     </>

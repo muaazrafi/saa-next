@@ -6,6 +6,7 @@ import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentC
 
 const PriceBreakDown = (props) => {
   const { apartment } = useSelector((state) => state.apartment);
+  const { currentUser } = useSelector((state) => state.auth);
   const {
     amountDue,
     booking,
@@ -44,14 +45,26 @@ const PriceBreakDown = (props) => {
               <strong>Due upon booking</strong> (down payment){" "}
               <Tooltip
                 placement="top"
-                title="Deposit to hold this apartment. This amount will be applied to the first month's charges."
+                title={
+                  currentUser && !currentUser.must_pay_deposit
+                    ? "Deposit is already paid, thank you. Please continue with the booking."
+                    : "Deposit to hold this apartment. This amount will be applied to the first month's charges."
+                }
               >
                 <MdHelp size={18} color="#0088E5" />
               </Tooltip>
             </Col>
             <Col span={8} className="text-right">
-              <ApartmentCurrency currency={apartment.currency} />
-              {apartment.booking_request_amount}
+              <span
+                className={
+                  currentUser && !currentUser.must_pay_deposit
+                    ? "strike-through"
+                    : ""
+                }
+              >
+                <ApartmentCurrency currency={apartment.currency} />
+                {apartment.booking_request_amount}
+              </span>
             </Col>
           </Row>
         </Card>
@@ -101,12 +114,12 @@ const PriceBreakDown = (props) => {
               <Row gutter={10}>
                 <Col span={16}>
                   <strong>Total Extra Charges</strong>{" "}
-                <Tooltip
-                  placement="top"
-                  title={`Per addtional guest charges are ${apartment.additional_guest_monthly_price} x ${excessTenants} tenants.`}
-                >
-                  <MdHelp size={18} color="#0088E5" />
-                </Tooltip>
+                  <Tooltip
+                    placement="top"
+                    title={`Per addtional guest charges are ${apartment.additional_guest_monthly_price} x ${excessTenants} tenants.`}
+                  >
+                    <MdHelp size={18} color="#0088E5" />
+                  </Tooltip>
                 </Col>
                 <Col span={8} className="text-right">
                   <ApartmentCurrency currency={apartment.currency} />

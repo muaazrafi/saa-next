@@ -202,7 +202,7 @@ export const MenuWrapper = styled.div`
         &.active {
           font-weight: 700;
           color: ${themeGet('primary.0', '#0088E5')};
-          // border-bottom: 3px solid ${themeGet('primary.0', '#0088E5')};
+          border-bottom: 3px solid ${themeGet('primary.0', '#0088E5')};
         }
       }
     }

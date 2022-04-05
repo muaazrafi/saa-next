@@ -16,12 +16,23 @@ const StepOne = (props) => {
 
   useEffect( () => {
     if (moveStep){
-      router.push(`/apartment_lead/${apartmentId}/${bookingId}/step_two`);
-      notification['success']({
-        message: 'Successfully Updated',
-        description:
-          'Please enter payment details.',
-      });
+      if(currentUser && currentUser.must_pay_deposit) {
+        router.push(`/apartment_lead/${apartmentId}/${bookingId}/step_two`);
+        notification['success']({
+          message: 'Successfully Updated',
+          description:
+            'Please enter payment details.',
+        });        
+      } else {
+        router.push(`/apartment_lead/${apartmentId}/${bookingId}/step_three`);
+        notification['success']({
+          message: 'Successfully Updated',
+          description:
+            'Please confirm booking .',
+        });        
+      }
+
+
     }
   }, [moveStep]);
 

@@ -6,7 +6,7 @@ import { AiTwotoneEdit } from "react-icons/ai";
 
 const ProfileCard = (props) => {
   const { currentUser, loading } = useSelector((state) => state.auth);
-
+  console.log("Current User: ", currentUser);
   return (
     <Card
       title={

@@ -1,12 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import { Button, notification } from "antd";
 import { useStripe } from "@stripe/react-stripe-js";
 import { createIntent } from "store/services/card";
 import { confirmStatus } from "/store/services/booking";
 import { ConfirmButtonWrapper } from "./Card.style";
-import { handleLoading } from 'store/bookingSlice';
+import { handleLoading } from "store/bookingSlice";
 import { setError } from "store/cardSlice";
 
 const ConfirmPayment = (props) => {
@@ -14,8 +14,19 @@ const ConfirmPayment = (props) => {
   const dispatch = useDispatch();
   const bookingId = router.query.booking;
 
-  const { loading } = useSelector( state => state.booking );
+  const { loading } = useSelector((state) => state.booking);
+  const { currentUser } = useSelector((state) => state.auth);
   const stripe = useStripe();
+
+  const confirmBooking = async () => {
+    await confirmStatus(bookingId);
+    notification["success"]({
+      message: "Successfully Sent!",
+      description: "Booking request pending approval.",
+    });
+    dispatch(handleLoading(false));
+    router.push("/thank-you");
+  };
 
   const makeDownPayment = async () => {
     if (!stripe) {
@@ -27,19 +38,11 @@ const ConfirmPayment = (props) => {
       intent.client_secret
     );
     if (error) {
-      debugger
       dispatch(setError(error.message));
       dispatch(handleLoading(false));
       router.back();
     } else {
-      const bookingConfirmed = await confirmStatus(bookingId);
-      notification['success']({
-        message: 'Successfully Sent!',
-        description:
-          'Booking request pending approval.',
-      });
-      dispatch(handleLoading(false));
-      router.push('/thank-you');
+      await confirmBooking();
     }
   };
 
@@ -49,7 +52,11 @@ const ConfirmPayment = (props) => {
         type="success"
         size="large"
         block
-        onClick={makeDownPayment}
+        onClick={
+          currentUser && currentUser.must_pay_deposit
+            ? makeDownPayment
+            : confirmBooking
+        }
         loading={loading}
       >
         Confirm Booking
