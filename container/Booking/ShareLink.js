@@ -1,5 +1,6 @@
 import React from "react";
-import { Alert, Button, Card } from "antd";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Alert, Button, Card, notification } from "antd";
 
 const ShareLink = ({ booking }) => {
   return (
@@ -9,7 +10,19 @@ const ShareLink = ({ booking }) => {
         description={booking.invitation_path}
         type="info"
         className="referralLinkAlert"
-        action={<Button>Copy</Button>}
+        action={
+          <CopyToClipboard
+            text={booking.invitation_path}
+            onCopy={() => {
+              notification["success"]({
+                message: "Copied",
+                description: "Successfully copied invitation link.",
+              });
+            }}
+          >
+            <Button>Copy</Button>
+          </CopyToClipboard>
+        }
       />
     </Card>
   );

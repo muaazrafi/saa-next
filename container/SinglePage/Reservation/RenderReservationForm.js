@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import HtmlLabel from "components/UI/HtmlLabel/HtmlLabel";
 import DatePickerRange from "components/UI/DatePicker/ReactDates";
 import { Row, Col, Select } from "antd";
-import { updateBooking } from "/store/bookingSlice";
+import { updateBooking, handleLoading } from "/store/bookingSlice";
 import { handlePopUp } from "/store/authSlice";
 import { createBooking } from "/store/services/booking";
 
@@ -24,7 +24,7 @@ const RenderReservationForm = () => {
   const router = useRouter();
   const { currentUser } = useSelector((state) => state.auth);
   const { apartment } = useSelector((state) => state.apartment);
-  const { booking } = useSelector((state) => state.booking);
+  const { booking, loading } = useSelector((state) => state.booking);
   const { startDate, endDate } = router.query;
 
   useEffect(() => {
@@ -61,6 +61,28 @@ const RenderReservationForm = () => {
     }
   }, [booking]);
 
+  useEffect(() => {
+    if (currentUser && booking && booking.id && !bookNow()) {
+      notification["success"]({
+        message: "Booking Request Sent",
+        description:
+          "Booking request successfully sent, will notify you once approved from landlord.",
+      });
+      dispatch(
+        updateBooking({
+          id: null,
+          apartment_id: null,
+          check_in: null,
+          check_out: null,
+          number_of_room_mates: 1,
+          was_availability_request: false,
+          check_availability_request: false,
+          move: false,
+        })
+      );
+    }
+  }, [booking]);
+
   const disableDates = (current) => {
     if (current && current.valueOf() < Date.now()) {
       return true;
@@ -94,6 +116,7 @@ const RenderReservationForm = () => {
   };
 
   const handleBooking = () => {
+    dispatch(handleLoading(true));
     dispatch(createBooking(booking));
     // Thanks for requesting, our landlords typically respond within 48 hours to respond to booking requests.
   };
@@ -196,7 +219,7 @@ const RenderReservationForm = () => {
         </Row>
       </FieldWrapper>
       <FormActionArea style={{ padding: "0px 20px" }}>
-        <Button htmlType="submit" type="primary" disabled={bookingBtnState()}>
+        <Button htmlType="submit" type="primary" disabled={bookingBtnState()} loading={loading}>
           {bookNow() ? "Book Now" : "Request to Book"}
         </Button>
       </FormActionArea>
