@@ -1,17 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Card, Alert, Button, notification } from "antd";
 import { BiLink } from "react-icons/bi";
 
 const ReferralCard = (props) => {
   const { currentUser, loading } = useSelector((state) => state.auth);
-  const copyReferralLink = () => {
-    notification['success']({
-      message: 'Copied',
-      description: 'Successfully copied referral link.',
-    });
-  }
-   
+  const copyReferralLink = () => {};
+
   return (
     <Card
       title={
@@ -24,16 +20,28 @@ const ReferralCard = (props) => {
       loading={loading}
     >
       <p>
-        Refer a friend and they get <strong>5%</strong> off the SAA service fee. Once your friend
-        books with us we will give you <strong>7%</strong> of your friends booking fee. It's that
-        easy!*
+        Refer a friend and they get <strong>5%</strong> off the SAA service fee.
+        Once your friend books with us we will give you <strong>7%</strong> of
+        your friends booking fee. It's that easy!*
       </p>
       <Alert
         message="Just share this link with your social network:"
         description={currentUser && currentUser.referral_link}
         type="info"
         className="referralLinkAlert"
-        action={<Button onClick={copyReferralLink}>Copy</Button>}
+        action={
+          <CopyToClipboard
+            text={currentUser && currentUser.referral_link}
+            onCopy={() => {
+              notification["success"]({
+                message: "Copied",
+                description: "Successfully copied referral link.",
+              });
+            }}
+          >
+            <Button>Copy</Button>
+          </CopyToClipboard>
+        }
       />
       <p>
         You can also tell your friends to use this promo code when they book:{" "}
