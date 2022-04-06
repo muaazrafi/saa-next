@@ -17,11 +17,12 @@ const initialState = {
   currentUser: null,
   popUp: false,
   auth_component_switch: "up",
-  existError: false,
   loading: true,
   tempPhone: null,
   moveStep: false,
-  authFailed: false
+  authFailed: false,
+  existError: false,
+  errors: []
 };
 
 
@@ -80,10 +81,12 @@ export const authSlice = createSlice({
     });
 
     builder.addCase(register.fulfilled, (state, action) => {
-      if (action.payload.error) {
+      if (action.payload.errors) {
         state.existError = true;
+        state.errors =  Object.entries(action.payload.errors);
       } else {
         state.popUp = false;
+        state.existError = false;
         state.authFailed = false;
         state.currentUser = action.payload;
         notification['success']({

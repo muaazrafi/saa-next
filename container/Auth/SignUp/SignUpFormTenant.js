@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Button, Input } from "antd";
+import { Form, Button, Input, Alert } from "antd";
 import { cloneDeep } from "lodash";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { HiOutlineMail } from "react-icons/hi";
@@ -10,7 +10,9 @@ import PhoneInput from "components/UI/FormControl/PhoneInput";
 
 const SignUpForm = ({ booking = false }) => {
   const dispatcher = useDispatch();
-  const { existError, loading, tempPhone } = useSelector((state) => state.auth);
+  const { existError, loading, tempPhone, errors } = useSelector(
+    (state) => state.auth
+  );
   const inputWidthControl = { width: booking ? "100%" : 256 };
 
   const onFinish = (values) => {
@@ -88,6 +90,20 @@ const SignUpForm = ({ booking = false }) => {
           />
         </Form.Item>
 
+        {existError && (
+          <>
+            {errors.map((error) => {
+              return (
+                <Alert
+                  message={`${error[0]} ${error[1]}`}
+                  type="error"
+                  showIcon
+                />
+              );
+            })}
+            <br />
+          </>
+        )}
         <Form.Item>
           <Button
             type="primary"
@@ -97,7 +113,7 @@ const SignUpForm = ({ booking = false }) => {
             block
             loading={loading}
           >
-            { booking ? 'REGISTER TO JOIN BOOKING' : 'Continue' }  
+            {booking ? "REGISTER TO JOIN BOOKING" : "Continue"}
           </Button>
         </Form.Item>
       </Form>
