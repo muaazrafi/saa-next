@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Button, Input, Alert } from "antd";
+import { Form, Button, Input, Alert, Checkbox } from "antd";
 import { cloneDeep } from "lodash";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { HiOutlineMail } from "react-icons/hi";
@@ -89,6 +89,12 @@ const SignUpForm = ({ booking = false }) => {
             style={inputWidthControl}
           />
         </Form.Item>
+
+        {booking && (
+          <Form.Item name="parent" style={{ marginBottom: "10px" }} valuePropName="checked" >
+            <Checkbox value={true} >Are you a parent?</Checkbox>
+          </Form.Item>
+        )}
 
         {existError && (
           <>

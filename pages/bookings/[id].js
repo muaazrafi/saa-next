@@ -47,7 +47,7 @@ const InviteBooking = (props) => {
       <Card title="Join the Booking" style={{ marginTop: "25px" }}>
         <Row gutter={20}>
           <Col lg={12} md={24} sm={24} xs={24}>
-            <Card title="Join Your Booking">
+            <Card title="Join Your Booking" className='invite-wrapper' >
               <SignUpFormTenant booking={true} />
             </Card>
             <br />

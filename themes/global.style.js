@@ -1208,6 +1208,15 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+.invite-wrapper{
+  .intl-tel-input{
+    width: 100%;
+    input[type=tel]{
+      width: 100%;
+    }
+  }
+}
+
 `;
 
 export default GlobalStyle;
