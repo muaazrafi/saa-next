@@ -22,6 +22,7 @@ import { confirmSplit } from "/store/services/booking";
 import { handleLoading } from "store/bookingSlice";
 import { changeMoveStep, setError, handleLoading as handleCardLoading } from "store/cardSlice";
 import { create } from "store/services/card";
+import { show } from "store/services/card";
 
 const { TextArea } = Input;
 
@@ -57,6 +58,12 @@ const Split = (props) => {
       setChangeCard(false);
     }
   }, [moveStep]);
+
+  useEffect( () => {
+    if(!cardLoading && !card) {
+      setChangeCard(true);
+    }
+  },[cardLoading]);
 
   // useEffect(() => {
   //   if (!cardLoading) {
@@ -105,6 +112,10 @@ const Split = (props) => {
     } else {
       dispatch(confirmSplit({ bookingID: booking.id, intent }));
       setAmount(null);
+      if (!card) {
+        dispatch(handleCardLoading(true))
+        dispatch(show());
+      }
     }
   };
 
