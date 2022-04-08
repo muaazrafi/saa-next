@@ -57,7 +57,7 @@ const Header = ({ router }) => {
     }
   }, [currentUser]);
 
-  const headerType = router.pathname === "/" ? "transparent" : "default";
+  const headerType = "default";
 
   return (
     <HeaderWrapper>

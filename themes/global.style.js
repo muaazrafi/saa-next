@@ -1294,6 +1294,9 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+h5.ant-typography{
+  font-size: 14px;
+}
 
 `;
 

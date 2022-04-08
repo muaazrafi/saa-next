@@ -11,7 +11,7 @@ import {
 import Images from "../../container/Home/Images";
 import FooterWrapper from "./Footer.style";
 
-const Footer = ({ logo, menu, bgSrc, copyright, className, path }) => {
+const Footer = () => {
   return (
     <FooterWrapper>
       <section className="footer_section">
