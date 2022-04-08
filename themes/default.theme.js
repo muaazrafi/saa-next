@@ -3,6 +3,7 @@ const defaultTheme = {
   primary: [
     '#0088E5', // 0: Default
     '#399C9F', // 1: Chart
+    '#06c1f2'
   ],
   color: [
     '#000000', // 0: Black

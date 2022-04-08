@@ -3,21 +3,45 @@ import { themeGet } from '@styled-system/theme-get';
 import footerBg from './footer-bg.svg';
 
 const FooterWrapper = styled.footer`
-  width: 100%;
-  background-color: ${themeGet('color.1', '#ffffff')};
-  background-image: url(${(props) => (props.bgSrc ? props.bgSrc : footerBg)});
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 100%;
-  padding: 47px 0 66px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.footer_section {
+  padding-bottom: 80px;
 
-  @media (max-width: 480px) {
-    padding: 60px 0 50px;
+  .left_col_div {
+    p {
+      padding: 25px 0;
+    }
   }
+
+  .right_col_div {
+    .text_area {
+      &:first-of-type {
+        padding: 0 0 15px 0;
+      }
+    }
+  }
+
+  .padding_right {
+    padding-right: 14% !important;
+    @include md-down {
+      padding-right: 0 !important;
+    }
+  }
+
+  .text_area {
+    p {
+      color: #999999;
+      margin-bottom: 20px;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    h3 {
+      font-size: 14px;
+      color: $grey-color;
+    }
+  }
+}
 `;
 
 export const MenuWrapper = styled.div`

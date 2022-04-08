@@ -2,6 +2,73 @@ import { createGlobalStyle } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 const GlobalStyle = createGlobalStyle`
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+  /*Responsive Breakpoints*/
+  $xxlWidth: 1400px;
+  $xlWidth: 1200px;
+  $lgWidth: 992px;
+  $mdWidth: 768px;
+  $smWidth: 576px;
+
+  /*Responsive Media Min Width*/
+
+  @mixin xxl-up {
+    @media (min-width: #{$xxlWidth}) {
+      @content;
+    }
+  }
+
+  @mixin xl-up {
+    @media (min-width: #{$xlWidth}) {
+      @content;
+    }
+  }
+  @mixin lg-up {
+    @media (min-width: #{$lgWidth}) {
+      @content;
+    }
+  }
+  @mixin md-up {
+    @media (min-width: #{$mdWidth}) {
+      @content;
+    }
+  }
+  @mixin sm-up {
+    @media (min-width: #{$smWidth}) {
+      @content;
+    }
+  }
+
+  /*Bootstrap Media Max Width*/
+
+  @mixin xxl-down {
+    @media (max-width: #{$xxlWidth}) {
+      @content;
+    }
+  }
+
+  @mixin xl-down {
+    @media (max-width: #{$xlWidth}) {
+      @content;
+    }
+  }
+  @mixin lg-down {
+    @media (max-width: #{$lgWidth}) {
+      @content;
+    }
+  }
+  @mixin md-down {
+    @media (max-width: #{$mdWidth}) {
+      @content;
+    }
+  }
+  @mixin sm-down {
+    @media (max-width: #{$smWidth}) {
+      @content;
+    }
+  }
+
   * {
     box-sizing: inherit;
     -webkit-font-smoothing: antialiased;
@@ -40,7 +107,7 @@ const GlobalStyle = createGlobalStyle`
   textarea,
   span,
   div {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
@@ -1216,6 +1283,17 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 }
+
+.rights_Section {
+  padding: 15px 0;
+  text-align: center;
+  color: #ffffff;
+  background-color: ${themeGet('primary.2', '#06c1f2')};
+  @include sm-down {
+    font-size: 12px;
+  }
+}
+
 
 `;
 
