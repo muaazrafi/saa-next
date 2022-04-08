@@ -1,6 +1,6 @@
 export default {
   //logo image
-  logo: "/assets/logo.png",
+  logo: "/images/logo-alt.svg",
 
   //Roommate
   semester: "/assets/semester.jpg",
@@ -45,7 +45,7 @@ export default {
 
   //random
   circle: "/assets/random/circle_blue.svg",
-  cloud_right: "/assets/random/cloud_right.png",
+  cloud_right: "/assets/random/cloud_right.svg",
   notebook: "/assets/random/book.png",
   cap: "/assets/random/cap.png",
   shahdow: "/assets/random/shahdow.png",

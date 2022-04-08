@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
-import footerBg from './footer-bg.svg';
 
 const FooterWrapper = styled.footer`
 .footer_section {
-  padding-bottom: 80px;
+  padding-bottom: 40px;
+
+  .top-border{
+    border-top: 1px solid #dbdbdb;
+    padding-top: 40px;
+  }
 
   .left_col_div {
     p {

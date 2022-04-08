@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import moment from "moment";
 import { Row, Col } from "antd";
 import {
@@ -8,7 +7,7 @@ import {
   InstagramFilled,
   LinkedinFilled,
 } from "@ant-design/icons";
-import Images from "../../container/Home/Images";
+import Images from "/container/Home/Images";
 import FooterWrapper from "./Footer.style";
 
 const Footer = () => {
@@ -16,10 +15,10 @@ const Footer = () => {
     <FooterWrapper>
       <section className="footer_section">
         <div className="container">
-          <Row gutter={[20, 40]}>
+          <Row gutter={[20, 40]} className="top-border" >
             <Col xs={24} xl={12} className="padding_right">
               <div className="left_col_div">
-                <Image src={Images.logo} alt="logo" width={100} height={50} />
+                <img src={Images.logo} alt="logo" width={100} height={50} />
                 <div className="text_area">
                   <p>
                     Study Abroad Apartments is an online housing marketplace
