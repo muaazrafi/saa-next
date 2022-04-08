@@ -167,7 +167,7 @@ button {
 //Banner section here
 
 .banner_section {
-  background-image: url(/assets/banner-home.jpg);
+  background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/next/banner-home.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -242,11 +242,11 @@ button {
   }
 
   .bg_one {
-    background-image: url(/assets/barcelona.jpg);
+    background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/next/barcelona.jpg);
   }
 
   .bg_two {
-    background-image: url(/assets/madrid.jpg);
+    background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/next/madrid.jpg);
   }
 
   .green_area {
@@ -280,7 +280,7 @@ button {
 }
   
   .img_div {
-    background-image: url(/assets/capture.png);
+    background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/next/capture.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

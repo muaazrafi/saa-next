@@ -1,55 +1,55 @@
 export default {
   //logo image
-  logo: "/images/logo-alt.svg",
+  logo: "https://d1d0zx56gx2nys.cloudfront.net/assets/logo.svg",
 
   //Roommate
-  semester: "/assets/semester.jpg",
+  semester: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/semester.jpg",
 
   //features images
-  listing: "/assets/features/listing.png",
-  manage: "/assets/features/manage.png",
-  community: "/assets/features/community.png",
-  knowledge: "/assets/features/knowledge.png",
+  listing: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/features/listing.png",
+  manage: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/features/manage.png",
+  community: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/features/community.png",
+  knowledge: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/features/knowledge.png",
 
   //experience images
-  money: "/assets/experience/money.png",
-  experience: "/assets/experience/experience.png",
+  money: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/experience/money.png",
+  experience: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/experience/experience.png",
 
   //how it works images
-  search: "/assets/work/search.png",
-  book: "/assets/work/book.png",
-  confirm: "/assets/work/confirm.png",
-  pay: "/assets/work/pay.png",
-  home: "/assets/work/home.png",
+  search: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/work/search.png",
+  book: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/work/book.png",
+  confirm: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/work/confirm.png",
+  pay: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/work/pay.png",
+  home: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/work/home.png",
 
   //Roommate
-  roommate: "/assets/rommate/roommate.PNG",
+  roommate: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/rommate/roommate.PNG",
 
   //Study
-  study_one: "/assets/study/study_one.png",
-  study_two: "/assets/study/study_two.png",
-  study_three: "/assets/study/study_three.png",
+  study_one: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/study/study_one.png",
+  study_two: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/study/study_two.png",
+  study_three: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/study/study_three.png",
 
   //brands
-  brand_one: "/assets/brands/brand_one.png",
-  brand_two: "/assets/brands/brand_two.png",
-  brand_three: "/assets/brands/brand_three.png",
-  brand_four: "/assets/brands/brand_four.png",
-  brand_five: "/assets/brands/brand_five.png",
+  brand_one: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/brands/brand_one.png",
+  brand_two: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/brands/brand_two.png",
+  brand_three: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/brands/brand_three.png",
+  brand_four: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/brands/brand_four.png",
+  brand_five: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/brands/brand_five.png",
 
   //social
-  facebook: "/assets/facebook.png",
-  twitter: "/assets/twitter.png",
-  instagram: "/assets/instagram.png",
-  linkedin: "/assets/linkedin.png",
+  facebook: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/facebook.png",
+  twitter: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/twitter.png",
+  instagram: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/instagram.png",
+  linkedin: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/linkedin.png",
 
   //random
-  circle: "/assets/random/circle_blue.svg",
-  cloud_right: "/assets/random/cloud_right.svg",
-  notebook: "/assets/random/book.png",
-  cap: "/assets/random/cap.png",
-  shahdow: "/assets/random/shahdow.png",
-  globe: "/assets/random/globe.png",
-  paper: "/assets/random/paper.png",
-  pencil: "/assets/random/pencil.png",
+  circle: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/circle_blue.svg",
+  cloud_right: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/cloud_right.svg",
+  notebook: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/book.png",
+  cap: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/cap.png",
+  shahdow: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/shahdow.png",
+  globe: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/globe.png",
+  paper: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/paper.png",
+  pencil: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/pencil.png",
 };
