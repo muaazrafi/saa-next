@@ -1288,7 +1288,7 @@ const GlobalStyle = createGlobalStyle`
   padding: 15px 0;
   text-align: center;
   color: #ffffff;
-  background-color: ${themeGet('primary.2', '#06c1f2')};
+  background-color: ${themeGet('primary.0', '#0088E5')};
   @include sm-down {
     font-size: 12px;
   }

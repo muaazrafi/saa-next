@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { cloneDeep, uniqBy } from "lodash";
+import { cloneDeep, uniqBy, capitalize } from "lodash";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Sticky from "react-stickynode";
@@ -30,6 +30,8 @@ export default function ListingPage({ processedData, deviceType }) {
   const { apartments, loading, search, total, loadMore } = useSelector(
     (state) => state.apartments
   );
+
+  const cityName = capitalize(router.query.city);
 
   useEffect(() => {
     const { q } = router.query;
@@ -74,9 +76,10 @@ export default function ListingPage({ processedData, deviceType }) {
   return (
     <ListingWrapper>
       <Head>
-        <title>SAA Listing</title>
+      <title>Student Apartments in {cityName} | Study Abroad Apartments</title>
+        <meta name="description" content={`Studying in ${cityName}? We have amazing student housing in ${cityName} for your liking. Visit our list of apartments to find a place to stay in ${cityName}`}></meta>
+        <meta name="keywords" content={`Apartments,Apartments in,Accommodation,International student,International students,Intern,Interns,Internship,Internships,Study Abroad,Young professionals,Things to do in,For rent,Available,Apartment to share,Flat to share,Group of friends,Moving to,Europe,Help book apartment,Help book room,Help book flat,Help book accommodation,Student accommodation,Explore the city,Neighborhoods,Affordable apartments,Rent for students,Find apartment,Suited for students, interns, young pro’s,Housing options,Quality student accommodation,University,Universities,Landmarks,Activities,Provides,Studio,Student apartment,Student apartments,Overseas,student,students,Home abroad,Student housing,Find and book,Verified landlord,Verified landlords,Peace of mind for students, Peace of mind for parents,Flatshare,Reliable listing,Reliable listings,Accommodation options,Barcelona,Madrid,Florence,Rome,Prague,Paris,London,New York,Milan,student apartment,student roommate finder,best places to study abroad,homestay or apartment study abroad,${search.property_city_matches} apartments, Florence apartments, Prague apartments, student apartments nyc, best websites to find housing for students in paris,uniplaces madrid,sites like uniplaces,find housing anywhere,housinganywhere,uniplaces firenze,student com,housing anywhere,housing anywere,uniplaces number,unipla es,uniplaces promo,uniplaces rome,housing anywhere amsterdam,uniplaces milan,uniplaces madrid contact,eae business school uniplaces,uniplaces,uniplaces madrid,sites like uniplaces,find housing anywhere,housinganywhere,uniplaces firenze,student com,housing anywhere,housing anywere,uniplaces number,unipla es`} />
       </Head>
-
       <Sticky
         top={82}
         innerZ={999}
