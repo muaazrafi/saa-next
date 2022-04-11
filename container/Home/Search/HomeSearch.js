@@ -109,6 +109,7 @@ const HomeSearch = () => {
                   type="primary"
                   icon={<SearchOutlined />}
                   htmlType="submit"
+                  className="home-search-button"
                 >
                   Search
                 </Button>

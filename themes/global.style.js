@@ -1298,6 +1298,14 @@ h5.ant-typography{
   font-size: 14px;
 }
 
+@media (max-width: 992px){
+  .home-search-button{
+    width: 100%;
+  }
+}
+
+
+
 `;
 
 export default GlobalStyle;
