@@ -633,6 +633,22 @@ button {
   }
 }
 
+.DateRangePicker{
+  width: 100%;
+  .DateRangePickerInput{
+    width: 100%;
+    .DateInput{
+      width: 49%;
+      .DateInput_input__focused{
+        border-color: ${themeGet('primary.0', '#0088E5')};
+      }
+
+    }
+  }
+  
+}
+
+
 `;
 
 export default HomeWrapper;

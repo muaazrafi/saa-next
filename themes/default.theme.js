@@ -2,7 +2,7 @@ const defaultTheme = {
   breakpoints: ['481px', '768px', '992px', '1201px', '1441px'],
   primary: [
     '#0088E5', // 0: Default
-    '#399C9F', // 1: Chart
+    '#40a9ff', // 1: Chart
     '#06c1f2'
   ],
   color: [

@@ -3,10 +3,9 @@ import Image from "next/image";
 import Images from "./Images";
 import { Row, Col, Input, Button } from "antd";
 import {
-  SearchOutlined,
   CalendarOutlined,
 } from "@ant-design/icons";
-
+import HomeSearch from "./Search/HomeSearch";
 import HomeWrapper from "./Home.style";
 
 const Home = (props) => {
@@ -29,29 +28,7 @@ const Home = (props) => {
       </section>
 
       {/* Booking section */}
-      <section className="booking_section">
-        <div className="container">
-          <Row gutter={[20, 20]}>
-            <Col xs={24} xl={9}>
-              <Input placeholder="Where do you want to go?" />
-            </Col>
-            <Col xs={12} xl={4}>
-              <Input placeholder="Check In" />
-            </Col>
-            <Col xs={12} xl={4}>
-              <Input placeholder="Check Out" />
-            </Col>
-            <Col xs={24} xl={4}>
-              <Input placeholder="Guests" />
-            </Col>
-            <Col xs={24} xl={3}>
-              <Button type="primary" icon={<SearchOutlined />}>
-                Search
-              </Button>
-            </Col>
-          </Row>
-        </div>
-      </section>
+      <HomeSearch />
 
       {/* Destination section */}
       <section className="destination_section padding_main">
