@@ -19,9 +19,7 @@ const HomeSearch = () => {
   const [end, setEnd] = useState(null);
 
   const dateSelection = (startDate, endDate) => {
-    const startDateState = startDate
-      ? startDate.format("YYYY-MM-DD")
-      : null;
+    const startDateState = startDate ? startDate.format("YYYY-MM-DD") : null;
     const endDateState = endDate ? endDate.format("YYYY-MM-DD") : null;
     setStart(startDateState);
     setEnd(endDateState);
@@ -30,13 +28,17 @@ const HomeSearch = () => {
   const searchApartments = (values) => {
     let modifiedSearch = cloneDeep(search);
     modifiedSearch.property_city_matches = values.location;
-    modifiedSearch.number_of_max_occupants_gteq = values.guests ? values.guests : "";
+    modifiedSearch.number_of_max_occupants_gteq = values.guests
+      ? values.guests
+      : "";
     modifiedSearch.startDate = start;
-    modifiedSearch.endDate = end;    
-    debugger
+    modifiedSearch.endDate = end;
+    debugger;
     router
       .push(
-        `/listings/${modifiedSearch.property_city_matches}?q=${JSON.stringify(modifiedSearch)}`,
+        `/listings/${modifiedSearch.property_city_matches}?q=${JSON.stringify(
+          modifiedSearch
+        )}`,
         undefined,
         { shallow: false }
       )
@@ -59,6 +61,7 @@ const HomeSearch = () => {
               <Form.Item
                 name="location"
                 rules={[{ required: true, message: "Please select location" }]}
+                style={{ marginBottom: "0px" }}
               >
                 <Select
                   showSearch
@@ -73,7 +76,7 @@ const HomeSearch = () => {
             </Col>
             <Col xs={24} xl={8}>
               <NoSSR>
-                <Form.Item name="dates">
+                <Form.Item name="dates" style={{ marginBottom: "0px" }}>
                   <DatePickerRange
                     startDateId="checkin-Id"
                     endDateId="checkout-id"
@@ -87,7 +90,7 @@ const HomeSearch = () => {
               </NoSSR>
             </Col>
             <Col xs={24} xl={4}>
-              <Form.Item name="guests">
+              <Form.Item name="guests" style={{ marginBottom: "0px" }}>
                 <Select
                   showSearch
                   style={{ width: "100%" }}
@@ -101,8 +104,12 @@ const HomeSearch = () => {
               </Form.Item>
             </Col>
             <Col xs={24} xl={3}>
-              <Form.Item>
-                <Button type="primary" icon={<SearchOutlined />} htmlType="submit" >
+              <Form.Item style={{ marginBottom: "0px" }}>
+                <Button
+                  type="primary"
+                  icon={<SearchOutlined />}
+                  htmlType="submit"
+                >
                   Search
                 </Button>
               </Form.Item>

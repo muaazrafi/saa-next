@@ -638,7 +638,7 @@ button {
   .DateRangePickerInput{
     width: 100%;
     .DateInput{
-      width: 49%;
+      width: 45%;
       .DateInput_input__focused{
         border-color: ${themeGet('primary.0', '#0088E5')};
       }
