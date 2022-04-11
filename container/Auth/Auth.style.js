@@ -8,19 +8,21 @@ const Wrapper = styled.div`
 
 export const FormWrapper = styled.div`
   width: 100%;
-  padding: 81px;
+  padding: 40px;
   @media (min-width: 1441px) {
     padding: 40px;
   }
   @media (max-width: 1200px) {
-    width: 50%;
+    padding: 30px;
+    width: 100%;
   }
   @media (max-width: 991px) {
-    padding: 56px;
+    padding: 30px 0px 30px 0px;
     width: 80%;
     margin: 0 auto;
   }
   @media (max-width: 767px) {
+    padding: 40px;
     width: 100%;
   }
   @media (max-width: 480px) {
