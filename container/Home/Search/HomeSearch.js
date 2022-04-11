@@ -71,7 +71,7 @@ const HomeSearch = () => {
                 </Select>
               </Form.Item>
             </Col>
-            <Col xs={12} xl={8}>
+            <Col xs={24} xl={8}>
               <NoSSR>
                 <Form.Item name="dates">
                   <DatePickerRange
