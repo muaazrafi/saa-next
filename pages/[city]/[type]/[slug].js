@@ -66,7 +66,8 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
   return (
     <>
       <Head>
-        <title>{pageTitle} | SAA.</title>
+        <title>{pageTitle} | Student apartment in {router.query.city}</title>
+        <meta name="description" content={apartment && apartment.apartment_summary} />
       </Head>
       <SinglePageWrapper>
         <PostImage>
