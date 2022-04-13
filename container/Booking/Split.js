@@ -36,10 +36,16 @@ const Split = (props) => {
     loading: cardLoading
   } = useSelector((state) => state.card);
   const [changeCard, setChangeCard] = useState(false);
+  const [changeCardInit, setChangeCardInit] = useState(true);
   const [amount, setAmount] = useState(null);
   const elements = useElements();
   const stripe = useStripe();
   const [form] = Form.useForm();
+
+  useEffect(() => {
+    dispatch(handleCardLoading(true));
+    dispatch(show());
+  }, []);
 
   useEffect(() => {
     if (booking && booking.pending_balance === 0) {
@@ -55,13 +61,17 @@ const Split = (props) => {
     if (moveStep) {
       dispatch(changeMoveStep(false));
       await makePayment();
-      setChangeCard(false);
     }
   }, [moveStep]);
 
   useEffect( () => {
-    if(!cardLoading && !card) {
-      setChangeCard(true);
+    if (changeCardInit){
+      if(!card) {
+        setChangeCard(true);
+      } else {
+        setChangeCard(false);
+        setChangeCardInit(false);      
+      }
     }
   },[cardLoading]);
 
@@ -109,9 +119,11 @@ const Split = (props) => {
     if (error) {
       dispatch(setError(error.message));
       dispatch(handleLoading(false));
+      setChangeCard(true);
     } else {
       dispatch(confirmSplit({ bookingID: booking.id, intent }));
       setAmount(null);
+      setChangeCard(false);
       if (!card) {
         dispatch(handleCardLoading(true))
         dispatch(show());

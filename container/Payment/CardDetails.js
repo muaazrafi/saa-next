@@ -49,4 +49,5 @@ const CardDetails = (props) => {
     </>
   );
 };
+
 export default CardDetails;
