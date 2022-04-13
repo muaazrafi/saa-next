@@ -41,7 +41,7 @@ const StepThree = (props) => {
           <>
             <Row gutter={20}>
               <Col md={6} sm={24} xs={24} style={{ marginBottom: "15px" }}>
-                <Card title="Due Today" hoverable loading={bookingLoading}>
+                <Card title="Due Today" hoverable>
                   <h1>
                     <ApartmentCurrency currency={apartment.currency} />{" "}
                     {currentUser && currentUser.must_pay_deposit ? "100" : "0"}
@@ -49,11 +49,7 @@ const StepThree = (props) => {
                 </Card>
               </Col>
               <Col md={6} sm={24} xs={24} style={{ marginBottom: "15px" }}>
-                <Card
-                  title="Due after acceptance"
-                  hoverable
-                  loading={bookingLoading}
-                >
+                <Card title="Due after acceptance" hoverable>
                   <h1>
                     <ApartmentCurrency currency={apartment.currency} />
                     {apartment &&

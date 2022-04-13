@@ -12,6 +12,7 @@ import { setError } from "store/cardSlice";
 const ConfirmPayment = (props) => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const apartmentId = router.query.apartment;
   const bookingId = router.query.booking;
 
   const { loading } = useSelector((state) => state.booking);
@@ -37,10 +38,11 @@ const ConfirmPayment = (props) => {
     const { paymentIntent, error } = await stripe.confirmCardPayment(
       intent.client_secret
     );
+
     if (error) {
       dispatch(setError(error.message));
       dispatch(handleLoading(false));
-      router.back();
+      router.push(`/apartment_lead/${apartmentId}/${bookingId}/step_two`);
     } else {
       await confirmBooking();
     }
