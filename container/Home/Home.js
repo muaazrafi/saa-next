@@ -1,10 +1,8 @@
 import React from "react";
-import Image from "next/image";
+import Link from "next/link";
 import Images from "./Images";
 import { Row, Col, Input, Button } from "antd";
-import {
-  CalendarOutlined,
-} from "@ant-design/icons";
+import { CalendarOutlined } from "@ant-design/icons";
 import HomeSearch from "./Search/HomeSearch";
 import HomeWrapper from "./Home.style";
 
@@ -18,8 +16,8 @@ const Home = (props) => {
               <div className="head_wrapper">
                 <h2 className="head_lg">Study Abroad Apartments</h2>
                 <p>
-                  Pick your city, rally your crew, live and explore a
-                  semester abroad that lasts a lifetime
+                  Pick your city, rally your crew, live and explore a semester
+                  abroad that lasts a lifetime
                 </p>
               </div>
             </Col>
@@ -35,9 +33,11 @@ const Home = (props) => {
         <div className="container">
           <Row gutter={[20, 20]}>
             <Col xs={24} xl={8}>
-              <div className="img_div bg_one">
-                <div>Barcelona, Spain</div>
-              </div>
+              <Link href="/listings/barcelona">
+                <div className="img_div bg_one">
+                  <div>Barcelona, Spain</div>
+                </div>
+              </Link>
             </Col>
 
             <Col xs={24} xl={8}>
@@ -272,12 +272,7 @@ const Home = (props) => {
 
             <Col xs={24} xl={8}>
               <div className="img_div bg_one">
-                <img
-                  src={Images.money}
-                  alt="money"
-                  width={447}
-                  height={274}
-                />
+                <img src={Images.money} alt="money" width={447} height={274} />
                 <div>Earn Money</div>
               </div>
 
@@ -356,12 +351,7 @@ const Home = (props) => {
                 <div className="work_inner">
                   <div className="colored_circle">2</div>
                   <div>
-                    <img
-                      src={Images.book}
-                      alt="book"
-                      width={40}
-                      height={32}
-                    />
+                    <img src={Images.book} alt="book" width={40} height={32} />
                   </div>
 
                   <div className="text_area">
@@ -443,12 +433,7 @@ const Home = (props) => {
                 <div className="work_inner min_h_361">
                   <div className="colored_circle">5</div>
                   <div>
-                    <img
-                      src={Images.home}
-                      alt="home"
-                      width={35}
-                      height={35}
-                    />
+                    <img src={Images.home} alt="home" width={35} height={35} />
                   </div>
 
                   <div className="text_area">
@@ -509,12 +494,7 @@ const Home = (props) => {
               </div>
 
               <div className="absolute_imgone">
-                <img
-                  src={Images.circle}
-                  alt="circle"
-                  width={40}
-                  height={40}
-                />
+                <img src={Images.circle} alt="circle" width={40} height={40} />
               </div>
             </Col>
           </Row>
@@ -746,7 +726,6 @@ const Home = (props) => {
           </Row>
         </div>
       </section>
-
     </HomeWrapper>
   );
 };
