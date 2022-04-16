@@ -1,5 +1,7 @@
-import React, { Fragment } from 'react';
-import useWindowSize from './useWindowSize';
+import React, { Fragment } from "react";
+import useWindowSize from "./useWindowSize";
+import { useSelector } from "react-redux";
+import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 import StickyBookingWrapper, {
   HotelInfo,
   InfoArea,
@@ -8,12 +10,12 @@ import StickyBookingWrapper, {
   HotelAction,
   Price,
   ActionBtn,
-  HotelRating,
-} from './StickyBooking.style';
+} from "./StickyBooking.style";
 
 const StickyBooking = ({ logo, title, price, rating, action, className }) => {
   // Add all classs to an array
-  const addAllClasses = ['sticky_booking'];
+  const { apartment, firstMonthRent } = useSelector((state) => state.apartment);
+  const addAllClasses = ["sticky_booking"];
 
   // className prop checking
   if (className) {
@@ -25,36 +27,37 @@ const StickyBooking = ({ logo, title, price, rating, action, className }) => {
   const windowInnerWidth = process.browser && windowSize.innerWidth;
 
   return (
-    <StickyBookingWrapper className={addAllClasses.join(' ')}>
-      <HotelInfo className="hotel_info">
-        {windowInnerWidth > 767 && (
-          <Fragment>{logo && <Logo src={logo} alt={title} />}</Fragment>
-        )}
+    <StickyBookingWrapper className={addAllClasses.join(" ")}>
+      {apartment && (
+        <>
+          <HotelInfo className="hotel_info">
+            {windowInnerWidth > 767 && (
+              <Fragment>{logo && <Logo src={logo} alt={title} />}</Fragment>
+            )}
 
-        {title || rating || price ? (
-          <InfoArea>
-            {windowInnerWidth > 767 ? (
-              <Fragment>{title && <Title>{title}</Title>}</Fragment>
-            ) : (
+            <InfoArea>
+              {windowInnerWidth > 767 ? (
+                <Fragment>{title && <Title>{apartment.name}</Title>}</Fragment>
+              ) : (
+                <Price>
+                  <ApartmentCurrency currency={apartment.currency} />{" "}
+                  {apartment.display_price} / Monthly
+                </Price>
+              )}
+            </InfoArea>
+          </HotelInfo>
+
+          <HotelAction className="hotel_action">
+            {windowInnerWidth > 767 && (
               <Price>
-                <span>${price}</span> / Night
+                <ApartmentCurrency currency={apartment.currency} />{" "}
+                {apartment.display_price} / Monthly
               </Price>
             )}
-            {rating && <HotelRating>{rating}</HotelRating>}
-          </InfoArea>
-        ) : (
-          ''
-        )}
-      </HotelInfo>
-
-      <HotelAction className="hotel_action">
-        {windowInnerWidth > 767 && (
-          <Price>
-            <span>${price}</span> / Night
-          </Price>
-        )}
-        <ActionBtn>{action}</ActionBtn>
-      </HotelAction>
+            <ActionBtn>{action}</ActionBtn>
+          </HotelAction>
+        </>
+      )}
     </StickyBookingWrapper>
   );
 };

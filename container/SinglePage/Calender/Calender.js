@@ -30,10 +30,10 @@ const Calender = ({ calenderStyle }) => {
         <Heading as="h2" content="Availability"  />
       	<Calendar disabledDate={disabledDate} fullscreen={false} {...calenderStyle} />
 	  	    <Row >
-	        	<Col span={24}>{<FaSquare style= {{color: '#d9534f'}} />} Red dates above are confirmed as occupied.</Col>
+	        	<Col span={24}>{<FaSquare style= {{color: '#F5F5F5'}} />} Grey dates above are confirmed as occupied.</Col>
 	        </Row>	
 	        <Row>
-	        	<Col span={24}>{<FaSquare style = {{color: '#e0d3d2'}}/>} White dates above are dates that the apartment is unoccupied.</Col>
+	        	<Col span={24}>{<FaSquare style = {{color: '#ffff'}}/>} White dates above are dates that the apartment is unoccupied.</Col>
 	        </Row>
       </CalenderWrapper>
 

@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from 'react';
+import NoSSR from 'react-no-ssr';
 import { IoIosClose } from 'react-icons/io';
 import Rating from 'components/UI/Rating/Rating';
 import { Button, Modal } from 'antd';
@@ -16,19 +17,21 @@ const BottomReservation = ({ title, price, rating, ratingCount }) => {
 
   return (
     <Fragment>
-      <StickyBooking
-        logo="/images/logo-alt.svg"
-        title={title}
-        price={price}
-        rating={
-          <Rating rating={rating} ratingCount={ratingCount} type="bulk" />
-        }
-        action={
-          <Button type="primary" onClick={toggleModal}>
-            Book
-          </Button>
-        }
-      />
+      <NoSSR>
+        <StickyBooking
+          logo="/images/logo-alt.svg"
+          title={title}
+          price={price}
+          rating={
+            <Rating rating={rating} ratingCount={ratingCount} type="bulk" />
+          }
+          action={
+            <Button type="primary" onClick={toggleModal}>
+              Book
+            </Button>
+          }
+        />
+      </NoSSR>
 
       <Modal
         visible={state}
