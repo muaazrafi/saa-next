@@ -18,7 +18,7 @@ const Home = (props) => {
               <div className="head_wrapper">
                 <h2 className="head_lg">Study Abroad Apartments</h2>
                 <p>
-                  Pick your city, rally your crew, and live and explore a
+                  Pick your city, rally your crew, live and explore a
                   semester abroad that lasts a lifetime
                 </p>
               </div>

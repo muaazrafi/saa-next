@@ -33,7 +33,6 @@ const HomeSearch = () => {
       : "";
     modifiedSearch.startDate = start;
     modifiedSearch.endDate = end;
-    debugger;
     router
       .push(
         `/listings/${modifiedSearch.property_city_matches}?q=${JSON.stringify(
