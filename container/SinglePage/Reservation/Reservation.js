@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import PropTypes from "prop-types";
+import { RiBillLine } from 'react-icons/ri';
 import Card from "components/UI/Card/Card";
 import Heading from "components/UI/Heading/Heading";
 import Text from "components/UI/Text/Text";
@@ -35,7 +36,7 @@ const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
       <>
       {apartment && (
         <>
-          Bills: {apartment.utilities_info} /
+          Bills: {apartment.utilities_info.replace('Included', 'Incl.')} /
           <br/>
           Min Stay: {apartment.minimum_stay} days
         </>
