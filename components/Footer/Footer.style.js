@@ -2,50 +2,38 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 const FooterWrapper = styled.footer`
-.footer_section {
-  padding-bottom: 40px;
-
-  .top-border{
+  .footer_section {
+    padding-bottom: 40px;
+  }
+  .footer_section .top-border {
     border-top: 1px solid #dbdbdb;
     padding-top: 40px;
   }
-
-  .left_col_div {
-    p {
-      padding: 25px 0;
-    }
+  .footer_section .left_col_div p {
+    padding: 25px 0;
   }
-
-  .right_col_div {
-    .text_area {
-      &:first-of-type {
-        padding: 0 0 15px 0;
-      }
-    }
+  .footer_section .right_col_div .text_area:first-of-type {
+    padding: 0 0 15px 0;
   }
-
-  .padding_right {
+  .footer_section .padding_right {
     padding-right: 14% !important;
-    @include md-down {
+  }
+  @media (max-width: 768px) {
+    .footer_section .padding_right {
       padding-right: 0 !important;
-    }
   }
-
-  .text_area {
-    p {
-      color: #999999;
-      margin-bottom: 20px;
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-
-    h3 {
-      font-size: 14px;
-      color: $grey-color;
-    }
   }
-}
+  .footer_section .text_area p {
+    color: #999;
+    margin-bottom: 20px;
+  }
+  .footer_section .text_area p:last-of-type {
+    margin-bottom: 0;
+  }
+  .footer_section .text_area h3 {
+    font-size: 14px;
+    color: #999;
+  }
 `;
 
 export const MenuWrapper = styled.div`
