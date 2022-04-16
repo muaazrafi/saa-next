@@ -22,7 +22,8 @@ const initialState = {
   moveStep: false,
   authFailed: false,
   existError: false,
-  errors: []
+  errors: [],
+  isLandlord: false,
 };
 
 
@@ -61,6 +62,9 @@ export const authSlice = createSlice({
           message: 'Successful',
           description: 'You are successfully logged in.',
         });
+        if(action.payload.user.role === "provider") {
+          state.isLandlord = true;
+        }
       }
     });
 
@@ -93,6 +97,9 @@ export const authSlice = createSlice({
           message: 'Successful',
           description: 'You are successfully registered.',
         });
+        if(action.payload.role === "provider") {
+          state.isLandlord = true;
+        }
       }
       state.loading = false;
     });

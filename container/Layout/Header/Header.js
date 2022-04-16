@@ -43,7 +43,7 @@ const LogoIcon = () => (
 );
 
 const Header = ({ router }) => {
-  const { currentUser } = useSelector((state) => state.auth);
+  const { currentUser, isLandlord } = useSelector((state) => state.auth);
   const loggedIn = currentUser;
   const [{ searchVisibility }] = useContext(LayoutContext);
   const [state, setState] = useState(false);
@@ -52,7 +52,7 @@ const Header = ({ router }) => {
   };
 
   useEffect(() => {
-    if (currentUser && currentUser.role === "provider") {
+    if (isLandlord) {
       window.location = '/landlords'
     }
   }, [currentUser]);

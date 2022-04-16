@@ -7,7 +7,7 @@ import { authenticate } from "store/services/auth";
 
 const SignInForm = ({ booking = false }) => {
   const dispatcher = useDispatch();
-  const { existError } = useSelector((state) => state.auth);
+  const { existError, loading } = useSelector((state) => state.auth);
   const inputWidthControl = { width: booking ? "100%" : 256 };
 
   const onFinish = (values) => {
@@ -61,7 +61,7 @@ const SignInForm = ({ booking = false }) => {
         />
       )}
       <Form.Item>
-        <Button type="primary" htmlType="submit" style={inputWidthControl}>
+        <Button type="primary" htmlType="submit" style={inputWidthControl} loading={loading} >
           { booking ? 'LOGIN TO JOIN BOOKING' : 'Log in' } 
         </Button>
       </Form.Item>
