@@ -1,24 +1,14 @@
-import { React, useState, useEffect } from "react";
-import Link from "next/link";
-import { Divider, Row, Col, Image, Radio, Typography, Button } from "antd";
-import Logo from "components/UI/Logo/Logo";
-import { LOGIN_PAGE } from "settings/constant";
-import SignUpFormTenant from "./SignUpFormTenant";
-import SignUpFormLandlord from "./SignUpFormLandlord";
-import SocialLogin from "../SocialLogin";
-import Wrapper, {
-  TitleInfo,
-  Text,
-  FormWrapper,
-  BannerWrapper,
-} from "../Auth.style";
+import { React, useState } from "react";
+import { Row, Col, Radio, Typography, Button } from "antd";
+import SignUpForm from "./SignUpForm";
+import Wrapper, { FormWrapper } from "../Auth.style";
 const { Title } = Typography;
 import { useDispatch, useSelector } from "react-redux";
 import { switchin } from "store/authSlice";
 
 const SignUp = () => {
   const dispatcher = useDispatch();
-  const [isFormChange, setIsFormChange] = useState(true);
+  const [isFormChange, setIsFormChange] = useState(false);
 
   const handleformChange = (value) => {
     setIsFormChange(value);
@@ -42,18 +32,18 @@ const SignUp = () => {
             >
               <Radio.Button
                 value="Tenant"
-                onChange={() => handleformChange(true)}
+                onChange={() => handleformChange(false)}
               >
                 Tenant
               </Radio.Button>
               <Radio.Button
                 value="Landlord"
-                onChange={() => handleformChange(false)}
+                onChange={() => handleformChange(true)}
               >
                 Landlord
               </Radio.Button>
             </Radio.Group>
-            {isFormChange ? <SignUpFormTenant /> : <SignUpFormLandlord />}
+            <SignUpForm landLord={isFormChange} />
             <Title level={5}>Do you have account already?</Title>
             <Button
               type="default"

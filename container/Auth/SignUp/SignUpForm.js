@@ -8,7 +8,7 @@ import { handleLoading } from "store/authSlice";
 import { register } from "store/services/auth";
 import PhoneInput from "components/UI/FormControl/PhoneInput";
 
-const SignUpForm = ({ booking = false }) => {
+const SignUpForm = ({ booking = false, landLord = false }) => {
   const dispatcher = useDispatch();
   const { existError, loading, tempPhone, errors } = useSelector(
     (state) => state.auth
@@ -18,6 +18,8 @@ const SignUpForm = ({ booking = false }) => {
   const onFinish = (values) => {
     let registerValues = cloneDeep(values);
     registerValues.phone = tempPhone;
+    registerValues.landlord_request = landLord;
+    registerValues.terms_accepted = true;
     dispatcher(handleLoading(true));
     dispatcher(register(registerValues));
   };
@@ -91,8 +93,12 @@ const SignUpForm = ({ booking = false }) => {
         </Form.Item>
 
         {booking && (
-          <Form.Item name="parent" style={{ marginBottom: "10px" }} valuePropName="checked" >
-            <Checkbox value={true} >Are you a parent?</Checkbox>
+          <Form.Item
+            name="parent"
+            style={{ marginBottom: "10px" }}
+            valuePropName="checked"
+          >
+            <Checkbox value={true}>Are you a parent?</Checkbox>
           </Form.Item>
         )}
 
