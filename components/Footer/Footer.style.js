@@ -18,6 +18,12 @@ const FooterWrapper = styled.footer`
   .footer_section .padding_right {
     padding-right: 14% !important;
   }
+  .text_area a {
+    color: #999;
+  }
+  .text_area a:hover {
+    color: #666;
+  }
   @media (max-width: 768px) {
     .footer_section .padding_right {
       padding-right: 0 !important;

@@ -52,4 +52,13 @@ export default {
   globe: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/globe.png",
   paper: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/paper.png",
   pencil: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/pencil.png",
+  circle_half: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/circle_half.png",
+  circle_dots: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/circle_dots.png",
+  rect_dots: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/rect_dots.png",
+
+
+  //About
+  students: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/about/students.png",
+  university: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/about/university.png",
+
 };

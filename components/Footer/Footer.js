@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import Link from "next/link";
 import { Row, Col } from "antd";
 import {
   FacebookFilled,
@@ -63,9 +64,9 @@ const Footer = () => {
             <Col xs={24} xl={6}>
               <div className="text_area">
                 <h2 className="heading_sm">Information</h2>
-                <p>Sign In</p>
-                <p>Terms of Service</p>
-                <p>Privacy Policy</p>
+                <p><Link href='/about-us'>About Us</Link></p>
+                <p><Link href='/terms-of-services'>Terms of Service</Link></p>
+                <p><Link href='/privacy-policy'>Privacy Policy</Link></p>
                 <p>Help Center</p>
               </div>
             </Col>
@@ -73,16 +74,16 @@ const Footer = () => {
             <Col xs={24} xl={6}>
               <div className="text_area right_col_div">
                 <h2 className="heading_sm">Get in touch</h2>
-                <div className="text_area">
+                {/* <div className="text_area">
                   <h3>Location:</h3>
                   <p>
                     808 Lehigh Avenue Union, New Jersey 07083 Av. de les
                     Drassanes, 6, 08001 Barcelona Floor 15
                   </p>
-                </div>
+                </div> */}
                 <div className="text_area">
                   <h3>Email:</h3>
-                  <p>info@studyabroadapartments.com</p>
+                  <p><a href='mailto:info@studyabroadapartments.com'>info@studyabroadapartments.com</a></p>
                 </div>
               </div>
             </Col>
