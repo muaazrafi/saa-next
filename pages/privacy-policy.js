@@ -17,7 +17,16 @@ const PrivacyPolicy = (props) => {
   }, [privacy]);
 
   return (
-    <div className="container">
+    <div
+      className="container"
+      style={{
+        background: "#f5f5f5",
+        marginTop: "25px",
+        marginBottom: "25px",
+        borderRadius: "15px",
+        padding: '20px 25px'
+      }}
+    >
       {loading ? (
         <Skeleton active={true} />
       ) : (
