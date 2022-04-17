@@ -4,6 +4,7 @@ import apartmentsSlice from './apartmentsSlice';
 import authSlice from './authSlice';
 import bookingSlice from './bookingSlice';
 import cardSlice from './cardSlice';
+import contentSlice from './contentSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     auth: authSlice,
     booking: bookingSlice,
     card: cardSlice,
+    content: contentSlice
   },
 })

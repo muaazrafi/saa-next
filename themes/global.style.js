@@ -1305,6 +1305,93 @@ h5.ant-typography{
 }
 
 
+.heading-content {
+  display: block;
+  color: #0088e5;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.heading-content-summary {
+  display: block;
+  color: #0088e5;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.sub-heading-content {
+  display: block;
+  color: #0088e5;
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+.heading-content-faq {
+  display: block;
+  color: #0088e5;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.content-info {
+  color: #2c2c2c;
+}
+.content-info p {
+  margin-bottom: 15px;
+}
+.count-nav {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  counter-reset: section;
+}
+.count-nav > li strong {
+  display: block;
+  margin-bottom: 25px;
+  font-weight: normal;
+}
+.count-nav > li {
+  display: block;
+  counter-reset: subsection;
+  position: relative;
+  padding-left: 32px;
+}
+.count-nav > li:before {
+  content: "" counter(section, decimal) ". ";
+  counter-increment: section;
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+  top: 0;
+  color: #0088e5;
+}
+.count-nav > li div {
+  position: relative;
+  padding-left: 36px;
+}
+.count-nav > li div:before {
+  content: counter(section, decimal) "." counter(subsection, decimal) " ";
+  counter-increment: subsection;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+.count-nav > li p a {
+  color: #0088e5;
+  text-decoration: none;
+}
+.count-nav > li p a:hover {
+  color: #0088e5;
+  text-decoration: underline;
+}
+
+.count-nav > li div:before {
+  content: counter(section,decimal) "." counter(subsection,decimal) " ";
+  counter-increment: subsection;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+
 
 `;
 
