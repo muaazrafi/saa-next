@@ -13,6 +13,7 @@ import GridCardWrapper, {
   PriceArea,
   MetaWrapper,
 } from "./GridCard.style";
+import Favorite from "/container/Favorite/Favorite";
 
 const GridCard = ({
   favorite,
@@ -47,8 +48,8 @@ const GridCard = ({
           </MetaWrapper>
         </ContentWrapper>
       </Link>
-
-      {favorite && <FavoriteIcon>{favorite}</FavoriteIcon>}
+      <Favorite />
+      {/* {favorite && <FavoriteIcon>{favorite}</FavoriteIcon>} */}
     </GridCardWrapper>
   );
 };
