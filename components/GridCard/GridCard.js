@@ -16,6 +16,7 @@ import GridCardWrapper, {
 import Favorite from "/container/Favorite/Favorite";
 
 const GridCard = ({
+  id,
   favorite,
   location,
   title,
@@ -48,8 +49,7 @@ const GridCard = ({
           </MetaWrapper>
         </ContentWrapper>
       </Link>
-      <Favorite />
-      {/* {favorite && <FavoriteIcon>{favorite}</FavoriteIcon>} */}
+      <Favorite id={id} />
     </GridCardWrapper>
   );
 };

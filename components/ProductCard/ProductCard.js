@@ -31,6 +31,7 @@ const responsive = {
   },
 };
 export default function ProductCard({
+  id,
   name,
   apart_type,
   area,
@@ -41,13 +42,13 @@ export default function ProductCard({
   link_path,
   deviceType,
 }) {
-
   const { search } = useSelector(
     (state) => state.apartments
   );
 
   return (
     <GridCard
+      id={id}
       favorite={
         <Favourite
           onClick={(event) => {

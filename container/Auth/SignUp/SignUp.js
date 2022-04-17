@@ -20,9 +20,9 @@ const SignUp = () => {
         <Col span={24}>
           <FormWrapper>
             {isFormChange ? (
-              <Title level={5}>Create Tenant Account</Title>
-            ) : (
               <Title level={5}>Create Landlord Account</Title>
+            ) : (
+              <Title level={5}>Create Tenant Account</Title>
             )}
             <Radio.Group
               style={{ marginBottom: 15 }}
