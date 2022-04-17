@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Head from "next/head";
 import { useSelector, useDispatch } from "react-redux";
 import renderHTML from "react-render-html";
 import { Skeleton } from "antd";
@@ -17,22 +18,27 @@ const TermsOfSrvices = (props) => {
   }, [tos]);
 
   return (
-    <div
-      className="container"
-      style={{
-        background: "#f5f5f5",
-        marginTop: "25px",
-        marginBottom: "25px",
-        borderRadius: "15px",
-        padding: '20px 25px'
-      }}
-    >
-      {loading ? (
-        <Skeleton active={true} />
-      ) : (
-        <>{tos && renderHTML(tos.page.content)}</>
-      )}
-    </div>
+    <>
+      <Head>
+        <title>Terms of service | Study Abroad Apartments</title>
+      </Head>
+      <div
+        className="container"
+        style={{
+          background: "#f5f5f5",
+          marginTop: "25px",
+          marginBottom: "25px",
+          borderRadius: "15px",
+          padding: "20px 25px",
+        }}
+      >
+        {loading ? (
+          <Skeleton active={true} />
+        ) : (
+          <>{tos && renderHTML(tos.page.content)}</>
+        )}
+      </div>
+    </>
   );
 };
 

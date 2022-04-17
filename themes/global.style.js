@@ -1392,6 +1392,36 @@ h5.ant-typography{
   font-weight: bold;
 }
 
+.linksTarget {
+  padding: 0;
+  margin: 0 0 60px 0;
+  list-style: none;
+}
+.linksTarget > li {
+  display: block;
+  margin-bottom: 5px;
+  position: relative;
+  padding-left: 26px;
+}
+.linksTarget > li > a {
+  color: #3d3d3d;
+  font-size: 16px;
+  text-decoration: none;
+}
+.linksTarget > li > a:hover, .linksTarget > li > a:focus {
+  text-decoration: none;
+  color: #0088e5;
+}
+.about-us-page {
+  margin: 50px auto;
+}
+.linksTarget > li > a .fa {
+  font-size: 16px;
+  position: absolute;
+  left: 0;
+  top: 4px;
+}
+
 
 `;
 

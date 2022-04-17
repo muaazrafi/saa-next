@@ -16,7 +16,7 @@ const Footer = () => {
     <FooterWrapper>
       <section className="footer_section">
         <div className="container">
-          <Row gutter={[20, 40]} className="top-border" >
+          <Row gutter={[20, 40]} className="top-border">
             <Col xs={24} xl={12} className="padding_right">
               <div className="left_col_div">
                 <img src={Images.logo} alt="logo" width={100} height={50} />
@@ -29,34 +29,51 @@ const Footer = () => {
                   </p>
                 </div>
                 <div className="social_icons">
-                  <FacebookFilled
-                    style={{
-                      fontSize: "25px",
-                      marginRight: "5px",
-                      color: "#999999",
-                    }}
-                  />
-                  <TwitterSquareFilled
-                    style={{
-                      fontSize: "25px",
-                      marginRight: "5px",
-                      color: "#999999",
-                    }}
-                  />
-                  <InstagramFilled
-                    style={{
-                      fontSize: "25px",
-                      marginRight: "5px",
-                      color: "#999999",
-                    }}
-                  />
-                  <LinkedinFilled
-                    style={{
-                      fontSize: "25px",
-                      marginRight: "5px",
-                      color: "#999999",
-                    }}
-                  />
+                  <a
+                    href="https://www.facebook.com/studyabroadapartments/"
+                    target="_blank"
+                  >
+                    <FacebookFilled
+                      style={{
+                        fontSize: "25px",
+                        marginRight: "5px",
+                        color: "#999999",
+                      }}
+                    />
+                  </a>
+                  <a href="https://twitter.com/StudyAbroadAPTS" target="_blank">
+                    <TwitterSquareFilled
+                      style={{
+                        fontSize: "25px",
+                        marginRight: "5px",
+                        color: "#999999",
+                      }}
+                    />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/studyabroadapartments"
+                    target="_blank"
+                  >
+                    <InstagramFilled
+                      style={{
+                        fontSize: "25px",
+                        marginRight: "5px",
+                        color: "#999999",
+                      }}
+                    />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/studyabroadapartments"
+                    target="_blank"
+                  >
+                    <LinkedinFilled
+                      style={{
+                        fontSize: "25px",
+                        marginRight: "5px",
+                        color: "#999999",
+                      }}
+                    />
+                  </a>
                 </div>
               </div>
             </Col>
@@ -64,9 +81,15 @@ const Footer = () => {
             <Col xs={24} xl={6}>
               <div className="text_area">
                 <h2 className="heading_sm">Information</h2>
-                <p><Link href='/about-us'>About Us</Link></p>
-                <p><Link href='/terms-of-services'>Terms of Service</Link></p>
-                <p><Link href='/privacy-policy'>Privacy Policy</Link></p>
+                <p>
+                  <Link href="/about-us">About Us</Link>
+                </p>
+                <p>
+                  <Link href="/terms-of-services">Terms of Service</Link>
+                </p>
+                <p>
+                  <Link href="/privacy-policy">Privacy Policy</Link>
+                </p>
                 <p>Help Center</p>
               </div>
             </Col>
@@ -83,7 +106,11 @@ const Footer = () => {
                 </div> */}
                 <div className="text_area">
                   <h3>Email:</h3>
-                  <p><a href='mailto:info@studyabroadapartments.com'>info@studyabroadapartments.com</a></p>
+                  <p>
+                    <a href="mailto:info@studyabroadapartments.com">
+                      info@studyabroadapartments.com
+                    </a>
+                  </p>
                 </div>
               </div>
             </Col>
@@ -97,8 +124,8 @@ const Footer = () => {
       {!!path && <SecondaryFooter />} */}
       </section>
       <section className="rights_Section">
-          © {moment().year()} Study Abroad Apartments. All Rights Reserved
-        </section>
+        © {moment().year()} Study Abroad Apartments. All Rights Reserved
+      </section>
     </FooterWrapper>
   );
 };
