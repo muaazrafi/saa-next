@@ -25,6 +25,7 @@ const NumberSelector = ({ title, modifier, icon, options=[], defaultValue }) => 
         optionFilterProp="children"
         onChange={updateNumberInSearch}
         value={search[modifier]}
+        getPopupContainer={trigger => trigger.parentNode}
         placeholder={
           <Row style={{ padding: "5px" }}>
             <Col style={{ marginTop: "4px" }}>{icon}</Col>

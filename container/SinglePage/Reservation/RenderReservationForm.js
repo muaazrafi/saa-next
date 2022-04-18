@@ -209,6 +209,7 @@ const RenderReservationForm = () => {
               labelInValue
               defaultValue={{ value: "1" }}
               className="guest-selector"
+              getPopupContainer={trigger => trigger.parentNode}
             >
               {apartment &&
                 range(1, apartment.number_of_max_occupants + 1).map((guest) => {
