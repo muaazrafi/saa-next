@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, notification } from "antd";
+import { notification } from "antd";
 import { FavoriteIcon, FavoriteWrapper } from "./Favorite.style";
 import { handlePopUp } from "/store/authSlice";
 import { create, destroy } from "/store/services/favorite";
@@ -8,8 +9,8 @@ import { create, destroy } from "/store/services/favorite";
 const Favorite = ({ id, btn = false }) => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.auth);
-
-  const [active, setActive] = useState(false);
+  const router = useRouter();
+  const [active, setActive] = useState(router.pathname === "/favorites");
 
   const favoritisim = () => {
     console.log("Apartment ID: ", id);
