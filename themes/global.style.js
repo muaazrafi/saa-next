@@ -1115,6 +1115,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     .ant-card {
       flex: 1;
+      width: 100%;
     }
   }
 }
