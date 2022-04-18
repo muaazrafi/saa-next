@@ -20,7 +20,7 @@ import ListingWrapper, {
   PostsWrapper,
   ShowMapCheckbox,
 } from "container/Listing/Listing.style";
-import { updateSearch, loadUp } from "store/apartmentsSlice";
+import { updateSearch, loadUp, handleLoading } from "store/apartmentsSlice";
 import { fetchApartments } from "store/services/apartment";
 
 export default function ListingPage({ processedData, deviceType }) {

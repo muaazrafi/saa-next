@@ -20,8 +20,6 @@ const Favorites = (props) => {
     dispatch(fetchFavourites());
   }, []);
 
-  console.log("Favorites here: ", favorites);
-
   return (
     <>
       <VerifyAuth />
