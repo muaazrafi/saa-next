@@ -171,7 +171,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             <MdClear />
           </Button>
         </Col>
-        <Col lg={2} md={4} sm={6} xs={6} >
+        <Col className='xs-search-btn' lg={2} md={4} sm={6} xs={6} >
           <Button
             type="primary"
             style={{ width: "100%" }}

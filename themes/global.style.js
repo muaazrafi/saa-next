@@ -1314,6 +1314,19 @@ h5.ant-typography{
   }
 }
 
+@media (max-width: 370px) {
+  .xs-search-btn{
+    flex: 1;
+  }
+}
+
+@media (max-width: 340px) {
+  .xs-search-btn {
+    max-width: 100%;
+    flex: 100%;
+    margin-top: 10px;
+  }
+}
 
 .heading-content {
   display: block;
