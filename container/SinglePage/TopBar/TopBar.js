@@ -7,9 +7,10 @@ import {
   PinterestShare,
 } from 'components/SocialShare/SocialShare';
 import { Button, Menu, Dropdown } from 'antd';
-import Favorite from 'components/UI/Favorite/Favorite';
 import ScrollBar from 'components/UI/ScrollBar/ScrollBar';
 import { TobBarWrapper, ButtonGroup } from '../SinglePageView.style';
+import { useSelector } from 'react-redux';
+import Favorite from "/container/Favorite/Favorite";
 
 const topBarMenu = [
   {
@@ -54,9 +55,10 @@ const SocialShareMenu = (props) => {
 };
 
 const SideButtons = (props) => {
+  const { apartment } = useSelector( state => state.apartment );
   return (
     <ButtonGroup>
-      <Favorite className="ant-btn" content="Save" />
+      { apartment && <Favorite id={apartment.id} btn={true}  /> }
       <Dropdown
         placement="bottomRight"
         overlay={() => <SocialShareMenu {...props} />}
