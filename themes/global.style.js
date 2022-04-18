@@ -1068,6 +1068,16 @@ const GlobalStyle = createGlobalStyle`
     height: 280px;
     margin-bottom: 15px;
   }
+  @media (max-width: 670px) {
+    .thankyou-title {
+      background-size: 1300px 280px;
+    }
+  }
+  @media (max-width: 480px) {
+    .thankyou-title {
+      background-size: 900px 280px;
+    }
+  }
 }
 
 .center-stage {
