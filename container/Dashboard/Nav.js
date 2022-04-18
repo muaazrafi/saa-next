@@ -19,7 +19,9 @@ const Nav = ({ current }) => {
         </Link>
       </Menu.Item>
       <Menu.Item key="favorites" icon={<MdFavorite size={18} />}>
+      <Link href='/favorites' >
         Favorites
+      </Link>
       </Menu.Item>
       <Menu.Item key="referral" icon={<FaUsers size={18} />}>
         Referral

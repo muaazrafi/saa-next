@@ -1,8 +1,8 @@
-import React from 'react';
-import Carousel from 'react-multi-carousel';
-import Favourite from 'components/UI/Favorite/Favorite';
-import GridCard from '../GridCard/GridCard';
-import { useSelector } from 'react-redux';
+import React from "react";
+import Carousel from "react-multi-carousel";
+import Favourite from "components/UI/Favorite/Favorite";
+import GridCard from "../GridCard/GridCard";
+import { useSelector } from "react-redux";
 
 const responsive = {
   desktop: {
@@ -35,16 +35,14 @@ export default function ProductCard({
   name,
   apart_type,
   area,
-  city,  
+  city,
   currency,
   display_price,
   image_public_ids,
   link_path,
   deviceType,
 }) {
-  const { search } = useSelector(
-    (state) => state.apartments
-  );
+  const { search } = useSelector((state) => state.apartments);
 
   return (
     <GridCard
@@ -60,7 +58,11 @@ export default function ProductCard({
       title={name}
       price={`${display_price}/Montly`}
       currency={currency}
-      link_path={`${link_path}${ (search && search.startDate && search.endDate) ? `?startDate=${search.startDate}&endDate=${search.endDate}` : '' }`}
+      link_path={`${link_path}${
+        search && search.startDate && search.endDate
+          ? `?startDate=${search.startDate}&endDate=${search.endDate}`
+          : ""
+      }`}
     >
       <Carousel
         ssr
@@ -81,11 +83,7 @@ export default function ProductCard({
         slidesToSlide={1}
       >
         {image_public_ids.map((url, index) => (
-          <img 
-            key={index}
-            src={url}
-            alt={name}
-          />
+          <img key={index} src={url.img ? url.img : url} alt={name} />
         ))}
       </Carousel>
     </GridCard>

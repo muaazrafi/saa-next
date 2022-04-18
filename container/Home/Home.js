@@ -48,9 +48,11 @@ const Home = (props) => {
             </Col>
 
             <Col xs={24} xl={8}>
-              <div className="img_div bg_two">
-                <div>Madrid, Spain</div>
-              </div>
+              <Link href="/listings/madrid">
+                <div className="img_div bg_two">
+                  <div>Madrid, Spain</div>
+                </div>
+              </Link>
             </Col>
           </Row>
         </div>

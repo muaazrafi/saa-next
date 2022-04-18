@@ -6,11 +6,11 @@ import ScrollContainer from "react-indiana-drag-scroll";
 
 const Apartments = (props) => {
   const { apartment } = useSelector((state) => state.apartment);
-  
+
   return (
     <ScrollContainer className="scroll-container">
       {apartment && apartment.similar_apartments.length > 0 && (
-        <Row gutter={20} style={{ width: '1500px' }} >
+        <Row gutter={20} style={{ width: "1500px" }}>
           {apartment.similar_apartments.map((apar) => {
             return (
               <Col span={6}>
@@ -20,7 +20,7 @@ const Apartments = (props) => {
           })}
         </Row>
       )}
-              </ScrollContainer>
+    </ScrollContainer>
   );
 };
 

@@ -1,3 +1,7 @@
+import {
+  createAsyncThunk,
+} from '@reduxjs/toolkit';
+
 export const create = async (favourite) => {
   const response = await fetch('/api/favourites', {
     method: 'POST',
@@ -24,3 +28,14 @@ export const destroy = async (apartmentID) => {
   });
   return response;
 }
+
+
+export const fetchFavourites = createAsyncThunk(
+  'apartments/favourites',
+  async (search, thunkAPI) => {
+    const response = await fetch("/api/favourites").then((res) => {
+      return res.json()
+    });
+    return response;
+  }
+)

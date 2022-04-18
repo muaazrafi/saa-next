@@ -2,6 +2,7 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import { fetchApartments } from './services/apartment';
+import { fetchFavourites } from './services/favorite';
 import { flatten } from 'lodash';
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   selectedAmenties: [],
   city: [],
   currentPage: 0,
+  favorites: [],
   loading: true,
   maxPrice: 0,
   properties: [],
@@ -50,6 +52,9 @@ export const apartmentsSlice = createSlice({
     loadUp: (state, action) => {
       state.loadMore = true;
     },
+    handleLoading: (state, action) => {
+      state.loading = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchApartments.fulfilled, (state, action) => {
@@ -65,9 +70,14 @@ export const apartmentsSlice = createSlice({
       state.loading = false;
       state.loadMore = false;
     });
+    builder.addCase(fetchFavourites.fulfilled, (state, action) => {
+      state.favorites = action.payload.favourite_apartments;
+      state.loading = false;
+    });
   },
+  
 });
 
-export const { updateSearch, searching, selectAmenties, loadUp } = apartmentsSlice.actions;
+export const { updateSearch, searching, selectAmenties, loadUp, handleLoading } = apartmentsSlice.actions;
 
 export default apartmentsSlice.reducer;
