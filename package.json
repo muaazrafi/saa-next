@@ -13,6 +13,7 @@
 		"@react-google-maps/api": "^2.2.0",
 		"@redq/reuse-modal": "^1.2.4",
 		"@reduxjs/toolkit": "^1.6.2",
+		"@sentry/nextjs": "^6.19.6",
 		"@stripe/react-stripe-js": "^1.7.0",
 		"@stripe/stripe-js": "^1.23.0",
 		"@styled-system/theme-get": "^5.1.2",
