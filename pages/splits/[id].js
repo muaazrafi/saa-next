@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+import Stripe from "/container/Stripe/Stripe";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { Row, Col } from "antd";
@@ -13,8 +12,6 @@ import AmountPaid from "container/Booking/AmountPaid";
 import InviteFriends from "/container/Booking/InviteFriends";
 import ShareLink from "/container/Booking/ShareLink";
 import Split from "/container/Booking/Split";
-
-const stripePromise = loadStripe("pk_test_oJYwZZaKNdW0Qzl1asjCwD9B");
 
 const Dashboard = (props) => {
   const router = useRouter();
@@ -33,7 +30,7 @@ const Dashboard = (props) => {
       <VerifyAuth />
       <ResendConfirmation />
       {booking && (
-        <Elements stripe={stripePromise}>
+        <Stripe>
           <FormContent>
             <Nav current="bookings" />
             <h3>Complete Your Payment</h3>
@@ -51,7 +48,7 @@ const Dashboard = (props) => {
               </Col>
             </Row>
           </FormContent>
-        </Elements>
+        </Stripe>
       )}
     </>
   );
