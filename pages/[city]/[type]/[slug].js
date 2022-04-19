@@ -2,13 +2,11 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import isEmpty from "lodash/isEmpty";
 import Sticky from "react-stickynode";
 import { Row, Col, Modal, Button } from "antd";
 import Container from "components/UI/Container/Container";
 import Loader from "components/Loader/Loader";
 import { getDeviceType } from "library/helpers/get-device-type";
-import { getAPIData, processAPIData } from "library/helpers/get-api-data";
 import Description from "container/SinglePage/Description/Description";
 import Amenities from "container/SinglePage/Amenities/Amenities";
 import Calender from "container/SinglePage/Calender/Calender";
@@ -25,9 +23,9 @@ import SinglePageWrapper, {
 import ImageGrid from "container/SinglePage/ImageGrid/ImageGrid";
 import PostImageGallery from "container/SinglePage/ImageGallery/ImageGallery";
 import { fetchApartment } from "store/services/apartment";
-import { reset } from 'store/apartmentSlice';
+import { reset } from "store/apartmentSlice";
 
-export default function SinglePostPage({ processedData, deviceType, query }) {
+export default function SinglePostPage({ deviceType, query }) {
   const dispatcher = useDispatch();
   const router = useRouter();
   const { slug } = router.query;
@@ -35,27 +33,15 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
   const [href, setHref] = useState("");
   const [isModalShowing, setIsModalShowing] = useState(false);
 
-  if (isEmpty(processedData)) return <Loader />;
-  const {
-    rating,
-    ratingCount,
-    price,
-    title,
-    gallery,
-    location,
-    content,
-    amenities,
-    author,
-  } = processedData[0];
   const pageTitle =
     query.slug.split("-").join(" ").charAt(0).toUpperCase() +
     query.slug.split("-").join(" ").slice(1);
 
-    useEffect( () => {
-      dispatcher(reset());
-    },[])
+  useEffect(() => {
+    dispatcher(reset());
+  }, []);
 
-    useEffect(() => {
+  useEffect(() => {
     if (!apartment && loading) {
       dispatcher(fetchApartment(slug));
     }
@@ -66,8 +52,13 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
   return (
     <>
       <Head>
-        <title>{pageTitle} | Student apartment in {router.query.city}</title>
-        <meta name="description" content={apartment && apartment.apartment_summary} />
+        <title>
+          {pageTitle} | Student apartment in {router.query.city}
+        </title>
+        <meta
+          name="description"
+          content={apartment && apartment.apartment_summary}
+        />
       </Head>
       <SinglePageWrapper>
         <PostImage>
@@ -93,44 +84,43 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
           /> */}
         </PostImage>
 
-        <TopBar title={title} shareURL={href} author={author} media={gallery} />
-
-        <Container>
-          <Row gutter={30} id="reviewSection" style={{ marginTop: 30 }}>
-            <Col xl={16}>
-              <Description
-                content={content}
-                title={title}
-                location={location}
-                rating={rating}
-                ratingCount={ratingCount}
+        <TopBar title={apartment && apartment.name} shareURL={href} />
+        {apartment && (
+          <Container>
+            <Row gutter={30} id="reviewSection" style={{ marginTop: 30 }}>
+              <Col xl={16}>
+                <Description
+                content={apartment.apartment_description}
+                title={apartment.name}
+                location={`${apartment.area} - ${apartment.city}`}
               />
-              <Amenities amenities={amenities} />
-              <AccommodationPolicies accommodationpolicies={amenities} />
-              <Calender />
-              <Location location={processedData[0]} />
-            </Col>
-            <Col xl={8}>
-              {deviceType === "desktop" ? (
-                <Sticky
-                  innerZ={999}
-                  activeClass="isSticky"
-                  top={202}
-                  bottomBoundary="#reviewSection"
-                >
-                  <Reservation />
-                </Sticky>
-              ) : (
-                <BottomReservation
-                  title={title}
-                  price={price}
-                  rating={rating}
-                  ratingCount={ratingCount}
-                />
-              )}
-            </Col>
-          </Row>
-        </Container>
+                <Amenities amenities={apartment.amenities} />
+              <AccommodationPolicies accommodationpolicies={apartment.amenities} />
+                <Calender />
+                <Location />
+              </Col>
+              <Col xl={8}>
+                {deviceType === "desktop" ? (
+                  <Sticky
+                    innerZ={999}
+                    activeClass="isSticky"
+                    top={202}
+                    bottomBoundary="#reviewSection"
+                  >
+                    <Reservation />
+                  </Sticky>
+                ) : (
+                  <BottomReservation
+                    title={title}
+                    price={price}
+                    rating={rating}
+                    ratingCount={ratingCount}
+                  />
+                )}
+              </Col>
+            </Row>
+          </Container>
+        )}
         <br />
 
         <Container className="overflow-it">
@@ -175,16 +165,8 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
 
 export async function getServerSideProps(context) {
   const { req, query } = context;
-  const apiUrl = [
-    {
-      endpoint: "hotel-single",
-      name: "hotelSingleData",
-    },
-  ];
-  const pageData = await getAPIData(apiUrl);
-  const processedData = processAPIData(pageData);
   const deviceType = getDeviceType(req);
   return {
-    props: { query, processedData, deviceType },
+    props: { query, deviceType },
   };
 }

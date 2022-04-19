@@ -26,12 +26,10 @@ const nextConfig = {
     return config;
   },
   env: {
-    environment: process.env.ENVIRONMENT,
     stripePubKey: process.env.STRIPE_PUBLIC_KEY,
 
   },
   publicRuntimeConfig: {
-    environment: process.env.ENVIRONMENT,
     stripePubKey: process.env.STRIPE_PUBLIC_KEY,
   },
 };

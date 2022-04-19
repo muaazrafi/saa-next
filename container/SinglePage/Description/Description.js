@@ -27,7 +27,7 @@ const Description = ({
   return (
     <Element name="overview" className="overview">
       <DescriptionWrapper>
-        <Text content={location.formattedAddress} {...locationMetaStyle} />
+        <Text content={location} {...locationMetaStyle} />
         <Heading
           as="h2"
           content={apartment && apartment.name}
