@@ -1156,7 +1156,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .banner-vsual {
-  background: url(https://d1d0zx56gx2nys.cloudfront.net/assets/thankyou_banner.png) 0px 0px no-repeat;
+  background: url(https://d1d0zx56gx2nys.cloudfront.net/assets/next/thankyou-min.jpg) 0px 0px no-repeat;
   background-size: cover;
   height: 90vh;
   .banner-overlay {

@@ -10,7 +10,6 @@ const nextConfig = {
     GOOGLE_API_KEY: 'AIzaSyAwOAW5fLXzdYo0RH11bA5wq2nQf2ZBec4',
     REACT_APP_GOOGLE_MAP_API_KEY:
       'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAwOAW5fLXzdYo0RH11bA5wq2nQf2ZBec4&libraries=geometry,drawing,places',
-    SERVER_API: `http://localhost:3001`,
   },
   images: {
     domains: ['s3.amazonaws.com', 'saastaging.s3.amazonaws.com', 'd1d0zx56gx2nys.cloudfront.net'],
@@ -25,6 +24,15 @@ const nextConfig = {
     config.resolve.modules.push(__dirname);
 
     return config;
+  },
+  env: {
+    environment: process.env.ENVIRONMENT,
+    stripePubKey: process.env.STRIPE_PUBLIC_KEY,
+
+  },
+  publicRuntimeConfig: {
+    environment: process.env.ENVIRONMENT,
+    stripePubKey: process.env.STRIPE_PUBLIC_KEY,
   },
 };
 
