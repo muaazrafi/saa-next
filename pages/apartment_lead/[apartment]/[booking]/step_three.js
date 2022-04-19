@@ -11,10 +11,7 @@ import Cart from "container/Cart/Cart";
 import CardHolder from "container/Payment/CardHolder";
 import ProfileCard from "container/Auth/ProfileCard";
 import { fetchMe } from "store/services/auth";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-
-const stripePromise = loadStripe("pk_test_oJYwZZaKNdW0Qzl1asjCwD9B");
+import Stripe from "/container/Stripe/Stripe";
 
 const StepThree = (props) => {
   const dispatch = useDispatch();
@@ -36,7 +33,7 @@ const StepThree = (props) => {
       <Cart />
       <Stepper step={2} />
       <VerifyAuth />
-      <Elements stripe={stripePromise}>
+      <Stripe>
         {apartment && (
           <>
             <Row gutter={20}>
@@ -93,7 +90,7 @@ const StepThree = (props) => {
             </p>
           </>
         )}
-      </Elements>
+      </Stripe>
     </FormContent>
   );
 };
