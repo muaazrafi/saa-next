@@ -1461,6 +1461,14 @@ h5.ant-typography{
   } 
 }
 
+.search-select-col{
+  width: 160px;
+  margin-bottom: 10px;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
 
 `;
 

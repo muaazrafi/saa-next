@@ -15,7 +15,7 @@ const NumberSelector = ({ title, modifier, icon, options=[], defaultValue }) => 
     modifiedSearch[modifier] = value;
     dispatcher(updateSearch(modifiedSearch));
   };
-
+  
   return (
     <NumberSelectorWrapper>
       <Select

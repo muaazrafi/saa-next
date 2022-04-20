@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { cloneDeep, range } from "lodash";
 import { FaSearch, FaBed } from "react-icons/fa";
 import { MdClear, MdMeetingRoom, MdHomeWork } from "react-icons/md";
+import { FiUsers } from 'react-icons/fi';
 import { GiBathtub } from "react-icons/gi";
 import { Button, Input, Popover, Row, Col, Select } from "antd";
 import { searching, updateSearch } from "store/apartmentsSlice";
@@ -61,7 +62,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
   return (
     <AdvanceSearchWrapper>
       <Row gutter={10} style={{ width: "100%" }}>
-        <Col xl={2} lg={3} md={5} xs={0} sm={0} style={{ marginBottom: "10px" }}>
+        <Col className="search-select-col">
           <Selector
             title="Type"
             modifier="apart_type_eq"
@@ -89,7 +90,17 @@ const AdvanceSearch = ({ mapShowBtn }) => {
         <Col style={{textAlign: 'center', marginTop: '5px'}} md={0} xs={4} sm={2}>
           {mapShowBtn}
         </Col>
-        <Col xl={3} lg={4} md={4} xs={0} sm={0}>
+
+        <Col className="search-select-col">
+          <Selector
+            title="Guests"
+            modifier="number_of_max_occupants_gteq"
+            icon={<FiUsers size={18} />}
+            options={range(1, 11)}
+          />
+        </Col>
+
+        <Col className="search-select-col">
           <Selector
             title="Beds"
             modifier="number_of_beds_gteq"
@@ -97,7 +108,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             options={range(1, 11)}
           />
         </Col>
-        <Col xl={3} lg={4} md={5} xs={0} sm={0}>
+        <Col className="search-select-col">
           <Selector
             title="Bedrooms"
             modifier="number_of_bedrooms_eq"
@@ -105,7 +116,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             options={range(1, 11)}
           />
         </Col>
-        <Col xl={3} lg={4} md={4} xs={0} sm={0}>
+        <Col className="search-select-col">
           <Selector
             title="Baths"
             modifier="number_of_bathrooms_gteq"
