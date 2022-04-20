@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import Heading from 'components/UI/Heading/Heading';
 import NotFoundWrapper, { ContentWrapper } from './404.style';
 
@@ -20,7 +19,7 @@ const ErrorPage = (props) => {
   return (
     <NotFoundWrapper>
       <ContentWrapper>
-        <Image
+        <img
           src="https://d1d0zx56gx2nys.cloudfront.net/assets/next/404%402x.png"
           width="560"
           height="315"
