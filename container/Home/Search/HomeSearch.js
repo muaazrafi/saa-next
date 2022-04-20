@@ -96,7 +96,7 @@ const HomeSearch = () => {
                   placeholder="Guests"
                   optionFilterProp="children"
                 >
-                  {range(1, 12).map((guest) => {
+                  {range(1, 11).map((guest) => {
                     return <Option value={guest}>{guest}</Option>;
                   })}
                 </Select>
