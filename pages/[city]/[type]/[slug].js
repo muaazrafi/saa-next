@@ -111,10 +111,8 @@ export default function SinglePostPage({ deviceType, query }) {
                   </Sticky>
                 ) : (
                   <BottomReservation
-                    title={title}
-                    price={price}
-                    rating={rating}
-                    ratingCount={ratingCount}
+                    title={apartment.name}
+                    price={apartment.display_price}
                   />
                 )}
               </Col>
