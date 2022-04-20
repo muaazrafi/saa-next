@@ -1469,6 +1469,15 @@ h5.ant-typography{
   }
 }
 
+.search-map-desktop {
+  width: 40px;
+  margin-top: 5px;
+  text-align: right;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
 
 `;
 

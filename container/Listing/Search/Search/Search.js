@@ -193,7 +193,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
             <FaSearch />
           </Button>
         </Col>
-        <Col style={{textAlign: 'right', marginTop: '5px'}} md={1} xs={0} sm={0}>
+        <Col className="search-map-desktop">
           {mapShowBtn}
         </Col>
       </Row>
