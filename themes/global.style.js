@@ -1447,6 +1447,21 @@ h5.ant-typography{
 }
 
 
+.DateRangePicker{
+  width: 100%;
+  .DateRangePickerInput{
+    width: 100%;
+    .DateInput{
+      width: 45% !important;
+      .DateInput_input__focused{
+        border-color: ${themeGet('primary.1', '#0088E5')};
+      }
+
+    }
+  } 
+}
+
+
 `;
 
 export default GlobalStyle;

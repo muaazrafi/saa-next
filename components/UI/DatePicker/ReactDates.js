@@ -23,8 +23,19 @@ class DateRangePickerBox extends Component {
         : 'llll';
     const queryString = window.location.search;
     const params = new URLSearchParams(queryString);
-    const preStartDate = params.get('startDate')
-    const preEndDate = params.get('endDate')
+    
+    let preStartDate = null;
+    let preEndDate = null;
+
+    if(params.get('q')) {
+      const searchParams = JSON.parse(params.get('q'));
+      preStartDate = searchParams.startDate;
+      preEndDate = searchParams.endDate;
+    } else {
+      preStartDate = params.get('startDate')
+      preEndDate = params.get('endDate')
+  
+    }
 
     this.state = {
       focusedInput: null,
