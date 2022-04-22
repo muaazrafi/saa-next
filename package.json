@@ -3,9 +3,8 @@
 	"version": "2.2.0",
 	"scripts": {
 		"dev": "NODE_OPTIONS=--max-old-space-size=4096 next -p 3001",
-		"start": "NODE_OPTIONS=--max-old-space-size=4096 next -p 3001",
-		"build": "next build",
-		"serve": "NODE_OPTIONS=--max-old-space-size=2048 next start -p 3001"
+		"start": "NODE_OPTIONS=--max-old-space-size=2048 next -p 3001",
+		"build": "next build"
 	},
 	"dependencies": {
 		"@glidejs/glide": "^3.4.1",
