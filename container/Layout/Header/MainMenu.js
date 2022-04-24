@@ -14,14 +14,14 @@ const MainMenu = ({ className, router }) => {
   return (
     <>
       <Menu className={className}>
-        <Menu.Item key="0">
+        {/* <Menu.Item key="0">
           <ActiveLink
             className={router.pathname === HOME_PAGE ? "active" : ""}
             href={`${HOME_PAGE}`}
           >
             Become a Rep
           </ActiveLink>
-        </Menu.Item>
+        </Menu.Item> */}
 
         <Menu.Item key="1">
           {!currentUser && !loading && (
