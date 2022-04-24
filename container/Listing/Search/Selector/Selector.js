@@ -35,7 +35,7 @@ const NumberSelector = ({ title, modifier, icon, options=[], defaultValue }) => 
       >
         {options.map((option) => {
           return (
-            <Option value={option}>
+            <Option value={option} key={`${modifier}_${option}`} >
               <Row style={{ padding: "5px" }}>
                 <Col style={{ marginTop: "4px" }}>{icon}</Col>
                 <Col>&nbsp; {option}</Col>
