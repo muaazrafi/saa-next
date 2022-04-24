@@ -5,7 +5,7 @@ import { useLoadScript, StandaloneSearchBox } from '@react-google-maps/api';
 const SearchInput = (props) => {
 	const [searchBox, setSearchBox] = useState();
 	const { isLoaded, loadError } = useLoadScript({
-		googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
+		googleMapsApiKey: process.env.autcompleteGoogleURL,
 	});
 	const { getInputValue } = props;
 	const [locationInput, setLocationInput] = useState({

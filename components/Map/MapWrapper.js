@@ -3,7 +3,7 @@ import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 
 const MapWrapper = ({ children, ...rest }) => {
 	const { isLoaded, loadError } = useLoadScript({
-		googleMapsApiKey: process.env.GOOGLE_API_KEY,
+		googleMapsApiKey: process.env.googleApiKey,
 	});
 
 	if (loadError) {

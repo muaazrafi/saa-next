@@ -6,11 +6,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 const nextConfig = {
-  env: {
-    GOOGLE_API_KEY: 'AIzaSyAwOAW5fLXzdYo0RH11bA5wq2nQf2ZBec4',
-    REACT_APP_GOOGLE_MAP_API_KEY:
-      'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAwOAW5fLXzdYo0RH11bA5wq2nQf2ZBec4&libraries=geometry,drawing,places',
-  },
   images: {
     domains: ['s3.amazonaws.com', 'saastaging.s3.amazonaws.com', 'd1d0zx56gx2nys.cloudfront.net'],
   },
@@ -27,10 +22,13 @@ const nextConfig = {
   },
   env: {
     stripePubKey: process.env.STRIPE_PUBLIC_KEY,
-
+    googleApiKey: process.env.GOOGLE_API_KEY,
+    autcompleteGoogleURL: process.env.REACT_APP_GOOGLE_MAP_API_KEY
   },
   publicRuntimeConfig: {
     stripePubKey: process.env.STRIPE_PUBLIC_KEY,
+    googleApiKey: process.env.GOOGLE_API_KEY,
+    autcompleteGoogleURL: process.env.REACT_APP_GOOGLE_MAP_API_KEY
   },
 };
 
