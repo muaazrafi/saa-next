@@ -28,9 +28,9 @@ const HomeSearch = () => {
   const searchApartments = (values) => {
     let modifiedSearch = cloneDeep(search);
     modifiedSearch.property_city_matches = values.location;
-    modifiedSearch.number_of_max_occupants_gteq = values.guests
-      ? values.guests
-      : null;
+    if (values.guests) {
+      modifiedSearch.number_of_max_occupants_gteq = values.guests;
+    }
     modifiedSearch.startDate = start;
     modifiedSearch.endDate = end;
     router
@@ -97,7 +97,7 @@ const HomeSearch = () => {
                   optionFilterProp="children"
                 >
                   {range(1, 11).map((guest) => {
-                    return <Option value={guest}>{guest}</Option>;
+                    return <Option key={`guest-no-${guest}`} value={guest}>{guest}</Option>;
                   })}
                 </Select>
               </Form.Item>
