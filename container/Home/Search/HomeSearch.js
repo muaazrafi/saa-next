@@ -30,7 +30,7 @@ const HomeSearch = () => {
     modifiedSearch.property_city_matches = values.location;
     modifiedSearch.number_of_max_occupants_gteq = values.guests
       ? values.guests
-      : "";
+      : null;
     modifiedSearch.startDate = start;
     modifiedSearch.endDate = end;
     router

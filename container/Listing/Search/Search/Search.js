@@ -44,7 +44,7 @@ const AdvanceSearch = ({ mapShowBtn }) => {
   const clearSearch = () => {
     const defaultSearch = {
       property_city_matches: search.property_city_matches,
-      number_of_max_occupants_gteq: "",
+      number_of_max_occupants_gteq: null,
       property_area_in: [],
       apart_type_eq: null,
       startDate: null,
