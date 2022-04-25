@@ -29,6 +29,7 @@ const GridCard = ({
   link_path,
   isMap=false,
   children,
+  isFavorite=true
 }) => {
   return (
     <GridCardWrapper style={{ marginBottom: isMap ? '0px' : '30px' }} >
@@ -56,7 +57,7 @@ const GridCard = ({
           </MetaWrapper>
         </ContentWrapper>
       </Link>
-      <Favorite id={id} />
+      { isFavorite && <Favorite id={id} /> } 
     </GridCardWrapper>
   );
 };

@@ -26,7 +26,9 @@ const SingleMapDisplay = ({ location }) => {
 		formattedAddress: apartment.area,
 		price: firstMonthRent,
 		currency: apartment.currency,
-		link: '#.'
+		link: '#.',
+		number_of_beds: apartment.number_of_beds,
+		number_of_bathrooms: apartment.number_of_bathrooms,
 	});
 
 	return hotelData.map((singlePostLoaction, index) => {

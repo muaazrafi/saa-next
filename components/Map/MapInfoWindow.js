@@ -20,6 +20,9 @@ const MapInfoWindow = ({ data, onCloseClick }) => {
         link_path={data.link}
         currency={data?.currency}
         isMap={true}
+        number_of_beds={data?.number_of_beds}
+        number_of_bathrooms={data?.number_of_bathrooms}
+        isFavorite={false}
       >
         <img src={data?.thumbUrl} alt={data?.title} style={{ height: '150px', objectFit: 'object-fit', width: '100%' }} />
       </GridCard>
