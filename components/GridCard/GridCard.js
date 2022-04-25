@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PropTypes from "prop-types";
 import { Row, Col } from "antd";
 import { FaBed, FaBath } from "react-icons/fa";
+import { MdHomeWork } from 'react-icons/md';
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 import GridCardWrapper, {
   ImageWrapper,
@@ -21,6 +22,9 @@ const GridCard = ({
   location,
   title,
   price,
+  apart_type,
+  number_of_beds,
+  number_of_bathrooms,
   currency,
   link_path,
   isMap=false,
@@ -35,16 +39,19 @@ const GridCard = ({
           {title && <TitleArea>{title}</TitleArea>}
           <MetaWrapper className="meta_wrapper">
             {price && <PriceArea className="price"><ApartmentCurrency currency={currency} />{price}</PriceArea>}
-            <Row>
-              <Col span={2} style={{ paddingTop: "2px" }}>
+            <Row style={{ marginTop: '5px' }} >
+              <Col style={{ paddingTop: "2px" }}>
                 <FaBed size="18px" />
               </Col>
-              <Col span={5}>4 Beds</Col>
-              <Col span={2} style={{ paddingTop: "2px" }}>
+              <Col style={{ padding: '0px 6px' }} >{number_of_beds} Beds</Col>
+              <Col style={{ paddingTop: "2px" }}>
                 <FaBath size="16px" />
               </Col>
-              <Col span={5}>4 Baths</Col>
-              <Col span={6}></Col>
+              <Col style={{ padding: '0px 6px' }} >{number_of_bathrooms} Baths</Col>
+              {/* <Col style={{ paddingTop: "2px" }} >
+                <MdHomeWork size="16px" />
+              </Col>
+              <Col style={{ padding: '0px 6px' }} >{apart_type}</Col> */}
             </Row>
           </MetaWrapper>
         </ContentWrapper>

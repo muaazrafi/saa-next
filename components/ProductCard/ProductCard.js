@@ -41,9 +41,11 @@ export default function ProductCard({
   image_public_ids,
   link_path,
   deviceType,
+  number_of_beds,
+  number_of_bathrooms
 }) {
   const { search } = useSelector((state) => state.apartments);
-
+  
   return (
     <GridCard
       id={id}
@@ -58,6 +60,9 @@ export default function ProductCard({
       title={name}
       price={`${display_price}/Montly`}
       currency={currency}
+      apart_type={apart_type}
+      number_of_beds={number_of_beds}
+      number_of_bathrooms={number_of_bathrooms}
       link_path={`${link_path}${
         search && search.startDate && search.endDate
           ? `?startDate=${search.startDate}&endDate=${search.endDate}`
