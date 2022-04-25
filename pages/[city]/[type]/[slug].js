@@ -39,7 +39,7 @@ export default function SinglePostPage({ deviceType, query }) {
 
   useEffect(() => {
     dispatcher(reset());
-  }, []);
+  }, [slug]);
 
   useEffect(() => {
     if (!apartment && loading) {
