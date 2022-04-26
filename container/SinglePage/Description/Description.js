@@ -40,7 +40,7 @@ const Description = ({
           />
         </div>
         <TextButton onClick={() => setReadMore(!readMore)}>
-          <Button>Read more about the hotel</Button>
+          <Button>Read more about accommodation</Button>
         </TextButton>
       </DescriptionWrapper>
     </Element>

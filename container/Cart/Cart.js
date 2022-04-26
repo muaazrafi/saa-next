@@ -77,7 +77,7 @@ const Cart = (props) => {
     <>
       <CartUp onClick={showDrawer}>
         <Button type="primary" className="cart-button">
-          <BsCart4 size={26} color="#fff" />
+          Details
         </Button>
       </CartUp>
       <Drawer
