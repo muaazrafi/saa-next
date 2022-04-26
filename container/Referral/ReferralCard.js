@@ -43,10 +43,13 @@ const ReferralCard = (props) => {
           </CopyToClipboard>
         }
       />
-      <p>
-        You can also tell your friends to use this promo code when they book:{" "}
-        <strong>{currentUser && currentUser.promo_code.promo_code}</strong>{" "}
-      </p>
+      {currentUser && currentUser.promo_code && (
+        <p>
+          You can also tell your friends to use this promo code when they book:{" "}
+          <strong>{currentUser && currentUser.promo_code.promo_code}</strong>{" "}
+        </p>
+      )}
+
       <p>
         If you want to actively represent SAA on your campus and make money, we
         can provide resources and additional incentives.
