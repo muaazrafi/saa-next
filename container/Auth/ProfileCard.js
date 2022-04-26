@@ -16,9 +16,9 @@ const ProfileCard = (props) => {
       }
       hoverable
       loading={loading}
-      extra={
-        <Button size='small' ><AiTwotoneEdit /> Edit</Button>
-      }
+      // extra={
+      //   <Button size='small' ><AiTwotoneEdit /> Edit</Button>
+      // }
     >
       {currentUser && (
         <>

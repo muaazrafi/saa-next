@@ -35,7 +35,8 @@ const initialState = {
   bookingForm: false,
   requestToBook: false,
   loading: false,
-  waitUserToLogin: false
+  waitUserToLogin: false,
+  moveOver: false
 }
 
 export const bookingSlice = createSlice({
@@ -47,6 +48,21 @@ export const bookingSlice = createSlice({
     },
     updateBooking: (state, action) => {
       state.booking = action.payload;
+    },
+    resetBooking: (state, action) => {
+      state.booking =   {
+        id: null,
+        apartment_id: null,
+        check_in: null,
+        check_out: null,
+        number_of_room_mates: 1,
+        was_availability_request: false,
+        check_availability_request: false,
+        move: false
+      }
+    },
+    updateMoveOver: (state, action) => {
+      state.moveOver = action.payload
     },
     updatePrice: (state, action) => {
       let price;
@@ -97,6 +113,7 @@ export const bookingSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(createBooking.fulfilled, (state, action) => {
       state.booking.id = action.payload.booking.id;
+      state.moveOver = true;
       state.loading = false;
     });
     builder.addCase(fetchBooking.fulfilled, (state, action) => {
@@ -151,6 +168,6 @@ export const bookingSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { handleLoading, updatePrice, updateBooking } = bookingSlice.actions;
+export const { handleLoading, updatePrice, updateBooking, resetBooking, updateMoveOver } = bookingSlice.actions;
 
 export default bookingSlice.reducer;

@@ -24,7 +24,7 @@ const RenderReservationForm = () => {
   const router = useRouter();
   const { currentUser } = useSelector((state) => state.auth);
   const { apartment } = useSelector((state) => state.apartment);
-  const { booking, loading } = useSelector((state) => state.booking);
+  const { booking, loading, moveOver } = useSelector((state) => state.booking);
   const { startDate, endDate } = router.query;
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const RenderReservationForm = () => {
   }, [currentUser]);
 
   useEffect(() => {
-    if (currentUser && booking && booking.id && bookNow()) {
+    if (currentUser && booking && booking.id && moveOver && bookNow() ) {
       notification["success"]({
         message: "Booking Initiated",
         description: "Booking successfully initiated, please proceed.",

@@ -24,6 +24,7 @@ import ImageGrid from "container/SinglePage/ImageGrid/ImageGrid";
 import PostImageGallery from "container/SinglePage/ImageGallery/ImageGallery";
 import { fetchApartment } from "store/services/apartment";
 import { reset } from "store/apartmentSlice";
+import { resetBooking } from "store/bookingSlice";
 
 export default function SinglePostPage({ deviceType, query }) {
   const dispatcher = useDispatch();
@@ -39,6 +40,7 @@ export default function SinglePostPage({ deviceType, query }) {
 
   useEffect(() => {
     dispatcher(reset());
+    dispatcher(resetBooking());
   }, [slug]);
 
   useEffect(() => {

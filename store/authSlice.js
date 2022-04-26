@@ -49,6 +49,9 @@ export const authSlice = createSlice({
     setTempPhone: (state, action) => {
       state.tempPhone = action.payload
     },
+    updateStep: (state, action) => {
+      state.moveStep = action.payload
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(authenticate.fulfilled, (state, action) => {
@@ -133,7 +136,8 @@ export const {
   switchforgot,
   handlePopUp,
   handleLoading,
-  setTempPhone
+  setTempPhone,
+  updateStep
 } = authSlice.actions;
 
 export default authSlice.reducer;
