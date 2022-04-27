@@ -1,5 +1,5 @@
-import React from "react";
-import { useRouter } from 'next/router';
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import { LockOutlined } from "@ant-design/icons";
 import { Form, Row, Col, Typography, Button, Input, Alert } from "antd";
 import Wrapper, { FormWrapper } from "./Auth.style";
@@ -9,14 +9,35 @@ import { resetPassword } from "/store/services/auth";
 
 const { Title } = Typography;
 
-const  ResetPassword = (props) => {
+const ResetPassword = (props) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { forgetErrors, loading } = useSelector((state) => state.auth);
-  
+  const { currentUser, forgetErrors, loading, refresh } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/");
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
+    if (refresh) {
+      setTimeout(() => {
+        router.reload("/");
+      }, 1500);
+    }
+  }, [refresh]);
+
   const onFinish = (data) => {
     dispatch(handleLoading(true));
-    dispatch(resetPassword({...data, reset_password_token: router.query.reset_password_token}));
+    dispatch(
+      resetPassword({
+        ...data,
+        reset_password_token: router.query.reset_password_token,
+      })
+    );
   };
 
   return (
@@ -84,7 +105,11 @@ const  ResetPassword = (props) => {
                   <Alert
                     message={forgetErrors[0]}
                     type="error"
-                    style={{ width: 256, marginBottom: "20px", textTransform: 'capitalize' }}
+                    style={{
+                      width: 256,
+                      marginBottom: "20px",
+                      textTransform: "capitalize",
+                    }}
                     showIcon
                   />
                 )}
@@ -107,6 +132,6 @@ const  ResetPassword = (props) => {
       </Row>
     </Wrapper>
   );
-}
+};
 
 export default ResetPassword;

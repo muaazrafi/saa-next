@@ -27,7 +27,7 @@ const initialState = {
   errors: [],
   isLandlord: false,
   forgetErrors: [],
-
+  refresh: false,
 };
 
 
@@ -150,12 +150,11 @@ export const authSlice = createSlice({
         state.auth_component_switch = "forgot"
         state.popUp = true;
       } else {
-        state.auth_component_switch = "in"
-        state.popUp = true;
         notification['success']({
           message: 'Successfully reset password',
-          description: 'Successfully reset password. Please proceed to login.',
+          description: 'Successfully reset password. Redirecting...',
         });
+        state.refresh = true;
       }
       state.loading = false;
     });
