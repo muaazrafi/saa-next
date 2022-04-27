@@ -104,3 +104,41 @@ export const resendConfirmation = createAsyncThunk(
     return response;
   }
 )
+
+export const forgetPassword = createAsyncThunk(
+  'auth/forgetPassword',
+  async (user, thunkAPI) => {
+    const response = await fetch('/users/password.json', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: user 
+      })
+    }).then((res) => {
+      return res.json()
+    });
+    return response;
+  }
+)
+
+export const resetPassword = createAsyncThunk(
+  'auth/resetPassword',
+  async (user, thunkAPI) => {
+    const response = await fetch('/users/password.json', {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: user 
+      })
+    }).then((res) => {
+      return res.json()
+    });
+    return response;
+  }
+)

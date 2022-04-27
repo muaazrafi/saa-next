@@ -7,7 +7,9 @@ import {
   unAuthenticate,
   register,
   updateMe,
-  resendConfirmation
+  resendConfirmation,
+  forgetPassword,
+  resetPassword
 } from './services/auth';
 import {
   notification
@@ -24,6 +26,8 @@ const initialState = {
   existError: false,
   errors: [],
   isLandlord: false,
+  forgetErrors: [],
+
 };
 
 
@@ -44,6 +48,7 @@ export const authSlice = createSlice({
       state.auth_component_switch = "up"
     },
     switchforgot: (state) => {
+      state.forgetErrors = [];
       state.auth_component_switch = "forgot"
     },
     setTempPhone: (state, action) => {
@@ -65,7 +70,7 @@ export const authSlice = createSlice({
           message: 'Successful',
           description: 'You are successfully logged in.',
         });
-        if(action.payload.user.role === "provider") {
+        if (action.payload.user.role === "provider") {
           state.isLandlord = true;
         }
       }
@@ -90,7 +95,7 @@ export const authSlice = createSlice({
     builder.addCase(register.fulfilled, (state, action) => {
       if (action.payload.errors) {
         state.existError = true;
-        state.errors =  Object.entries(action.payload.errors);
+        state.errors = Object.entries(action.payload.errors);
       } else {
         state.popUp = false;
         state.existError = false;
@@ -100,7 +105,7 @@ export const authSlice = createSlice({
           message: 'Successful',
           description: 'You are successfully registered.',
         });
-        if(action.payload.role === "provider") {
+        if (action.payload.role === "provider") {
           state.isLandlord = true;
         }
       }
@@ -118,13 +123,43 @@ export const authSlice = createSlice({
     });
 
     builder.addCase(resendConfirmation.fulfilled, (state, action) => {
-
       notification['success']({
         message: 'Sent!',
         description: 'Successfully sent email, please confirm it.',
       });
       state.loading = false;
     });
+
+    builder.addCase(forgetPassword.fulfilled, (state, action) => {
+      if (action.payload.errors) {
+        const errors = Object.entries(action.payload.errors);
+        state.forgetErrors = [errors.map( (error) => { return `${error[0]} ${error[1][0]}` } ).join(' ')];
+      } else {
+        state.popUp = false;
+        notification['success']({
+          message: 'Sent!',
+          description: 'Successfully sent reset password instructions, please check your email.',
+        });
+      }
+      state.loading = false;
+    });
+
+    builder.addCase(resetPassword.fulfilled, (state, action) => {
+      if (action.payload.errors) {
+        state.forgetErrors = ['Reset token is not valid. Please reset password again.'];
+        state.auth_component_switch = "forgot"
+        state.popUp = true;
+      } else {
+        state.auth_component_switch = "in"
+        state.popUp = true;
+        notification['success']({
+          message: 'Successfully reset password',
+          description: 'Successfully reset password. Please proceed to login.',
+        });
+      }
+      state.loading = false;
+    });
+
 
   },
 });

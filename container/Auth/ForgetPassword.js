@@ -1,58 +1,90 @@
-import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { MdEmail } from 'react-icons/md';
-import { Form,Divider,Row,Col,Typography,Button,Input,Image } from 'antd';
-import Logo from 'components/UI/Logo/Logo';
-import FormControl from 'components/UI/FormControl/FormControl';
-import Wrapper, {
-  TitleInfo,
-  FormWrapper,
-  BannerWrapper,
-} from './Auth.style';
+import React from "react";
+import { HiOutlineMail } from "react-icons/hi";
+import { Form, Row, Col, Typography, Button, Input, Alert } from "antd";
+import Wrapper, { FormWrapper } from "./Auth.style";
+import { useSelector, useDispatch } from "react-redux";
+import { switchin, switchup, handleLoading } from "store/authSlice";
+import { forgetPassword } from "/store/services/auth";
+
 const { Title } = Typography;
 
-import { useDispatch } from 'react-redux';
-import { switchin, switchup } from 'store/authSlice' 
-
 export default function ForgetPassWord() {
-  const dispatcher = useDispatch();
-  const { control, errors, handleSubmit } = useForm({
-    mode: 'onChange',
-  });
-  const onSubmit = (data) => {
-    console.log(data);
+  const dispatch = useDispatch();
+  const { forgetErrors, loading } = useSelector((state) => state.auth);
+
+  const onFinish = (data) => {
+    dispatch(handleLoading(true));
+    dispatch(forgetPassword(data));
   };
 
   return (
     <Wrapper>
-      <Row gutter={[8, 8]} type='flex'>
+      <Row gutter={[8, 8]} type="flex">
         <Col span={24}>
-        <FormWrapper>
-        <Title level={5}>Welcome Back</Title>
-        <Title level={5}>Enter your email to recover your account</Title>
-        <>
-        <Form name="normal_login" className="login-form" initialValues={{remember: true,}} >
-          <Form.Item
-                name="First Name"
-                noStyle
-                rules={[{ required: true, message: 'Email is required' }]}
-          >
-            <Input style={{ width: 256 , marginBottom: 10  }} placeholder="Email" />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" size='middle' style={{ width: 256 }} htmlType="submit" block  >
-            Forgot password
-          </Button>
-          <Button type="default" style={{ width: 256 }} block onClick={() => dispatcher(switchup("up"))}>
-            Sign up
-          </Button>
-          <Button type="default" style={{ width: 256 }} block onClick={() => dispatcher(switchin("in"))}>
-            Log in
-          </Button>
-        </Form.Item>
-        </Form>
-        </>
-        </FormWrapper>
+          <FormWrapper>
+            <Title level={5}>Enter email to recover account</Title>
+            <>
+              <Form
+                name="normal_login"
+                className="login-form"
+                onFinish={onFinish}
+              >
+                <Form.Item
+                  name="email"
+                  rules={[
+                    {
+                      type: "email",
+                      message: "The input is not valid E-mail!",
+                    },
+                    { required: true, message: "Please input your E-mail!" },
+                  ]}
+                  style={{ marginBottom: "10px" }}
+                >
+                  <Input
+                    prefix={<HiOutlineMail className="site-form-item-icon" />}
+                    placeholder="Email"
+                    style={{ width: "100%" }}
+                  />
+                </Form.Item>
+                {forgetErrors.length > 0 && (
+                  <Alert
+                    message={forgetErrors[0]}
+                    type="error"
+                    style={{ width: 256, marginBottom: "20px", textTransform: 'capitalize' }}
+                    showIcon
+                  />
+                )}
+                <Form.Item>
+                  <Button
+                    type="primary"
+                    size="middle"
+                    style={{ width: "100%" }}
+                    htmlType="submit"
+                    block
+                    loading={loading}
+                  >
+                    Forgot password
+                  </Button>
+                </Form.Item>
+              </Form>
+              <Button
+                type="default"
+                style={{ width: 256, marginBottom: "10px" }}
+                block
+                onClick={() => dispatcher(switchup("up"))}
+              >
+                Sign up
+              </Button>
+              <Button
+                type="default"
+                style={{ width: 256 }}
+                block
+                onClick={() => dispatcher(switchin("in"))}
+              >
+                Log in
+              </Button>
+            </>
+          </FormWrapper>
         </Col>
       </Row>
     </Wrapper>
