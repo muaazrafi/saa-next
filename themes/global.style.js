@@ -1478,6 +1478,12 @@ h5.ant-typography{
   }
 }
 
+.ant-picker-cell-disabled{
+  .ant-picker-calendar-date{
+    text-decoration: line-through !important;
+  }
+}
+
 
 `;
 
