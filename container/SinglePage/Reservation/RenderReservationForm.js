@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { cloneDeep, range } from "lodash";
 import moment from "moment";
 import NoSSR from "react-no-ssr";
-import { Button, notification } from "antd";
+import { Alert, Button, notification } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import HtmlLabel from "components/UI/HtmlLabel/HtmlLabel";
@@ -27,16 +27,16 @@ const RenderReservationForm = () => {
   const { booking, loading, moveOver } = useSelector((state) => state.booking);
   const { startDate, endDate } = router.query;
 
-  useEffect(() => {
-    if (startDate && endDate) {
-      dateSelection(moment(startDate), moment(endDate));
-    }
-  }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (apartment) {
       const canBook = bookNow();
       let updatedBooking = cloneDeep(booking);
+      if (startDate && endDate) {
+        updatedBooking.check_in = moment(startDate);
+        updatedBooking.check_out = moment(endDate);
+      }
       updatedBooking.apartment_id = apartment.id;
       updatedBooking.was_availability_request = !canBook;
       updatedBooking.check_availability_request = !canBook;
@@ -52,7 +52,7 @@ const RenderReservationForm = () => {
   }, [currentUser]);
 
   useEffect(() => {
-    if (currentUser && booking && booking.id && moveOver && bookNow() ) {
+    if (currentUser && booking && booking.id && moveOver && bookNow()) {
       notification["success"]({
         message: "Booking Initiated",
         description: "Booking successfully initiated, please proceed.",
@@ -122,11 +122,11 @@ const RenderReservationForm = () => {
   };
 
   const bookingBtnState = () => {
-    return !(
+    return (
       apartment &&
       booking.check_in &&
       booking.check_out &&
-      (rangeOverlaps() || !minStayRequired())
+      (rangeOverlaps() || minStayRequired())
     );
   };
 
@@ -209,7 +209,7 @@ const RenderReservationForm = () => {
               labelInValue
               defaultValue={{ value: "1" }}
               className="guest-selector"
-              getPopupContainer={trigger => trigger.parentNode}
+              getPopupContainer={(trigger) => trigger.parentNode}
             >
               {apartment &&
                 range(1, apartment.number_of_max_occupants + 1).map((guest) => {
@@ -219,8 +219,32 @@ const RenderReservationForm = () => {
           </Col>
         </Row>
       </FieldWrapper>
+      <div style={{ padding: "0px 20px", marginBottom: "10px" }}>
+        {rangeOverlaps() && (
+          <Alert
+            message="Already booked, please select different dates."
+            type="error"
+            style={{ padding: "10px 20px", marginBottom: '5px' }}
+            showIcon
+          />
+        )}
+        {minStayRequired() && (
+          <Alert
+            message={`Min Stay of ${apartment.minimum_stay} is required.`}
+            type="error"
+            style={{ padding: "10px 20px" }}
+            showIcon
+          />
+        )}
+      </div>
+
       <FormActionArea style={{ padding: "0px 20px" }}>
-        <Button htmlType="submit" type="primary" disabled={bookingBtnState()} loading={loading}>
+        <Button
+          htmlType="submit"
+          type="primary"
+          disabled={bookingBtnState()}
+          loading={loading}
+        >
           {bookNow() ? "Book Now" : "Request to Book"}
         </Button>
       </FormActionArea>

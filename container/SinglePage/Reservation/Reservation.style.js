@@ -19,7 +19,7 @@ const ReservationFormWrapper = styled.form`
 `;
 
 export const FieldWrapper = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   @media (max-width: 375px) {
     margin-bottom: 25px;
   }
