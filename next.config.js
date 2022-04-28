@@ -35,9 +35,6 @@ const nextConfig = {
 
 const sentryWebpackPluginOptions = {
   silent: true,
-  url: 'https://sentry.studyabroadapartments.com',
-  authToken: '5dd306aabff211ec875c0242ac130015',
-  project: 'saa-fu'
 };
 
 const moduleExports = withPlugins(
