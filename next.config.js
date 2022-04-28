@@ -37,7 +37,7 @@ const sentryWebpackPluginOptions = {
   silent: true,
 };
 
-module.exports = withSentryConfig(withPlugins(
+const moduleExports = withPlugins(
   [
     [
       withOptimizedImages,
@@ -54,4 +54,7 @@ module.exports = withSentryConfig(withPlugins(
     [withBundleAnalyzer],
   ],
   nextConfig
-), sentryWebpackPluginOptions);
+);
+
+
+module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
