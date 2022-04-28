@@ -30,7 +30,7 @@ const Favorites = (props) => {
         {loading ? (
           <Row gutter={20}>
             {range(1, 6).map((item, i) => (
-              <Col span={7} key={`skele-fav-${i}`} >
+              <Col xxl={7} xl={7} lg={7} md={7} sm={24} xs={24} key={`skele-fav-${i}`} style={{ marginBottom: '10px' }} >
                 <Card loading={true}></Card>
               </Col>
             ))}
@@ -41,7 +41,7 @@ const Favorites = (props) => {
               <Row gutter={20}>
                 {favorites.map((apar) => {
                   return (
-                    <Col span={7} key={`apar-fav-${apar.id}`} >
+                    <Col xxl={7} xl={7} lg={7} md={7} sm={24} xs={24} key={`apar-fav-${apar.id}`} >
                       <ProductCard {...apar} />
                     </Col>
                   );
