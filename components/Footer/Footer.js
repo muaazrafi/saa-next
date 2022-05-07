@@ -150,11 +150,7 @@ const Footer = () => {
             a.src = g;
             m.parentNode.insertBefore(a, m)
             })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-            if(window.location.hostname === "www.studyabroadapartments.com") { 
-              ga('create', 'UA-76459338-1', 'auto'); 
-            } else { 
-              ga('create', 'UA-109694694-3', 'auto'); 
-            }
+            ga('create', 'UA-76459338-1', 'auto'); 
             ga('send', 'pageview');
         `}
       </Script>

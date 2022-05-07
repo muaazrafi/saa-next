@@ -30,7 +30,7 @@ const Amenities = ({ titleStyle, linkStyle }) => {
             />
             <IconCard
               icon={<IoBed />}
-              title={`${apartment.number_of_beds} Bedrooms`}
+              title={`${apartment.number_of_beds} Beds`}
             />
             <IconCard
               icon={<FaBath />}
