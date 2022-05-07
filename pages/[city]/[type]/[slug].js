@@ -94,7 +94,7 @@ export default function SinglePostPage({ deviceType, query }) {
                 <Description
                 content={apartment.apartment_description}
                 title={apartment.name}
-                location={`${apartment.area} - ${apartment.city}`}
+                location={`${apartment.area} - ${apartment.city} (ID: #${apartment.id})`}
               />
                 <Amenities amenities={apartment.amenities} />
               <AccommodationPolicies accommodationpolicies={apartment.amenities} />
