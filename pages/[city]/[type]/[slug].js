@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Sticky from "react-stickynode";
-import { Row, Col, Modal, Button } from "antd";
+import { Row, Col, Modal, Button, notification } from "antd";
 import Container from "components/UI/Container/Container";
 import Loader from "components/Loader/Loader";
 import { getDeviceType } from "library/helpers/get-device-type";
@@ -41,6 +41,14 @@ export default function SinglePostPage({ deviceType, query }) {
   useEffect(() => {
     dispatcher(reset());
     dispatcher(resetBooking());
+    if(!['barcelona', 'madrid'].includes(router.query.city)) {
+      notification['error']({
+        message: 'Please search again!',
+        description:
+          'We no longer operate in that region.',
+      });
+      router.push('/');
+    }
   }, [slug]);
 
   useEffect(() => {
