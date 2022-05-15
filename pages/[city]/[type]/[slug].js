@@ -41,14 +41,6 @@ export default function SinglePostPage({ deviceType, query }) {
   useEffect(() => {
     dispatcher(reset());
     dispatcher(resetBooking());
-    if(!['barcelona', 'madrid'].includes(router.query.city)) {
-      notification['error']({
-        message: 'Please search again!',
-        description:
-          'We no longer operate in that region.',
-      });
-      router.push('/');
-    }
   }, [slug]);
 
   useEffect(() => {

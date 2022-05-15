@@ -124,6 +124,7 @@ const RenderReservationForm = () => {
   const bookingBtnState = () => {
     return (
       apartment &&
+      apartment.availability_status === "available" &&
       booking.check_in &&
       booking.check_out &&
       (rangeOverlaps() || minStayRequired())
@@ -224,7 +225,7 @@ const RenderReservationForm = () => {
           <Alert
             message="Already booked, please select different dates."
             type="error"
-            style={{ padding: "10px 20px", marginBottom: '5px' }}
+            style={{ padding: "10px 20px", marginBottom: "5px" }}
             showIcon
           />
         )}
@@ -239,14 +240,30 @@ const RenderReservationForm = () => {
       </div>
 
       <FormActionArea style={{ padding: "0px 20px" }}>
-        <Button
-          htmlType="submit"
-          type="primary"
-          disabled={bookingBtnState()}
-          loading={loading}
-        >
-          {bookNow() ? "Book Now" : "Request to Book"}
-        </Button>
+        {apartment && apartment.availability_status === "available" && ['barcelona', 'madrid'].includes(apartment.city) ? (
+          <Button
+            htmlType="submit"
+            type="primary"
+            disabled={bookingBtnState() === null}
+            loading={loading}
+          >
+            {bookNow() ? "Book Now" : "Request to Book"}
+          </Button>
+        ) : (
+          <Button
+            htmlType="submit"
+            type="default"
+            disabled={true}
+            loading={loading}
+            style={{
+              width: "100%",
+              height: "40px",
+              textTransform: "uppercase",
+            }}
+          >
+            Unavailable
+          </Button>
+        )}
       </FormActionArea>
     </ReservationFormWrapper>
   );
