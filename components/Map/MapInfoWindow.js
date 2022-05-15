@@ -22,6 +22,7 @@ const MapInfoWindow = ({ data, onCloseClick }) => {
         isMap={true}
         number_of_beds={data?.number_of_beds}
         number_of_bathrooms={data?.number_of_bathrooms}
+        number_of_max_occupants={data?.number_of_max_occupants}
         isFavorite={false}
       >
         <img src={data?.thumbUrl} alt={data?.title} style={{ height: '150px', objectFit: 'object-fit', width: '100%' }} />

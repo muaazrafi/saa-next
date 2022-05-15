@@ -2,7 +2,7 @@ import React from "react";
 import Link from 'next/link';
 import PropTypes from "prop-types";
 import { Row, Col } from "antd";
-import { FaBed, FaBath } from "react-icons/fa";
+import { FaBed, FaBath, FaUsers } from "react-icons/fa";
 import { MdHomeWork } from 'react-icons/md';
 import ApartmentCurrency from "container/SinglePage/ApartmentCurrency/ApartmentCurrency";
 import GridCardWrapper, {
@@ -25,6 +25,7 @@ const GridCard = ({
   apart_type,
   number_of_beds,
   number_of_bathrooms,
+  number_of_max_occupants,
   currency,
   link_path,
   isMap=false,
@@ -49,6 +50,10 @@ const GridCard = ({
                 <FaBath size="16px" />
               </Col>
               <Col style={{ padding: '0px 6px' }} >{number_of_bathrooms} Baths</Col>
+              <Col style={{ paddingTop: "2px" }}>
+                <FaUsers size="16px" />
+              </Col>
+              <Col style={{ padding: '0px 6px' }} >{number_of_max_occupants} Guest{number_of_max_occupants>1 && 's'}</Col>
               {/* <Col style={{ paddingTop: "2px" }} >
                 <MdHomeWork size="16px" />
               </Col>

@@ -42,7 +42,8 @@ export default function ProductCard({
   link_path,
   deviceType,
   number_of_beds,
-  number_of_bathrooms
+  number_of_bathrooms,
+  number_of_max_occupants
 }) {
   const { search } = useSelector((state) => state.apartments);
   
@@ -63,6 +64,7 @@ export default function ProductCard({
       apart_type={apart_type}
       number_of_beds={number_of_beds}
       number_of_bathrooms={number_of_bathrooms}
+      number_of_max_occupants={number_of_max_occupants}
       link_path={`${link_path}${
         search && search.startDate && search.endDate
           ? `?startDate=${search.startDate}&endDate=${search.endDate}`
