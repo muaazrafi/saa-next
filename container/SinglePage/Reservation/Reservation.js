@@ -23,6 +23,7 @@ const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
           <>
             {apartment && (
               <>
+                {apartment.has_multiple_monthly_prices && <div style={{fontSize: '12px',color: '#767676' }}>From</div>}
                 <ApartmentCurrency currency={apartment.currency} />{" "}
                 {firstMonthRent}
               </>
