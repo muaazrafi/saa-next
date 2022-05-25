@@ -6,7 +6,7 @@ import {Row,Col,Divider} from 'antd';
 import {  useSelector } from "react-redux";
 import AccommodationPoliciesArea, { AccommodationPolicieswrapper } from './AccommodationPolicies.style';
 import { Element } from 'react-scroll';
-
+import ContractTypes from './ContractTypes';
 
 const AccommodationPolicies = ({
   titleStyle,
@@ -54,9 +54,9 @@ const AccommodationPolicies = ({
           <Row gutter={[24, 24]}>
             {apartment && 
               <>
-                <Col span={8}> <Heading content="Cancellation Policy"{...titleStyle }/></Col>     
+                <Col span={8}> <Heading className='cancellation-policy-title' content="Cancellation Policy"{...titleStyle }/></Col>     
                 <Col span = {16}>
-                  <Text  style = {{ margin: '20px !important' }} content= {apartment.cancellation_policy}{...detailstyle}/>
+                  <Text  style = {{ margin: '20px !important', fontWeight: 'bold' }} content= {apartment.cancellation_policy}{...detailstyle}/>
                 </Col>
               </>
             }
@@ -66,7 +66,9 @@ const AccommodationPolicies = ({
               <>
                 <Col span={8}> <Heading content="Contract Type"{...titleStyle }/></Col>     
                 <Col span = {16}>
-                  <Text  style = {{ margin: '20px !important' }} content= {apartment.contract_type}{...detailstyle}/>
+                  <span style = {{ margin: '20px !important', fontWeight: 'bold', ...detailstyle }} >{apartment.contract_type}
+                  <ContractTypes contract_type={apartment.contract_type} />
+                  </span>
                 </Col>
               </>
             }

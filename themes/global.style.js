@@ -1484,6 +1484,11 @@ h5.ant-typography{
   }
 }
 
+@media (max-width: 480px) {
+  .cancellation-policy-title {
+    font-size: 18px !important;
+  }
+}
 
 `;
 
