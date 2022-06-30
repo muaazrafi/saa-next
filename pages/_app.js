@@ -3,7 +3,7 @@ import "react-dates/lib/css/_datepicker.css";
 import "react-multi-carousel/lib/styles.css";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 import "antd/lib/date-picker/style/index.css";
-import 'react-intl-tel-input/dist/main.css';
+import "react-intl-tel-input/dist/main.css";
 import "antd/dist/antd.css";
 import Router from "next/router";
 import NProgress from "nprogress";

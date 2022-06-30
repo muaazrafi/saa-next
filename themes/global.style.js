@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
+import { createGlobalStyle } from "styled-components";
+import { themeGet } from "@styled-system/theme-get";
 
 const GlobalStyle = createGlobalStyle`
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
@@ -80,8 +80,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::selection {
-    background: ${themeGet('primary.0', '#0088E5')};
-    color: ${themeGet('color.1', '#ffffff')};
+    background: ${themeGet("primary.0", "#0088E5")};
+    color: ${themeGet("color.1", "#ffffff")};
   }
 
   html {
@@ -140,9 +140,256 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     height: auto;
   }
+  /********** Help************/
+  .help_btn{
+    height:70px;
+    width:500px;
+    &:hover {
+      background-color: rgba(10, 7, 119, 1) !important ;
+      color:#ffff;
+    }
+  }
+  .help_btn2{
+    
+    height:70px;
+    width:500px;
+    &:hover {
+      background-color: rgba(10, 7, 119, 1) !important ;
+      color:#ffff;
+    }
+  }
+  .recent{
+    text-align:center;
+  }
+  .articles{
+   border-bottom:1px solid grey;
+ 
+  }
+  .articlePara{
+    padding-top:10px;
+    font-size:18px;
+    &:hover{
+      text-decoration:underline;
+     }
+  }
+.articleParagraph{
+  &:hover{
+    text-decoration:underline;
+  }
+}
+
+  .Article-created{
+    text-align:end;
+
+  }
+  .hero{
+    display:flex;
+    background-image:url("//theme.zdassets.com/theme_assets/547614/3048bbe7f79478ae66d94a1b055b0100cdb5e453.png");
+    background-position:center;
+    background-size:cover;
+    height:35vh;
+    justify-content:center;
+    align-items:center;
+    background-repeat:no-repeat;
+    margin-bottom:50px;
+  }
+
+  /----------Tenants-----------/
+
+  .tenantsContainer{
+    padding:100px;
+  }
+  .tenantHeading{
+    font-size:35px;
+    padding-left:20px;
+  }
+  .tenantslinks{
+    padding:10px;
+    border-bottom:1px solid grey;
+    width:450px;
+    margin-bottom:20px;
+  }
+  .textTenants{
+    font-weight:bold;
+  }
+
+  .tenantsPara{
+    &:hover{
+     text-decoration:underline;
+    }
+  }
+
+//---------Landlords------------//
+
+
+.landlordslinks{
+  border-bottom:1px solid grey;
+  width: 300px;
+  padding:15px;
+
+
+}
+.invisible-scrollbar::-webkit-scrollbar-track{
+  display:none;
+}
+
+
+// ---------MangingMy Bookings--------//
+
+.main-bookingheader{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:30px;
+  min-height:50px;
+  padding-bottom:15px;
+}
+.searchbooking{
+  width:300px;
+  border-radius: 30px !important;
+  box-sizing: border-box;
+  color: #999;
+  height: 40px;
+  padding-left: 40px;
+  margin-top:50px;
+  padding-right: 20px;
+}
+.breadcrumb{
+  padding-top:50px;
+}
+.BookingHeading{
+  flex-grow:1;
+  font-size:32px;
+ font-weight:400;
+ padding-left:250px;
+  margin-bottom:10px;
+}
+.followbtn{
+  
+  border: 1px solid rgba(10, 7, 119, 1);
+  border-radius: 4px;
+  color: rgba(10, 7, 119, 1);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 2.34;
+  margin: 0;
+  padding: 0 20px;
+  text-align: center;
+  transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
+&:hover{
+  background:rgba(10, 7, 119, 1) !important;
+  color:#fff;
+  
+}
+  
+}
+
+
+.page-header{
+  display:flex;
+}
+
+
+.bookinglinks{
+  position:relative;
+  left:20%;
+  width:900px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  border-bottom:1px solid #ddd;
+  font-size:16px;
+}
+.bookingContainer{
+  padding-bottom:50px;
+}
+@media only screen and (max-width: 1200px){
+  .BookingHeading{
+    padding-left:132px;
+  }
+ .bookinglinks{
+  left:15%;
+  max-width:100%;
+  width:800px;
+ }
+
+}
+@media only screen and (max-width: 991px){
+  .BookingHeading{
+    padding-left:0px;
+  }
+  .breadcrumb{
+    padding-right: 144px;
+
+  }
+ .bookinglinks{
+  left:0%;
+ }
+
+}
+
+@media only screen and (max-width: 767px){
+  .BookingHeading{
+    padding-left:0px;
+  }
+  .breadcrumb{
+    padding-top:8px;
+    padding-right: 144px;
+
+  }
+  .page-header{
+    flex-direction:column;
+  }
+  .followbtn{
+    max-width:100%;
+    width:648px;
+   }
+  .main-bookingheader{
+    flex-direction:column;
+  }
+  .searchbooking{
+    width:auto;
+  }
+.bookinglinks{
+  font-size:14px;
+}
+
+}
+
+@media only screen and (max-width: 576px){
+  .BookingHeading{
+    padding-left:0px;
+    font-size:25px;
+  }
+  .breadcrumb{
+    padding-top:8px;
+    padding-right: 144px;
+
+  }
+  .page-header{
+    flex-direction:column;
+  }
+  .followbtn{
+    max-width:100%;
+    width:598px;
+   }
+  .main-bookingheader{
+    flex-direction:column;
+  }
+  .searchbooking{
+    width:auto;
+  }
+ .bookinglinks{
+  padding-top:10px;
+ }
+
+}
+
+
 
   .sticky-white-bg{
-    padding: 10px;
+    padding: 10px; 
     background: #fff !important;
     border-bottom: 1px solid  #E6E6E6;
   }
@@ -151,7 +398,7 @@ const GlobalStyle = createGlobalStyle`
     > .ant-layout {
       min-height: 100vh;
       overflow: hidden;
-      background-color: ${themeGet('color.1', '#ffffff')};
+      background-color: ${themeGet("color.1", "#ffffff")};
 
       /* hotel submission style  */ 
       .hotel-submission-form {
@@ -175,14 +422,14 @@ const GlobalStyle = createGlobalStyle`
             font-size: 15px;
             line-height: 18px;
             font-weight: 700;
-            color: ${themeGet('text.0', '#2C2C2C')};
+            color: ${themeGet("text.0", "#2C2C2C")};
           }
           .ant-card-body p {
             display: flex;
-            color: ${themeGet('text.2', '#777777')};
+            color: ${themeGet("text.2", "#777777")};
             justify-content: flex-start;
             strong {
-              color: ${themeGet('text.0', '#2C2C2C')};
+              color: ${themeGet("text.0", "#2C2C2C")};
               width: 30%;
             }
           }
@@ -205,7 +452,7 @@ const GlobalStyle = createGlobalStyle`
             border: 0;
             &.account_menu {
               li {
-                color: ${themeGet('text.0', '#2C2C2C')};
+                color: ${themeGet("text.0", "#2C2C2C")};
                 font-size: 15px;
                 line-height: 18px;
                 font-weight: 400;
@@ -217,14 +464,14 @@ const GlobalStyle = createGlobalStyle`
                 }
                 a {
                   padding: 8px 0;
-                  color: ${themeGet('text.0', '#2C2C2C')};
+                  color: ${themeGet("text.0", "#2C2C2C")};
                   transition: color 0.2s ease-in-out;
                   &:hover {
-                    color: ${themeGet('primary.0', '#0088E5')};
+                     color: ${themeGet("primary.0", "#0088E5")};
                   }
                   &.active {
                     font-weight: 700;
-                    color: ${themeGet('primary.0', '#0088E5')};
+                    color: ${themeGet("primary.0", "#0088E5")};
                   }
                 }
                 button {
@@ -235,7 +482,7 @@ const GlobalStyle = createGlobalStyle`
                   background-color: transparent;
                   transition: color 0.2s ease-in-out;
                   &:hover {
-                    color: ${themeGet('primary.0', '#0088E5')};
+                     color: ${themeGet("primary.0", "#0088E5")};
                   }
                   &:focus {
                     outline: none;
@@ -258,7 +505,7 @@ const GlobalStyle = createGlobalStyle`
         .DayPicker_weekHeader {
           .DayPicker_weekHeader_ul {
             .DayPicker_weekHeader_li {
-              color: ${themeGet('text.0', '#2C2C2C')};
+              color: ${themeGet("text.0", "#2C2C2C")};
               small {
                 font-size: 13px;
               }
@@ -270,7 +517,7 @@ const GlobalStyle = createGlobalStyle`
             .CalendarMonth {
               .CalendarMonth_caption {
                 font-size: 16px;
-                color: ${themeGet('text.0', '#2C2C2C')};
+                color: ${themeGet("text.0", "#2C2C2C")};
               }
             }
           }
@@ -292,7 +539,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover{
-    background: #0088E5 !important;
+     background: #0088E5 !important;
     border: 1px double #0088E5 !important;
   }
 
@@ -303,7 +550,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .CalendarDay__hovered_span, .CalendarDay__hovered_span:hover{
-    background: #0088e587 !important;
+     background: #0088e587 !important;
     border: 1px double #0088e587 !important;
   }
 
@@ -391,14 +638,14 @@ const GlobalStyle = createGlobalStyle`
           line-height: inherit;
           > div {
             padding: 15px 20px;
-            color: ${themeGet('text.0', '#2C2C2C')};
+            color: ${themeGet("text.0", "#2C2C2C")};
             svg {
               margin-right: 8px;
             }
           }
 
           &:hover {
-            background-color: ${themeGet('color.2', '#F7F7F7')};
+             background-color: ${themeGet("color.2", "#F7F7F7")};
           }
         }
       }
@@ -492,7 +739,7 @@ const GlobalStyle = createGlobalStyle`
             }
           }
           &.ant-upload-drag-hover{
-            .image-drag-area{
+             .image-drag-area{
               border-color: #48bdc1;
             }
           }
@@ -553,7 +800,7 @@ const GlobalStyle = createGlobalStyle`
         }
       }
     }
-    button[title="Close"].gm-ui-hover-effect {
+    button[title="Close"].gm-ui-hover-eff ect {
       width: 26px !important;
       height: 26px !important;
       padding: 6px !important;
@@ -564,7 +811,7 @@ const GlobalStyle = createGlobalStyle`
       opacity: 1;
       align-items: center;
       display: inline-flex !important;
-      background-color: ${themeGet('color.1', '#ffffff')} !important;
+      background-color: ${themeGet("color.1", "#ffffff")} !important;
       box-shadow: 0 3px 6px rgba(0,0,0,0.16);
       > img {
         margin: 0 !important;
@@ -605,7 +852,7 @@ const GlobalStyle = createGlobalStyle`
         right: 40px;
         &:focus,
         &:hover {
-          outline: none;
+           outline: none;
         }
         @media only screen and (max-width: 1440px) {
           top: 0;
@@ -613,12 +860,12 @@ const GlobalStyle = createGlobalStyle`
           svg {
             path {
               opacity: 0.8;
-              fill: ${themeGet('color.1', '#ffffff')};
+              fill: ${themeGet("color.1", "#ffffff")};
               transition: all 0.3s ease;
             }
           }
           &:hover {
-            svg {
+             svg {
               path {
                 opacity: 1;
               }
@@ -635,12 +882,12 @@ const GlobalStyle = createGlobalStyle`
 /*------------------------------------------*/
 .quantity {
   button.btn {
-    border: 1px solid ${themeGet('primary.0', '#0088E5')};
+    border: 1px solid ${themeGet("primary.0", "#0088E5")};
     svg {
-      fill: ${themeGet('primary.0', '#0088E5')};
+      fill: ${themeGet("primary.0", "#0088E5")};
     }
     &:hover {
-      background-color: ${themeGet('primary.0', '#0088E5')};
+       background-color: ${themeGet("primary.0", "#0088E5")};
       svg {
         fill: #ffffff;
       }
@@ -648,7 +895,7 @@ const GlobalStyle = createGlobalStyle`
   }
   input[type="number"],
   input[type="number"].qnt-input {
-    color: ${themeGet('text.0', '#2C2C2C')};
+    color: ${themeGet("text.0", "#2C2C2C")};
   }
 }
 
@@ -667,7 +914,7 @@ const GlobalStyle = createGlobalStyle`
       margin: 0 0 30px;
       padding: 25px 20px;
       align-items: center;
-      background-color: ${themeGet('color.2', '#F7F7F7')};
+      background-color: ${themeGet("color.2", "#F7F7F7")};
       li {
         height: auto;
         line-height: 1;
@@ -685,15 +932,15 @@ const GlobalStyle = createGlobalStyle`
           border-radius: 3px;
           font-size: 15px;
           font-weight: 700;
-          color: ${themeGet('text.0', '#2C2C2C')};
+          color: ${themeGet("text.0", "#2C2C2C")};
         }
         &:last-child {
           a {
-            color: ${themeGet('color.1', '#ffffff')};
-            background-color: ${themeGet('primary.0', '#0088E5')};
+            color: ${themeGet("color.1", "#ffffff")};
+            background-color: ${themeGet("primary.0", "#0088E5")};
             transition: opacity 0.2s ease;
             &:hover {
-              opacity: 0.9;
+               opacity: 0.9;
             }
           }
         }
@@ -712,11 +959,11 @@ const GlobalStyle = createGlobalStyle`
           font-size: 15px;
           padding: 0 31px;
           border-left: 4px solid transparent;
-          color: ${themeGet('text.0', '#2C2C2C')};
+          color: ${themeGet("text.0", "#2C2C2C")};
           &.active {
             font-weight: 700;
-            border-color: ${themeGet('primary.0', '#0088E5')};
-            color: ${themeGet('primary.0', '#0088E5')};
+            border-color: ${themeGet("primary.0", "#0088E5")};
+            color: ${themeGet("primary.0", "#0088E5")};
           }
         }
         button {
@@ -727,18 +974,18 @@ const GlobalStyle = createGlobalStyle`
           padding: 0 32px;
           cursor: pointer;
           background-color: transparent;
-          color: ${themeGet('text.0', '#2C2C2C')};
+          color: ${themeGet("text.0", "#2C2C2C")};
           transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
           &:hover {
-            color: ${themeGet('primary.0', '#0088E5')};
+             color: ${themeGet("primary.0", "#0088E5")};
           }
           &focus {
             outline: 0;
           }
         }
         &:hover {
-          a {
-            color: ${themeGet('primary.0', '#0088E5')};
+           a {
+            color: ${themeGet("primary.0", "#0088E5")};
           }
         }
       }
@@ -768,21 +1015,21 @@ const GlobalStyle = createGlobalStyle`
     padding: 10px 14px;
     cursor: pointer;
     font-size: 13px;
-    color: ${themeGet('text.1', '#909090')};
+    color: ${themeGet("text.1", "#909090")};
     .pac-icon {
       margin-top: 6px;
     }
     .pac-item-query {
       font-size: 15px;
       font-weight: 600;
-      color: ${themeGet('text.0', '#2C2C2C')};  
+      color: ${themeGet("text.0", "#2C2C2C")};  
       .pac-matched {
         font-weight: 700;
-        color: ${themeGet('color.0', '#000000')};
+        color: ${themeGet("color.0", "#000000")};
       }
     } 
     &:hover {
-      background-color: ${themeGet('color.2', '#F7F7F7')};
+       background-color: ${themeGet("color.2", "#F7F7F7")};
     }
   }
 }
@@ -806,7 +1053,7 @@ const GlobalStyle = createGlobalStyle`
         header {
           padding-top: 50px;
           padding-bottom: 20px;
-          border-color: ${themeGet('border.0', '#EBEBEB')};
+          border-color: ${themeGet("border.0", "#EBEBEB")};
           @media only screen and (max-width: 375px) {
             padding-top: 30px;
           }
@@ -819,7 +1066,7 @@ const GlobalStyle = createGlobalStyle`
           padding: 0 9px;
         }
         footer {
-          border-color: ${themeGet('border.0', '#EBEBEB')};
+          border-color: ${themeGet("border.0", "#EBEBEB")};
         }
       }
       > button.close {
@@ -832,7 +1079,7 @@ const GlobalStyle = createGlobalStyle`
         position: absolute;
         font-size: 32px;
         background-color: transparent;
-        color: ${themeGet('text.1', '#909090')};
+        color: ${themeGet("text.1", "#909090")};
         transition: all 0.3s ease;
         @media only screen and (max-width: 375px) {
           top: 10px;
@@ -840,9 +1087,9 @@ const GlobalStyle = createGlobalStyle`
           font-size: 25px;
         }
         &:hover,
-        &:focus {
+         &:focus {
           outline: none;
-          color: ${themeGet('text.0', '#2C2C2C')};
+          color: ${themeGet("text.0", "#2C2C2C")};
         }
         &::after {
           display: none;
@@ -854,31 +1101,31 @@ const GlobalStyle = createGlobalStyle`
 
 .reservation_sidebar {
   padding: 0 !important;
-  background-color: ${themeGet('color.1', '#ffffff')};
+  background-color: ${themeGet("color.1", "#ffffff")};
   header {
     padding-bottom: 27px;
     margin-bottom: 29px;
     padding: 25px 30px 26px 30px;
-    border-bottom: 1px solid ${themeGet('border.0', '#EBEBEB')};
+    border-bottom: 1px solid ${themeGet("border.0", "#EBEBEB")};
     @media only screen and (max-width: 375px) {
       padding: 25px 15px 26px 15px;
     }
     a {
       &:hover {
-        color: #31b8bd;
+         color: #31b8bd;
       }
     }
   }
 
   p {
-    color: ${themeGet('text.0', '#2C2C2C')};
+    color: ${themeGet("text.0", "#2C2C2C")};
     font-size: 15px;
     font-weight: 400;
     a {
-      color: ${themeGet('primary.0', '#0088E5')};
+      color: ${themeGet("primary.0", "#0088E5")};
       font-weight: 700;
       &:hover,
-      &:focus {
+       &:focus {
         outline: 0;
         color: #0088E5d1;
         text-decoration: underline;
@@ -889,7 +1136,7 @@ const GlobalStyle = createGlobalStyle`
   footer {
     padding: 25px 30px 28px 30px;
     margin-top: 29px;
-    border-top: 1px solid ${themeGet('border.0', '#EBEBEB')};
+    border-top: 1px solid ${themeGet("border.0", "#EBEBEB")};
     @media only screen and (max-width: 375px) {
       padding: 20px 15px 25px 15px;
     }
@@ -906,18 +1153,18 @@ const GlobalStyle = createGlobalStyle`
 
 .ant-input-affix-wrapper {
   border-radius: 3px;
-  border-color: ${themeGet('border.3', '#E6E6E6')};
+  border-color: ${themeGet("border.3", "#E6E6E6")};
 }
 
 .ant-input-search-icon::before {
-  border-color: ${themeGet('border.3', '#E6E6E6')};
+  border-color: ${themeGet("border.3", "#E6E6E6")};
 }
 
-.ant-checkbox-wrapper:hover .ant-checkbox-inner, 
-.ant-checkbox:hover .ant-checkbox-inner, 
+.ant-checkbox-wrapper:hover .an t-checkbox-inner, 
+.ant-checkbox:hover .an t-checkbox-inner, 
 .ant-checkbox-input:focus + .ant-checkbox-inner,
 .ant-checkbox-checked::after {
-  border-color: ${themeGet('primary.0', '#0088E5')} !important;
+  border-color: ${themeGet("primary.0", "#0088E5")} !important;
 }
 
 @media all and (max-width: 720px) {
@@ -1144,7 +1391,7 @@ const GlobalStyle = createGlobalStyle`
   border-color: #ed9205;
   color: #fff;
   &:hover {
-    background-color: #fd9a01a6;
+     background-color: #fd9a01a6;
     color: #fff;
     border-color: #ed9205b0;
   }
@@ -1299,7 +1546,7 @@ const GlobalStyle = createGlobalStyle`
   padding: 15px 0;
   text-align: center;
   color: #ffffff;
-  background-color: ${themeGet('primary.0', '#0088E5')};
+  background-color: ${themeGet("primary.0", "#0088E5")};
   @include sm-down {
     font-size: 12px;
   }
@@ -1403,7 +1650,7 @@ h5.ant-typography{
   text-decoration: none;
 }
 .count-nav > li p a:hover {
-  color: #0088e5;
+   color: #0088e5;
   text-decoration: underline;
 }
 
@@ -1432,7 +1679,7 @@ h5.ant-typography{
   font-size: 16px;
   text-decoration: none;
 }
-.linksTarget > li > a:hover, .linksTarget > li > a:focus {
+.linksTarget > li > a:hover, .l inksTarget > li > a:focus {
   text-decoration: none;
   color: #0088e5;
 }
@@ -1454,7 +1701,7 @@ h5.ant-typography{
     .DateInput{
       width: 45% !important;
       .DateInput_input__focused{
-        border-color: ${themeGet('primary.1', '#0088E5')};
+        border-color: ${themeGet("primary.1", "#0088E5")};
       }
 
     }
