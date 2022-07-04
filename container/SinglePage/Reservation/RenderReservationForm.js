@@ -87,6 +87,9 @@ const RenderReservationForm = () => {
     if (current && current.valueOf() < Date.now()) {
       return true;
     }
+    if (current && current.valueOf() <= moment(apartment.available_from)) {
+      return true;
+    }
     if (apartment && apartment.occupied_dates) {
       return apartment.occupied_dates.includes(current.format("YYYY/MM/DD"));
     }
