@@ -1,9 +1,16 @@
 import Head from "next/head";
-import ExtendMyOngoingBooking from "../../../components/Tenants/MangingMyBooking/ExtendMyOngoingBooking";
+import Tenants from "../../../components/Tenants/Tenants";
+import Landlords from "../../../components/Landlords/Landlords";
+import { useRouter } from "next/router";
+
 export default function tenants(props) {
+  const router = useRouter();
+
+  console.log(router);
   return (
     <>
-      <ExtendMyOngoingBooking />
+      {router.query?.subCategory === "tenants" && <Tenants />}
+      {router.query?.subCategory === "landlords" && <Landlords />}
       <Head>
         <title>International Student Housing | Study Abroad Apartments</title>
         <meta

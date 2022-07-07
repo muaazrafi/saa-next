@@ -1,10 +1,9 @@
 import Head from "next/head";
-import Tenants from "../../components/Tenants/Tenants";
-
-export default function tenants(props) {
+import DropDown from "../../components/Tenants/MangingMyBooking/DropDown";
+export default function section(props) {
   return (
     <>
-      <Tenants />
+      <DropDown />
       <Head>
         <title>International Student Housing | Study Abroad Apartments</title>
         <meta

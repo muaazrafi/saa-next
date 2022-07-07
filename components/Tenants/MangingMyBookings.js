@@ -1,9 +1,20 @@
 import React from "react";
-import { Row, Col, Input, Button, Breadcrumb } from "antd";
+import { Row, Col, Input, Breadcrumb } from "antd";
 import MangingBookingsLink from "./MangingBookingsLink";
 import { SearchOutlined } from "@ant-design/icons";
 
 const MangingMyBookings = () => {
+  const manage = [
+    {
+      title: "No discrimintation Policy",
+      href: "/help/articles/myArticle",
+    },
+    {
+      title: "Non discrimination policy",
+      href: "/help/articles/myArticles",
+    },
+  ];
+
   return (
     <>
       <div className='container'>
@@ -21,27 +32,17 @@ const MangingMyBookings = () => {
             size='large'
           />
         </div>
-        <div className='page-header'>
-          <h2 className='BookingHeading'>Manging My Bookings</h2>
-          <div>
-            <a className='followbtn'>follow</a>
-          </div>
-        </div>
-        <Row>
+
+        <MangingBookingsLink
+          mainTitle='Managing My Bookings'
+          arrayLinks={manage}
+        />
+
+        {/* <Row>
           <Col span={24} className='bookingContainer'>
-            <MangingBookingsLink title='No discrimination policy' />
-
-            <MangingBookingsLink title='How does StudyAboardApartement works' />
-
-            <MangingBookingsLink title='Does StudyAboardApartment organise viewings?' />
-
-            <MangingBookingsLink title='How do I search for my new home?' />
-
-            <MangingBookingsLink title='How do I know if the Apartment is available?' />
-
-            <MangingBookingsLink title='Can I contact the Landlord before booking?' />
+            <MangingBookingsLink arrayLinks={manage} />
           </Col>
-        </Row>
+        </Row> */}
       </div>
     </>
   );
