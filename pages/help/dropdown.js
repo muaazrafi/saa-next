@@ -1,9 +1,9 @@
 import Head from "next/head";
-import ExtendMyOngoingBooking from "../../../components/Tenants/MangingMyBooking/ExtendMyOngoingBooking";
-export default function tenants(props) {
+import DropDown from "../../components/Tenants/MangingMyBooking/DropDown";
+export default function section(props) {
   return (
     <>
-      <ExtendMyOngoingBooking />
+      <DropDown />
       <Head>
         <title>International Student Housing | Study Abroad Apartments</title>
         <meta

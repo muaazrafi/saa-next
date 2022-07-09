@@ -18,31 +18,20 @@ const HelpCenter = () => {
       </div>
       <div className='container'>
         <Row>
-          <Col
-            lg={12}
-            md={12}
-            sm={24}
-            xs={24}
-            style={{
-              padding: "10px",
-              display: "flex",
-              justifyContent: "flex-end",
-            }}>
-            <Button className='help_btn' size='large'>
+          <Col>
+            <Button
+              className='help-btn'
+              href='help/categories/tenants'
+              size='large'>
               Tenants
             </Button>
           </Col>
-          <Col
-            lg={12}
-            md={12}
-            sm={24}
-            xs={24}
-            style={{
-              display: "flex",
-              padding: "10px",
-              justifyContent: "flex-start",
-            }}>
-            <Button className='help_btn2' size='large'>
+
+          <Col>
+            <Button
+              className='help-btn'
+              href='help/categories/landlords'
+              size='large'>
               Landlords
             </Button>
           </Col>

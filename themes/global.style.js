@@ -142,8 +142,11 @@ const GlobalStyle = createGlobalStyle`
   }
   /********** Help************/
   .help_btn{
-    height:70px;
-    width:500px;
+   
+    max-width:100%;
+    max-height:100%;
+    text-align:center;
+    alignItems: "center";
     &:hover {
       background-color: rgba(10, 7, 119, 1) !important ;
       color:#ffff;
@@ -151,8 +154,9 @@ const GlobalStyle = createGlobalStyle`
   }
   .help_btn2{
     
-    height:70px;
-    width:500px;
+ 
+    max-width:100%;
+    max-height:100%;
     &:hover {
       background-color: rgba(10, 7, 119, 1) !important ;
       color:#ffff;
@@ -194,30 +198,49 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom:50px;
   }
 
-  /----------Tenants-----------/
-
+  //----------Tenants-----------//
+       
   .tenantsContainer{
-    padding:100px;
+    padding-bottom:40px;
+    display:flex;
+    justify-content:center;
   }
-  .tenantHeading{
-    font-size:35px;
-    padding-left:20px;
-  }
-  .tenantslinks{
-    padding:10px;
-    border-bottom:1px solid grey;
-    width:450px;
-    margin-bottom:20px;
+  .tenantContents{
+    flex:0 0 80%;
   }
   .textTenants{
+    font-size:20px;
     font-weight:bold;
-  }
-
-  .tenantsPara{
     &:hover{
-     text-decoration:underline;
+    text-decoration:underline;
     }
   }
+  .linkTenants{
+    font-size:18px;
+    color:black;
+  }
+    .tenantHeading{
+      font-size:30px;
+      font-weight:500;
+
+    }
+    
+     .tenantsContent{
+      padding:15px;
+      border-bottom:1px solid #ddd;
+     }
+@media only screen and (max-width:996px){
+  .tenantContents{
+    flex:0 0 100%;
+  }
+}
+
+@media only screen and (max-width:767px){
+  .tenantContents{
+    flex:0 0 105%;
+  }
+}
+
 
 //---------Landlords------------//
 
@@ -229,10 +252,11 @@ const GlobalStyle = createGlobalStyle`
 
 
 }
-.invisible-scrollbar::-webkit-scrollbar-track{
-  display:none;
-}
 
+.articleSelector{
+  width:100%;
+  height:50px;
+}
 
 // ---------MangingMy Bookings--------//
 
@@ -387,12 +411,150 @@ const GlobalStyle = createGlobalStyle`
 }
 
 
-
+.searchBooking{width:300px;
+border-radius: 30px !important;
+box-sizing: border-box;
+color: #999;
+height: 40px;
+padding-left: 20px;
+margin-top:20px;
+}
+.breadCrumb{
+  padding-top:20px;
+}
   .sticky-white-bg{
     padding: 10px; 
     background: #fff !important;
     border-bottom: 1px solid  #E6E6E6;
   }
+
+.selected{
+  background:rgba(10, 7, 119, 1) !important;
+  color:#fff;
+  padding-top:0px;
+  
+}
+.extendHeader{
+  font-size:35px;
+}
+.extend{
+  margin-top:10px;
+  margin-bottom:10px;
+  border-radius:4px;
+  &:hover{
+    background:rgba(10, 7, 119, 1) !important;
+    border:4px rgba(10, 7, 119, 1) !important;
+    color:#fff;
+  }
+}
+.policy{
+  margin-top:10px;
+  margin-bottom:10px;
+  border-radius:4px;
+  &:hover{
+    background:rgba(10, 7, 119, 1) !important;
+   
+    color:#fff;
+  }
+}
+.guarantees{
+  margin-top:10px;
+  margin-bottom:10px;
+  border-radius:4px;
+  &:hover{
+    background:rgba(10, 7, 119, 1) !important;
+    
+    color:#fff;
+  }
+}
+.Policy{
+  margin-top:10px;
+  margin-bottom:10px;
+  border-radius:4px;
+  &:hover{
+    background:rgba(10, 7, 119, 1) !important;
+    color:#fff;
+  }
+}
+.issuesHelp{
+  margin-top:10px;
+  margin-bottom:10px;
+  border-radius:4px;
+  &:hover{
+    background:rgba(10, 7, 119, 1) !important;
+    color:#fff;
+  }
+}
+.changesDate{
+  margin-top:10px;
+  margin-bottom:10px;
+  border-radius:4px;
+  &:hover{
+    background:rgba(10, 7, 119, 1) !important;
+    color:#fff;
+  }
+}
+.contracts{
+
+  border-radius:4px;
+ 
+  &:hover{
+    background:rgba(10, 7, 119, 1) !important;
+    color:#fff;
+  }
+}
+.linked{
+  margin:10px;
+}
+// .horizontal-line{
+// color:1px solid #ddd;
+//   width:700px;
+//   max-width:100%;
+// }
+.article-footer{
+  border-top:1px solid #ddd;
+  border-bottom:1px solid #ddd;
+  max-width:100%;
+  padding-top:30px;
+  text-align:center;
+}
+.article-vote{
+  display: flex;
+  justify-content:center;
+}
+.articlebtn{
+  
+  border: 1px solid rgba(10, 7, 119, 1);
+  border-radius: 4px;
+  color: rgba(10, 7, 119, 1);
+  cursor: pointer;
+
+  font-size: 12px;
+  line-height: 2.34;
+  margin: 17px;
+  padding: 0 40px;
+  text-align: center;
+  transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
+&:hover{
+  background:rgba(10, 7, 119, 1) !important;
+  color:#fff;
+  
+}
+ 
+}
+
+.dropMenu{
+  width:90%;
+}
+
+
+
+
+
+
+
+
+
 
   #__next {
     > .ant-layout {

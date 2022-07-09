@@ -1,105 +1,112 @@
 import React from "react";
-import { Row, Col, Input, Button } from "antd";
+import { Row, Col, Input, Breadcrumb } from "antd";
 import TenantsLinks from "./TenantsLinks";
 import { SearchOutlined } from "@ant-design/icons";
+import { flex } from "styled-system";
 
 const Tenants = () => {
+  const tenants = [
+    {
+      title: "no discrimination policy",
+      href: "/help/articles/myArticle",
+    },
+    {
+      title: "How does Spotahome work?",
+      href: "/help/articles/myArticle",
+    },
+
+    {
+      title: "Does Spotahome organise viewings?",
+      href: "/help/articles/myArticle",
+    },
+    {
+      title: "How do I search for my new home?",
+      href: "/help/articles/myArticle",
+    },
+    {
+      title: "How do I know if the property is available?",
+      href: "/help/articles/myArticle",
+    },
+  ];
   return (
     <>
-      <div className='main-tenants'>
-        <Input
-          prefix={<SearchOutlined />}
-          className='search-box'
-          type='text'
-          placeholder='search'
-          size='large'
-          style={{
-            width: "300px",
-            marginTop: "20px",
-            marginRight: "50px",
-            borderRadius: "16px",
-            float: "right",
-          }}
-        />
-      </div>
-      <div className='tenantsContainer'>
-        <h2 className='tenantHeading'>Tenants</h2>
-        <Row>
-          <Col span={12} style={{ padding: "20px" }}>
-            <h3 className='textTenants'>Getting Started</h3>
-            <TenantsLinks title='No discrimination policy' />
-
-            <TenantsLinks title='How does StudyAboardApartement works' />
-
-            <TenantsLinks title='Does StudyAboardApartment organise viewings?' />
-
-            <TenantsLinks title='How do I search for my new home?' />
-
-            <TenantsLinks title='How do I know if the Apartment is available?' />
-
-            <TenantsLinks title='Can I contact the Landlord before booking?' />
-          </Col>
-          <Col span={12} style={{ padding: "20px" }}>
-            <h3 className='textTenants'>House Rule</h3>
-            <TenantsLinks title='What are the House Rules?' />
-
-            <TenantsLinks title='Is local registration possible?' />
-
-            <TenantsLinks title='Who will I be sharing the property with?' />
-
-            <TenantsLinks title='What are the Landlord Policies?' />
-
-            <TenantsLinks title='What is the admin fee?' />
-
-            <TenantsLinks title='About the Security Deposit' />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={12} style={{ padding: "20px" }}>
-            <h3 className='textTenants'>Booking Process</h3>
-            <TenantsLinks title='Why do Spotahome use LEM Verify?' />
-
-            <TenantsLinks title='What is the 3D Secure?' />
-
-            <TenantsLinks title='How can i book?' />
-
-            <TenantsLinks title='How can I manage my booking request?' />
-
-            <TenantsLinks title='What is an instant booking?' />
-
-            <TenantsLinks title='Why has my payment method failed?' />
-          </Col>
-          <Col span={12} style={{ padding: "20px" }}>
-            <h3 className='textTenants'>Manging my Bookings</h3>
-            <TenantsLinks title='Extend my ongoing Booking' />
-
-            <TenantsLinks title='Cancellation Policy before 2nd of March 2022' />
-
-            <TenantsLinks title='StudyAboardApartments Guarantees and Force Majeure for Tenants' />
-
-            <TenantsLinks title='StudyAboardApartments Cancellation Policy' />
-
-            <TenantsLinks title='Help - I have moving issues with my property' />
-
-            <TenantsLinks title='Changes in my dates' />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={12} style={{ padding: "20px" }}>
-            <h3 className='textTenants'>Manging my Account</h3>
-            <TenantsLinks title='Does Spotahome close user’s accounts?' />
-
-            <TenantsLinks title='Create and Manage My Account' />
-
-            <TenantsLinks title='My Services' />
-
-            <TenantsLinks title='My Bookings' />
-
-            <TenantsLinks title='My Payments' />
-
-            <TenantsLinks title='My Alerts' />
-          </Col>
-        </Row>
+      <div className='container'>
+        <div className='main-bookingheader'>
+          <Breadcrumb separator='>' className='breadcrumb'>
+            <Breadcrumb.Item>StudyAboardApartement</Breadcrumb.Item>
+            <Breadcrumb.Item href='categories/tenants'>Tenants</Breadcrumb.Item>
+          </Breadcrumb>
+          <Input
+            prefix={<SearchOutlined />}
+            className='searchbooking'
+            type='text'
+            placeholder='search'
+            size='large'
+          />
+        </div>
+        <div className='tenantsContainer'>
+          <div className='tenantContents'>
+            <h2 className='tenantHeading'>Tenants</h2>
+            <Row>
+              <Col
+                lg={12}
+                md={12}
+                xs={24}
+                style={{
+                  padding: "20px",
+                }}>
+                <TenantsLinks
+                  arrayLinks={tenants}
+                  mainTitle='Getting started'
+                  href='/help/section/myArticle'
+                />
+              </Col>
+              <Col
+                lg={12}
+                md={12}
+                xs={24}
+                style={{
+                  padding: "20px",
+                }}>
+                <TenantsLinks
+                  arrayLinks={tenants}
+                  mainTitle='House Rule'
+                  href='/help/section/myArticle'
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col lg={12} xs={24} md={12} style={{ padding: "20px" }}>
+                <TenantsLinks
+                  arrayLinks={tenants}
+                  mainTitle='Booking Process'
+                  href='/help/section/myArticle'
+                />
+              </Col>
+              <Col
+                lg={12}
+                xs={24}
+                md={12}
+                size='small'
+                style={{ padding: "20px" }}>
+                <TenantsLinks
+                  arrayLinks={tenants}
+                  mainTitle='Manage My Bookings'
+                  href='/help/section/myArticle'
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col lg={12} xs={24} md={12} style={{ padding: "20px" }}>
+                <TenantsLinks
+                  arrayLinks={tenants}
+                  mainTitle='Manage My Account'
+                  href='/help/section/myArticle'
+                />
+              </Col>
+            </Row>
+          </div>
+        </div>
       </div>
     </>
   );
