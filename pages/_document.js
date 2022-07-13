@@ -50,10 +50,7 @@ export default class MyDocument extends Document {
             name="twitter:image"
             content="https://studyabtoadapartments.nyc3.digitaloceanspaces.com/assets/logo_vedyje.png"
           />
-          <meta
-            name="viewport"
-            content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-          />
+          <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
           <link
             rel="icon"
             href="/images/favicon.ico"
