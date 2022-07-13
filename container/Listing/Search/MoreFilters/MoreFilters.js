@@ -41,7 +41,11 @@ const MoreFilters = (props) => {
         More Filters
       </Button>
       <Modal
-        title="More Filters"
+        title={
+          <Button type='primary' onClick={handleOk} >
+            Search 
+          </Button>
+        }
         visible={isModalVisible}
         onCancel={handleCancel}
         bodyStyle={{ height: "84vh", padding: "0px" }}
