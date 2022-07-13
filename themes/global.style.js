@@ -1899,6 +1899,12 @@ h5.ant-typography{
   }
 }
 
+@media screen and (max-width: 767px) {
+  select:active, input:active,textarea:active{
+         font-size: 16px;
+  }
+ }
+
 `;
 
 export default GlobalStyle;
