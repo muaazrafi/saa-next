@@ -4,6 +4,51 @@ import { Row, Col, Input, Button } from "antd";
 import { RecentActivity } from "./RecentActivity";
 
 const HelpCenter = () => {
+  const recent = [
+    {
+      title: "Manage Booking ",
+      subTitle: "Extend My ongoing Booking",
+      titleHref: "/help/section/myArticle",
+      createdAt: "Article created 3 months ago",
+      subTitleHref: "/help/articles/myArticle",
+    },
+    {
+      title: "Manage Booking ",
+      subTitle: "Extend My ongoing Booking",
+      titleHref: "/help/section/myArticle",
+      createdAt: "Article created 3 months ago",
+      subTitleHref: "/help/articles/myArticle",
+    },
+    {
+      title: "Manage Booking ",
+      subTitle: "Extend My ongoing Booking",
+      titleHref: "/help/section/myArticle",
+      createdAt: "Article created 3 months ago",
+      subTitleHref: "/help/articles/myArticle",
+    },
+    {
+      title: "Manage Booking ",
+      subTitle: "Extend My ongoing Booking",
+      titleHref: "/help/section/myArticle",
+      createdAt: "Article created 3 months ago",
+      subTitleHref: "/help/articles/myArticle",
+    },
+    {
+      title: "Manage Booking ",
+      subTitle: "Extend My ongoing Booking",
+      titleHref: "/help/section/myArticle",
+      createdAt: "Article created 3 months ago",
+      subTitleHref: "/help/articles/myArticle",
+    },
+    {
+      title: "Manage Booking ",
+      subTitle: "Extend My ongoing Booking",
+      titleHref: "/help/section/myArticle",
+      createdAt: "Article created 3 months ago",
+      subTitleHref: "/help/articles/myArticle",
+    },
+  ];
+
   return (
     <>
       <div className='hero'>
@@ -17,59 +62,31 @@ const HelpCenter = () => {
         />
       </div>
       <div className='container'>
-        <Row>
-          <Col>
+        <Row gutter={[20, 20]}>
+          <Col className='BtnCol' lg={12} md={12} sm={24} xs={24}>
             <Button
               className='help-btn'
               href='help/categories/tenants'
               size='large'>
-              Tenants
+              <p className='helpButton'>Tenants</p>
             </Button>
           </Col>
 
-          <Col>
+          <Col className='BtnCol' lg={12} md={12} sm={24} xs={24}>
             <Button
               className='help-btn'
               href='help/categories/landlords'
               size='large'>
-              Landlords
+              <p className='helpButton'>Landlords</p>
             </Button>
           </Col>
         </Row>
-        <hr
-          style={{
-            marginTop: "100px",
-          }}
-        />
-        <div className='recent'>
-          <h2>Recent Activity</h2>
+        <div className='ArticleRecent'>
+          <div className='recent'>
+            <h1 className='recentHeading'>Recent Activity</h1>
+          </div>
+          <RecentActivity arrayLinks={recent} />
         </div>
-        <RecentActivity
-          title='Managing My Bookings'
-          subTitle='Extend my ongoing Bookings'
-          createdAt='Article created 3 months ago'
-        />
-
-        <RecentActivity
-          title='Managing My Account'
-          subTitle="Does StudyAbroadApartments close user's accounts? "
-          createdAt='Article created 3 months ago'
-        />
-        <RecentActivity
-          title='Managing My Booking'
-          subTitle='Cancellation Policy before 2nd of March 2022 '
-          createdAt='Article created 4 months ago'
-        />
-        <RecentActivity
-          title='Managing Your Account / Landlord Panel'
-          subTitle="Does StudyAbroadApartments close user's accounts?"
-          createdAt='Article created 8 months ago'
-        />
-        <RecentActivity
-          title='Managing My Accounts'
-          subTitle='Why do StudyApartment use LEM Verify?'
-          createdAt='Article created 3 months ago'
-        />
       </div>
     </>
   );

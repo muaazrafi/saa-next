@@ -34,7 +34,9 @@ const Tenants = () => {
         <div className='main-bookingheader'>
           <Breadcrumb separator='>' className='breadcrumb'>
             <Breadcrumb.Item>StudyAboardApartement</Breadcrumb.Item>
-            <Breadcrumb.Item href='categories/tenants'>Tenants</Breadcrumb.Item>
+            <Breadcrumb.Item href='/help/categories/tenants'>
+              Tenants
+            </Breadcrumb.Item>
           </Breadcrumb>
           <Input
             prefix={<SearchOutlined />}

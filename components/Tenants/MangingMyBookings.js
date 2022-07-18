@@ -13,6 +13,22 @@ const MangingMyBookings = () => {
       title: "Non discrimination policy",
       href: "/help/articles/myArticles",
     },
+    {
+      title: "Non discrimination policy",
+      href: "/help/articles/myArticles",
+    },
+    {
+      title: "Non discrimination policy",
+      href: "/help/articles/myArticles",
+    },
+    {
+      title: "Non discrimination policy",
+      href: "/help/articles/myArticles",
+    },
+    {
+      title: "Non discrimination policy",
+      href: "/help/articles/myArticles",
+    },
   ];
 
   return (
@@ -21,8 +37,12 @@ const MangingMyBookings = () => {
         <div className='main-bookingheader'>
           <Breadcrumb separator='>' className='breadcrumb'>
             <Breadcrumb.Item>StudyAboardApartement</Breadcrumb.Item>
-            <Breadcrumb.Item href='categories/tenants'>Tenants</Breadcrumb.Item>
-            <Breadcrumb.Item href=''>Manging My Bookings</Breadcrumb.Item>
+            <Breadcrumb.Item href='/help/categories/tenants'>
+              Tenants
+            </Breadcrumb.Item>
+            <Breadcrumb.Item href='/help/section/myArticle'>
+              Manging My Bookings
+            </Breadcrumb.Item>
           </Breadcrumb>
           <Input
             prefix={<SearchOutlined />}
@@ -37,12 +57,6 @@ const MangingMyBookings = () => {
           mainTitle='Managing My Bookings'
           arrayLinks={manage}
         />
-
-        {/* <Row>
-          <Col span={24} className='bookingContainer'>
-            <MangingBookingsLink arrayLinks={manage} />
-          </Col>
-        </Row> */}
       </div>
     </>
   );
