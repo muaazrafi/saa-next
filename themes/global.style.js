@@ -159,7 +159,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight:700;
   }
   .helpButton{
-    padding-top:20px;
+    padding-top:15px;
   }
   .ArticleRecent{
     margin-top:100px;
@@ -176,6 +176,27 @@ const GlobalStyle = createGlobalStyle`
    border-bottom:1px solid #ddd;
  
   }
+
+
+.recent-link{
+  margin-top:20px;
+  &:hover{
+    text-decoration:underline;
+    cursor:pointer;
+  }
+}
+.recent-links{
+  margin-bottom:20px;
+  &:hover{
+    text-decoration:underline;
+    cursor:pointer;
+  }
+}
+
+
+
+
+
   .createArticle{
     align-self:center;
   }
@@ -491,6 +512,21 @@ const GlobalStyle = createGlobalStyle`
 }
 
 
+
+.authorName{
+  font-size:16px;
+  padding-left:6px;
+    
+}
+
+.update-Date{
+  font-size: 11px;
+    bottom: 8px;
+    position: relative;
+    padding-left: 5px;
+}
+
+
 .selected{
   background:rgba(10, 7, 119, 1) !important;
   color:#fff;
@@ -512,12 +548,14 @@ const GlobalStyle = createGlobalStyle`
 
 .linked{
   padding-left:10px;
+  padding-top:10px;
 }
 
 
 .extendHeading{
   display:flex;
   justify-content:space-between;
+  
 }
 
 .article-footer{
@@ -560,6 +598,10 @@ const GlobalStyle = createGlobalStyle`
 }
 .socialIcon{
   padding-left:10px;
+}
+.articleSection{
+  font-weight:bold;
+  padding-left:px;
 }
 .ArticleSection{
   border-bottom:1px solid #ddd;

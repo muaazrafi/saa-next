@@ -36,7 +36,9 @@ const MangingMyBookings = () => {
       <div className='container'>
         <div className='main-bookingheader'>
           <Breadcrumb separator='>' className='breadcrumb'>
-            <Breadcrumb.Item>StudyAboardApartement</Breadcrumb.Item>
+            <Breadcrumb.Item href='/help'>
+              StudyAboardApartement
+            </Breadcrumb.Item>
             <Breadcrumb.Item href='/help/categories/tenants'>
               Tenants
             </Breadcrumb.Item>
