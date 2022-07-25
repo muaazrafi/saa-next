@@ -69,9 +69,11 @@ const ArticleData = ({ articleData }) => {
               style={{
                 position: "absolute",
               }}>
-              <span>{articleData?.aurthorName}</span>
+              <span className='authorName'>{articleData?.aurthorName}</span>
               <br />
-              <span>{articleData?.updateDate} - Updated</span>
+              <span className='update-Date'>
+                {articleData?.updateDate} - Updated
+              </span>
             </span>
           </div>
           <div>
@@ -100,7 +102,7 @@ const ArticleData = ({ articleData }) => {
             <a className='articlebtn'>No</a>
           </div>
           <small>
-            <span>1 out of 5 found this helpful</span>
+            <span>{articleData.articleCount}</span>
           </small>
         </div>
         <div className='ArticleSection'>
