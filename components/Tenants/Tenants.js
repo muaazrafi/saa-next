@@ -1,8 +1,7 @@
 import React from "react";
 import { Row, Col, Input, Breadcrumb } from "antd";
-import TenantsLinks from "./TenantsLinks";
 import { SearchOutlined } from "@ant-design/icons";
-import { flex } from "styled-system";
+import TenantsLinks from "./TenantsLinks";
 
 const Tenants = () => {
   const tenants = [
@@ -60,7 +59,7 @@ const Tenants = () => {
                   padding: "20px",
                 }}>
                 <TenantsLinks
-                  arrayLinks={tenants}
+                  // arrayLinks={tenants}
                   mainTitle='Getting started'
                   href='/help/section/myArticle'
                 />
@@ -73,7 +72,7 @@ const Tenants = () => {
                   padding: "20px",
                 }}>
                 <TenantsLinks
-                  arrayLinks={tenants}
+                  // arrayLinks={tenants}
                   mainTitle='House Rule'
                   href='/help/section/myArticle'
                 />
@@ -81,11 +80,11 @@ const Tenants = () => {
             </Row>
             <Row>
               <Col lg={12} xs={24} md={12} style={{ padding: "20px" }}>
-                <TenantsLinks
+                {/* <TenantsLinks
                   arrayLinks={tenants}
                   mainTitle='Booking Process'
                   href='/help/section/myArticle'
-                />
+                /> */}
               </Col>
               <Col
                 lg={12}
@@ -93,20 +92,20 @@ const Tenants = () => {
                 md={12}
                 size='small'
                 style={{ padding: "20px" }}>
-                <TenantsLinks
+                {/* <TenantsLinks
                   arrayLinks={tenants}
                   mainTitle='Manage My Bookings'
                   href='/help/section/myArticle'
-                />
+                /> */}
               </Col>
             </Row>
             <Row>
               <Col lg={12} xs={24} md={12} style={{ padding: "20px" }}>
-                <TenantsLinks
+                {/* <TenantsLinks
                   arrayLinks={tenants}
                   mainTitle='Manage My Account'
                   href='/help/section/myArticle'
-                />
+                /> */}
               </Col>
             </Row>
           </div>
