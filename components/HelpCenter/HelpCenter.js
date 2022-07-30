@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Row, Col, Input, Button } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 import { RecentActivity } from "./RecentActivity";
+import { handleLoading } from "../../store/helpSlice";
+import { fetchCategories } from "../../store/services/help";
 
 const HelpCenter = () => {
+  const { categories, loading } = useSelector((state) => state.help);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (categories.length === 0) {
+      dispatch(handleLoading(true));
+      dispatch(fetchCategories());
+    }
+  }, [categories]);
+
   const recent = [
     {
       title: "Manage Booking ",
@@ -64,28 +77,23 @@ const HelpCenter = () => {
       <div className='container'>
         <Row gutter={[20, 20]}>
           <Col className='BtnCol' lg={12} md={12} sm={24} xs={24}>
-            <Button
-              className='help-btn'
-              href='help/categories/tenants'
-              size='large'>
-              <p className='helpButton'>Tenants</p>
-            </Button>
-          </Col>
-
-          <Col className='BtnCol' lg={12} md={12} sm={24} xs={24}>
-            <Button
-              className='help-btn'
-              href='help/categories/landlords'
-              size='large'>
-              <p className='helpButton'>Landlords</p>
-            </Button>
+            {categories.map((category) => {
+              return (
+                <Button
+                  className='help-btn'
+                  href={`/help/categories/${category.id}`}
+                  size='large'>
+                  <p className='helpButton'>{category.title}</p>
+                </Button>
+              );
+            })}
           </Col>
         </Row>
         <div className='ArticleRecent'>
           <div className='recent'>
             <h1 className='recentHeading'>Recent Activity</h1>
           </div>
-          <RecentActivity arrayLinks={recent} />
+          {loading && <RecentActivity arrayLinks={recent} />}
         </div>
       </div>
     </>

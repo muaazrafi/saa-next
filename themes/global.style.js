@@ -267,6 +267,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight:bold;
     &:hover{
     text-decoration:underline;
+    cursor:pointer;
     }
   }
   .linkTenants{
@@ -274,6 +275,7 @@ const GlobalStyle = createGlobalStyle`
     color:black;
     &:hover{
       text-decoration:underline;
+      cursor:pointer;
     }
   }
     .tenantHeading{
@@ -411,6 +413,7 @@ const GlobalStyle = createGlobalStyle`
 .BookingContent{
   &:hover{
     text-decoration:underline;
+    cursor:pointer;
   }
 }
 .page-header{
@@ -528,21 +531,20 @@ const GlobalStyle = createGlobalStyle`
 
 
 .selected{
-  background:rgba(10, 7, 119, 1) !important;
-  color:#fff;
-  
+  background-color:rgba(10,7,119,1);
 }
 .extendHeader{
   font-size:35px;
 }
 .extend{
-   padding-top:10px;
-   padding-bottom:10px;
+padding-top:5px;
+   padding-bottom:5px;
   border-radius:4px;
   &:hover{
     background:rgba(10, 7, 119, 1) !important;
     border:4px rgba(10, 7, 119, 1) !important;
     color:#fff;
+    cursor:pointer;
   }
 }
 
@@ -559,6 +561,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .article-footer{
+  padding-bottom:20px;
   border-bottom:1px solid #ddd;
   max-width:100%;
   padding-top:30px;
@@ -588,7 +591,9 @@ const GlobalStyle = createGlobalStyle`
 }
  
 }
-
+.checkLine{
+  padding-right:3px;
+}
 .socialMedia{
   padding-top:40px;
   border-bottom:1px solid #ddd;
@@ -597,11 +602,13 @@ const GlobalStyle = createGlobalStyle`
   padding-bottom: 20px;
 }
 .socialIcon{
+  color:black;
+  font-size:25px;
   padding-left:10px;
 }
 .articleSection{
   font-weight:bold;
-  padding-left:px;
+  padding-left:10px;
 }
 .ArticleSection{
   border-bottom:1px solid #ddd;
@@ -636,6 +643,7 @@ const GlobalStyle = createGlobalStyle`
   color:rgb(10,7,119,1) !important;
   &:hover{
     text-decoration:underline;
+    cursor:pointer;
   
   } 
 }
@@ -646,6 +654,7 @@ const GlobalStyle = createGlobalStyle`
   color:rgb(10,7,119,1) !important;
   &:hover{
     text-decoration:underline;
+    cursor:pointer;
   
   } 
 }

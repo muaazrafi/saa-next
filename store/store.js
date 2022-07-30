@@ -1,10 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit';
-import apartmentSlice from './apartmentSlice';
-import apartmentsSlice from './apartmentsSlice';
-import authSlice from './authSlice';
-import bookingSlice from './bookingSlice';
-import cardSlice from './cardSlice';
-import contentSlice from './contentSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import apartmentSlice from "./apartmentSlice";
+import apartmentsSlice from "./apartmentsSlice";
+import authSlice from "./authSlice";
+import bookingSlice from "./bookingSlice";
+import cardSlice from "./cardSlice";
+import contentSlice from "./contentSlice";
+import helpSlice from "./helpSlice";
+import helpArticlesSlice from "./helpArticlesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +15,8 @@ export const store = configureStore({
     auth: authSlice,
     booking: bookingSlice,
     card: cardSlice,
-    content: contentSlice
+    content: contentSlice,
+    help: helpSlice,
+    helpArticles: helpArticlesSlice,
   },
-})
+});
