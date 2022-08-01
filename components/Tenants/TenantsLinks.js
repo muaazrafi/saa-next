@@ -1,19 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { handleLoading } from "../../store/helpArticlesSlice";
-import { fetchHelpArticles } from "../../store/services/help-articles";
+import React from "react";
 
 import Link from "next/link";
 
-const TenantsLinks = ({ mainTitle, href }) => {
-  const { helpArticles, loading } = useSelector((state) => state.helpArticles);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(handleLoading(true));
-    dispatch(fetchHelpArticles());
-  }, []);
-
+const TenantsLinks = ({ mainTitle, href, links }) => {
   return (
     <>
       <div className='contentTenant'>
@@ -22,16 +11,15 @@ const TenantsLinks = ({ mainTitle, href }) => {
         </Link>
       </div>
 
-      {loading &&
-        helpArticles.map((link) => {
-          return (
-            <div className='tenantsContent'>
-              <Link href={link.href}>
-                <p className='linkTenants'>{link.title}</p>
-              </Link>
-            </div>
-          );
-        })}
+      {links.map((link) => {
+        return (
+          <div className='tenantsContent'>
+            <Link href={`/help/articles/${link.id}`}>
+              <p className='linkTenants'>{link.title}</p>
+            </Link>
+          </div>
+        );
+      })}
     </>
   );
 };

@@ -1,32 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Input, Breadcrumb } from "antd";
+
 import { SearchOutlined } from "@ant-design/icons";
 import TenantsLinks from "./TenantsLinks";
+import { useDispatch, useSelector } from "react-redux";
+import { handleLoading } from "../../store/helpArticlesSlice";
+import { fetchHelpArticles } from "../../store/services/help-articles";
 
 const Tenants = () => {
-  const tenants = [
-    {
-      title: "no discrimination policy",
-      href: "/help/articles/myArticle",
-    },
-    {
-      title: "How does Spotahome work?",
-      href: "/help/articles/myArticle",
-    },
+  const { helpArticles, loading } = useSelector((state) => state.articles);
+  console.log(helpArticles, "articles");
+  console.log(loading, "loading");
 
-    {
-      title: "Does Spotahome organise viewings?",
-      href: "/help/articles/myArticle",
-    },
-    {
-      title: "How do I search for my new home?",
-      href: "/help/articles/myArticle",
-    },
-    {
-      title: "How do I know if the property is available?",
-      href: "/help/articles/myArticle",
-    },
-  ];
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(handleLoading(true));
+    dispatch(fetchHelpArticles());
+  }, []);
   return (
     <>
       <div className='container'>
@@ -51,32 +41,23 @@ const Tenants = () => {
           <div className='tenantContents'>
             <h2 className='tenantHeading'>Tenants</h2>
             <Row>
-              <Col
-                lg={12}
-                md={12}
-                xs={24}
-                style={{
-                  padding: "20px",
-                }}>
-                <TenantsLinks
-                  // arrayLinks={tenants}
-                  mainTitle='Getting started'
-                  href='/help/section/myArticle'
-                />
-              </Col>
-              <Col
-                lg={12}
-                md={12}
-                xs={24}
-                style={{
-                  padding: "20px",
-                }}>
-                <TenantsLinks
-                  // arrayLinks={tenants}
-                  mainTitle='House Rule'
-                  href='/help/section/myArticle'
-                />
-              </Col>
+              {helpArticles?.map((articles) => {
+                return (
+                  <Col
+                    lg={12}
+                    md={12}
+                    xs={24}
+                    style={{
+                      padding: "20px",
+                    }}>
+                    <TenantsLinks
+                      links={articles.help_articles}
+                      mainTitle={articles.title}
+                      href={`/help/section/${articles.id}`}
+                    />
+                  </Col>
+                );
+              })}
             </Row>
             <Row>
               <Col lg={12} xs={24} md={12} style={{ padding: "20px" }}>
