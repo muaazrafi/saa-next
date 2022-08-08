@@ -1,16 +1,15 @@
 import React from "react";
 import Link from "next/link";
 
-const MangingBookingsLink = ({ mainTitle, arrayLinks, showButton = true }) => {
+const MangingBookingsLink = ({ mainTitle, arrayLinks }) => {
   return (
     <div className='bookHeader'>
       <div className='page-header'>
         <p className='BookingHeading'>{mainTitle}</p>
-        {showButton && (
-          <div>
-            <a className='followbtn'>follow</a>
-          </div>
-        )}
+
+        <div>
+          <a className='followbtn'>follow</a>
+        </div>
       </div>
 
       {arrayLinks?.map((link) => {

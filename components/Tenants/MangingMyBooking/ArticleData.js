@@ -5,6 +5,8 @@ import {
   TwitterCircleFilled,
   LinkedinOutlined,
   FacebookOutlined,
+  CheckOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import RecentViewedArticles from "./RecentViewedArticles";
 import RelatedArticles from "./RelatedArticles";
@@ -69,9 +71,11 @@ const ArticleData = ({ articleData }) => {
               style={{
                 position: "absolute",
               }}>
-              <span>{articleData?.aurthorName}</span>
+              <span className='authorName'>{articleData?.aurthorName}</span>
               <br />
-              <span>{articleData?.updateDate} - Updated</span>
+              <span className='update-Date'>
+                {articleData?.updateDate} - Updated
+              </span>
             </span>
           </div>
           <div>
@@ -87,25 +91,36 @@ const ArticleData = ({ articleData }) => {
         </div>
         <div className='socialMedia'>
           <div className='socialIcons'>
-            <FacebookOutlined className='socialIcon' />
-
-            <TwitterCircleFilled className='socialIcon' />
-            <LinkedinOutlined className='socialIcon' />
+            <a>
+              <FacebookOutlined className='socialIcon' />
+            </a>
+            <a>
+              <TwitterCircleFilled className='socialIcon' />
+            </a>
+            <a>
+              <LinkedinOutlined className='socialIcon' />
+            </a>
           </div>
         </div>
         <div className='article-footer'>
-          <span>Was this article Helpful</span>
+          <span>Was this article Helpful ?</span>
           <div className='article-vote'>
-            <a className='articlebtn'>Yes</a>
-            <a className='articlebtn'>No</a>
+            <a className='articlebtn'>
+              <CheckOutlined className='checkLine' />
+              Yes
+            </a>
+            <a className='articlebtn'>
+              <CloseOutlined className='checkLine' />
+              No
+            </a>
           </div>
           <small>
-            <span>1 out of 5 found this helpful</span>
+            <span className='articleCount'>{articleData.articleCount}</span>
           </small>
         </div>
         <div className='ArticleSection'>
           <Row>
-            <Col span={12}>
+            <Col lg={12} md={24} sm={24} xs={24}>
               <h3 className='articleHeadline'>Recently viewed articles</h3>
               <div className='recentView'>
                 <RecentViewedArticles

@@ -44,7 +44,9 @@ const ManageBookingLayout = ({ articleData }) => {
       <div className='container'>
         <div className='main-bookingheader'>
           <Breadcrumb separator='>' className='breadcrumb'>
-            <Breadcrumb.Item>StudyAboardApartement</Breadcrumb.Item>
+            <Breadcrumb.Item href='/help'>
+              StudyAboardApartement
+            </Breadcrumb.Item>
             <Breadcrumb.Item href='/help/categories/tenants'>
               Tenants
             </Breadcrumb.Item>
@@ -61,13 +63,10 @@ const ManageBookingLayout = ({ articleData }) => {
           />
         </div>
         <Dropdown className='dropDownMenu' />
-        <div>
-          <h3 className='articleSection' style={{ fontWeight: "bold" }}>
-            Article in this section
-          </h3>
-        </div>
-        <Row>
+
+        <Row gutter={[20, 40]}>
           <Col lg={4}>
+            <h3 className='articleSection'>Article in this section</h3>
             <div className='NavSlider'>
               {tenantsLinks?.map((link) => {
                 return (
@@ -83,7 +82,7 @@ const ManageBookingLayout = ({ articleData }) => {
               })}
             </div>
           </Col>
-          <Col lg={19} md={24} sm={24} xs={24}>
+          <Col lg={16} md={24} sm={24} xs={24}>
             <ArticleData articleData={articleData} />
           </Col>
         </Row>

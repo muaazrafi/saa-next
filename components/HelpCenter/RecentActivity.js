@@ -9,10 +9,10 @@ export const RecentActivity = ({ arrayLinks }) => {
           <div className='articles'>
             <div>
               <Link href={link.titleHref}>
-                <p>{link.title}</p>
+                <h3 className='recent-link'>{link.title}</h3>
               </Link>
               <Link href={link.subTitleHref}>
-                <p>{link.subTitle}</p>
+                <p className='recent-links'>{link.subTitle}</p>
               </Link>
             </div>
             <div className='createArticle'>

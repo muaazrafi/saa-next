@@ -159,7 +159,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight:700;
   }
   .helpButton{
-    padding-top:20px;
+    padding-top:15px;
   }
   .ArticleRecent{
     margin-top:100px;
@@ -176,6 +176,27 @@ const GlobalStyle = createGlobalStyle`
    border-bottom:1px solid #ddd;
  
   }
+
+
+.recent-link{
+  margin-top:20px;
+  &:hover{
+    text-decoration:underline;
+    cursor:pointer;
+  }
+}
+.recent-links{
+  margin-bottom:20px;
+  &:hover{
+    text-decoration:underline;
+    cursor:pointer;
+  }
+}
+
+
+
+
+
   .createArticle{
     align-self:center;
   }
@@ -246,6 +267,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight:bold;
     &:hover{
     text-decoration:underline;
+    cursor:pointer;
     }
   }
   .linkTenants{
@@ -253,6 +275,7 @@ const GlobalStyle = createGlobalStyle`
     color:black;
     &:hover{
       text-decoration:underline;
+      cursor:pointer;
     }
   }
     .tenantHeading{
@@ -390,6 +413,7 @@ const GlobalStyle = createGlobalStyle`
 .BookingContent{
   &:hover{
     text-decoration:underline;
+    cursor:pointer;
   }
 }
 .page-header{
@@ -491,36 +515,53 @@ const GlobalStyle = createGlobalStyle`
 }
 
 
+
+.authorName{
+  font-size:16px;
+  padding-left:6px;
+    
+}
+
+.update-Date{
+  font-size: 11px;
+    bottom: 8px;
+    position: relative;
+    padding-left: 5px;
+}
+
+
 .selected{
-  background:rgba(10, 7, 119, 1) !important;
-  color:#fff;
-  
+  background-color:rgba(10,7,119,1);
 }
 .extendHeader{
   font-size:35px;
 }
 .extend{
-   padding-top:10px;
-   padding-bottom:10px;
+padding-top:5px;
+   padding-bottom:5px;
   border-radius:4px;
   &:hover{
     background:rgba(10, 7, 119, 1) !important;
     border:4px rgba(10, 7, 119, 1) !important;
     color:#fff;
+    cursor:pointer;
   }
 }
 
 .linked{
   padding-left:10px;
+  padding-top:10px;
 }
 
 
 .extendHeading{
   display:flex;
   justify-content:space-between;
+  
 }
 
 .article-footer{
+  padding-bottom:20px;
   border-bottom:1px solid #ddd;
   max-width:100%;
   padding-top:30px;
@@ -550,7 +591,9 @@ const GlobalStyle = createGlobalStyle`
 }
  
 }
-
+.checkLine{
+  padding-right:3px;
+}
 .socialMedia{
   padding-top:40px;
   border-bottom:1px solid #ddd;
@@ -559,6 +602,12 @@ const GlobalStyle = createGlobalStyle`
   padding-bottom: 20px;
 }
 .socialIcon{
+  color:black;
+  font-size:25px;
+  padding-left:10px;
+}
+.articleSection{
+  font-weight:bold;
   padding-left:10px;
 }
 .ArticleSection{
@@ -594,6 +643,7 @@ const GlobalStyle = createGlobalStyle`
   color:rgb(10,7,119,1) !important;
   &:hover{
     text-decoration:underline;
+    cursor:pointer;
   
   } 
 }
@@ -604,6 +654,7 @@ const GlobalStyle = createGlobalStyle`
   color:rgb(10,7,119,1) !important;
   &:hover{
     text-decoration:underline;
+    cursor:pointer;
   
   } 
 }
