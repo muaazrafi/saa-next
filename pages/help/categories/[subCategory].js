@@ -11,7 +11,6 @@ export default function tenants(props) {
 
   return (
     <>
-      {/* <Tenants /> */}
       {router.query.subCategory === subCategory && <Tenants />}
       {/* {router.query?.subCategory === "landlords" && <Landlords />} */}
       <Head>

@@ -15,13 +15,13 @@ import FooterWrapper from "./Footer.style";
 const Footer = () => {
   return (
     <FooterWrapper>
-      <section className="footer_section">
-        <div className="container">
-          <Row gutter={[20, 40]} className="top-border">
-            <Col xs={24} xl={12} className="padding_right">
-              <div className="left_col_div">
-                <img src={Images.logo} alt="logo" width={100} height={50} />
-                <div className="text_area">
+      <section className='footer_section'>
+        <div className='container'>
+          <Row gutter={[20, 40]} className='top-border'>
+            <Col xs={24} xl={12} className='padding_right'>
+              <div className='left_col_div'>
+                <img src={Images.logo} alt='logo' width={100} height={50} />
+                <div className='text_area'>
                   <p>
                     Study Abroad Apartments is an online housing marketplace
                     that removes the hassle of finding furnished student
@@ -29,11 +29,10 @@ const Footer = () => {
                     internship or studying abroad in...
                   </p>
                 </div>
-                <div className="social_icons">
+                <div className='social_icons'>
                   <a
-                    href="https://www.facebook.com/studyabroadapartments/"
-                    target="_blank"
-                  >
+                    href='https://www.facebook.com/studyabroadapartments/'
+                    target='_blank'>
                     <FacebookFilled
                       style={{
                         fontSize: "25px",
@@ -42,7 +41,7 @@ const Footer = () => {
                       }}
                     />
                   </a>
-                  <a href="https://twitter.com/StudyAbroadAPTS" target="_blank">
+                  <a href='https://twitter.com/StudyAbroadAPTS' target='_blank'>
                     <TwitterSquareFilled
                       style={{
                         fontSize: "25px",
@@ -52,9 +51,8 @@ const Footer = () => {
                     />
                   </a>
                   <a
-                    href="https://www.instagram.com/studyabroadapartments"
-                    target="_blank"
-                  >
+                    href='https://www.instagram.com/studyabroadapartments'
+                    target='_blank'>
                     <InstagramFilled
                       style={{
                         fontSize: "25px",
@@ -64,9 +62,8 @@ const Footer = () => {
                     />
                   </a>
                   <a
-                    href="https://www.instagram.com/studyabroadapartments"
-                    target="_blank"
-                  >
+                    href='https://www.instagram.com/studyabroadapartments'
+                    target='_blank'>
                     <LinkedinFilled
                       style={{
                         fontSize: "25px",
@@ -80,24 +77,26 @@ const Footer = () => {
             </Col>
 
             <Col xs={24} xl={6}>
-              <div className="text_area">
-                <h2 className="heading_sm">Information</h2>
+              <div className='text_area'>
+                <h2 className='heading_sm'>Information</h2>
                 <p>
-                  <Link href="/about-us">About Us</Link>
+                  <Link href='/about-us'>About Us</Link>
                 </p>
                 <p>
-                  <Link href="/terms-of-services">Terms of Service</Link>
+                  <Link href='/terms-of-services'>Terms of Service</Link>
                 </p>
                 <p>
-                  <Link href="/privacy-policy">Privacy Policy</Link>
+                  <Link href='/privacy-policy'>Privacy Policy</Link>
                 </p>
-                <p>Help Center</p>
+                <p>
+                  <Link href='/help'>Help Center</Link>
+                </p>
               </div>
             </Col>
 
             <Col xs={24} xl={6}>
-              <div className="text_area right_col_div">
-                <h2 className="heading_sm">Get in touch</h2>
+              <div className='text_area right_col_div'>
+                <h2 className='heading_sm'>Get in touch</h2>
                 {/* <div className="text_area">
                   <h3>Location:</h3>
                   <p>
@@ -105,10 +104,10 @@ const Footer = () => {
                     Drassanes, 6, 08001 Barcelona Floor 15
                   </p>
                 </div> */}
-                <div className="text_area">
+                <div className='text_area'>
                   <h3>Email:</h3>
                   <p>
-                    <a href="mailto:info@studyabroadapartments.com">
+                    <a href='mailto:info@studyabroadapartments.com'>
                       info@studyabroadapartments.com
                     </a>
                   </p>
@@ -124,10 +123,10 @@ const Footer = () => {
       </FooterWrapper>
       {!!path && <SecondaryFooter />} */}
       </section>
-      <section className="rights_Section">
+      <section className='rights_Section'>
         © {moment().year()} Study Abroad Apartments. All Rights Reserved
       </section>
-      <Script id="hubspot_code" strategy="lazyOnload">
+      <Script id='hubspot_code' strategy='lazyOnload'>
         {`
           (function(d,s,i,r) {
             if (d.getElementById(i)){return;}
@@ -138,7 +137,7 @@ const Footer = () => {
         `}
       </Script>
 
-      <Script id="google_code" strategy="lazyOnload">
+      <Script id='google_code' strategy='lazyOnload'>
         {`
           (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
