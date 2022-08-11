@@ -6,9 +6,11 @@ import TenantsLinks from "./TenantsLinks";
 import { useDispatch, useSelector } from "react-redux";
 import { handleLoading } from "../../store/helpArticlesSlice";
 import { fetchHelpArticles } from "../../store/services/help-articles";
+import { fetchCategories } from "../../store/services/help";
 
 const Tenants = () => {
   const { helpArticles, loading } = useSelector((state) => state.articles);
+  const { categories } = useSelector((state) => state.help);
   console.log(helpArticles, "articles");
   console.log(loading, "loading");
 
@@ -17,18 +19,26 @@ const Tenants = () => {
     dispatch(handleLoading(true));
     dispatch(fetchHelpArticles());
   }, []);
+  useEffect(() => {
+    dispatch(handleLoading(true));
+    dispatch(fetchCategories());
+  }, []);
   return (
     <>
       <div className='container'>
         <div className='main-bookingheader'>
-          <Breadcrumb separator='>' className='breadcrumb'>
-            <Breadcrumb.Item href='/help'>
-              StudyAboardApartement
-            </Breadcrumb.Item>
-            <Breadcrumb.Item href='/help/categories/tenants'>
-              Tenants
-            </Breadcrumb.Item>
-          </Breadcrumb>
+          {categories.map((category) => {
+            return (
+              <Breadcrumb separator='>' className='breadcrumb'>
+                <Breadcrumb.Item href='/help'>
+                  StudyAboardApartement
+                </Breadcrumb.Item>
+                <Breadcrumb.Item href={`/help/categories/${category.id}`}>
+                  {category.title}
+                </Breadcrumb.Item>
+              </Breadcrumb>
+            );
+          })}
           <Input
             prefix={<SearchOutlined />}
             className='searchbooking'
@@ -41,7 +51,7 @@ const Tenants = () => {
           <div className='tenantContents'>
             <h2 className='tenantHeading'>Tenants</h2>
             <Row>
-              {helpArticles?.map((articles) => {
+              {helpArticles.map((articles) => {
                 return (
                   <Col
                     lg={12}
