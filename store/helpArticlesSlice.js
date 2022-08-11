@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const helpArticlesSlice = createSlice({
-  name: "helpArticles",
+  name: "articles",
   initialState,
   reducers: {
     handleLoading: (state, action) => {

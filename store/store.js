@@ -17,6 +17,6 @@ export const store = configureStore({
     card: cardSlice,
     content: contentSlice,
     help: helpSlice,
-    helpArticles: helpArticlesSlice,
+    articles: helpArticlesSlice,
   },
 });
