@@ -211,7 +211,7 @@ const RenderReservationForm = () => {
             <HtmlLabel htmlFor="guests" content="Guests" />
             <Select
               labelInValue
-              defaultValue={{ value: "1" }}
+              defaultValue={{ value: '' }}
               className="guest-selector"
               getPopupContainer={(trigger) => trigger.parentNode}
             >
