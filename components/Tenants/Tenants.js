@@ -4,12 +4,14 @@ import { Row, Col, Input, Breadcrumb } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import TenantsLinks from "./TenantsLinks";
 import { useDispatch, useSelector } from "react-redux";
-import { handleLoading } from "../../store/helpArticlesSlice";
-import { fetchHelpArticles } from "../../store/services/help-articles";
+import { handleLoading } from "../../store/helpSubCategoriesSlice";
+import { fetchHelpSubCategories } from "../../store/services/helpSubCategories";
 import { fetchCategories } from "../../store/services/help";
 
 const Tenants = () => {
-  const { helpArticles, loading } = useSelector((state) => state.articles);
+  const { helpArticles, loading } = useSelector(
+    (state) => state.helpSubCategory,
+  );
   const { categories } = useSelector((state) => state.help);
   console.log(helpArticles, "articles");
   console.log(loading, "loading");
@@ -17,7 +19,7 @@ const Tenants = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(handleLoading(true));
-    dispatch(fetchHelpArticles());
+    dispatch(fetchHelpSubCategories());
   }, []);
   useEffect(() => {
     dispatch(handleLoading(true));
@@ -33,7 +35,7 @@ const Tenants = () => {
                 <Breadcrumb.Item href='/help'>
                   StudyAboardApartement
                 </Breadcrumb.Item>
-                <Breadcrumb.Item href={`/help/categories/${category.id}`}>
+                <Breadcrumb.Item href={`/help/categories/${category.slug}`}>
                   {category.title}
                 </Breadcrumb.Item>
               </Breadcrumb>
@@ -63,7 +65,7 @@ const Tenants = () => {
                     <TenantsLinks
                       links={articles.help_articles}
                       mainTitle={articles.title}
-                      href={`/help/section/${articles.id}`}
+                      href={`/help/section/${articles.slug}`}
                     />
                   </Col>
                 );

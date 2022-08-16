@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Avatar, Row, Col } from "antd";
 import {
   UserOutlined,
@@ -10,7 +10,23 @@ import {
 } from "@ant-design/icons";
 import RecentViewedArticles from "./RecentViewedArticles";
 import RelatedArticles from "./RelatedArticles";
+import renderHTML from "react-render-html";
+import { Skeleton } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { handleLoading } from "../../../store/helpArticlesSlice";
+import { fetchHelpArticles } from "../../../store/services/helpArticles";
 const ArticleData = ({ articleData }) => {
+  const { help_Articles, loading } = useSelector((state) => state.articles);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (help_Articles.length === 0) {
+      dispatch(handleLoading(true));
+
+      dispatch(fetchHelpArticles());
+    }
+  }, []);
+
   const Managing = [
     {
       title: "no discrimination policy",
@@ -60,7 +76,7 @@ const ArticleData = ({ articleData }) => {
   return (
     <>
       <div className='container'>
-        <h1 className='extendHeader'>{articleData?.title}</h1>
+        <h1 className='extendHeader'>{help_Articles.title}</h1>
         <div className='extendHeading'>
           <div>
             <Avatar
@@ -87,7 +103,11 @@ const ArticleData = ({ articleData }) => {
           style={{
             paddingTop: "50px",
           }}>
-          {articleData?.description}
+          {loading ? (
+            <Skeleton active={true} />
+          ) : (
+            <>{help_Articles && renderHTML(help_Articles.description)}</>
+          )}
         </div>
         <div className='socialMedia'>
           <div className='socialIcons'>
