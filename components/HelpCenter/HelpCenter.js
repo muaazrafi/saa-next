@@ -81,7 +81,7 @@ const HelpCenter = () => {
               return (
                 <Button
                   className='help-btn'
-                  href={`/help/categories/${category.id}`}
+                  href={`/help/categories/${category.slug}`}
                   size='large'>
                   <p className='helpButton'>{category.title}</p>
                 </Button>

@@ -6,8 +6,8 @@ import bookingSlice from "./bookingSlice";
 import cardSlice from "./cardSlice";
 import contentSlice from "./contentSlice";
 import helpSlice from "./helpSlice";
+import helpSubCategoriesSlice from "./helpSubCategoriesSlice";
 import helpArticlesSlice from "./helpArticlesSlice";
-
 export const store = configureStore({
   reducer: {
     apartment: apartmentSlice,
@@ -17,6 +17,7 @@ export const store = configureStore({
     card: cardSlice,
     content: contentSlice,
     help: helpSlice,
+    helpSubCategory: helpSubCategoriesSlice,
     articles: helpArticlesSlice,
   },
 });

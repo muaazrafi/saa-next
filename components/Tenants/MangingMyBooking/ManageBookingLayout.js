@@ -1,42 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Breadcrumb, Input } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Dropdown from "./DropDown";
 import { SearchOutlined } from "@ant-design/icons";
 import ArticleData from "./ArticleData";
-
+import { useDispatch, useSelector } from "react-redux";
+import { handleLoading } from "../../../store/helpArticlesSlice";
+import { fetchHelpArticles } from "../../../store/services/helpArticles";
 const ManageBookingLayout = ({ articleData }) => {
-  const tenantsLinks = [
-    {
-      title: "Extend my ongoing Bookings",
-      href: "/help/articles/mycontract",
-    },
-    {
-      title: "Cancellation Policy before 2nd of March 2022",
-      href: "/help/articles/mycontract",
-    },
-    {
-      title: "Spotahome Guarantees and Force Majeure for Tenants",
-      href: "/help/articles/mycontract",
-    },
-    {
-      title: "Spotahome Cancellation Policy",
-      href: "/help/articles/mycontract",
-    },
-    {
-      title: "Help - I have moving issues with my property",
-      href: "/help/articles/mycontract",
-    },
-    {
-      title: "Changes in my dates",
-      href: "/help/articles/changesindate",
-    },
-    {
-      title: "My Contract",
-      href: "/help/articles/mycontract",
-    },
-  ];
+  const { help_articles, loading } = useSelector(
+    (state) => state.articles.help_Articles,
+  );
+  console.log(help_articles, "articles");
+  console.log(loading, "loading");
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(handleLoading(true));
+    dispatch(fetchHelpArticles());
+  }, []);
   const router = useRouter();
 
   return (
@@ -68,12 +51,12 @@ const ManageBookingLayout = ({ articleData }) => {
           <Col lg={4}>
             <h3 className='articleSection'>Article in this section</h3>
             <div className='NavSlider'>
-              {tenantsLinks?.map((link) => {
+              {help_articles.map((link) => {
                 return (
-                  <Link href={link.href}>
+                  <Link href={`/help/articles/${link.slug}`}>
                     <div
                       className={`${
-                        router.pathname === link.href && "selected"
+                        router.pathname === link.slug && "selected"
                       } extend`}>
                       <p className='linked'>{link.title}</p>
                     </div>

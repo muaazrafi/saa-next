@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchHelpArticles } from "./services/help-articles";
+import { fetchHelpArticles } from "./services/helpArticles";
 
 const initialState = {
-  helpArticles: [],
+  help_Articles: [],
   loading: false,
 };
 
@@ -16,7 +16,7 @@ export const helpArticlesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchHelpArticles.fulfilled, (state, action) => {
-      state.helpArticles = action.payload;
+      state.help_Articles = action.payload;
       state.loading = false;
     });
   },

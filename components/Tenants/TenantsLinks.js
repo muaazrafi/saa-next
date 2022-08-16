@@ -14,7 +14,7 @@ const TenantsLinks = ({ mainTitle, href, links }) => {
       {links.map((link) => {
         return (
           <div className='tenantsContent'>
-            <Link href={`/help/articles/${link.id}`}>
+            <Link href={`/help/articles/${link.slug}`}>
               <p className='linkTenants'>{link.title}</p>
             </Link>
           </div>
