@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Avatar, Row, Col } from "antd";
 import {
   UserOutlined,
@@ -8,71 +8,15 @@ import {
   CheckOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-import RecentViewedArticles from "./RecentViewedArticles";
-import RelatedArticles from "./RelatedArticles";
+// import RecentViewedArticles from "./RecentViewedArticles";
+// import RelatedArticles from "./RelatedArticles";
 import renderHTML from "react-render-html";
 import { Skeleton } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { handleLoading } from "../../../store/helpArticlesSlice";
-import { fetchHelpArticles } from "../../../store/services/helpArticles";
-const ArticleData = ({ articleData }) => {
+import { useSelector } from "react-redux";
+
+const ArticleData = () => {
   const { help_Articles, loading } = useSelector((state) => state.articles);
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (help_Articles.length === 0) {
-      dispatch(handleLoading(true));
-
-      dispatch(fetchHelpArticles());
-    }
-  }, []);
-
-  const Managing = [
-    {
-      title: "no discrimination policy",
-      href: "/help/articles/myArticle",
-    },
-    {
-      title: "How does Spotahome work?",
-      href: "/help/articles/myArticle",
-    },
-
-    {
-      title: "Does Spotahome organise viewings?",
-      href: "/help/articles/myArticle",
-    },
-    {
-      title: "How do I search for my new home?",
-      href: "/help/articles/myArticle",
-    },
-    {
-      title: "How do I know if the property is available?",
-      href: "/help/articles/myArticle",
-    },
-  ];
-  const relateArticles = [
-    {
-      title: "no discrimination policy",
-      href: "/help/articles/myArticle",
-    },
-    {
-      title: "How does Spotahome work?",
-      href: "/help/articles/myArticle",
-    },
-
-    {
-      title: "Does Spotahome organise viewings?",
-      href: "/help/articles/myArticle",
-    },
-    {
-      title: "How do I search for my new home?",
-      href: "/help/articles/myArticle",
-    },
-    {
-      title: "How do I know if the property is available?",
-      href: "/help/articles/myArticle",
-    },
-  ];
   return (
     <>
       <div className='container'>
@@ -87,10 +31,10 @@ const ArticleData = ({ articleData }) => {
               style={{
                 position: "absolute",
               }}>
-              <span className='authorName'>{articleData?.aurthorName}</span>
+              <span className='authorName'>Brett N.</span>
               <br />
               <span className='update-Date'>
-                {articleData?.updateDate} - Updated
+                {help_Articles.updated}  Updated
               </span>
             </span>
           </div>
@@ -106,7 +50,7 @@ const ArticleData = ({ articleData }) => {
           {loading ? (
             <Skeleton active={true} />
           ) : (
-            <>{help_Articles && renderHTML(help_Articles.description)}</>
+            <>{help_Articles.description && renderHTML(help_Articles.description)}</>
           )}
         </div>
         <div className='socialMedia'>
@@ -134,11 +78,8 @@ const ArticleData = ({ articleData }) => {
               No
             </a>
           </div>
-          <small>
-            <span className='articleCount'>{articleData.articleCount}</span>
-          </small>
         </div>
-        <div className='ArticleSection'>
+        {/* <div className='ArticleSection'>
           <Row>
             <Col lg={12} md={24} sm={24} xs={24}>
               <h3 className='articleHeadline'>Recently viewed articles</h3>
@@ -159,7 +100,7 @@ const ArticleData = ({ articleData }) => {
               </div>
             </Col>
           </Row>
-        </div>
+        </div> */}
       </div>
     </>
   );

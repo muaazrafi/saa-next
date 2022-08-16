@@ -8,19 +8,20 @@ import ArticleData from "./ArticleData";
 import { useDispatch, useSelector } from "react-redux";
 import { handleLoading } from "../../../store/helpArticlesSlice";
 import { fetchHelpArticles } from "../../../store/services/helpArticles";
-const ManageBookingLayout = ({ articleData }) => {
+const ManageBookingLayout = () => {
   const { help_articles, loading } = useSelector(
     (state) => state.articles.help_Articles,
   );
-  console.log(help_articles, "articles");
-  console.log(loading, "loading");
+  const router = useRouter();
+  const articleParam = router.query.article;
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(handleLoading(true));
-    dispatch(fetchHelpArticles());
-  }, []);
-  const router = useRouter();
+    if (articleParam) {
+      dispatch(handleLoading(true));
+      dispatch(fetchHelpArticles(articleParam));
+    }
+  }, [articleParam]);
 
   return (
     <>
@@ -51,7 +52,7 @@ const ManageBookingLayout = ({ articleData }) => {
           <Col lg={4}>
             <h3 className='articleSection'>Article in this section</h3>
             <div className='NavSlider'>
-              {help_articles.map((link) => {
+              {help_articles && help_articles.map((link) => {
                 return (
                   <Link href={`/help/articles/${link.slug}`}>
                     <div
@@ -66,7 +67,7 @@ const ManageBookingLayout = ({ articleData }) => {
             </div>
           </Col>
           <Col lg={16} md={24} sm={24} xs={24}>
-            <ArticleData articleData={articleData} />
+            <ArticleData />
           </Col>
         </Row>
       </div>

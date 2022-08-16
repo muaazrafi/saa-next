@@ -4,7 +4,7 @@ export const fetchHelpSubCategories = createAsyncThunk(
   "help-sub-articles/fetchHelpSubCategories",
   async (search, thunkAPI) => {
     const response = await fetch(
-      `/api/help_categories/2/help_sub_categories.json`,
+      `/api/help_categories/${search}/help_sub_categories.json`,
     ).then((res) => {
       return res.json();
     });

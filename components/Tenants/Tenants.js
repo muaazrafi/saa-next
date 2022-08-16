@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Row, Col, Input, Breadcrumb } from "antd";
-
+import { useRouter } from "next/router";
 import { SearchOutlined } from "@ant-design/icons";
 import TenantsLinks from "./TenantsLinks";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,14 +13,16 @@ const Tenants = () => {
     (state) => state.helpSubCategory,
   );
   const { categories } = useSelector((state) => state.help);
-  console.log(helpArticles, "articles");
-  console.log(loading, "loading");
+  const router = useRouter();
+  const subCategory = router.query.subCategory;
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(handleLoading(true));
-    dispatch(fetchHelpSubCategories());
-  }, []);
+    if (subCategory) {
+      dispatch(handleLoading(true));
+      dispatch(fetchHelpSubCategories(subCategory));      
+    }
+  }, [subCategory]);
   useEffect(() => {
     dispatch(handleLoading(true));
     dispatch(fetchCategories());
