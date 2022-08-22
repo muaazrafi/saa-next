@@ -8,10 +8,12 @@ import ArticleData from "./ArticleData";
 import { useDispatch, useSelector } from "react-redux";
 import { handleLoading } from "../../../store/helpArticlesSlice";
 import { fetchHelpArticles } from "../../../store/services/helpArticles";
+import { fetchCategories } from "../../../store/services/help";
 const ManageBookingLayout = () => {
-  const { help_articles, loading } = useSelector(
+  const { help_articles } = useSelector(
     (state) => state.articles.help_Articles,
   );
+  const { categories } = useSelector((state) => state.help);
   const router = useRouter();
   const articleParam = router.query.article;
 
@@ -22,7 +24,10 @@ const ManageBookingLayout = () => {
       dispatch(fetchHelpArticles(articleParam));
     }
   }, [articleParam]);
-
+  useEffect(() => {
+    dispatch(handleLoading(true));
+    dispatch(fetchCategories());
+  }, []);
   return (
     <>
       <div className='container'>
@@ -31,13 +36,15 @@ const ManageBookingLayout = () => {
             <Breadcrumb.Item href='/help'>
               StudyAboardApartement
             </Breadcrumb.Item>
-            <Breadcrumb.Item href='/help/categories/tenants'>
-              Tenants
+            <Breadcrumb.Item href={`/help/categories/${categories.slug}`}>
+              {categories.title}
             </Breadcrumb.Item>
-            <Breadcrumb.Item href='/help/section/myArticle'>
-              Manging My Bookings
-            </Breadcrumb.Item>
+            {/* <Breadcrumb.Item
+              href={`/help/section/${help_Articles.help_sub_category_slug}`}>
+              {help_Articles.help_sub_category_title}
+            </Breadcrumb.Item> */}
           </Breadcrumb>
+
           <Input
             prefix={<SearchOutlined />}
             className='searchbooking'
@@ -52,18 +59,19 @@ const ManageBookingLayout = () => {
           <Col lg={4}>
             <h3 className='articleSection'>Article in this section</h3>
             <div className='NavSlider'>
-              {help_articles && help_articles.map((link) => {
-                return (
-                  <Link href={`/help/articles/${link.slug}`}>
-                    <div
-                      className={`${
-                        router.pathname === link.slug && "selected"
-                      } extend`}>
-                      <p className='linked'>{link.title}</p>
-                    </div>
-                  </Link>
-                );
-              })}
+              {help_articles &&
+                help_articles.map((link) => {
+                  return (
+                    <Link href={`/help/articles/${link.slug}`}>
+                      <div
+                        className={`${
+                          router.pathname === link.slug && "selected"
+                        } extend`}>
+                        <p className='linked'>{link.title}</p>
+                      </div>
+                    </Link>
+                  );
+                })}
             </div>
           </Col>
           <Col lg={16} md={24} sm={24} xs={24}>
