@@ -102,6 +102,12 @@ const RenderReservationForm = () => {
     dispatch(updateBooking(updatedBooking));
   };
 
+  const guestSelection = (guests) => {
+    let updatedBooking = cloneDeep(booking);
+    updatedBooking.number_of_room_mates = guests;
+    dispatch(updateBooking(updatedBooking));
+  };
+
   const reCallTheBookingProcedure = (state) => {
     let updatedBooking = cloneDeep(booking);
     updatedBooking.waitUserToLogin = state;
