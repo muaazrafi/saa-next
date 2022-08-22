@@ -14,7 +14,7 @@ const initialState = {
     apartment_id: null,
     check_in: null,
     check_out: null,
-    number_of_room_mates: 1,
+    number_of_room_mates: null,
     was_availability_request: false,
     check_availability_request: false,
     move: false
@@ -55,7 +55,7 @@ export const bookingSlice = createSlice({
         apartment_id: null,
         check_in: null,
         check_out: null,
-        number_of_room_mates: 1,
+        number_of_room_mates: null,
         was_availability_request: false,
         check_availability_request: false,
         move: false

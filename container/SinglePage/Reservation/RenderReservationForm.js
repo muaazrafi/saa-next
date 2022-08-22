@@ -74,7 +74,7 @@ const RenderReservationForm = () => {
           apartment_id: null,
           check_in: null,
           check_out: null,
-          number_of_room_mates: 1,
+          number_of_room_mates: null,
           was_availability_request: false,
           check_availability_request: false,
           move: false,
@@ -104,7 +104,7 @@ const RenderReservationForm = () => {
 
   const guestSelection = (guests) => {
     let updatedBooking = cloneDeep(booking);
-    updatedBooking.number_of_room_mates = guests;
+    updatedBooking.number_of_room_mates = guests.value;
     dispatch(updateBooking(updatedBooking));
   };
 
@@ -136,6 +136,7 @@ const RenderReservationForm = () => {
       apartment.availability_status === "available" &&
       booking.check_in &&
       booking.check_out &&
+      booking.number_of_room_mates &&
       (rangeOverlaps() || minStayRequired())
     );
   };
@@ -189,7 +190,7 @@ const RenderReservationForm = () => {
     return (
       apartment &&
       apartment.availability_status === "available" &&
-      apartment.updated_in_past_month
+      apartment.updated_in_past_month 
     );
   };
 
@@ -220,6 +221,7 @@ const RenderReservationForm = () => {
               defaultValue={{ value: '' }}
               className="guest-selector"
               getPopupContainer={(trigger) => trigger.parentNode}
+              onSelect={ (value) => guestSelection(value) }
             >
               {apartment &&
                 range(1, apartment.number_of_max_occupants + 1).map((guest) => {
