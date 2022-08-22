@@ -152,7 +152,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-
+  .BtnCol{
+    display:flex;
+    max-width:100%;
+    gap:20px;
   }
   .recentHeading{
     font-size:22px;
@@ -231,14 +234,12 @@ const GlobalStyle = createGlobalStyle`
 
 
 
-@media only screen and (max-width:767px){
+@media only screen and (max-width:1399x){
   .articles{
     display:inherit;
   }
-  .BtnCol{
-    display:flex;
-    justify-content:center;
-  }
+
+
 }
 
 
@@ -271,7 +272,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   .linkTenants{
-    font-size:18px;
+    font-size:16px;
     color:black;
     &:hover{
       text-decoration:underline;
@@ -285,7 +286,7 @@ const GlobalStyle = createGlobalStyle`
     }
     
      .tenantsContent{
-      padding:15px;
+      padding:5px;
       border-bottom:1px solid #ddd;
      }
 @media only screen and (max-width:996px){

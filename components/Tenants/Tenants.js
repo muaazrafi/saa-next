@@ -20,7 +20,7 @@ const Tenants = () => {
   useEffect(() => {
     if (subCategory) {
       dispatch(handleLoading(true));
-      dispatch(fetchHelpSubCategories(subCategory));      
+      dispatch(fetchHelpSubCategories(subCategory));
     }
   }, [subCategory]);
   useEffect(() => {
@@ -31,18 +31,15 @@ const Tenants = () => {
     <>
       <div className='container'>
         <div className='main-bookingheader'>
-          {categories.map((category) => {
-            return (
-              <Breadcrumb separator='>' className='breadcrumb'>
-                <Breadcrumb.Item href='/help'>
-                  StudyAboardApartement
-                </Breadcrumb.Item>
-                <Breadcrumb.Item href={`/help/categories/${category.slug}`}>
-                  {category.title}
-                </Breadcrumb.Item>
-              </Breadcrumb>
-            );
-          })}
+          <Breadcrumb separator='>' className='breadcrumb'>
+            <Breadcrumb.Item href='/help'>
+              StudyAboardApartement
+            </Breadcrumb.Item>
+            {/* <Breadcrumb.Item href={`/help/categories/${categories.slug}`}>
+                  {categories.title}
+                </Breadcrumb.Item> */}
+          </Breadcrumb>
+
           <Input
             prefix={<SearchOutlined />}
             className='searchbooking'
@@ -53,7 +50,7 @@ const Tenants = () => {
         </div>
         <div className='tenantsContainer'>
           <div className='tenantContents'>
-            <h2 className='tenantHeading'>Tenants</h2>
+            {/* <h2 className='tenantHeading'>Tenants</h2> */}
             <Row>
               {helpArticles.map((articles) => {
                 return (

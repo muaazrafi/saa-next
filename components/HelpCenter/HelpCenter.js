@@ -75,7 +75,7 @@ const HelpCenter = () => {
         />
       </div>
       <div className='container'>
-        <Row gutter={[20, 20]}>
+        <Row>
           <Col className='BtnCol' lg={12} md={12} sm={24} xs={24}>
             {categories.map((category) => {
               return (

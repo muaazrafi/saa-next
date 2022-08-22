@@ -34,7 +34,7 @@ const ArticleData = () => {
               <span className='authorName'>Brett N.</span>
               <br />
               <span className='update-Date'>
-                {help_Articles.updated}  Updated
+                {help_Articles.updated} Updated
               </span>
             </span>
           </div>
@@ -50,7 +50,10 @@ const ArticleData = () => {
           {loading ? (
             <Skeleton active={true} />
           ) : (
-            <>{help_Articles.description && renderHTML(help_Articles.description)}</>
+            <>
+              {help_Articles.description &&
+                renderHTML(help_Articles.description)}
+            </>
           )}
         </div>
         <div className='socialMedia'>
