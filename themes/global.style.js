@@ -272,7 +272,9 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   .linkTenants{
-    font-size:16px;
+    font-size:14px;
+    text-align-center;
+    padding-top:10px;
     color:black;
     &:hover{
       text-decoration:underline;
@@ -294,7 +296,8 @@ const GlobalStyle = createGlobalStyle`
     flex:0 0 100%;
   }
   .linkTenants{
-    font-size:16px;
+    font-size:14px;
+    padding-top:15px;
   }
   .tenantHeading{
     font-size:25px;
@@ -621,11 +624,13 @@ padding-top:5px;
 
 .dropMenu{
   display:none;
+
 }
 
 @media only screen and (max-width:996px) and (min-width:320px){
   .dropMenu{
     display:block;
+    color:black;
   }
   .NavSlider{
     display:none;
@@ -633,8 +638,16 @@ padding-top:5px;
   .articleSection{
     display:none;
   }
+  .dropBtn{
+    cursor:pointer;
+  }
+ 
 }
 
+.ant-dropdown{
+  height:200px;
+  overflow-y:auto;
+}
 .articleHeadline{
   font-weight:bold;
   margin-top:20px;

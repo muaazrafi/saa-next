@@ -1,55 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Dropdown, Menu, Space } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { DownOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { handleLoading } from "../../../store/helpArticlesSlice";
+import { fetchHelpArticles } from "../../../store/services/helpArticles";
+
 const DropDown = () => {
-  const tenantsLinks = [
-    {
-      title: "Extend my ongoing Bookings",
-      href: "/help/articles/mycontract",
-    },
-    {
-      title: "Cancellation Policy before 2nd of March 2022",
-      href: "/help/articles/mycontract",
-    },
-    {
-      title: "Spotahome Guarantees and Force Majeure for Tenants",
-      href: "/help/articles/mycontract",
-    },
-    {
-      title: "Spotahome Cancellation Policy",
-      href: "/help/articles/mycontract",
-    },
-    {
-      title: "Help - I have moving issues with my property",
-      href: "/help/articles/mycontract",
-    },
-    {
-      title: "Changes in my dates",
-      href: "/help/articles/changesindate",
-    },
-    {
-      title: "My Contract",
-      href: "/help/articles/mycontract",
-    },
-  ];
+  const { help_articles } = useSelector(
+    (state) => state.articles.help_Articles,
+  );
+
   const router = useRouter();
+  console.log(router);
+  const articleParam = router.query.article;
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (articleParam) {
+      dispatch(handleLoading(true));
+      dispatch(fetchHelpArticles(articleParam));
+    }
+  }, [articleParam]);
+
   const menu = (
     <Menu>
       <Menu.Item>
-        {tenantsLinks?.map((link) => {
-          return (
-            <Link href={link.href}>
-              <div
-                className={`${
-                  router.pathname === link.href && "selected"
-                } extend`}>
-                <p className='linked'>{link.title}</p>
-              </div>
-            </Link>
-          );
-        })}
+        {help_articles &&
+          help_articles.map((link) => {
+            return (
+              <Link href={link.slug}>
+                <div
+                  className={`${
+                    router.pathname === link.slug && "selected"
+                  } extend`}>
+                  <p className='linked'>{link.title}</p>
+                </div>
+              </Link>
+            );
+          })}
       </Menu.Item>
     </Menu>
   );
@@ -57,7 +47,7 @@ const DropDown = () => {
   return (
     <>
       <Dropdown overlay={menu}>
-        <a onClick={(e) => e.preventDefault()}>
+        <a className='dropBtn' onClick={(e) => e.preventDefault()}>
           <Space className='dropMenu'>
             Article in this section
             <DownOutlined />

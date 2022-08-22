@@ -15,6 +15,7 @@ const ManageBookingLayout = () => {
   );
   const { categories } = useSelector((state) => state.help);
   const router = useRouter();
+  console.log(router);
   const articleParam = router.query.article;
 
   const dispatch = useDispatch();
