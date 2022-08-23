@@ -3,12 +3,15 @@ import { Row, Col, Breadcrumb, Input } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Dropdown from "./DropDown";
+import "react-perfect-scrollbar/dist/css/styles.css";
+import PerfectScrollbar from "react-perfect-scrollbar";
 import { SearchOutlined } from "@ant-design/icons";
 import ArticleData from "./ArticleData";
 import { useDispatch, useSelector } from "react-redux";
 import { handleLoading } from "../../../store/helpArticlesSlice";
 import { fetchHelpArticles } from "../../../store/services/helpArticles";
 import { fetchCategories } from "../../../store/services/help";
+import ScrollBar from "react-perfect-scrollbar";
 const ManageBookingLayout = () => {
   const { help_articles } = useSelector(
     (state) => state.articles.help_Articles,
@@ -45,34 +48,28 @@ const ManageBookingLayout = () => {
               {help_Articles.help_sub_category_title}
             </Breadcrumb.Item> */}
           </Breadcrumb>
-
-          <Input
-            prefix={<SearchOutlined />}
-            className='searchbooking'
-            type='text'
-            placeholder='search'
-            size='large'
-          />
         </div>
         <Dropdown className='dropDownMenu' />
 
         <Row gutter={[20, 40]}>
-          <Col lg={4}>
+          <Col lg={5}>
             <h3 className='articleSection'>Article in this section</h3>
             <div className='NavSlider'>
-              {help_articles &&
-                help_articles.map((link) => {
-                  return (
-                    <Link href={`/help/articles/${link.slug}`}>
-                      <div
-                        className={`${
-                          router.pathname === link.slug && "selected"
-                        } extend`}>
-                        <p className='linked'>{link.title}</p>
-                      </div>
-                    </Link>
-                  );
-                })}
+              <ScrollBar>
+                {help_articles &&
+                  help_articles.map((link) => {
+                    return (
+                      <Link href={`/help/articles/${link.slug}`}>
+                        <div
+                          className={`${
+                            router.pathname === link.slug && "selected"
+                          } extend`}>
+                          <p className='linked'>{link.title}</p>
+                        </div>
+                      </Link>
+                    );
+                  })}
+              </ScrollBar>
             </div>
           </Col>
           <Col lg={16} md={24} sm={24} xs={24}>

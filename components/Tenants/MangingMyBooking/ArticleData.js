@@ -1,4 +1,5 @@
 import React from "react";
+import renderHTML from "react-render-html";
 import { Avatar, Row, Col } from "antd";
 import {
   UserOutlined,
@@ -10,7 +11,6 @@ import {
 } from "@ant-design/icons";
 // import RecentViewedArticles from "./RecentViewedArticles";
 // import RelatedArticles from "./RelatedArticles";
-import renderHTML from "react-render-html";
 import { Skeleton } from "antd";
 import { useSelector } from "react-redux";
 

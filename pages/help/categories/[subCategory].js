@@ -7,12 +7,10 @@ export default function tenants(props) {
 
   const { subCategory } = router.query;
 
-  console.log(router);
-
   return (
     <>
       {router.query.subCategory === subCategory && <Tenants />}
-      {/* {router.query?.subCategory === "landlords" && <Landlords />} */}
+
       <Head>
         <title>International Student Housing | Study Abroad Apartments</title>
         <meta

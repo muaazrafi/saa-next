@@ -321,21 +321,6 @@ const GlobalStyle = createGlobalStyle`
 }
 
 
-//---------Landlords------------//
-
-
-.landlordslinks{
-  border-bottom:1px solid grey;
-  width: 300px;
-  padding:15px;
-
-
-}
-
-.articleSelector{
-  width:100%;
-  height:50px;
-}
 
 // ---------MangingMy Bookings--------//
 
@@ -535,12 +520,13 @@ const GlobalStyle = createGlobalStyle`
 
 
 .selected{
-  background-color:rgba(10,7,119,1);
+  background-color:rgba(10, 7, 119, 1) !important;
 }
 .extendHeader{
   font-size:35px;
 }
 .extend{
+  
 padding-top:5px;
    padding-bottom:5px;
   border-radius:4px;
@@ -626,7 +612,9 @@ padding-top:5px;
   display:none;
 
 }
-
+.NavSlider{
+  height:500px;
+}
 @media only screen and (max-width:996px) and (min-width:320px){
   .dropMenu{
     display:block;
