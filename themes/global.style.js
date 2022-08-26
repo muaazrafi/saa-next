@@ -622,10 +622,15 @@ padding-top:5px;
 .dropMenu{
   display:none;
 }
-
+.NavSlider{
+  height:400px;
+}
 @media only screen and (max-width:996px) and (min-width:320px){
   .dropMenu{
     display:block;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+    padding:10px;
   }
   .NavSlider{
     display:none;
@@ -634,7 +639,23 @@ padding-top:5px;
     display:none;
   }
 }
+.ant-space-item{
+  color:rgb(0,0,0);
+  font-size:18px;
+  
+  
+}
 
+.ant-dropdown{
+  height:200px;
+  overflow-y:auto;
+}
+.ant-space-item .anticon-down{
+  float: right;
+    position: relative;
+    bottom: 20px;
+    color: black;
+}
 .articleHeadline{
   font-weight:bold;
   margin-top:20px;
