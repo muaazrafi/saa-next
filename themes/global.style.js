@@ -622,7 +622,9 @@ padding-top:5px;
 .dropMenu{
   display:none;
 }
-
+.NavSlider{
+  height:400px;
+}
 @media only screen and (max-width:996px) and (min-width:320px){
   .dropMenu{
     display:block;
