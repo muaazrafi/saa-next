@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { Row, Col, Breadcrumb, Input } from "antd";
+import { Row, Col, Breadcrumb } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Dropdown from "./DropDown";
-import { SearchOutlined } from "@ant-design/icons";
+
 import ArticleData from "./ArticleData";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import ScrollBar from "react-perfect-scrollbar";
@@ -46,14 +46,6 @@ const ManageBookingLayout = () => {
               {help_Articles.help_sub_category_title}
             </Breadcrumb.Item> */}
           </Breadcrumb>
-
-          <Input
-            prefix={<SearchOutlined />}
-            className='searchbooking'
-            type='text'
-            placeholder='search'
-            size='large'
-          />
         </div>
         <Dropdown className='dropDownMenu' />
 
