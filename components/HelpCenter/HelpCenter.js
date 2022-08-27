@@ -17,51 +17,6 @@ const HelpCenter = () => {
     }
   }, [categories]);
 
-  const recent = [
-    {
-      title: "Manage Booking ",
-      subTitle: "Extend My ongoing Booking",
-      titleHref: "/help/section/myArticle",
-      createdAt: "Article created 3 months ago",
-      subTitleHref: "/help/articles/myArticle",
-    },
-    {
-      title: "Manage Booking ",
-      subTitle: "Extend My ongoing Booking",
-      titleHref: "/help/section/myArticle",
-      createdAt: "Article created 3 months ago",
-      subTitleHref: "/help/articles/myArticle",
-    },
-    {
-      title: "Manage Booking ",
-      subTitle: "Extend My ongoing Booking",
-      titleHref: "/help/section/myArticle",
-      createdAt: "Article created 3 months ago",
-      subTitleHref: "/help/articles/myArticle",
-    },
-    {
-      title: "Manage Booking ",
-      subTitle: "Extend My ongoing Booking",
-      titleHref: "/help/section/myArticle",
-      createdAt: "Article created 3 months ago",
-      subTitleHref: "/help/articles/myArticle",
-    },
-    {
-      title: "Manage Booking ",
-      subTitle: "Extend My ongoing Booking",
-      titleHref: "/help/section/myArticle",
-      createdAt: "Article created 3 months ago",
-      subTitleHref: "/help/articles/myArticle",
-    },
-    {
-      title: "Manage Booking ",
-      subTitle: "Extend My ongoing Booking",
-      titleHref: "/help/section/myArticle",
-      createdAt: "Article created 3 months ago",
-      subTitleHref: "/help/articles/myArticle",
-    },
-  ];
-
   return (
     <>
       <div className='hero'>
@@ -93,7 +48,7 @@ const HelpCenter = () => {
           <div className='recent'>
             <h1 className='recentHeading'>Recent Activity</h1>
           </div>
-          {loading && <RecentActivity arrayLinks={recent} />}
+          {/* {loading && <RecentActivity arrayLinks={recent} />} */}
         </div>
       </div>
     </>
