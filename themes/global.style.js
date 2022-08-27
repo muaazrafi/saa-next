@@ -142,6 +142,7 @@ const GlobalStyle = createGlobalStyle`
   }
   /********** Help Center ************/
   .help-btn{
+   
     height:70px;
     border-radius:4px;
     width:600px;
@@ -154,9 +155,9 @@ const GlobalStyle = createGlobalStyle`
 
   .BtnCol{
     display:flex;
-    max-width:100%;
+   max-width:100%;
     gap:20px;
-  }
+}
   .recentHeading{
     font-size:22px;
     font-weight:700;
@@ -196,6 +197,11 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+@media only screen and (min-width:320px) and (max-width:996px){
+  .BtnCol{
+    flex-direction:column;
+  }
+}
 
 
 
@@ -258,6 +264,7 @@ const GlobalStyle = createGlobalStyle`
   .tenantsContainer{
     padding-bottom:40px;
     display:flex;
+    
     justify-content:center;
   }
   .tenantContents{
