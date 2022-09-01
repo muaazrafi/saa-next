@@ -29,7 +29,7 @@ const MainMenu = ({ className, router }) => {
           )}
           {
             (currentUser && currentUser.role == 'provider') &&
-            <a href='/landloard'>List a property</a>
+            <a href='/landlords'>List a property</a>
           }
         </Menu.Item>
       </Menu>

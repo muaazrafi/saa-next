@@ -1,14 +1,16 @@
-import React, { useContext, useState, useRef } from 'react';
-import { Menu } from 'antd';
-import useOnClickOutside from 'library/hooks/useOnClickOutside';
-import ActiveLink from 'library/helpers/activeLink';
-import LogOut from './LogOut';
+import React, { useState, useRef } from "react";
+import { Menu } from "antd";
+import useOnClickOutside from "library/hooks/useOnClickOutside";
+import ActiveLink from "library/helpers/activeLink";
+import { useSelector } from "react-redux";
+import LogOut from "./LogOut";
 import {
   AGENT_PROFILE_PAGE,
   AGENT_ACCOUNT_SETTINGS_PAGE,
-} from 'settings/constant';
+} from "settings/constant";
 
 const ProfileMenu = ({ avatar }) => {
+  const { currentUser } = useSelector((state) => state.auth);
   const [state, setState] = useState(false);
 
   const handleDropdown = () => {
@@ -27,20 +29,21 @@ const ProfileMenu = ({ avatar }) => {
       <div className="dropdown-handler" onClick={handleDropdown}>
         {avatar}
       </div>
-
-      <Menu className={`dropdown-menu ${state ? 'active' : 'hide'}`}>
-        <Menu.Item onClick={closeDropdown} key="0">
-          <ActiveLink href={AGENT_PROFILE_PAGE}>Dashboard</ActiveLink>
-        </Menu.Item>
-        <Menu.Item onClick={closeDropdown} key="2">
-          <ActiveLink href={AGENT_ACCOUNT_SETTINGS_PAGE}>
-            Account Settings
-          </ActiveLink>
-        </Menu.Item>
-        <Menu.Item key="3">
-          <LogOut />
-        </Menu.Item>
-      </Menu>
+      {currentUser && (
+        <Menu className={`dropdown-menu ${state ? "active" : "hide"}`}>
+          <Menu.Item onClick={closeDropdown} key="0">
+            <ActiveLink href={ (currentUser.role == 'provider') ? '/landlords' : AGENT_PROFILE_PAGE}>Dashboard</ActiveLink>
+          </Menu.Item>
+          <Menu.Item onClick={closeDropdown} key="2">
+            <ActiveLink href={(currentUser.role == 'provider') ? '/landlords' : AGENT_ACCOUNT_SETTINGS_PAGE}>
+              Account Settings
+            </ActiveLink>
+          </Menu.Item>
+          <Menu.Item key="3">
+            <LogOut />
+          </Menu.Item>
+        </Menu>
+      )}
     </div>
   );
 };
