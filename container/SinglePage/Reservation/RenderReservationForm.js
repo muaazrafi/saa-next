@@ -258,7 +258,7 @@ const RenderReservationForm = () => {
             disabled={bookingBtnState() === null}
             loading={loading}
           >
-            {bookNow() ? "Book Now" : "Request to Book"}
+            {bookNow() ? "Book Now" : "Request Availability"}
           </Button>
         ) : (
           <Button

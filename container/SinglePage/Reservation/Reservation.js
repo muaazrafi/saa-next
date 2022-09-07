@@ -28,7 +28,7 @@ const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
                 {firstMonthRent}
               </>
             )}
-            <Text as="span" content="/ monthy" {...pricePeriodStyle} />
+            <Text as="span" content="/ monthly" {...pricePeriodStyle} />
             <ViewSeasonalPricing />
           </>
         }
