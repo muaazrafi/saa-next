@@ -248,6 +248,22 @@ const RenderReservationForm = () => {
             showIcon
           />
         )}
+        {!booking.check_in && !booking.check_out && (
+          <Alert
+            message={`Check in and out dates missing.`}
+            type="error"
+            style={{ padding: "10px 20px", marginBottom: '10px' }}
+            showIcon
+          />
+        )}
+        {!booking.number_of_room_mates && (
+          <Alert
+            message={`Please select number of guests.`}
+            type="error"
+            style={{ padding: "10px 20px" }}
+            showIcon
+          />
+        )}                
       </div>
 
       <FormActionArea style={{ padding: "0px 20px" }}>
