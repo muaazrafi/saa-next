@@ -1682,7 +1682,9 @@ padding-top:5px;
   font-size: 14px;
   text-align: center;
 }
-
+.myData >ul >li{
+  list-style:disc;
+}
 }
 
 .cardholder {
