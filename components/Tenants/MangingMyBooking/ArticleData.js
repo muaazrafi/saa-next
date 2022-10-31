@@ -50,10 +50,10 @@ const ArticleData = () => {
           {loading ? (
             <Skeleton active={true} />
           ) : (
-            <>
+            <div className='myData'>
               {help_Articles.description &&
                 renderHTML(help_Articles.description)}
-            </>
+            </div>
           )}
         </div>
         <div className='socialMedia'>

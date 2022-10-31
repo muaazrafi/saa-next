@@ -12,10 +12,11 @@ const Areas = (props) => {
   const dispatcher = useDispatch();
   const { areas, loading, search } = useSelector((state) => state.apartments);
   const [processedAreas, setProcessedAreas] = useState([]);
-
+  
   useEffect(() => {
     setProcessedAreas(getDefaultAreas());
   }, [areas]);
+
 
   const getDefaultAreas = () => {
     let rawAreas = areas.map((area) => {
@@ -26,7 +27,7 @@ const Areas = (props) => {
         value: area.area,
       };
     });
-    rawAreas = uniqBy(processedAreas, (area) => { return area.value } );
+    rawAreas = uniqBy(rawAreas, (area) => { return area.value } );    
     return sortBy(rawAreas, (area) => {
       return area.label;
     });
