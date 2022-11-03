@@ -59,7 +59,7 @@ export default function ProductCard({
       }
       location={area}
       title={name}
-      price={`${display_price}/Montly`}
+      price={`${display_price}/Monthly`}
       currency={currency}
       apart_type={apart_type}
       number_of_beds={number_of_beds}
