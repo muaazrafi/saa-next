@@ -6,13 +6,22 @@ import {
   show
 } from './services/card';
 import {
+  fetchPromoCode
+} from './services/promoCode';
+import {
+  updateBooking
+} from './services/booking';
+import {
   notification
 } from 'antd';
+import { isEmpty } from 'lodash';
 const initialState = {
   card: null,
   loading: false,
   moveStep: false,
-  error: ''
+  error: '',
+  promoCode: null,
+  promoCodeError: ''
 }
 
 export const cardSlice = createSlice({
@@ -53,6 +62,18 @@ export const cardSlice = createSlice({
     });
     builder.addCase(show.fulfilled, (state, action) => {
       state.card = action.payload.user;
+      state.loading = false;
+    });
+    builder.addCase(fetchPromoCode.fulfilled, (state, action) => {
+      if (isEmpty(action.payload)) {
+        state.promoCodeError = 'Please enter valid promo code.';
+      } else {
+        state.promoCode = action.payload;
+        state.promoCodeError = '';
+      }
+      state.loading = false;
+    });
+    builder.addCase(updateBooking.fulfilled, (state, action) => {
       state.loading = false;
     });
   },

@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { UserOutlined } from "@ant-design/icons";
+import { TbShoppingCartDiscount } from 'react-icons/tb';
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { Form, Button, Input, Row, Col } from "antd";
+import { debounce, isEmpty } from 'lodash';
 import CardSection from "./CardSection";
 import { create } from 'store/services/card';
+import { fetchPromoCode } from 'store/services/promoCode';
+import { updateBooking } from 'store/services/booking';
 import { handleLoading, setError, error } from "/store/cardSlice";
 const { TextArea } = Input;
 
@@ -12,7 +16,23 @@ const Card = (props) => {
   const elements = useElements();
   const stripe = useStripe();
   const dispatch = useDispatch();
-  const { loading } = useSelector(state => state.card);
+  const { booking } = useSelector(state => state.booking);
+  const { loading, promoCode, promoCodeError } = useSelector(state => state.card);
+
+  useEffect(() => {
+    if (!isEmpty(promoCode)) {
+      console.log("Here is booking:", booking)
+      dispatch(handleLoading(true));
+      dispatch(updateBooking({
+        id: booking.id,
+        payload: {
+          booking: {
+            promo_code_id: promoCode.promo_code.id
+          }
+        }
+      }));
+    }
+  }, [promoCode]);
 
   const handleSubmit = async (values) => {
     if (!stripe || !elements) {
@@ -40,6 +60,16 @@ const Card = (props) => {
       dispatch(create(paymentMethod.id));
     }
   };
+
+  const debouncedChangeHandler = useCallback(
+    debounce((event) => {
+      const promoCode = event.target.value;
+      if(!isEmpty(promoCode)) {
+        dispatch(handleLoading(true));
+        dispatch(fetchPromoCode(promoCode));
+      }
+    }, 500)
+    , []);
 
   return (
     <Form name="card" className="card-form" onFinish={handleSubmit} layout="vertical" >
@@ -113,9 +143,9 @@ const Card = (props) => {
               placeholder="Zip Code"
             />
           </Form.Item>
-        </Col>        
+        </Col>
         <Col span={24}>
-            
+
         </Col>
       </Row>
 
@@ -135,7 +165,28 @@ const Card = (props) => {
           </Form.Item>
         </Col>
       </Row>
-            
+
+      <Row gutter={20}>
+        <Col span={24}>
+          <Form.Item
+            label="Promo code"
+            name="promo_code"
+            style={{ marginBottom: "10px" }}
+            validateStatus={ isEmpty(promoCodeError) ? (promoCode ? 'success': '')  : 'error' }
+            help={ isEmpty(promoCodeError) ? (promoCode ? 'Thanks! Your discount will be applied at checkout.': '')  : promoCodeError }
+            hasFeedback
+          >
+            <Input
+              prefix={<TbShoppingCartDiscount className="site-form-item-icon" />}
+              style={{ width: "100%" }}
+              placeholder="Promo code"
+              onChange={debouncedChangeHandler}
+            />
+          </Form.Item>
+
+        </Col>
+      </Row>
+
       <Form.Item style={{ textAlign: 'right' }} >
         <Button
           type="primary"

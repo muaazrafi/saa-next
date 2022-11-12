@@ -141,3 +141,20 @@ export const inviteSplit = createAsyncThunk(
     return response;
   }
 )
+
+export const updateBooking = createAsyncThunk(
+  'booking/update',
+  async (booking, thunkAPI) => {
+    const response = await fetch(`/api/bookings/${booking.id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(booking.payload)
+    }).then((res) => {
+      return res.json()
+    });
+    return response;
+  }
+)
