@@ -21,7 +21,6 @@ const Card = (props) => {
 
   useEffect(() => {
     if (!isEmpty(promoCode)) {
-      console.log("Here is booking:", booking)
       dispatch(handleLoading(true));
       dispatch(updateBooking({
         id: booking.id,

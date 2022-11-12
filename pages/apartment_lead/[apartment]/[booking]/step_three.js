@@ -17,7 +17,7 @@ const StepThree = (props) => {
   const dispatch = useDispatch();
   const { currentUser, loading } = useSelector((state) => state.auth);
   const { apartment } = useSelector((state) => state.apartment);
-  const { amountDue } = useSelector((state) => state.booking);
+  const { booking, amountDue } = useSelector((state) => state.booking);
   const bookingLoading = useSelector((state) => state.booking.loading);
   const router = useRouter();
   const bookingId = router.query.booking;
@@ -80,7 +80,14 @@ const StepThree = (props) => {
                   {currentUser && currentUser.must_pay_deposit
                     ? "down payment will be charged to your card"
                     : "is already paid, nothing will be charged to your card"}
-                  . The remaining{" "}
+                  .<span>{booking.has_promo_code ?
+                    <strong>
+                      Added promo code discount of {" "}
+                      {booking.discount_amount.toFixed(2)}
+                      <ApartmentCurrency currency={apartment.currency} />.
+                    </strong>
+                    : ""} </span>
+                  The remaining{" "}
                   <ApartmentCurrency currency={apartment.currency} />
                   {Math.ceil(amountDue - apartment.booking_request_amount)} is
                   due no more than three days following the landlord's

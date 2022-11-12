@@ -94,7 +94,7 @@ const PriceBreakDown = (props) => {
             <Col span={8} className="text-right">
               <ApartmentCurrency currency={apartment.currency} />
               {booking.has_promo_code
-                ? bookingFee + booking.discount_amount
+                ? (bookingFee + booking.discount_amount).toFixed(2)
                 : bookingFee}
             </Col>
           </Row>
@@ -148,9 +148,9 @@ const PriceBreakDown = (props) => {
           )}
 
           {booking.has_promo_code && (
-            <Row gutter={10}>
+            <Row gutter={10} style={{ color: "darkred" }} >
               <Col span={16}>
-                <strong>Promo Code Discount</strong>{" "}
+                <strong>- Promo Code Discount</strong>{" "}
                 <Tooltip
                   placement="top"
                   title="Hurry up! Use Promo Code Discount."
@@ -160,7 +160,7 @@ const PriceBreakDown = (props) => {
               </Col>
               <Col span={8} className="text-right">
                 <ApartmentCurrency currency={apartment.currency} />
-                {booking.discount_amount}
+                {booking.discount_amount.toFixed(2)}
               </Col>
             </Row>
           )}
