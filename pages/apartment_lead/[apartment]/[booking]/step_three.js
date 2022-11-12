@@ -10,6 +10,7 @@ import ConfirmPayment from "container/Payment/ConfirmPayment";
 import Cart from "container/Cart/Cart";
 import CardHolder from "container/Payment/CardHolder";
 import ProfileCard from "container/Auth/ProfileCard";
+import { fetchBooking } from "store/services/booking";
 import { fetchMe } from "store/services/auth";
 import Stripe from "/container/Stripe/Stripe";
 
@@ -27,6 +28,12 @@ const StepThree = (props) => {
       dispatch(fetchMe());
     }
   }, [currentUser]);
+
+  useEffect(() => {
+    if (bookingId) {
+      dispatch(fetchBooking(bookingId));
+    }
+  }, [bookingId]);
 
   return (
     <FormContent>
