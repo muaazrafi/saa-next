@@ -1,9 +1,9 @@
 const withPlugins = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
-const {
-  withSentryConfig
-} = require('@sentry/nextjs');
+// const {
+//   withSentryConfig
+// } = require('@sentry/nextjs');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -42,9 +42,9 @@ const nextConfig = {
   },
 };
 
-const sentryWebpackPluginOptions = {
-  silent: true,
-};
+// const sentryWebpackPluginOptions = {
+//   silent: true,
+// };
 
 const moduleExports = withPlugins(
   [
@@ -68,4 +68,4 @@ const moduleExports = withPlugins(
 
 
 
-module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
+module.exports = moduleExports;
