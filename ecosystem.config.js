@@ -19,7 +19,8 @@ module.exports = {
     },
     production : {
       user : 'ubuntu',
-      host : ['54.203.55.174', '35.93.82.50'],
+      host: '154.53.33.186',
+      // host : ['54.203.55.174', '35.93.82.50'],
       ref  : 'origin/master',
       repo : 'https://muaazrafi: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@github.com/muaazrafi/saa-next.git',
       path : '/home/ubuntu/saa_next',
