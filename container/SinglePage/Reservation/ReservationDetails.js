@@ -80,10 +80,10 @@ const ReservationDetails = () => {
               >
                 <MdHelpCenter fontSize={18} />
               </Tooltip>
-              <p style={{ fontSize: "10px", color: "#999" }}>
+              {/* <p style={{ fontSize: "10px", color: "#999" }}>
                 Includes one-time service fee of {Math.ceil(bookingFee)}. To be
                 paid 3 days after approval.
-              </p>
+              </p> */}
             </Col>
             <Col span={6}>
               <ApartmentCurrency currency={apartment.currency} />
