@@ -20,7 +20,7 @@ const ErrorPage = (props) => {
     <NotFoundWrapper>
       <ContentWrapper>
         <img
-          src="https://d1d0zx56gx2nys.cloudfront.net/assets/next/404%402x.png"
+          src="https://studyabroadapartments.s3.amazonaws.com/assets/next/404%402x.png"
           width="560"
           height="315"
           alt={String(errorCode)}

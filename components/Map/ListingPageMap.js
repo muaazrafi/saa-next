@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Marker } from '@react-google-maps/api';
 import HotelInfoWindow from './MapInfoWindow';
 
-const MakerImage = 'https://d1d0zx56gx2nys.cloudfront.net/map_icon.png';
+const MakerImage = 'https://studyabroadapartments.s3.amazonaws.com/map_icon.png';
 
 const HotelMapMarkerCluster = ({ location, clusterer }) => {
 	const [isOpen, setIsOpen] = useState(false);

@@ -3,7 +3,7 @@ import { Marker } from '@react-google-maps/api';
 import { useSelector } from "react-redux";
 import HotelInfoWindow from './MapInfoWindow';
 
-const MakerImage = 'https://d1d0zx56gx2nys.cloudfront.net/map_icon.png';
+const MakerImage = 'https://studyabroadapartments.s3.amazonaws.com/map_icon.png';
 
 const SingleMapDisplay = ({ location }) => {
 	let hotelData = [];

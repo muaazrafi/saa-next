@@ -1629,12 +1629,12 @@ padding-top:5px;
 }
 
 .thankyou-holder {
-  background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/thankyou-bg-pattren.png);
+  background-image: url(https://studyabroadapartments.s3.amazonaws.com/assets/thankyou-bg-pattren.png);
   background-repeat: repeat-x;
   background-position: left top;
   margin-bottom: 100px;
   .thankyou-title {
-    background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/Request-is-pending-for-approval-01.png);
+    background-image: url(https://studyabroadapartments.s3.amazonaws.com/assets/Request-is-pending-for-approval-01.png);
     background-repeat: no-repeat;
     background-position: center center;
     max-width: 1200px;
@@ -1733,7 +1733,7 @@ padding-top:5px;
 }
 
 .banner-vsual {
-  background: url(https://d1d0zx56gx2nys.cloudfront.net/assets/next/thankyou-min.jpg) 0px 0px no-repeat;
+  background: url(https://studyabroadapartments.s3.amazonaws.com/assets/next/thankyou-min.jpg) 0px 0px no-repeat;
   background-size: cover;
   height: 90vh;
   .banner-overlay {

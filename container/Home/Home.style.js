@@ -81,7 +81,7 @@ const HomeWrapper = styled.footer`
 	 height: 70px;
 }
  .banner_section {
-	 background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/next/banner-home.jpg);
+	 background-image: url(https://studyabroadapartments.s3.amazonaws.com/assets/next/banner-home.jpg);
 	 background-size: cover;
 	 background-position: center;
 	 background-repeat: no-repeat;
@@ -144,10 +144,10 @@ const HomeWrapper = styled.footer`
 	 border-radius: 15px;
 }
  .destination_section .bg_one {
-	 background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/next/barcelona.jpg);
+	 background-image: url(https://studyabroadapartments.s3.amazonaws.com/assets/next/barcelona.jpg);
 }
  .destination_section .bg_two {
-	 background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/next/madrid.jpg);
+	 background-image: url(https://studyabroadapartments.s3.amazonaws.com/assets/next/madrid.jpg);
 }
  .destination_section .green_area {
 	 background-color: #06c1f2;
@@ -176,7 +176,7 @@ const HomeWrapper = styled.footer`
 	}
 }
  .semester_section .img_div {
-	 background-image: url(https://d1d0zx56gx2nys.cloudfront.net/assets/next/capture.png);
+	 background-image: url(https://studyabroadapartments.s3.amazonaws.com/assets/next/capture.png);
 	 background-size: cover;
 	 background-position: center;
 	 background-repeat: no-repeat;

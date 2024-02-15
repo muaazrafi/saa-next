@@ -1,64 +1,64 @@
 export default {
   //logo image
-  logo: "https://d1d0zx56gx2nys.cloudfront.net/assets/logo.svg",
+  logo: "https://studyabroadapartments.s3.amazonaws.com/assets/logo.svg",
 
   //Roommate
-  semester: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/semester.jpg",
+  semester: "https://studyabroadapartments.s3.amazonaws.com/assets/next/semester.jpg",
 
   //features images
-  listing: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/features/listing.png",
-  manage: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/features/manage.png",
-  community: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/features/community.png",
-  knowledge: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/features/knowledge.png",
+  listing: "https://studyabroadapartments.s3.amazonaws.com/assets/next/features/listing.png",
+  manage: "https://studyabroadapartments.s3.amazonaws.com/assets/next/features/manage.png",
+  community: "https://studyabroadapartments.s3.amazonaws.com/assets/next/features/community.png",
+  knowledge: "https://studyabroadapartments.s3.amazonaws.com/assets/next/features/knowledge.png",
 
   //experience images
-  money: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/experience/money.png",
-  experience: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/experience/experience.png",
+  money: "https://studyabroadapartments.s3.amazonaws.com/assets/next/experience/money.png",
+  experience: "https://studyabroadapartments.s3.amazonaws.com/assets/next/experience/experience.png",
 
   //how it works images
-  search: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/work/search.png",
-  book: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/work/book.png",
-  confirm: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/work/confirm.png",
-  pay: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/work/pay.png",
-  home: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/work/home.png",
+  search: "https://studyabroadapartments.s3.amazonaws.com/assets/next/work/search.png",
+  book: "https://studyabroadapartments.s3.amazonaws.com/assets/next/work/book.png",
+  confirm: "https://studyabroadapartments.s3.amazonaws.com/assets/next/work/confirm.png",
+  pay: "https://studyabroadapartments.s3.amazonaws.com/assets/next/work/pay.png",
+  home: "https://studyabroadapartments.s3.amazonaws.com/assets/next/work/home.png",
 
   //Roommate
-  roommate: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/rommate/roommate.PNG",
+  roommate: "https://studyabroadapartments.s3.amazonaws.com/assets/next/rommate/roommate.PNG",
 
   //Study
-  study_one: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/study/study_one.png",
-  study_two: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/study/study_two.png",
-  study_three: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/study/study_three.png",
+  study_one: "https://studyabroadapartments.s3.amazonaws.com/assets/next/study/study_one.png",
+  study_two: "https://studyabroadapartments.s3.amazonaws.com/assets/next/study/study_two.png",
+  study_three: "https://studyabroadapartments.s3.amazonaws.com/assets/next/study/study_three.png",
 
   //brands
-  brand_one: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/brands/brand_one.png",
-  brand_two: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/brands/brand_two.png",
-  brand_three: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/brands/brand_three.png",
-  brand_four: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/brands/brand_four.png",
-  brand_five: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/brands/brand_five.png",
+  brand_one: "https://studyabroadapartments.s3.amazonaws.com/assets/next/brands/brand_one.png",
+  brand_two: "https://studyabroadapartments.s3.amazonaws.com/assets/next/brands/brand_two.png",
+  brand_three: "https://studyabroadapartments.s3.amazonaws.com/assets/next/brands/brand_three.png",
+  brand_four: "https://studyabroadapartments.s3.amazonaws.com/assets/next/brands/brand_four.png",
+  brand_five: "https://studyabroadapartments.s3.amazonaws.com/assets/next/brands/brand_five.png",
 
   //social
-  facebook: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/facebook.png",
-  twitter: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/twitter.png",
-  instagram: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/instagram.png",
-  linkedin: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/linkedin.png",
+  facebook: "https://studyabroadapartments.s3.amazonaws.com/assets/next/facebook.png",
+  twitter: "https://studyabroadapartments.s3.amazonaws.com/assets/next/twitter.png",
+  instagram: "https://studyabroadapartments.s3.amazonaws.com/assets/next/instagram.png",
+  linkedin: "https://studyabroadapartments.s3.amazonaws.com/assets/next/linkedin.png",
 
   //random
-  circle: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/circle_blue.svg",
-  cloud_right: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/cloud_right.svg",
-  notebook: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/book.png",
-  cap: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/cap.png",
-  shahdow: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/shahdow.png",
-  globe: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/globe.png",
-  paper: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/paper.png",
-  pencil: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/pencil.png",
-  circle_half: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/circle_half.png",
-  circle_dots: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/circle_dots.png",
-  rect_dots: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/random/rect_dots.png",
+  circle: "https://studyabroadapartments.s3.amazonaws.com/assets/next/random/circle_blue.svg",
+  cloud_right: "https://studyabroadapartments.s3.amazonaws.com/assets/next/random/cloud_right.svg",
+  notebook: "https://studyabroadapartments.s3.amazonaws.com/assets/next/random/book.png",
+  cap: "https://studyabroadapartments.s3.amazonaws.com/assets/next/random/cap.png",
+  shahdow: "https://studyabroadapartments.s3.amazonaws.com/assets/next/random/shahdow.png",
+  globe: "https://studyabroadapartments.s3.amazonaws.com/assets/next/random/globe.png",
+  paper: "https://studyabroadapartments.s3.amazonaws.com/assets/next/random/paper.png",
+  pencil: "https://studyabroadapartments.s3.amazonaws.com/assets/next/random/pencil.png",
+  circle_half: "https://studyabroadapartments.s3.amazonaws.com/assets/next/random/circle_half.png",
+  circle_dots: "https://studyabroadapartments.s3.amazonaws.com/assets/next/random/circle_dots.png",
+  rect_dots: "https://studyabroadapartments.s3.amazonaws.com/assets/next/random/rect_dots.png",
 
 
   //About
-  students: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/about/students.png",
-  university: "https://d1d0zx56gx2nys.cloudfront.net/assets/next/about/university.png",
+  students: "https://studyabroadapartments.s3.amazonaws.com/assets/next/about/students.png",
+  university: "https://studyabroadapartments.s3.amazonaws.com/assets/next/about/university.png",
 
 };

@@ -10,7 +10,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   images: {
-    domains: ['s3.amazonaws.com', 'saastaging.s3.amazonaws.com', 'd1d0zx56gx2nys.cloudfront.net'],
+    domains: ['s3.amazonaws.com', 'saastaging.s3.amazonaws.com', 'studyabroadapartments.s3.amazonaws.com'],
   },
   webpack: (config) => {
     // HOTFIX: https://github.com/webpack-contrib/mini-css-extract-plugin/issues/250
