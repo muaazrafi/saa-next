@@ -108,7 +108,7 @@ const Price = class {
   }
 
   saaBookingFee () {
-    let fee = this.stayLength() <= 90 ? this.firstMonthRent() * 0.15 : this.firstMonthRent() * 0.399;
+    let fee = this.stayLength() <= 90 ? this.firstMonthRent() * 0.35 : this.firstMonthRent() * 0.44;
     return fee;
   }
 
