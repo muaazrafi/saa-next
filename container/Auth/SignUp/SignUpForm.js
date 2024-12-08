@@ -140,6 +140,20 @@ const SignUpForm = ({ booking = false, landLord = false }) => {
           />
         </Form.Item>
 
+        {/* Terms of Service and Privacy Policy line */}
+        <Form.Item style={{ marginBottom: "10px" }}>
+          <span style={{ fontSize: "12px" }}>
+            By continuing, you agree to our{" "}
+            <a href="/terms-of-service" target="_blank" rel="noopener noreferrer">
+              Terms of Service
+            </a>{" "}
+            and{" "}
+            <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+              Privacy Policy
+            </a>.
+          </span>
+        </Form.Item>
+
         <Form.Item>
           <Button
             type="primary"
