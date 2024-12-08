@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Input, Alert, Checkbox } from "antd";
 import { cloneDeep } from "lodash";
@@ -7,6 +7,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { handleLoading } from "store/authSlice";
 import { register } from "store/services/auth";
 import PhoneInput from "components/UI/FormControl/PhoneInput";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const SignUpForm = ({ booking = false, landLord = false }) => {
   const dispatcher = useDispatch();
@@ -15,13 +16,26 @@ const SignUpForm = ({ booking = false, landLord = false }) => {
   );
   const inputWidthControl = { width: booking ? "100%" : 256 };
 
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+
   const onFinish = (values) => {
+    if (!recaptchaToken) {
+      alert("Please verify the reCAPTCHA before continuing.");
+      return;
+    }
+
     let registerValues = cloneDeep(values);
     registerValues.phone = tempPhone;
     registerValues.landlord_request = landLord;
     registerValues.terms_accepted = true;
+    registerValues.recaptcha_token = recaptchaToken;
+
     dispatcher(handleLoading(true));
     dispatcher(register(registerValues));
+  };
+
+  const handleRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
   };
 
   return (
@@ -107,6 +121,7 @@ const SignUpForm = ({ booking = false, landLord = false }) => {
             {errors.map((error) => {
               return (
                 <Alert
+                  key={`${error[0]}-${error[1]}`}
                   message={`${error[0]} ${error[1]}`}
                   type="error"
                   showIcon
@@ -116,6 +131,15 @@ const SignUpForm = ({ booking = false, landLord = false }) => {
             <br />
           </>
         )}
+
+        {/* Add the reCAPTCHA widget */}
+        <Form.Item style={{ marginBottom: "20px" }}>
+          <ReCAPTCHA
+            sitekey={process.env.googleRecapthaKey}
+            onChange={handleRecaptchaChange}
+          />
+        </Form.Item>
+
         <Form.Item>
           <Button
             type="primary"

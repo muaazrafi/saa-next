@@ -26,12 +26,14 @@ const nextConfig = {
   env: {
     stripePubKey: process.env.STRIPE_PUBLIC_KEY,
     googleApiKey: process.env.GOOGLE_API_KEY,
-    autcompleteGoogleURL: process.env.REACT_APP_GOOGLE_MAP_API_KEY
+    autcompleteGoogleURL: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
+    googleRecapthaKey: process.env.GOOGLE_RECAPTCHA_KEY
   },
   publicRuntimeConfig: {
     stripePubKey: process.env.STRIPE_PUBLIC_KEY,
     googleApiKey: process.env.GOOGLE_API_KEY,
-    autcompleteGoogleURL: process.env.REACT_APP_GOOGLE_MAP_API_KEY
+    autcompleteGoogleURL: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
+    googleRecapthaKey: process.env.GOOGLE_RECAPTCHA_KEY
   },
   async redirects() {
     return [{
