@@ -19,7 +19,7 @@ const SignIn = () => {
           <Title level={5}>Log in </Title>
           <SignInForm/>
           <Title level={5}>Do you not have account already?</Title>
-          <Button type="default" style={{ width: 256 }} block onClick={() => dispatcher(switchup("up"))}>
+          <Button type="default" style={{ width: 300 }} block onClick={() => dispatcher(switchup("up"))}>
             Sign Up
           </Button>
         </FormWrapper>

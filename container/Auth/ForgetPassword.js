@@ -9,7 +9,7 @@ import { forgetPassword } from "/store/services/auth";
 const { Title } = Typography;
 
 export default function ForgetPassWord() {
-  const dispatch = useDispatch();
+  const dispatcher = useDispatch();
   const { forgetErrors, loading } = useSelector((state) => state.auth);
 
   const onFinish = (data) => {
