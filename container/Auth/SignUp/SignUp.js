@@ -47,7 +47,7 @@ const SignUp = () => {
             <Title level={5}>Do you have account already?</Title>
             <Button
               type="default"
-              style={{ width: 256 }}
+              style={{ width: 300 }}
               block
               onClick={() => dispatcher(switchin("in"))}
             >

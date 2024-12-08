@@ -50,7 +50,7 @@ export default function ForgetPassWord() {
                   <Alert
                     message={forgetErrors[0]}
                     type="error"
-                    style={{ width: 256, marginBottom: "20px", textTransform: 'capitalize' }}
+                    style={{ width: 300, marginBottom: "20px", textTransform: 'capitalize' }}
                     showIcon
                   />
                 )}
@@ -69,7 +69,7 @@ export default function ForgetPassWord() {
               </Form>
               <Button
                 type="default"
-                style={{ width: 256, marginBottom: "10px" }}
+                style={{ width: 300, marginBottom: "10px" }}
                 block
                 onClick={() => dispatcher(switchup("up"))}
               >
@@ -77,7 +77,7 @@ export default function ForgetPassWord() {
               </Button>
               <Button
                 type="default"
-                style={{ width: 256 }}
+                style={{ width: 300 }}
                 block
                 onClick={() => dispatcher(switchin("in"))}
               >

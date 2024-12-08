@@ -14,7 +14,7 @@ const SignUpForm = ({ booking = false, landLord = false }) => {
   const { existError, loading, tempPhone, errors } = useSelector(
     (state) => state.auth
   );
-  const inputWidthControl = { width: booking ? "100%" : 256 };
+  const inputWidthControl = { width: booking ? "100%" : 300 };
 
   const [recaptchaToken, setRecaptchaToken] = useState(null);
 

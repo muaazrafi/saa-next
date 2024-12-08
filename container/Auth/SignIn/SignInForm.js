@@ -8,7 +8,7 @@ import { authenticate } from "store/services/auth";
 const SignInForm = ({ booking = false }) => {
   const dispatcher = useDispatch();
   const { existError, loading } = useSelector((state) => state.auth);
-  const inputWidthControl = { width: booking ? "100%" : 256 };
+  const inputWidthControl = { width: booking ? "100%" : 300 };
 
   const onFinish = (values) => {
     dispatcher(authenticate(values));
@@ -56,7 +56,7 @@ const SignInForm = ({ booking = false }) => {
         <Alert
           message="Invalid Email/Password."
           type="error"
-          style={{ width: 256, marginBottom: "20px" }}
+          style={{ width: 300, marginBottom: "20px" }}
           showIcon
         />
       )}
