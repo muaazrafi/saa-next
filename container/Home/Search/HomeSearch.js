@@ -69,7 +69,9 @@ const HomeSearch = () => {
                   optionFilterProp="children"
                 >
                   <Option value="barcelona">Barcelona</Option>
+                  <Option value="london">London</Option>
                   <Option value="madrid">Madrid</Option>
+                  <Option value="prague">Prague</Option>
                 </Select>
               </Form.Item>
             </Col>
