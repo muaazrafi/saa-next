@@ -149,6 +149,14 @@ const HomeWrapper = styled.footer`
  .destination_section .bg_two {
 	 background-image: url(https://studyabroadapartments.s3.amazonaws.com/assets/next/madrid.jpg);
 }
+ .destination_section .bg_three {
+	 margin-top: 20px;
+	 background-image: url(https://studyabroadapartments.s3.amazonaws.com/assets/next/london.png);
+}
+ .destination_section .bg_four {
+	 margin-top: 20px;
+	 background-image: url(https://studyabroadapartments.s3.amazonaws.com/assets/next/prauge.png);
+}
  .destination_section .green_area {
 	 background-color: #06c1f2;
 	 height: 250px;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Button, Input, Alert, Checkbox } from "antd";
+import { Form, Button, Input, Alert, Checkbox, Tooltip } from "antd";
 import { cloneDeep } from "lodash";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { UserOutlined, LockOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { HiOutlineMail } from "react-icons/hi";
 import { handleLoading } from "store/authSlice";
 import { register } from "store/services/auth";
@@ -140,6 +140,35 @@ const SignUpForm = ({ booking = false, landLord = false }) => {
           />
         </Form.Item>
 
+        {/* SMS Consent: Opt-in terms */}
+        <Form.Item
+          name="sms_optin_language"
+          valuePropName="checked"
+          rules={[{ validator: (_, v) => v ? Promise.resolve() : Promise.reject("Required") }]}
+          style={{ ...inputWidthControl, marginBottom: "10px" }}
+        >
+          <Checkbox>
+            I've read and accept the SMS opt-in terms{" "}
+            <Tooltip
+              title={
+                <ul style={{ margin: 0, paddingLeft: 16 }}>
+                  <li>Messaging frequency may vary.</li>
+                  <li>Message & data rates may apply.</li>
+                  <li>Text STOP to opt out anytime.</li>
+                  <li>Text HELP or visit studyabroadapartments.com for support.</li>
+                  <li>
+                    See our{" "}
+                    <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>{" "}
+                    &{" "}
+                    <a href="/terms-of-services" target="_blank" rel="noopener">Terms of Service</a>.
+                  </li>
+                </ul>
+              }
+            >
+              <InfoCircleOutlined style={{ marginLeft: 4 }} />
+            </Tooltip>
+          </Checkbox>
+        </Form.Item>
         {/* Terms of Service and Privacy Policy line */}
         <Form.Item style={{ marginBottom: "10px" }}>
           <span style={{ fontSize: "12px" }}>
@@ -149,6 +178,8 @@ const SignUpForm = ({ booking = false, landLord = false }) => {
             </a>{" "}
             and{" "}
             <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+              Privacy Policy
+            </a>. We clearly states we do not share or sell SMS opt-in, or phone numbers for the purpose of SMS as mentioned in the  <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
               Privacy Policy
             </a>.
           </span>

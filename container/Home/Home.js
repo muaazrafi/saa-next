@@ -38,6 +38,11 @@ const Home = (props) => {
                   <div>Barcelona, Spain</div>
                 </div>
               </Link>
+              <Link href="/listings/london">
+                <div className="img_div bg_three">
+                  <div>London, England</div>
+                </div>
+              </Link>
             </Col>
 
             <Col xs={24} xl={8}>
@@ -51,6 +56,11 @@ const Home = (props) => {
               <Link href="/listings/madrid">
                 <div className="img_div bg_two">
                   <div>Madrid, Spain</div>
+                </div>
+              </Link>
+              <Link href="/listings/prague">
+                <div className="img_div bg_four">
+                  <div>Prague, Czech Republic</div>
                 </div>
               </Link>
             </Col>
