@@ -142,7 +142,6 @@ const SignUpForm = ({ booking = false, landLord = false }) => {
 
         {/* SMS Consent: Opt-in terms */}
         <Form.Item
-          name="sms_optin_language"
           valuePropName="checked"
           rules={[{ validator: (_, v) => v ? Promise.resolve() : Promise.reject("Required") }]}
           style={{ ...inputWidthControl, marginBottom: "10px" }}
