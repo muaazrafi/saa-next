@@ -14,6 +14,7 @@ import Layout from "container/Layout/Layout";
 import { SearchProvider } from "context/SearchProvider";
 import { store } from "store/store";
 import { Provider } from "react-redux";
+import HashRouter from "container/Auth/HashRouter";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -28,6 +29,7 @@ function App({ Component, router, pageProps }) {
         <ThemeProvider theme={theme}>
           <Layout>
             <GlobalStyles />
+            <HashRouter />
             <Component {...pageProps} />
           </Layout>
         </ThemeProvider>
