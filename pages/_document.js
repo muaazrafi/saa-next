@@ -47,6 +47,7 @@ export default class MyDocument extends Document {
               `,
             }}
           />
+          <meta name="google-site-verification" content="2oggJqUv_WAiQfvIAknlNvjvN2fORMsY4CIoMsfUUAU" />
           <meta name="theme-color" content="#0088E5" />
           <meta
             name="keywords"
