@@ -140,47 +140,69 @@ const SignUpForm = ({ booking = false, landLord = false }) => {
           />
         </Form.Item>
 
-        {/* SMS Consent: Opt-in terms */}
+        {/* Terms & Conditions and Privacy Policy */}
         <Form.Item
+          name="terms_privacy_agreement"
           valuePropName="checked"
-          rules={[{ validator: (_, v) => v ? Promise.resolve() : Promise.reject("Required") }]}
+          rules={[{
+            required: true,
+            message: "You must agree to the terms & conditions and privacy policy"
+          }]}
           style={{ ...inputWidthControl, marginBottom: "10px" }}
         >
           <Checkbox>
-            I've read and accept the SMS opt-in terms{" "}
+            I agree to the{" "}
+            <a href="/terms-of-services" target="_blank" rel="noopener noreferrer">
+              terms & conditions
+            </a>
+            {" "}and the{" "}
+            <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+              privacy policy
+            </a>
+            {" "}as documented here.*
+          </Checkbox>
+        </Form.Item>
+
+        {/* Marketing Text Messages */}
+        <Form.Item
+          name="marketing_messages_agreement"
+          valuePropName="checked"
+          style={{ ...inputWidthControl, marginBottom: "10px" }}
+        >
+          <Checkbox>
+            I agree to receive marketing text messages{" "}
             <Tooltip
-              title={
-                <ul style={{ margin: 0, paddingLeft: 16 }}>
-                  <li>Messaging frequency may vary.</li>
-                  <li>Message & data rates may apply.</li>
-                  <li>Text STOP to opt out anytime.</li>
-                  <li>Text HELP or visit studyabroadapartments.com for support.</li>
-                  <li>
-                    See our{" "}
-                    <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>{" "}
-                    &{" "}
-                    <a href="/terms-of-services" target="_blank" rel="noopener">Terms of Service</a>.
-                  </li>
-                </ul>
-              }
+              title="Once a week regarding sales and other promotional events at the phone number provided above to Iceberg, Inc. Message & data rates may apply. Reply STOP to no longer receive messages at any time."
             >
-              <InfoCircleOutlined style={{ marginLeft: 4 }} />
+              <InfoCircleOutlined style={{ marginLeft: 4, color: "#0088E5" }} />
             </Tooltip>
           </Checkbox>
         </Form.Item>
-        {/* Terms of Service and Privacy Policy line */}
+
+        {/* Customer Support Text Messages */}
+        <Form.Item
+          name="support_messages_agreement"
+          valuePropName="checked"
+          rules={[{
+            required: true,
+            message: "You must agree to receive customer support text messages"
+          }]}
+          style={{ ...inputWidthControl, marginBottom: "10px" }}
+        >
+          <Checkbox>
+            I agree to receive customer support text messages{" "}
+            <Tooltip
+              title="As needed for the orders that I have placed at the phone number provided above to Iceberg, Inc. Message & data rates may apply. Reply STOP to no longer receive messages at any time."
+            >
+              <InfoCircleOutlined style={{ marginLeft: 4, color: "#0088E5" }} />
+            </Tooltip>
+          </Checkbox>
+        </Form.Item>
+
+        {/* Required field notice */}
         <Form.Item style={{ marginBottom: "10px" }}>
-          <span style={{ fontSize: "12px" }}>
-            By continuing, you agree to our{" "}
-            <a href="/terms-of-service" target="_blank" rel="noopener noreferrer">
-              Terms of Service
-            </a>{" "}
-            and{" "}
-            <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
-              Privacy Policy
-            </a>. We clearly states we do not share or sell SMS opt-in, or phone numbers for the purpose of SMS as mentioned in the  <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
-              Privacy Policy
-            </a>.
+          <span style={{ fontSize: "12px", color: "#666" }}>
+            * Field is required to submit the form
           </span>
         </Form.Item>
 
