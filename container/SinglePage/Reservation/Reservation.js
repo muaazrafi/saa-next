@@ -37,7 +37,7 @@ const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
       <>
       {apartment && (
         <>
-          Bills: {apartment.utilities_info.replace('Included', 'Incl.')} /
+          Bills: {apartment.utilities_info?.replace('Included', 'Incl.') || 'N/A'} /
           <br/>
           Min Stay: {apartment.minimum_stay} days
         </>
